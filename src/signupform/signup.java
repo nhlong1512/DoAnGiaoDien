@@ -15,19 +15,21 @@ import javax.swing.JOptionPane;
  * @author Administrator
  */
 public class signup extends javax.swing.JFrame {
+
     Connection conn = null;
-    PreparedStatement ps = null;
-    ResultSet rs = null;
+    PreparedStatement ps = null, pst = null;
+    ResultSet rs = null, rss = null;
+
     /**
      * Creates new form signup
      */
     public signup() {
         initComponents();
-        txtusername.setBackground(new java.awt.Color(0,0,0,1));
-        txtfirstname.setBackground(new java.awt.Color(0,0,0,1));
-        txtlastname.setBackground(new java.awt.Color(0,0,0,1));
-        txtpassword.setBackground(new java.awt.Color(0,0,0,1));
-        txtconfirmpassword.setBackground(new java.awt.Color(0,0,0,1));
+        txtusername.setBackground(new java.awt.Color(0, 0, 0, 1));
+        txtfirstname.setBackground(new java.awt.Color(0, 0, 0, 1));
+        txtlastname.setBackground(new java.awt.Color(0, 0, 0, 1));
+        txtpassword.setBackground(new java.awt.Color(0, 0, 0, 1));
+        txtconfirmpassword.setBackground(new java.awt.Color(0, 0, 0, 1));
 
     }
 
@@ -210,10 +212,11 @@ public class signup extends javax.swing.JFrame {
         try {
             conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "hr", "hr");
             String sql = "INSERT INTO NGUOIDUNG (MaND, Email, MatKhau, HoTen) VALUES (?, ?, ?, ?)";
-//            String countMaND = "Select count(MaND) from NguoiDung";
+            String countMaND = "Select count(MaND) as countND from NguoiDung";
             ps = conn.prepareStatement(sql);
+            pst = conn.prepareStatement(countMaND);
+            rss = pst.executeQuery();
             StringBuilder sb = new StringBuilder();
-            
             if (!new String(txtpassword.getPassword()).equals(new String(txtconfirmpassword.getPassword()))) {
                 sb.append("Invalid Confirm Password");
             }
@@ -221,13 +224,16 @@ public class signup extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, sb);
                 return;
             }
-            ps.setString(1, new String(txtpassword.getPassword()));
+//            ps.setString(1, new String(txtpassword.getPassword()));
+            if (rss.next()) {
+                ps.setString(1, "ND0" + String.valueOf(rss.getInt("countND") + 1));
+            }
             ps.setString(2, txtusername.getText());
-            
+
             ps.setString(3, new String(txtpassword.getPassword()));
-            
+
             ps.setString(4, (txtlastname.getText() + " " + txtfirstname.getText()));
-            
+
             rs = ps.executeQuery();
             JOptionPane.showMessageDialog(this, "Sign Up Successfully");
         } catch (Exception ex) {
@@ -256,15 +262,14 @@ public class signup extends javax.swing.JFrame {
     }//GEN-LAST:event_txtpasswordActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        for(double i=0.0; i<=1.0; i=i+0.1){
+        for (double i = 0.0; i <= 1.0; i = i + 0.1) {
             String val = i + "";
             float f = Float.valueOf(val);
             this.setOpacity(f);
-            try{
+            try {
                 Thread.sleep(50);
-            }
-            catch(Exception e){
-                
+            } catch (Exception e) {
+
             }
         }
     }//GEN-LAST:event_formWindowOpened
