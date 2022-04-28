@@ -95,7 +95,7 @@ public class otpform extends javax.swing.JFrame {
     private void buttonverifyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonverifyMouseClicked
         // TODO add your handling code here:
         if (Integer.parseInt(txtenterotp.getText()) == randomOTPtemp) {
-            JOptionPane.showMessageDialog(null, "You have entered right otp");
+            JOptionPane.showMessageDialog(null, "OTP is valid");
             modifypassword mp = new modifypassword();
             mp.setVisible(true);
         }else{

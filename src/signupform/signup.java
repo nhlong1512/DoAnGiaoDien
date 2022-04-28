@@ -8,6 +8,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,8 +19,8 @@ import javax.swing.JOptionPane;
 public class signup extends javax.swing.JFrame {
 
     Connection conn = null;
-    PreparedStatement ps = null, pst = null;
-    ResultSet rs = null, rss = null;
+    PreparedStatement ps = null, ps1 = null, ps2 = null;
+    ResultSet rs = null, rs1 = null, rs2 = null;
 
     /**
      * Creates new form signup
@@ -31,6 +33,30 @@ public class signup extends javax.swing.JFrame {
         txtpassword.setBackground(new java.awt.Color(0, 0, 0, 1));
         txtconfirmpassword.setBackground(new java.awt.Color(0, 0, 0, 1));
 
+    }
+
+    //Code kiểm tra tính hợp lệ của email
+    public class EmailExample {
+
+        private Pattern pattern, pattern1, pattern2;
+        private Matcher matcher, matcher1, matcher2;
+
+        private static final String EMAIL_REGEX = "^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)$";
+        private static final String EMAIL_REGEX1 = "^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)+(\\.[A-Za-z0-9]+)$";
+        private static final String EMAIL_REGEX2 = "^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)+(\\.[A-Za-z0-9]+)+(\\.[A-Za-z0-9]+)$";
+
+        public EmailExample() {
+            pattern = Pattern.compile(EMAIL_REGEX);
+            pattern1 = Pattern.compile(EMAIL_REGEX1);
+            pattern2 = Pattern.compile(EMAIL_REGEX2);
+        }
+
+        public boolean validate(String regex) {
+            matcher = pattern.matcher(regex);
+            matcher1 = pattern1.matcher(regex);
+            matcher2 = pattern2.matcher(regex);
+            return matcher.matches() || matcher1.matches() || matcher2.matches();
+        }
     }
 
     /**
@@ -207,27 +233,76 @@ public class signup extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jLabel1MouseClicked
 
+    //Event click button Sign Up
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
         // TODO add your handling code here:
         try {
             conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "hr", "hr");
             String sql = "INSERT INTO NGUOIDUNG (MaND, Email, MatKhau, HoTen) VALUES (?, ?, ?, ?)";
             String countMaND = "Select count(MaND) as countND from NguoiDung";
+            String checkEmailExist = "Select count(MaND) as countEmail from NguoiDung where Email = ?";
             ps = conn.prepareStatement(sql);
-            pst = conn.prepareStatement(countMaND);
-            rss = pst.executeQuery();
+            ps1 = conn.prepareStatement(countMaND);
+            rs1 = ps1.executeQuery();
+            ps2 = conn.prepareStatement(checkEmailExist);
+            
+            //Thực thi checkEmailExist - Kiểm tra email đã tồn tại trong database hay chưa.
+            ps2.setString(1, txtusername.getText());
+            rs2 = ps2.executeQuery();
+            
             StringBuilder sb = new StringBuilder();
-            if (!new String(txtpassword.getPassword()).equals(new String(txtconfirmpassword.getPassword()))) {
+            //Kiểm tra tính hợp lệ của email khi đăng ký
+            EmailExample emailExample = new EmailExample();
+            boolean isvalid = emailExample.validate(txtusername.getText());
+            //Kiểm tra thông tin không được bỏ trống.
+            if(txtusername.getText().equals("")){
+                sb.append("Please Enter Your User Name!");
+            }
+            else if(txtfirstname.getText().equals("")){
+                sb.append("Please Enter Your FirstName!");
+            }
+            else if(txtlastname.getText().equals("")){
+                sb.append("Please Enter Your LastName!");
+            }
+            else if(new String(txtpassword.getPassword()).equals("")){
+                sb.append("Please Enter Your Password!");
+            }
+            //Kiểm tra nếu mật khẩu bé hơn 8 kí tự thì thông báo 
+            //Mật khẩu phải ít nhất 8 kí tự
+            else if(new String(txtpassword.getPassword()).length()<8){
+                sb.append("Password must be at least 8 characters.");
+            }
+            else if(new String(txtconfirmpassword.getPassword()).equals("")){
+                sb.append("Please Enter Your Confirm Password!");
+            }
+            //Kiểm tra xem mật khẩu confirm có trùng khớp với mật khẩu ban đầu.
+            //Nếu mật khẩu không trùng khớp, thông báo ra người dùng.
+            else if (!new String(txtpassword.getPassword()).equals(new String(txtconfirmpassword.getPassword()))) {
                 sb.append("Invalid Confirm Password");
             }
+            //Nếu email không hợp lệ thông báo ra người dùng.
+            else if(!isvalid){
+                sb.append("Invalid Email");
+            }
+            else if(rs2.next()){
+                if(rs2.getInt("countEmail") > 0){
+                    sb.append("Email Already Exists");
+                }
+            }
+            
+            //Nếu độ dài sb lớn hơn 0 - có lỗi thì hiện ra thông báo lỗi
             if (sb.length() > 0) {
                 JOptionPane.showMessageDialog(this, sb);
                 return;
             }
+            
+            
+            
 //            ps.setString(1, new String(txtpassword.getPassword()));
-            if (rss.next()) {
-                ps.setString(1, "ND0" + String.valueOf(rss.getInt("countND") + 1));
+            if (rs1.next()) {
+                ps.setString(1, "ND" + String.valueOf(rs1.getInt("countND") + 1));
             }
+            
             ps.setString(2, txtusername.getText());
 
             ps.setString(3, new String(txtpassword.getPassword()));
