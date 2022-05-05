@@ -70,8 +70,9 @@ public class login extends javax.swing.JFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel2.setDoubleBuffered(false);
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -79,11 +80,20 @@ public class login extends javax.swing.JFrame {
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, 341, -1));
 
         txtusername.setFont(txtusername.getFont().deriveFont(txtusername.getFont().getSize()+2f));
+        txtusername.setForeground(new java.awt.Color(153, 153, 153));
         txtusername.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtusername.setText(" ");
+        txtusername.setText(" Enter your username");
         txtusername.setToolTipText("");
         txtusername.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtusername.setDisabledTextColor(new java.awt.Color(102, 102, 102));
+        txtusername.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtusernameFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtusernameFocusLost(evt);
+            }
+        });
         txtusername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtusernameActionPerformed(evt);
@@ -235,10 +245,6 @@ public class login extends javax.swing.JFrame {
     
 
     
-    private void txtusernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtusernameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtusernameActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -256,6 +262,26 @@ public class login extends javax.swing.JFrame {
    
       
     }//GEN-LAST:event_txtusernameKeyTyped
+
+    private void txtusernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtusernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtusernameActionPerformed
+
+    private void txtusernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtusernameFocusGained
+        // TODO add your handling code here:
+        if(txtusername.getText().equals(" Enter your username")){
+            txtusername.setText("");
+            txtusername.setForeground(new Color(153,153,153));
+        }
+    }//GEN-LAST:event_txtusernameFocusGained
+
+    private void txtusernameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtusernameFocusLost
+        // TODO add your handling code here:
+        if(txtusername.getText().equals("")){
+            txtusername.setText(" Enter your username");
+            txtusername.setForeground(new Color(153,153,153));
+        }
+    }//GEN-LAST:event_txtusernameFocusLost
 
     /**
      * @param args the command line arguments
