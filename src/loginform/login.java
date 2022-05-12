@@ -3,25 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package loginform;
-package singupform;
-
-
 
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JTextField;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLDataException;
-import java.sql.SQLException;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.net.URL;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import signupform.signup;
-import OTP.SentEmail;
-
 
 /**
  *
@@ -29,9 +20,6 @@ import OTP.SentEmail;
  */
 
 public class login extends javax.swing.JFrame {
-  Connection conn = null;
-    PreparedStatement ps = null;
-    ResultSet rs = null;
 
     /**
      * Creates new form login
@@ -40,6 +28,7 @@ public class login extends javax.swing.JFrame {
         initComponents();
         txtusername.setBackground(new java.awt.Color(0,0,0,1));
         txtpassword.setBackground(new java.awt.Color(0,0,0,1));
+        setIconImage();
     }
 
     /**
@@ -171,11 +160,6 @@ public class login extends javax.swing.JFrame {
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel11.setText("Forget Password?");
         jLabel11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel11MouseClicked(evt);
-            }
-        });
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 250, 121, 27));
 
         jButton1.setBackground(new java.awt.Color(12, 33, 250));
@@ -202,21 +186,11 @@ public class login extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(51, 0, 255));
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setText("Sign Up.");
-        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel14MouseClicked(evt);
-            }
-        });
         jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 300, 60, -1));
 
         jLabel15.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setText("Don't have an account? ");
-        jLabel15.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel15MouseClicked(evt);
-            }
-        });
         jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 300, 160, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Historic", 1, 36)); // NOI18N
@@ -274,38 +248,13 @@ public class login extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formWindowOpened
     
-    
+     private void setIconImage() {
+       setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/icons8-parking-96.png")));
+    }
 
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       try {
-            conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "doan", "doan");
-            String sql = "SELECT * FROM NGUOIDUNG WHERE Email = ? AND MatKhau = ?";
-            ps = conn.prepareStatement(sql);
-            ps.setString(1, txtusername.getText());
-            ps.setString(2, new String(txtpassword.getPassword()));
-            rs = ps.executeQuery();
-            if (rs.next()) {
-                if (txtusername.getText().equals("nguyenvanbao@gmail.com")
-                    || txtusername.getText().equals("tranvanminh@gmail.com") 
-                    ||txtusername.getText().equals("nguyenquangtrung@gmail.com")) {
-                    JOptionPane.showMessageDialog(null, "Login Successfully");
-                //    staffHomepage sh = new staffHomepage();
-                  //  sh.setVisible(true);
-                } else{
-                    JOptionPane.showMessageDialog(null, "Login Successfully");
-                //    customerHomepage ch = new customerHomepage();
-                  //   ch.setVisible(true);
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "Invalid Username Or Password");
-                txtusername.setText("");
-                txtpassword.setText("");
-            }
-
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex);
-        }  // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpasswordActionPerformed
@@ -341,48 +290,7 @@ public class login extends javax.swing.JFrame {
             txtusername.setForeground(new Color(153,153,153));
         }
     }//GEN-LAST:event_txtusernameFocusLost
- private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
-        // TODO add your handling code here:
-//        try {
-//            signup su = new signup();
-//            su.setVisible(true);
-//
-//        } catch (Exception ex) {
-//            JOptionPane.showMessageDialog(null, ex);
-//        }
-    }//GEN-LAST:event_jLabel13MouseClicked
 
-    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
-        // TODO add your handling code here:
-             try {
-            signup su = new signup();
-            su.setVisible(true);
-
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex);
-        }
-    }//GEN-LAST:event_jLabel14MouseClicked
-
-    private void jLabel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseClicked
-        // TODO add your handling code here:
-          try {
-            signup su = new signup();
-            su.setVisible(true);
-
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex);
-        }
-    }//GEN-LAST:event_jLabel15MouseClicked
-
-    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
-        try {
-              SentEmail sm = new SentEmail();
-              sm.setLocationRelativeTo(null);
-           sm.setVisible(true);
-        } catch (Exception e) {
-              JOptionPane.showMessageDialog(null, e);
-        }
-    }//GEN-LAST:event_jLabel11MouseClicked
     /**
      * @param args the command line arguments
      */

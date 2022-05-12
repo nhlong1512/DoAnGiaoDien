@@ -3,20 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package ModifyPassword;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import javax.swing.JOptionPane;
-import static OTP.SentEmail.emailTemp;
+
 /**
  *
  * @author Administrator
  */
 public class modifypassword extends javax.swing.JFrame {
- Connection conn = null;
-    PreparedStatement ps = null;
-    ResultSet rs = null;
 
     /**
      * Creates new form modifypassword
@@ -47,7 +39,6 @@ public class modifypassword extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 54, 204), 4, true));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/imgonline-com-ua-resize-jBK7d2d1Gw9qgN.png"))); // NOI18N
@@ -77,11 +68,6 @@ public class modifypassword extends javax.swing.JFrame {
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Submit");
         jButton1.setBorder(null);
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
-            }
-        });
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -89,14 +75,14 @@ public class modifypassword extends javax.swing.JFrame {
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 270, 200, 30));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_Close_26px.png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back-button.png"))); // NOI18N
         jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel5MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 10, -1, 20));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 30, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -119,30 +105,6 @@ public class modifypassword extends javax.swing.JFrame {
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         System.exit(0);
     }//GEN-LAST:event_jLabel5MouseClicked
-
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        // TODO add your handling code here:
-          try {
-            conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "doan", "doan");
-            String sql = "UPDATE NGUOIDUNG SET MatKhau =  ? WHERE Email = ?";
-            ps = conn.prepareStatement(sql);
-            StringBuilder sb = new StringBuilder();
-            if (!new String(jPasswordField3.getPassword()).equals(new String(jPasswordField2.getPassword()))) {
-                sb.append("Invalid Confirm Password");
-            }
-            if (sb.length() > 0) {
-                JOptionPane.showMessageDialog(this, sb);
-                return;
-            }
-            ps.setString(1, new String(jPasswordField3.getPassword()));
-            ps.setString(2, emailTemp);
-
-            rs = ps.executeQuery();
-            JOptionPane.showMessageDialog(this, "Modify Password Successfully!");
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex);
-        }
-    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments

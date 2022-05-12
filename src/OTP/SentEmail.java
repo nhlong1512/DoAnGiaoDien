@@ -4,26 +4,13 @@
  */
 package OTP;
 
-import java.awt.*;
-import OTP.OTPform;
-import javax.swing.JOptionPane;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import javax.swing.JOptionPane;
-import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-import java.util.Properties;
+import java.awt.Color;
+
 /**
  *
  * @author Administrator
  */
 public class SentEmail extends javax.swing.JFrame {
- Connection conn = null;
-    PreparedStatement ps = null;
-    ResultSet rs = null;
 
     /**
      * Creates new form SentEmail
@@ -31,15 +18,6 @@ public class SentEmail extends javax.swing.JFrame {
     public SentEmail() {
         initComponents();
     }
-    public static int randomOTP() {
-        double randomDouble = Math.random();
-        randomDouble = randomDouble * 1000000 + 1;
-        int randomInt = (int) randomDouble;
-        return randomInt;
-    }
-     public static int randomOTPtemp;
-    public static String emailTemp;
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -61,7 +39,6 @@ public class SentEmail extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 54, 204), 4, true));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/a.png"))); // NOI18N
 
@@ -96,18 +73,8 @@ public class SentEmail extends javax.swing.JFrame {
         jButton1.setText("Get OTP");
         jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton1.setBorderPainted(false);
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
-            }
-        });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_Close_26px.png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back-button.png"))); // NOI18N
         jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -119,34 +86,32 @@ public class SentEmail extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(73, Short.MAX_VALUE)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel6))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(88, 88, 88)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
-                        .addGap(0, 59, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(116, 116, 116)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(116, 116, 116)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel6)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel6)
+                .addGap(2, 2, 2)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
@@ -156,7 +121,7 @@ public class SentEmail extends javax.swing.JFrame {
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -197,73 +162,6 @@ public class SentEmail extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jLabel6MouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        // TODO add your handling code here:
-        try {
-            conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "doan", "doan");
-            String sql = "SELECT * FROM NGUOIDUNG WHERE Email = ?";
-            ps = conn.prepareStatement(sql);
-            ps.setString(1, jTextField1.getText());
-            rs = ps.executeQuery();
-            if (rs.next()) {
-                JOptionPane.showMessageDialog(null, "Valid Email Address");
-                
-                randomOTPtemp = randomOTP();
-                emailTemp = jTextField1.getText();
-                final String username = "uitparking@gmail.com";
-                final String password = "UITParking2052~";
-
-                Properties prop = new Properties();
-                prop.put("mail.smtp.host", "smtp.gmail.com");
-                prop.put("mail.smtp.port", "587");
-                prop.put("mail.smtp.auth", "true");
-                prop.put("mail.smtp.starttls.enable", "true"); //TLS
-                prop.put("mail.smtp.starttls.required", "true"); //
-                prop.put("mail.smtp.ssl.protocols", "TLSv1.2"); //
-
-                Session session = Session.getInstance(prop,
-                        new javax.mail.Authenticator() {
-                    protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication(username, password);
-                    }
-                });
-
-                try {
-
-                    Message message = new MimeMessage(session);
-                    message.setFrom(new InternetAddress(jTextField1.getText()));
-                    message.setRecipients(
-                            Message.RecipientType.TO,
-                            InternetAddress.parse(jTextField1.getText())
-                    );
-                    message.setSubject("VERIFY FORGET PASSWORD");
-                    message.setText("OTP To Reset Password: " + String.valueOf(randomOTPtemp));
-
-                    Transport.send(message);
-
-                    System.out.println("Done");
-
-                } catch (MessagingException e) {
-                    e.printStackTrace();
-                }
-
-                OTPform of = new OTPform();
-                of.setVisible(true);
-
-            } else {
-                JOptionPane.showMessageDialog(null, "Email Address Does Not Exist!");
-                jTextField1.setText("");
-            }
-
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex);
-        }
-    }//GEN-LAST:event_jButton1MouseClicked
-
     /**
      * @param args the command line arguments
      */
@@ -292,27 +190,7 @@ public class SentEmail extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-       try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SentEmail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SentEmail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SentEmail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SentEmail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-       java.awt.EventQueue.invokeLater(new Runnable() {
+        java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new SentEmail().setVisible(true);
             }
