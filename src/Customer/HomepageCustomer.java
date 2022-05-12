@@ -128,14 +128,14 @@ public class HomepageCustomer extends javax.swing.JFrame {
         dashboard.setLayout(dashboardLayout);
         dashboardLayout.setHorizontalGroup(
             dashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 570, Short.MAX_VALUE)
+            .addGap(0, 590, Short.MAX_VALUE)
         );
         dashboardLayout.setVerticalGroup(
             dashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 500, Short.MAX_VALUE)
         );
 
-        jPanel2.add(dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 50, 570, 500));
+        jPanel2.add(dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 590, 500));
 
         usermenu.setBackground(new java.awt.Color(0, 0, 153));
         usermenu.setPreferredSize(new java.awt.Dimension(220, 500));
@@ -221,7 +221,7 @@ public class HomepageCustomer extends javax.swing.JFrame {
 
         usermenu.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 64, 500));
 
-        jPanel2.add(usermenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 240, -1));
+        jPanel2.add(usermenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 220, -1));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
