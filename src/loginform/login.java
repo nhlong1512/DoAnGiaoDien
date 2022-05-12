@@ -278,6 +278,7 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     //Long thay doi
+    //Ngoc Anh comment
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
