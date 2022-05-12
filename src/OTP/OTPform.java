@@ -5,6 +5,7 @@
 package OTP;
 
 import java.awt.Color;
+<<<<<<< HEAD
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
@@ -14,6 +15,9 @@ import static OTP.SentEmail.randomOTPtemp;
 import static OTP.SentEmail.randomOTP;
 import static OTP.SentEmail.randomOTPtemp;
 import ModifyPassword.modifypassword;
+=======
+
+>>>>>>> a14afa811172062850c8fe1500375d17cc4345db
 /**
  *
  * @author Administrator
@@ -91,16 +95,6 @@ public class OTPform extends javax.swing.JFrame {
         jButton1.setText("Verify OTP");
         jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton1.setBorderPainted(false);
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
-            }
-        });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_Close_26px.png"))); // NOI18N
         jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -198,6 +192,7 @@ public class OTPform extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jLabel6MouseClicked
 
+<<<<<<< HEAD
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -214,6 +209,8 @@ public class OTPform extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton1MouseClicked
 
+=======
+>>>>>>> a14afa811172062850c8fe1500375d17cc4345db
     /**
      * @param args the command line arguments
      */

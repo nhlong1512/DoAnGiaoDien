@@ -4,26 +4,13 @@
  */
 package OTP;
 
-import java.awt.*;
-import OTP.OTPform;
-import javax.swing.JOptionPane;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import javax.swing.JOptionPane;
-import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-import java.util.Properties;
+import java.awt.Color;
+
 /**
  *
  * @author Administrator
  */
 public class SentEmail extends javax.swing.JFrame {
- Connection conn = null;
-    PreparedStatement ps = null;
-    ResultSet rs = null;
 
     /**
      * Creates new form SentEmail
@@ -31,15 +18,6 @@ public class SentEmail extends javax.swing.JFrame {
     public SentEmail() {
         initComponents();
     }
-    public static int randomOTP() {
-        double randomDouble = Math.random();
-        randomDouble = randomDouble * 1000000 + 1;
-        int randomInt = (int) randomDouble;
-        return randomInt;
-    }
-     public static int randomOTPtemp;
-    public static String emailTemp;
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -96,16 +74,6 @@ public class SentEmail extends javax.swing.JFrame {
         jButton1.setText("Get OTP");
         jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton1.setBorderPainted(false);
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
-            }
-        });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_Close_26px.png"))); // NOI18N
         jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -197,6 +165,7 @@ public class SentEmail extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jLabel6MouseClicked
 
+<<<<<<< HEAD
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -264,6 +233,8 @@ public class SentEmail extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1MouseClicked
 
+=======
+>>>>>>> a14afa811172062850c8fe1500375d17cc4345db
     /**
      * @param args the command line arguments
      */
@@ -292,27 +263,7 @@ public class SentEmail extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-       try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SentEmail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SentEmail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SentEmail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SentEmail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-       java.awt.EventQueue.invokeLater(new Runnable() {
+        java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new SentEmail().setVisible(true);
             }

@@ -4,23 +4,17 @@
  * and open the template in the editor.
  */
 
+<<<<<<< HEAD
 package loginform;
 package singupform;
 
 
 
+=======
+>>>>>>> a14afa811172062850c8fe1500375d17cc4345db
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JTextField;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLDataException;
-import java.sql.SQLException;
-import javax.swing.JOptionPane;
-import signupform.signup;
-import OTP.SentEmail;
 
 
 /**
@@ -29,9 +23,12 @@ import OTP.SentEmail;
  */
 
 public class login extends javax.swing.JFrame {
+<<<<<<< HEAD
   Connection conn = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
+=======
+>>>>>>> a14afa811172062850c8fe1500375d17cc4345db
 
     /**
      * Creates new form login
@@ -171,11 +168,6 @@ public class login extends javax.swing.JFrame {
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel11.setText("Forget Password?");
         jLabel11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel11MouseClicked(evt);
-            }
-        });
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 250, 121, 27));
 
         jButton1.setBackground(new java.awt.Color(12, 33, 250));
@@ -202,21 +194,11 @@ public class login extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(51, 0, 255));
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setText("Sign Up.");
-        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel14MouseClicked(evt);
-            }
-        });
         jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 300, 60, -1));
 
         jLabel15.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setText("Don't have an account? ");
-        jLabel15.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel15MouseClicked(evt);
-            }
-        });
         jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 300, 160, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Historic", 1, 36)); // NOI18N
@@ -278,6 +260,7 @@ public class login extends javax.swing.JFrame {
 
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+<<<<<<< HEAD
        try {
             conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "doan", "doan");
             String sql = "SELECT * FROM NGUOIDUNG WHERE Email = ? AND MatKhau = ?";
@@ -306,6 +289,9 @@ public class login extends javax.swing.JFrame {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex);
         }  // TODO add your handling code here:
+=======
+        // TODO add your handling code here:
+>>>>>>> a14afa811172062850c8fe1500375d17cc4345db
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpasswordActionPerformed
@@ -341,6 +327,7 @@ public class login extends javax.swing.JFrame {
             txtusername.setForeground(new Color(153,153,153));
         }
     }//GEN-LAST:event_txtusernameFocusLost
+<<<<<<< HEAD
  private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
         // TODO add your handling code here:
 //        try {
@@ -383,6 +370,9 @@ public class login extends javax.swing.JFrame {
               JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_jLabel11MouseClicked
+=======
+
+>>>>>>> a14afa811172062850c8fe1500375d17cc4345db
     /**
      * @param args the command line arguments
      */
