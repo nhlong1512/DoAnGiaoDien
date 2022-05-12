@@ -395,8 +395,10 @@ public class signup extends javax.swing.JFrame {
 
             rs = ps.executeQuery();
             JOptionPane.showMessageDialog(this, "Sign Up Successfully");
-            Homepage _homepageCustomer = new Homepage();
-            _homepageCustomer.show();
+//            Homepage _homepageCustomer = new Homepage();
+//            _homepageCustomer.show();
+            login _login = new login();
+            _login.show();
             dispose();
 
         } catch (Exception ex) {

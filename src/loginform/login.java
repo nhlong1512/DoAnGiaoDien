@@ -23,8 +23,7 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import signupform.signup;
 import OTP.SentEmail;
-
-
+import javax.swing.JPasswordField;
 
 /**
  *
@@ -35,6 +34,8 @@ public class login extends javax.swing.JFrame {
     Connection conn = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
+    public static String pEmail;
+    public static String pHoTen;
 
     /**
      * Creates new form login
@@ -287,16 +288,27 @@ public class login extends javax.swing.JFrame {
             ps.setString(1, txtusername.getText());
             ps.setString(2, new String(txtpassword.getPassword()));
             rs = ps.executeQuery();
+
+            //Lưu email đăng nhập với biến pEmail
+            pEmail = txtusername.getText();
+
+            //Phân quyền cho người dùng
             if (rs.next()) {
+                //Link đến giao diện nhân viên
                 if (rs.getString("VaiTro").equals("Nhan vien")) {
                     JOptionPane.showMessageDialog(null, "Login Successfully");
+                    //Lưu Họ tên đăng nhập với biến pHoTen
+                    pHoTen = rs.getString("HoTen");
                     HomepageAdmin _homepageAdmin = new HomepageAdmin();
                     _homepageAdmin.show();
                     dispose();
-
                 }
+
+                //Link đến giao diện Khách hàng
                 if (rs.getString("VaiTro").equals("Khach hang")) {
                     JOptionPane.showMessageDialog(null, "Login Successfully");
+                    //Lưu Họ tên đăng nhập với biến pHoTen
+                    pHoTen = rs.getString("HoTen");
                     Homepage _homePageCustomer = new Homepage();
                     _homePageCustomer.show();
                     dispose();

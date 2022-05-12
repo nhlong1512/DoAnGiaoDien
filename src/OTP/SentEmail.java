@@ -37,7 +37,7 @@ public class SentEmail extends javax.swing.JFrame {
         int randomInt = (int) randomDouble;
         return randomInt;
     }
-     public static int randomOTPtemp;
+    public static int randomOTPtemp;
     public static String emailTemp;
 
 
