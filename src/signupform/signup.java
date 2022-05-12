@@ -4,6 +4,16 @@
  */
 package signupform;
 
+
+
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
 import java.awt.Color;
 
 /**
@@ -12,11 +22,46 @@ import java.awt.Color;
  */
 public class signup extends javax.swing.JFrame {
 
+    Connection conn = null;
+    PreparedStatement ps = null, ps1 = null, ps2 = null;
+    ResultSet rs = null, rs1 = null, rs2 = null;
+
     /**
      * Creates new form signup
      */
     public signup() {
         initComponents();
+    }
+
+    public static String getID(String id) {
+        id = id.replaceAll("\\D+", "");
+        int id_num = Integer.parseInt(id);
+        id_num++;
+        String id_format = String.format("%03d", id_num);
+        return id_format;
+    }
+
+    public class EmailExample {
+
+        private Pattern pattern, pattern1, pattern2;
+        private Matcher matcher, matcher1, matcher2;
+
+        private static final String EMAIL_REGEX = "^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)$";
+        private static final String EMAIL_REGEX1 = "^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)+(\\.[A-Za-z0-9]+)$";
+        private static final String EMAIL_REGEX2 = "^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)+(\\.[A-Za-z0-9]+)+(\\.[A-Za-z0-9]+)$";
+
+        public EmailExample() {
+            pattern = Pattern.compile(EMAIL_REGEX);
+            pattern1 = Pattern.compile(EMAIL_REGEX1);
+            pattern2 = Pattern.compile(EMAIL_REGEX2);
+        }
+
+        public boolean validate(String regex) {
+            matcher = pattern.matcher(regex);
+            matcher1 = pattern1.matcher(regex);
+            matcher2 = pattern2.matcher(regex);
+            return matcher.matches() || matcher1.matches() || matcher2.matches();
+        }
     }
 
     /**
@@ -281,7 +326,6 @@ public class signup extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
         try {
             String a = "";
             conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "doan", "doan");
@@ -354,60 +398,56 @@ public class signup extends javax.swing.JFrame {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
-=======
->>>>>>> a14afa811172062850c8fe1500375d17cc4345db
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
         System.exit(0);
     }//GEN-LAST:event_jLabel9MouseClicked
 
-    
-    
+
     private void jTextField2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusGained
-        if(jTextField2.getText().equals("Enter your email")){
+        if (jTextField2.getText().equals("Enter your email")) {
             jTextField2.setText("");
-            jTextField2.setForeground(new Color(153,153,153));
+            jTextField2.setForeground(new Color(153, 153, 153));
         }
     }//GEN-LAST:event_jTextField2FocusGained
 
     private void jTextField2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusLost
-        if(jTextField2.getText().equals("")){
+        if (jTextField2.getText().equals("")) {
             jTextField2.setText("Enter your email");
-            jTextField2.setForeground(new Color(153,153,153));
+            jTextField2.setForeground(new Color(153, 153, 153));
         }
     }//GEN-LAST:event_jTextField2FocusLost
 
     private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
-        if(jTextField1.getText().equals("Enter your firstname")){
+        if (jTextField1.getText().equals("Enter your firstname")) {
             jTextField1.setText("");
-            jTextField1.setForeground(new Color(153,153,153));
+            jTextField1.setForeground(new Color(153, 153, 153));
         }
     }//GEN-LAST:event_jTextField1FocusGained
 
     private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
         // TODO add your handling code here:
-        if(jTextField1.getText().equals("")){
+        if (jTextField1.getText().equals("")) {
             jTextField1.setText("Enter your firstname");
-            jTextField1.setForeground(new Color(153,153,153));
+            jTextField1.setForeground(new Color(153, 153, 153));
         }
     }//GEN-LAST:event_jTextField1FocusLost
 
     private void jTextField3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusGained
 //        // TODO add your handling code here:
-         if(jTextField3.getText().equals("Enter your lastname")){
+        if (jTextField3.getText().equals("Enter your lastname")) {
             jTextField3.setText("");
-            jTextField3.setForeground(new Color(153,153,153));
+            jTextField3.setForeground(new Color(153, 153, 153));
         }
     }//GEN-LAST:event_jTextField3FocusGained
 
-    
-    
+
     private void jTextField3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusLost
         // TODO add your handling code here:
-         if(jTextField3.getText().equals("")){
+        if (jTextField3.getText().equals("")) {
             jTextField3.setText("Enter your lastname");
-            jTextField3.setForeground(new Color(153,153,153));
+            jTextField3.setForeground(new Color(153, 153, 153));
         }
     }//GEN-LAST:event_jTextField3FocusLost
 
@@ -419,9 +459,6 @@ public class signup extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
 
-            
-    
-    
     /**
      * @param args the command line arguments
      */
@@ -457,7 +494,7 @@ public class signup extends javax.swing.JFrame {
         });
     }
 
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
