@@ -24,6 +24,8 @@ import javax.swing.JOptionPane;
 import signupform.signup;
 import OTP.SentEmail;
 
+
+
 /**
  *
  * @author ME1
@@ -275,6 +277,7 @@ public class login extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formWindowOpened
 
+    //Long thay doi
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
