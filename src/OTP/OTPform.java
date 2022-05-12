@@ -205,11 +205,12 @@ public class OTPform extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
         if (Integer.parseInt(jTextField1.getText()) == randomOTPtemp) {
-            JOptionPane.showMessageDialog(null, "OTP is valid");
-            modifypassword mp = new modifypassword();
-            mp.setVisible(true);
+            JOptionPane.showMessageDialog(null, "OTP chinh xac!");
+            modifypassword _modifypassword = new modifypassword();
+            _modifypassword.show();
+            dispose();
         }else{
-            JOptionPane.showMessageDialog(null, "You have entered wrong otp");
+            JOptionPane.showMessageDialog(null, "Ma OTP khong hop le!");
         }
 
     }//GEN-LAST:event_jButton1MouseClicked

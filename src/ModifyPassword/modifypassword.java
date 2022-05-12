@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import static OTP.SentEmail.emailTemp;
+import loginform.login;
 /**
  *
  * @author Administrator
@@ -123,7 +124,7 @@ public class modifypassword extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
           try {
-            conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "doan", "doan");
+            conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "hr", "hr");
             String sql = "UPDATE NGUOIDUNG SET MatKhau =  ? WHERE Email = ?";
             ps = conn.prepareStatement(sql);
             StringBuilder sb = new StringBuilder();
@@ -136,9 +137,11 @@ public class modifypassword extends javax.swing.JFrame {
             }
             ps.setString(1, new String(jPasswordField3.getPassword()));
             ps.setString(2, emailTemp);
-
             rs = ps.executeQuery();
             JOptionPane.showMessageDialog(this, "Modify Password Successfully!");
+            login _login = new login();
+            _login.show();
+            dispose();
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex);
         }

@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package loginform;
+
 package singupform;
 
 
 
+import Admin.HomepageAdmin;
+import Customer.Homepage;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JTextField;
@@ -22,14 +24,13 @@ import javax.swing.JOptionPane;
 import signupform.signup;
 import OTP.SentEmail;
 
-
 /**
  *
  * @author ME1
  */
-
 public class login extends javax.swing.JFrame {
-  Connection conn = null;
+
+    Connection conn = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
 
@@ -38,8 +39,8 @@ public class login extends javax.swing.JFrame {
      */
     public login() {
         initComponents();
-        txtusername.setBackground(new java.awt.Color(0,0,0,1));
-        txtpassword.setBackground(new java.awt.Color(0,0,0,1));
+        txtusername.setBackground(new java.awt.Color(0, 0, 0, 1));
+        txtpassword.setBackground(new java.awt.Color(0, 0, 0, 1));
     }
 
     /**
@@ -243,10 +244,10 @@ public class login extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(891, 485));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-    
-  
+
+
     private void disableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_disableMouseClicked
-        txtpassword.setEchoChar((char)0);
+        txtpassword.setEchoChar((char) 0);
         disable.setVisible(false);
         disable.setEnabled(false);
         show.setEnabled(true);
@@ -254,7 +255,7 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_disableMouseClicked
 
     private void showMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showMouseClicked
-        txtpassword.setEchoChar((char)8226);
+        txtpassword.setEchoChar((char) 8226);
         disable.setVisible(true);
         disable.setEnabled(true);
         show.setEnabled(false);
@@ -262,24 +263,22 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_showMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        for (double i = 0.0; i <=1.0; i = i+0.1){
-            String val = i+ "";
+        for (double i = 0.0; i <= 1.0; i = i + 0.1) {
+            String val = i + "";
             float f = Float.valueOf(val);
             this.setOpacity(f);
-            try{
+            try {
                 Thread.sleep(50);
-            }catch(Exception e){
-                
+            } catch (Exception e) {
+
             }
         }
     }//GEN-LAST:event_formWindowOpened
-    
-    
 
-    
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       try {
-            conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "doan", "doan");
+        try {
+            conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "hr", "hr");
             String sql = "SELECT * FROM NGUOIDUNG WHERE Email = ? AND MatKhau = ?";
             ps = conn.prepareStatement(sql);
             ps.setString(1, txtusername.getText());
@@ -287,15 +286,18 @@ public class login extends javax.swing.JFrame {
             rs = ps.executeQuery();
             if (rs.next()) {
                 if (txtusername.getText().equals("nguyenvanbao@gmail.com")
-                    || txtusername.getText().equals("tranvanminh@gmail.com") 
-                    ||txtusername.getText().equals("nguyenquangtrung@gmail.com")) {
+                        || txtusername.getText().equals("tranvanminh@gmail.com")
+                        || txtusername.getText().equals("nguyenquangtrung@gmail.com")) {
                     JOptionPane.showMessageDialog(null, "Login Successfully");
-                //    staffHomepage sh = new staffHomepage();
-                  //  sh.setVisible(true);
-                } else{
+                    HomepageAdmin _homepageAdmin = new HomepageAdmin();
+                    _homepageAdmin.show();
+                    dispose();
+
+                } else {
                     JOptionPane.showMessageDialog(null, "Login Successfully");
-                //    customerHomepage ch = new customerHomepage();
-                  //   ch.setVisible(true);
+                    Homepage _homePageCustomer = new Homepage();
+                    _homePageCustomer.show();
+                    dispose();
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Invalid Username Or Password");
@@ -318,8 +320,8 @@ public class login extends javax.swing.JFrame {
 
     private void txtusernameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtusernameKeyTyped
         // TODO add your handling code here:
-   
-      
+
+
     }//GEN-LAST:event_txtusernameKeyTyped
 
     private void txtusernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtusernameActionPerformed
@@ -328,35 +330,29 @@ public class login extends javax.swing.JFrame {
 
     private void txtusernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtusernameFocusGained
         // TODO add your handling code here:
-        if(txtusername.getText().equals(" Enter your username")){
+        if (txtusername.getText().equals(" Enter your username")) {
             txtusername.setText("");
-            txtusername.setForeground(new Color(153,153,153));
+            txtusername.setForeground(new Color(153, 153, 153));
         }
     }//GEN-LAST:event_txtusernameFocusGained
 
     private void txtusernameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtusernameFocusLost
         // TODO add your handling code here:
-        if(txtusername.getText().equals("")){
+        if (txtusername.getText().equals("")) {
             txtusername.setText(" Enter your username");
-            txtusername.setForeground(new Color(153,153,153));
+            txtusername.setForeground(new Color(153, 153, 153));
         }
     }//GEN-LAST:event_txtusernameFocusLost
  private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
-        // TODO add your handling code here:
-//        try {
-//            signup su = new signup();
-//            su.setVisible(true);
-//
-//        } catch (Exception ex) {
-//            JOptionPane.showMessageDialog(null, ex);
-//        }
+
     }//GEN-LAST:event_jLabel13MouseClicked
 
     private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
         // TODO add your handling code here:
-             try {
-            signup su = new signup();
-            su.setVisible(true);
+        try {
+            signup _signup = new signup();
+            _signup.show();
+            dispose();
 
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex);
@@ -365,22 +361,15 @@ public class login extends javax.swing.JFrame {
 
     private void jLabel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseClicked
         // TODO add your handling code here:
-          try {
-            signup su = new signup();
-            su.setVisible(true);
-
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex);
-        }
     }//GEN-LAST:event_jLabel15MouseClicked
 
     private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
         try {
-              SentEmail sm = new SentEmail();
-              sm.setLocationRelativeTo(null);
-           sm.setVisible(true);
+            SentEmail _sentEmail = new SentEmail();
+            _sentEmail.show();
+            dispose();
         } catch (Exception e) {
-              JOptionPane.showMessageDialog(null, e);
+            JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_jLabel11MouseClicked
     /**

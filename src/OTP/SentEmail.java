@@ -204,13 +204,13 @@ public class SentEmail extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
         try {
-            conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "doan", "doan");
+            conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "hr", "hr");
             String sql = "SELECT * FROM NGUOIDUNG WHERE Email = ?";
             ps = conn.prepareStatement(sql);
             ps.setString(1, jTextField1.getText());
             rs = ps.executeQuery();
             if (rs.next()) {
-                JOptionPane.showMessageDialog(null, "Valid Email Address");
+                JOptionPane.showMessageDialog(null, "Email chinh xac, vui kiem tra gmail");
                 
                 randomOTPtemp = randomOTP();
                 emailTemp = jTextField1.getText();
@@ -251,8 +251,9 @@ public class SentEmail extends javax.swing.JFrame {
                     e.printStackTrace();
                 }
 
-                OTPform of = new OTPform();
-                of.setVisible(true);
+                OTPform _OTPform = new OTPform();
+               _OTPform.show();
+               dispose();
 
             } else {
                 JOptionPane.showMessageDialog(null, "Email Address Does Not Exist!");

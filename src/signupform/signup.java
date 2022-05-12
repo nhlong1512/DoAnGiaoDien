@@ -4,9 +4,7 @@
  */
 package signupform;
 
-
-
-
+import Customer.Homepage;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -15,6 +13,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import java.awt.Color;
+import loginform.login;
 
 /**
  *
@@ -328,7 +327,7 @@ public class signup extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             String a = "";
-            conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "doan", "doan");
+            conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "hr", "hr");
             String sql = "INSERT INTO NGUOIDUNG (MaND, Email, MatKhau, HoTen) VALUES (?, ?, ?, ?)";
             String maxMaND = "Select Max(MaND) as MaxND from NguoiDung";
             String checkEmailExist = "Select count(MaND) as countEmail from NguoiDung where Email = ?";
@@ -379,13 +378,12 @@ public class signup extends javax.swing.JFrame {
                 return;
             }
 
-//            ps.setString(1, new String(txtpassword.getPassword()));
             String id = "";
             if (rs1.next()) {
                 String maxnd = rs1.getString("MaxND");
                 id = getID(maxnd);
             }
-            ps.setString(1, "ND" + id+"");
+            ps.setString(1, "ND" + id + "");
 
             ps.setString(2, jTextField2.getText());
 
@@ -395,6 +393,10 @@ public class signup extends javax.swing.JFrame {
 
             rs = ps.executeQuery();
             JOptionPane.showMessageDialog(this, "Sign Up Successfully");
+            Homepage _homepageCustomer = new Homepage();
+            _homepageCustomer.show();
+            dispose();
+
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
