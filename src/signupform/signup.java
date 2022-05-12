@@ -328,7 +328,7 @@ public class signup extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             String a = "";
-            conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "hr", "hr");
+            conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "doan", "doan");
             String sql = "INSERT INTO NGUOIDUNG (MaND, Email, MatKhau, HoTen) VALUES (?, ?, ?, ?)";
             String maxMaND = "Select Max(MaND) as MaxND from NguoiDung";
             String checkEmailExist = "Select count(MaND) as countEmail from NguoiDung where Email = ?";

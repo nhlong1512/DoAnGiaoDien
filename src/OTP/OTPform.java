@@ -14,7 +14,6 @@ import static OTP.SentEmail.randomOTPtemp;
 import static OTP.SentEmail.randomOTP;
 import static OTP.SentEmail.randomOTPtemp;
 import ModifyPassword.modifypassword;
-
 /**
  *
  * @author Administrator
@@ -177,17 +176,17 @@ public class OTPform extends javax.swing.JFrame {
 
     private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
         // TODO add your handling code here:
-        if (jTextField1.getText().equals(" Your OTP here...")) {
+        if(jTextField1.getText().equals(" Your OTP here...")){
             jTextField1.setText("");
-            jTextField1.setForeground(new Color(153, 153, 153));
+            jTextField1.setForeground(new Color(153,153,153));
         }
     }//GEN-LAST:event_jTextField1FocusGained
 
     private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
         // TODO add your handling code here:
-        if (jTextField1.getText().equals("")) {
+        if(jTextField1.getText().equals("")){
             jTextField1.setText(" Your OTP here...");
-            jTextField1.setForeground(new Color(153, 153, 153));
+            jTextField1.setForeground(new Color(153,153,153));
         }
     }//GEN-LAST:event_jTextField1FocusLost
 
@@ -208,9 +207,8 @@ public class OTPform extends javax.swing.JFrame {
         if (Integer.parseInt(jTextField1.getText()) == randomOTPtemp) {
             JOptionPane.showMessageDialog(null, "OTP is valid");
             modifypassword mp = new modifypassword();
-            mp.show();
-            dispose();//Hàm này dùng để tắt giao diện hiện tại
-        } else {
+            mp.setVisible(true);
+        }else{
             JOptionPane.showMessageDialog(null, "You have entered wrong otp");
         }
 
