@@ -5,15 +5,6 @@
 package OTP;
 
 import java.awt.Color;
-import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-import java.util.Properties;
-import javax.swing.JOptionPane;
-import static OTP.SentEmail.randomOTPtemp;
-import static OTP.SentEmail.randomOTP;
-import static OTP.SentEmail.randomOTPtemp;
-import ModifyPassword.modifypassword;
 
 /**
  *
@@ -92,16 +83,6 @@ public class OTPform extends javax.swing.JFrame {
         jButton1.setText("Verify OTP");
         jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton1.setBorderPainted(false);
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
-            }
-        });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_Close_26px.png"))); // NOI18N
         jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -177,17 +158,17 @@ public class OTPform extends javax.swing.JFrame {
 
     private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
         // TODO add your handling code here:
-        if (jTextField1.getText().equals(" Your OTP here...")) {
+        if(jTextField1.getText().equals(" Your OTP here...")){
             jTextField1.setText("");
-            jTextField1.setForeground(new Color(153, 153, 153));
+            jTextField1.setForeground(new Color(153,153,153));
         }
     }//GEN-LAST:event_jTextField1FocusGained
 
     private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
         // TODO add your handling code here:
-        if (jTextField1.getText().equals("")) {
+        if(jTextField1.getText().equals("")){
             jTextField1.setText(" Your OTP here...");
-            jTextField1.setForeground(new Color(153, 153, 153));
+            jTextField1.setForeground(new Color(153,153,153));
         }
     }//GEN-LAST:event_jTextField1FocusLost
 
@@ -198,23 +179,6 @@ public class OTPform extends javax.swing.JFrame {
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
         System.exit(0);
     }//GEN-LAST:event_jLabel6MouseClicked
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        // TODO add your handling code here:
-        if (Integer.parseInt(jTextField1.getText()) == randomOTPtemp) {
-            JOptionPane.showMessageDialog(null, "OTP is valid");
-            modifypassword mp = new modifypassword();
-            mp.show();
-            dispose();//Hàm này dùng để tắt giao diện hiện tại
-        } else {
-            JOptionPane.showMessageDialog(null, "You have entered wrong otp");
-        }
-
-    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments

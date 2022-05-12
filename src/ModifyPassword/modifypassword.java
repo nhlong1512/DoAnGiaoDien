@@ -3,20 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package ModifyPassword;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import javax.swing.JOptionPane;
-import static OTP.SentEmail.emailTemp;
+
 /**
  *
  * @author Administrator
  */
 public class modifypassword extends javax.swing.JFrame {
- Connection conn = null;
-    PreparedStatement ps = null;
-    ResultSet rs = null;
 
     /**
      * Creates new form modifypassword
@@ -77,11 +69,6 @@ public class modifypassword extends javax.swing.JFrame {
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Submit");
         jButton1.setBorder(null);
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
-            }
-        });
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -119,30 +106,6 @@ public class modifypassword extends javax.swing.JFrame {
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         System.exit(0);
     }//GEN-LAST:event_jLabel5MouseClicked
-
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        // TODO add your handling code here:
-          try {
-            conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "hr", "hr");
-            String sql = "UPDATE NGUOIDUNG SET MatKhau =  ? WHERE Email = ?";
-            ps = conn.prepareStatement(sql);
-            StringBuilder sb = new StringBuilder();
-            if (!new String(jPasswordField3.getPassword()).equals(new String(jPasswordField2.getPassword()))) {
-                sb.append("Invalid Confirm Password");
-            }
-            if (sb.length() > 0) {
-                JOptionPane.showMessageDialog(this, sb);
-                return;
-            }
-            ps.setString(1, new String(jPasswordField3.getPassword()));
-            ps.setString(2, emailTemp);
-
-            rs = ps.executeQuery();
-            JOptionPane.showMessageDialog(this, "Modify Password Successfully!");
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex);
-        }
-    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments

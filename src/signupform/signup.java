@@ -4,16 +4,6 @@
  */
 package signupform;
 
-
-
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import javax.swing.JOptionPane;
 import java.awt.Color;
 
 /**
@@ -22,46 +12,11 @@ import java.awt.Color;
  */
 public class signup extends javax.swing.JFrame {
 
-    Connection conn = null;
-    PreparedStatement ps = null, ps1 = null, ps2 = null;
-    ResultSet rs = null, rs1 = null, rs2 = null;
-
     /**
      * Creates new form signup
      */
     public signup() {
         initComponents();
-    }
-
-    public static String getID(String id) {
-        id = id.replaceAll("\\D+", "");
-        int id_num = Integer.parseInt(id);
-        id_num++;
-        String id_format = String.format("%03d", id_num);
-        return id_format;
-    }
-
-    public class EmailExample {
-
-        private Pattern pattern, pattern1, pattern2;
-        private Matcher matcher, matcher1, matcher2;
-
-        private static final String EMAIL_REGEX = "^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)$";
-        private static final String EMAIL_REGEX1 = "^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)+(\\.[A-Za-z0-9]+)$";
-        private static final String EMAIL_REGEX2 = "^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)+(\\.[A-Za-z0-9]+)+(\\.[A-Za-z0-9]+)$";
-
-        public EmailExample() {
-            pattern = Pattern.compile(EMAIL_REGEX);
-            pattern1 = Pattern.compile(EMAIL_REGEX1);
-            pattern2 = Pattern.compile(EMAIL_REGEX2);
-        }
-
-        public boolean validate(String regex) {
-            matcher = pattern.matcher(regex);
-            matcher1 = pattern1.matcher(regex);
-            matcher2 = pattern2.matcher(regex);
-            return matcher.matches() || matcher1.matches() || matcher2.matches();
-        }
     }
 
     /**
@@ -326,128 +281,58 @@ public class signup extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        try {
-            String a = "";
-            conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "hr", "hr");
-            String sql = "INSERT INTO NGUOIDUNG (MaND, Email, MatKhau, HoTen) VALUES (?, ?, ?, ?)";
-            String maxMaND = "Select Max(MaND) as MaxND from NguoiDung";
-            String checkEmailExist = "Select count(MaND) as countEmail from NguoiDung where Email = ?";
-            ps = conn.prepareStatement(sql);
-            ps1 = conn.prepareStatement(maxMaND);
-            rs1 = ps1.executeQuery();
-            ps2 = conn.prepareStatement(checkEmailExist);
-
-            //Thực thi checkEmailExist - Kiểm tra email đã tồn tại trong database hay chưa.
-            ps2.setString(1, jTextField2.getText());
-            rs2 = ps2.executeQuery();
-
-            StringBuilder sb = new StringBuilder();
-            //Kiểm tra tính hợp lệ của email khi đăng ký
-            EmailExample emailExample = new EmailExample();
-            boolean isvalid = emailExample.validate(jTextField2.getText());
-            //Kiểm tra thông tin không được bỏ trống.
-            if (jTextField2.getText().equals("")) {
-                sb.append("Please Enter Your User Name!");
-            } else if (jTextField1.getText().equals("")) {
-                sb.append("Please Enter Your FirstName!");
-            } else if (jTextField3.getText().equals("")) {
-                sb.append("Please Enter Your LastName!");
-            } else if (new String(jPasswordField1.getPassword()).equals("")) {
-                sb.append("Please Enter Your Password!");
-            } //Kiểm tra nếu mật khẩu bé hơn 8 kí tự thì thông báo 
-            //Mật khẩu phải ít nhất 8 kí tự
-            else if (new String(jPasswordField1.getPassword()).length() < 8) {
-                sb.append("Password must be at least 8 characters.");
-            } else if (new String(jPasswordField2.getPassword()).equals("")) {
-                sb.append("Please Enter Your Confirm Password!");
-            } //Kiểm tra xem mật khẩu confirm có trùng khớp với mật khẩu ban đầu.
-            //Nếu mật khẩu không trùng khớp, thông báo ra người dùng.
-            else if (!new String(jPasswordField1.getPassword()).equals(new String(jPasswordField2.getPassword()))) {
-                sb.append("Invalid Confirm Password");
-            } //Nếu email không hợp lệ thông báo ra người dùng.
-            else if (!isvalid) {
-                sb.append("Invalid Email");
-            } else if (rs2.next()) {
-                if (rs2.getInt("countEmail") > 0) {
-                    sb.append("Email Already Exists");
-                }
-            }
-
-            //Nếu độ dài sb lớn hơn 0 - có lỗi thì hiện ra thông báo lỗi
-            if (sb.length() > 0) {
-                JOptionPane.showMessageDialog(this, sb);
-                return;
-            }
-
-//            ps.setString(1, new String(txtpassword.getPassword()));
-            String id = "";
-            if (rs1.next()) {
-                String maxnd = rs1.getString("MaxND");
-                id = getID(maxnd);
-            }
-            ps.setString(1, "ND" + id+"");
-
-            ps.setString(2, jTextField2.getText());
-
-            ps.setString(3, new String(jPasswordField1.getPassword()));
-
-            ps.setString(4, (jTextField3.getText() + " " + jTextField1.getText()));
-
-            rs = ps.executeQuery();
-            JOptionPane.showMessageDialog(this, "Sign Up Successfully");
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex);
-        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
         System.exit(0);
     }//GEN-LAST:event_jLabel9MouseClicked
 
-
+    
+    
     private void jTextField2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusGained
-        if (jTextField2.getText().equals("Enter your email")) {
+        if(jTextField2.getText().equals("Enter your email")){
             jTextField2.setText("");
-            jTextField2.setForeground(new Color(153, 153, 153));
+            jTextField2.setForeground(new Color(153,153,153));
         }
     }//GEN-LAST:event_jTextField2FocusGained
 
     private void jTextField2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusLost
-        if (jTextField2.getText().equals("")) {
+        if(jTextField2.getText().equals("")){
             jTextField2.setText("Enter your email");
-            jTextField2.setForeground(new Color(153, 153, 153));
+            jTextField2.setForeground(new Color(153,153,153));
         }
     }//GEN-LAST:event_jTextField2FocusLost
 
     private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
-        if (jTextField1.getText().equals("Enter your firstname")) {
+        if(jTextField1.getText().equals("Enter your firstname")){
             jTextField1.setText("");
-            jTextField1.setForeground(new Color(153, 153, 153));
+            jTextField1.setForeground(new Color(153,153,153));
         }
     }//GEN-LAST:event_jTextField1FocusGained
 
     private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
         // TODO add your handling code here:
-        if (jTextField1.getText().equals("")) {
+        if(jTextField1.getText().equals("")){
             jTextField1.setText("Enter your firstname");
-            jTextField1.setForeground(new Color(153, 153, 153));
+            jTextField1.setForeground(new Color(153,153,153));
         }
     }//GEN-LAST:event_jTextField1FocusLost
 
     private void jTextField3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusGained
 //        // TODO add your handling code here:
-        if (jTextField3.getText().equals("Enter your lastname")) {
+         if(jTextField3.getText().equals("Enter your lastname")){
             jTextField3.setText("");
-            jTextField3.setForeground(new Color(153, 153, 153));
+            jTextField3.setForeground(new Color(153,153,153));
         }
     }//GEN-LAST:event_jTextField3FocusGained
 
-
+    
+    
     private void jTextField3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusLost
         // TODO add your handling code here:
-        if (jTextField3.getText().equals("")) {
+         if(jTextField3.getText().equals("")){
             jTextField3.setText("Enter your lastname");
-            jTextField3.setForeground(new Color(153, 153, 153));
+            jTextField3.setForeground(new Color(153,153,153));
         }
     }//GEN-LAST:event_jTextField3FocusLost
 
@@ -459,6 +344,9 @@ public class signup extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
 
+            
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -494,7 +382,7 @@ public class signup extends javax.swing.JFrame {
         });
     }
 
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
