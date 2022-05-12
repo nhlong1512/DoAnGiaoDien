@@ -285,15 +285,14 @@ public class login extends javax.swing.JFrame {
             ps.setString(2, new String(txtpassword.getPassword()));
             rs = ps.executeQuery();
             if (rs.next()) {
-                if (txtusername.getText().equals("nguyenvanbao@gmail.com")
-                        || txtusername.getText().equals("tranvanminh@gmail.com")
-                        || txtusername.getText().equals("nguyenquangtrung@gmail.com")) {
+                if (rs.getString("VaiTro").equals("Nhan vien")) {
                     JOptionPane.showMessageDialog(null, "Login Successfully");
                     HomepageAdmin _homepageAdmin = new HomepageAdmin();
                     _homepageAdmin.show();
                     dispose();
 
-                } else {
+                }
+                if (rs.getString("VaiTro").equals("Khach hang")) {
                     JOptionPane.showMessageDialog(null, "Login Successfully");
                     Homepage _homePageCustomer = new Homepage();
                     _homePageCustomer.show();

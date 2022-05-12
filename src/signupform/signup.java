@@ -328,7 +328,7 @@ public class signup extends javax.swing.JFrame {
         try {
             String a = "";
             conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "hr", "hr");
-            String sql = "INSERT INTO NGUOIDUNG (MaND, Email, MatKhau, HoTen) VALUES (?, ?, ?, ?)";
+            String sql = "INSERT INTO NGUOIDUNG (MaND, Email, MatKhau, HoTen, VaiTro) VALUES (?, ?, ?, ?, ?)";
             String maxMaND = "Select Max(MaND) as MaxND from NguoiDung";
             String checkEmailExist = "Select count(MaND) as countEmail from NguoiDung where Email = ?";
             ps = conn.prepareStatement(sql);
@@ -353,10 +353,10 @@ public class signup extends javax.swing.JFrame {
                 sb.append("Please Enter Your LastName!");
             } else if (new String(jPasswordField1.getPassword()).equals("")) {
                 sb.append("Please Enter Your Password!");
-            } //Kiểm tra nếu mật khẩu bé hơn 8 kí tự thì thông báo 
-            //Mật khẩu phải ít nhất 8 kí tự
-            else if (new String(jPasswordField1.getPassword()).length() < 8) {
-                sb.append("Password must be at least 8 characters.");
+            } //Kiểm tra nếu mật khẩu bé hơn 6 kí tự thì thông báo 
+            //Mật khẩu phải ít nhất 6 kí tự
+            else if (new String(jPasswordField1.getPassword()).length() < 6) {
+                sb.append("Password must be at least 6 characters.");
             } else if (new String(jPasswordField2.getPassword()).equals("")) {
                 sb.append("Please Enter Your Confirm Password!");
             } //Kiểm tra xem mật khẩu confirm có trùng khớp với mật khẩu ban đầu.
@@ -390,6 +390,8 @@ public class signup extends javax.swing.JFrame {
             ps.setString(3, new String(jPasswordField1.getPassword()));
 
             ps.setString(4, (jTextField3.getText() + " " + jTextField1.getText()));
+
+            ps.setString(5, "Khach hang");
 
             rs = ps.executeQuery();
             JOptionPane.showMessageDialog(this, "Sign Up Successfully");
