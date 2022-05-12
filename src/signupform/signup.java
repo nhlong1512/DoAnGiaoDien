@@ -78,16 +78,16 @@ public class signup extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtFirstNameSignUp = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtEmailSignUp = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        txtLastNameSignUp = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        txtConfirmPasswordSignUp = new javax.swing.JPasswordField();
         jLabel8 = new javax.swing.JLabel();
-        jPasswordField2 = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
+        txtPasswordSignUp = new javax.swing.JPasswordField();
+        btnSignUp = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -114,87 +114,87 @@ public class signup extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("Username");
 
-        jTextField1.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField1.setText("Enter your firstname");
-        jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtFirstNameSignUp.setForeground(new java.awt.Color(153, 153, 153));
+        txtFirstNameSignUp.setText("Enter your firstname");
+        txtFirstNameSignUp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtFirstNameSignUp.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextField1FocusGained(evt);
+                txtFirstNameSignUpFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextField1FocusLost(evt);
+                txtFirstNameSignUpFocusLost(evt);
             }
         });
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtFirstNameSignUp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtFirstNameSignUpActionPerformed(evt);
             }
         });
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("FirstName");
 
-        jTextField2.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField2.setText("Enter your email");
-        jTextField2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtEmailSignUp.setForeground(new java.awt.Color(153, 153, 153));
+        txtEmailSignUp.setText("Enter your email");
+        txtEmailSignUp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtEmailSignUp.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextField2FocusGained(evt);
+                txtEmailSignUpFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextField2FocusLost(evt);
+                txtEmailSignUpFocusLost(evt);
             }
         });
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txtEmailSignUp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                txtEmailSignUpActionPerformed(evt);
             }
         });
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setText("Confirm Password");
 
-        jTextField3.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField3.setText("Enter your lastname");
-        jTextField3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jTextField3.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtLastNameSignUp.setForeground(new java.awt.Color(153, 153, 153));
+        txtLastNameSignUp.setText("Enter your lastname");
+        txtLastNameSignUp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtLastNameSignUp.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextField3FocusGained(evt);
+                txtLastNameSignUpFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextField3FocusLost(evt);
+                txtLastNameSignUpFocusLost(evt);
             }
         });
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        txtLastNameSignUp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                txtLastNameSignUpActionPerformed(evt);
             }
         });
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel7.setText("LastName");
 
-        jPasswordField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtConfirmPasswordSignUp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel8.setText("Password");
 
-        jPasswordField2.setForeground(new java.awt.Color(153, 153, 153));
-        jPasswordField2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPasswordField2.addActionListener(new java.awt.event.ActionListener() {
+        txtPasswordSignUp.setForeground(new java.awt.Color(153, 153, 153));
+        txtPasswordSignUp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtPasswordSignUp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField2ActionPerformed(evt);
+                txtPasswordSignUpActionPerformed(evt);
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(12, 33, 250));
-        jButton1.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("SIGN UP");
-        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnSignUp.setBackground(new java.awt.Color(12, 33, 250));
+        btnSignUp.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
+        btnSignUp.setForeground(new java.awt.Color(255, 255, 255));
+        btnSignUp.setText("SIGN UP");
+        btnSignUp.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnSignUp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnSignUpActionPerformed(evt);
             }
         });
 
@@ -220,16 +220,16 @@ public class signup extends javax.swing.JFrame {
                                         .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jTextField2)
-                                        .addComponent(jTextField1)
-                                        .addComponent(jPasswordField2)
-                                        .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(txtEmailSignUp)
+                                        .addComponent(txtFirstNameSignUp)
+                                        .addComponent(txtPasswordSignUp)
+                                        .addComponent(txtConfirmPasswordSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtLastNameSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 92, Short.MAX_VALUE)))
                         .addContainerGap())
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(100, 100, 100)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
@@ -245,25 +245,25 @@ public class signup extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtEmailSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtFirstNameSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtLastNameSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtPasswordSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtConfirmPasswordSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
 
@@ -315,15 +315,15 @@ public class signup extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtFirstNameSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFirstNameSignUpActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtFirstNameSignUpActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txtEmailSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailSignUpActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txtEmailSignUpActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
         // TODO add your handling code here:
         try {
             String a = "";
@@ -337,31 +337,31 @@ public class signup extends javax.swing.JFrame {
             ps2 = conn.prepareStatement(checkEmailExist);
 
             //Thực thi checkEmailExist - Kiểm tra email đã tồn tại trong database hay chưa.
-            ps2.setString(1, jTextField2.getText());
+            ps2.setString(1, txtEmailSignUp.getText());
             rs2 = ps2.executeQuery();
 
             StringBuilder sb = new StringBuilder();
             //Kiểm tra tính hợp lệ của email khi đăng ký
             EmailExample emailExample = new EmailExample();
-            boolean isvalid = emailExample.validate(jTextField2.getText());
+            boolean isvalid = emailExample.validate(txtEmailSignUp.getText());
             //Kiểm tra thông tin không được bỏ trống.
-            if (jTextField2.getText().equals("")) {
+            if (txtEmailSignUp.getText().equals("")) {
                 sb.append("Please Enter Your User Name!");
-            } else if (jTextField1.getText().equals("")) {
+            } else if (txtFirstNameSignUp.getText().equals("")) {
                 sb.append("Please Enter Your FirstName!");
-            } else if (jTextField3.getText().equals("")) {
+            } else if (txtLastNameSignUp.getText().equals("")) {
                 sb.append("Please Enter Your LastName!");
-            } else if (new String(jPasswordField1.getPassword()).equals("")) {
+            } else if (new String(txtConfirmPasswordSignUp.getPassword()).equals("")) {
                 sb.append("Please Enter Your Password!");
             } //Kiểm tra nếu mật khẩu bé hơn 6 kí tự thì thông báo 
             //Mật khẩu phải ít nhất 6 kí tự
-            else if (new String(jPasswordField1.getPassword()).length() < 6) {
+            else if (new String(txtConfirmPasswordSignUp.getPassword()).length() < 6) {
                 sb.append("Password must be at least 6 characters.");
-            } else if (new String(jPasswordField2.getPassword()).equals("")) {
+            } else if (new String(txtPasswordSignUp.getPassword()).equals("")) {
                 sb.append("Please Enter Your Confirm Password!");
             } //Kiểm tra xem mật khẩu confirm có trùng khớp với mật khẩu ban đầu.
             //Nếu mật khẩu không trùng khớp, thông báo ra người dùng.
-            else if (!new String(jPasswordField1.getPassword()).equals(new String(jPasswordField2.getPassword()))) {
+            else if (!new String(txtConfirmPasswordSignUp.getPassword()).equals(new String(txtPasswordSignUp.getPassword()))) {
                 sb.append("Invalid Confirm Password");
             } //Nếu email không hợp lệ thông báo ra người dùng.
             else if (!isvalid) {
@@ -385,11 +385,11 @@ public class signup extends javax.swing.JFrame {
             }
             ps.setString(1, "ND" + id + "");
 
-            ps.setString(2, jTextField2.getText());
+            ps.setString(2, txtEmailSignUp.getText());
 
-            ps.setString(3, new String(jPasswordField1.getPassword()));
+            ps.setString(3, new String(txtConfirmPasswordSignUp.getPassword()));
 
-            ps.setString(4, (jTextField3.getText() + " " + jTextField1.getText()));
+            ps.setString(4, (txtLastNameSignUp.getText() + " " + txtFirstNameSignUp.getText()));
 
             ps.setString(5, "Khach hang");
 
@@ -404,66 +404,66 @@ public class signup extends javax.swing.JFrame {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnSignUpActionPerformed
 
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
         System.exit(0);
     }//GEN-LAST:event_jLabel9MouseClicked
 
 
-    private void jTextField2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusGained
-        if (jTextField2.getText().equals("Enter your email")) {
-            jTextField2.setText("");
-            jTextField2.setForeground(new Color(153, 153, 153));
+    private void txtEmailSignUpFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailSignUpFocusGained
+        if (txtEmailSignUp.getText().equals("Enter your email")) {
+            txtEmailSignUp.setText("");
+            txtEmailSignUp.setForeground(new Color(153, 153, 153));
         }
-    }//GEN-LAST:event_jTextField2FocusGained
+    }//GEN-LAST:event_txtEmailSignUpFocusGained
 
-    private void jTextField2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusLost
-        if (jTextField2.getText().equals("")) {
-            jTextField2.setText("Enter your email");
-            jTextField2.setForeground(new Color(153, 153, 153));
+    private void txtEmailSignUpFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailSignUpFocusLost
+        if (txtEmailSignUp.getText().equals("")) {
+            txtEmailSignUp.setText("Enter your email");
+            txtEmailSignUp.setForeground(new Color(153, 153, 153));
         }
-    }//GEN-LAST:event_jTextField2FocusLost
+    }//GEN-LAST:event_txtEmailSignUpFocusLost
 
-    private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
-        if (jTextField1.getText().equals("Enter your firstname")) {
-            jTextField1.setText("");
-            jTextField1.setForeground(new Color(153, 153, 153));
+    private void txtFirstNameSignUpFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFirstNameSignUpFocusGained
+        if (txtFirstNameSignUp.getText().equals("Enter your firstname")) {
+            txtFirstNameSignUp.setText("");
+            txtFirstNameSignUp.setForeground(new Color(153, 153, 153));
         }
-    }//GEN-LAST:event_jTextField1FocusGained
+    }//GEN-LAST:event_txtFirstNameSignUpFocusGained
 
-    private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
+    private void txtFirstNameSignUpFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFirstNameSignUpFocusLost
         // TODO add your handling code here:
-        if (jTextField1.getText().equals("")) {
-            jTextField1.setText("Enter your firstname");
-            jTextField1.setForeground(new Color(153, 153, 153));
+        if (txtFirstNameSignUp.getText().equals("")) {
+            txtFirstNameSignUp.setText("Enter your firstname");
+            txtFirstNameSignUp.setForeground(new Color(153, 153, 153));
         }
-    }//GEN-LAST:event_jTextField1FocusLost
+    }//GEN-LAST:event_txtFirstNameSignUpFocusLost
 
-    private void jTextField3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusGained
+    private void txtLastNameSignUpFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtLastNameSignUpFocusGained
 //        // TODO add your handling code here:
-        if (jTextField3.getText().equals("Enter your lastname")) {
-            jTextField3.setText("");
-            jTextField3.setForeground(new Color(153, 153, 153));
+        if (txtLastNameSignUp.getText().equals("Enter your lastname")) {
+            txtLastNameSignUp.setText("");
+            txtLastNameSignUp.setForeground(new Color(153, 153, 153));
         }
-    }//GEN-LAST:event_jTextField3FocusGained
+    }//GEN-LAST:event_txtLastNameSignUpFocusGained
 
 
-    private void jTextField3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusLost
+    private void txtLastNameSignUpFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtLastNameSignUpFocusLost
         // TODO add your handling code here:
-        if (jTextField3.getText().equals("")) {
-            jTextField3.setText("Enter your lastname");
-            jTextField3.setForeground(new Color(153, 153, 153));
+        if (txtLastNameSignUp.getText().equals("")) {
+            txtLastNameSignUp.setText("Enter your lastname");
+            txtLastNameSignUp.setForeground(new Color(153, 153, 153));
         }
-    }//GEN-LAST:event_jTextField3FocusLost
+    }//GEN-LAST:event_txtLastNameSignUpFocusLost
 
-    private void jPasswordField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField2ActionPerformed
+    private void txtPasswordSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordSignUpActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField2ActionPerformed
+    }//GEN-LAST:event_txtPasswordSignUpActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void txtLastNameSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLastNameSignUpActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_txtLastNameSignUpActionPerformed
 
     /**
      * @param args the command line arguments
@@ -502,7 +502,7 @@ public class signup extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnSignUp;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -514,10 +514,10 @@ public class signup extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JPasswordField txtConfirmPasswordSignUp;
+    private javax.swing.JTextField txtEmailSignUp;
+    private javax.swing.JTextField txtFirstNameSignUp;
+    private javax.swing.JTextField txtLastNameSignUp;
+    private javax.swing.JPasswordField txtPasswordSignUp;
     // End of variables declaration//GEN-END:variables
 }

@@ -8,7 +8,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
-import static OTP.SentEmail.emailTemp;
+import static OTP.SentEmail.pEmailSentEmail;
 import loginform.login;
 /**
  *
@@ -40,9 +40,9 @@ public class modifypassword extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jPasswordField2 = new javax.swing.JPasswordField();
-        jPasswordField3 = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
+        txtConfirmPasswordModified = new javax.swing.JPasswordField();
+        txtNewPasswordModified = new javax.swing.JPasswordField();
+        btnSubmitModifiedPassword = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -67,28 +67,28 @@ public class modifypassword extends javax.swing.JFrame {
         jLabel4.setText("New Password");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 110, -1, -1));
 
-        jPasswordField2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jPanel1.add(jPasswordField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 210, 270, 30));
+        txtConfirmPasswordModified.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel1.add(txtConfirmPasswordModified, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 210, 270, 30));
 
-        jPasswordField3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jPanel1.add(jPasswordField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 140, 270, 30));
+        txtNewPasswordModified.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel1.add(txtNewPasswordModified, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 140, 270, 30));
 
-        jButton1.setBackground(new java.awt.Color(12, 33, 250));
-        jButton1.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Submit");
-        jButton1.setBorder(null);
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnSubmitModifiedPassword.setBackground(new java.awt.Color(12, 33, 250));
+        btnSubmitModifiedPassword.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
+        btnSubmitModifiedPassword.setForeground(new java.awt.Color(255, 255, 255));
+        btnSubmitModifiedPassword.setText("Submit");
+        btnSubmitModifiedPassword.setBorder(null);
+        btnSubmitModifiedPassword.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                btnSubmitModifiedPasswordMouseClicked(evt);
             }
         });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnSubmitModifiedPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnSubmitModifiedPasswordActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 270, 200, 30));
+        jPanel1.add(btnSubmitModifiedPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 270, 200, 30));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_Close_26px.png"))); // NOI18N
         jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -113,30 +113,30 @@ public class modifypassword extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnSubmitModifiedPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitModifiedPasswordActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnSubmitModifiedPasswordActionPerformed
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         System.exit(0);
     }//GEN-LAST:event_jLabel5MouseClicked
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void btnSubmitModifiedPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubmitModifiedPasswordMouseClicked
         // TODO add your handling code here:
           try {
             conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "hr", "hr");
             String sql = "UPDATE NGUOIDUNG SET MatKhau =  ? WHERE Email = ?";
             ps = conn.prepareStatement(sql);
             StringBuilder sb = new StringBuilder();
-            if (!new String(jPasswordField3.getPassword()).equals(new String(jPasswordField2.getPassword()))) {
+            if (!new String(txtNewPasswordModified.getPassword()).equals(new String(txtConfirmPasswordModified.getPassword()))) {
                 sb.append("Invalid Confirm Password");
             }
             if (sb.length() > 0) {
                 JOptionPane.showMessageDialog(this, sb);
                 return;
             }
-            ps.setString(1, new String(jPasswordField3.getPassword()));
-            ps.setString(2, emailTemp);
+            ps.setString(1, new String(txtNewPasswordModified.getPassword()));
+            ps.setString(2, pEmailSentEmail);
             rs = ps.executeQuery();
             JOptionPane.showMessageDialog(this, "Modify Password Successfully!");
             login _login = new login();
@@ -145,7 +145,7 @@ public class modifypassword extends javax.swing.JFrame {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_btnSubmitModifiedPasswordMouseClicked
 
     /**
      * @param args the command line arguments
@@ -185,14 +185,14 @@ public class modifypassword extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnSubmitModifiedPassword;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField2;
-    private javax.swing.JPasswordField jPasswordField3;
+    private javax.swing.JPasswordField txtConfirmPasswordModified;
+    private javax.swing.JPasswordField txtNewPasswordModified;
     // End of variables declaration//GEN-END:variables
 }
