@@ -5,8 +5,7 @@
  */
 package loginform;
 
-package singupform;
-
+/*package singupform;*/
 
 
 import Admin.HomepageAdmin;
@@ -277,8 +276,6 @@ public class login extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formWindowOpened
 
-    //Long thay doi
-    //Ngoc Anh comment
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
@@ -362,6 +359,7 @@ public class login extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jLabel14MouseClicked
 
+    //Comment test
     private void jLabel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel15MouseClicked
