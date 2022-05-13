@@ -10,10 +10,9 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 import javax.swing.JOptionPane;
-import static OTP.SentEmail.randomOTPtemp;
 import static OTP.SentEmail.randomOTP;
-import static OTP.SentEmail.randomOTPtemp;
 import ModifyPassword.modifypassword;
+import static OTP.SentEmail.pRandomOTP;
 /**
  *
  * @author Administrator
@@ -40,9 +39,9 @@ public class OTPform extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtOTPModified = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnVerifyOTP = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_Close_26px.png"))); // NOI18N
@@ -64,20 +63,20 @@ public class OTPform extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(0, 51, 204));
         jLabel2.setText("OTP Verification");
 
-        jTextField1.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField1.setText(" Your OTP here...");
-        jTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtOTPModified.setForeground(new java.awt.Color(153, 153, 153));
+        txtOTPModified.setText(" Your OTP here...");
+        txtOTPModified.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        txtOTPModified.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextField1FocusGained(evt);
+                txtOTPModifiedFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextField1FocusLost(evt);
+                txtOTPModifiedFocusLost(evt);
             }
         });
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtOTPModified.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtOTPModifiedActionPerformed(evt);
             }
         });
 
@@ -85,20 +84,20 @@ public class OTPform extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(0, 51, 204));
         jLabel3.setText("We have sent OTP to your email");
 
-        jButton1.setBackground(new java.awt.Color(12, 33, 250));
-        jButton1.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Verify OTP");
-        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.setBorderPainted(false);
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnVerifyOTP.setBackground(new java.awt.Color(12, 33, 250));
+        btnVerifyOTP.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
+        btnVerifyOTP.setForeground(new java.awt.Color(255, 255, 255));
+        btnVerifyOTP.setText("Verify OTP");
+        btnVerifyOTP.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnVerifyOTP.setBorderPainted(false);
+        btnVerifyOTP.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                btnVerifyOTPMouseClicked(evt);
             }
         });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnVerifyOTP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnVerifyOTPActionPerformed(evt);
             }
         });
 
@@ -123,7 +122,7 @@ public class OTPform extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(57, 57, 57)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtOTPModified, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(79, 79, 79)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -135,7 +134,7 @@ public class OTPform extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnVerifyOTP, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(113, 113, 113))
         );
         jPanel1Layout.setVerticalGroup(
@@ -150,9 +149,9 @@ public class OTPform extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtOTPModified, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnVerifyOTP, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
@@ -170,25 +169,25 @@ public class OTPform extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtOTPModifiedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOTPModifiedActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtOTPModifiedActionPerformed
 
-    private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
+    private void txtOTPModifiedFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtOTPModifiedFocusGained
         // TODO add your handling code here:
-        if(jTextField1.getText().equals(" Your OTP here...")){
-            jTextField1.setText("");
-            jTextField1.setForeground(new Color(153,153,153));
+        if(txtOTPModified.getText().equals(" Your OTP here...")){
+            txtOTPModified.setText("");
+            txtOTPModified.setForeground(new Color(153,153,153));
         }
-    }//GEN-LAST:event_jTextField1FocusGained
+    }//GEN-LAST:event_txtOTPModifiedFocusGained
 
-    private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
+    private void txtOTPModifiedFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtOTPModifiedFocusLost
         // TODO add your handling code here:
-        if(jTextField1.getText().equals("")){
-            jTextField1.setText(" Your OTP here...");
-            jTextField1.setForeground(new Color(153,153,153));
+        if(txtOTPModified.getText().equals("")){
+            txtOTPModified.setText(" Your OTP here...");
+            txtOTPModified.setForeground(new Color(153,153,153));
         }
-    }//GEN-LAST:event_jTextField1FocusLost
+    }//GEN-LAST:event_txtOTPModifiedFocusLost
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         System.exit(0);
@@ -198,13 +197,13 @@ public class OTPform extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jLabel6MouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnVerifyOTPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerifyOTPActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnVerifyOTPActionPerformed
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void btnVerifyOTPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVerifyOTPMouseClicked
         // TODO add your handling code here:
-        if (Integer.parseInt(jTextField1.getText()) == randomOTPtemp) {
+        if (Integer.parseInt(txtOTPModified.getText()) == pRandomOTP) {
             JOptionPane.showMessageDialog(null, "OTP chinh xac!");
             modifypassword _modifypassword = new modifypassword();
             _modifypassword.show();
@@ -213,7 +212,7 @@ public class OTPform extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Ma OTP khong hop le!");
         }
 
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_btnVerifyOTPMouseClicked
 
     /**
      * @param args the command line arguments
@@ -251,13 +250,13 @@ public class OTPform extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnVerifyOTP;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField txtOTPModified;
     // End of variables declaration//GEN-END:variables
 }

@@ -9,6 +9,7 @@ import java.net.URL;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import loginform.login;
+import static loginform.login.pHoTen;
 /**
  *
  * @author Administrator
@@ -21,7 +22,7 @@ public class Homepage extends javax.swing.JFrame {
     public Homepage() {
         initComponents();
         setIconImage();
-
+        lblHoVaTen.setText(pHoTen);
     }
 
     /**
@@ -44,6 +45,7 @@ public class Homepage extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         btnLogout = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        lblHoVaTen = new javax.swing.JLabel();
         dashboardview = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
@@ -103,6 +105,11 @@ public class Homepage extends javax.swing.JFrame {
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/group.png"))); // NOI18N
 
+        lblHoVaTen.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblHoVaTen.setForeground(new java.awt.Color(255, 255, 255));
+        lblHoVaTen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblHoVaTen.setText("Ho Va Ten");
+
         javax.swing.GroupLayout menubarLayout = new javax.swing.GroupLayout(menubar);
         menubar.setLayout(menubarLayout);
         menubarLayout.setHorizontalGroup(
@@ -128,8 +135,11 @@ public class Homepage extends javax.swing.JFrame {
                         .addGroup(menubarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel4))))
-                .addContainerGap(43, Short.MAX_VALUE))
+                            .addComponent(jLabel4)))
+                    .addGroup(menubarLayout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(lblHoVaTen, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         menubarLayout.setVerticalGroup(
             menubarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,7 +159,9 @@ public class Homepage extends javax.swing.JFrame {
                 .addGroup(menubarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel7)
                     .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 261, Short.MAX_VALUE)
+                .addGap(35, 35, 35)
+                .addComponent(lblHoVaTen, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 190, Short.MAX_VALUE)
                 .addGroup(menubarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnLogout, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -390,6 +402,7 @@ public class Homepage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JLabel lblHoVaTen;
     private javax.swing.JPanel menubar;
     private javax.swing.JPasswordField viewbalance;
     // End of variables declaration//GEN-END:variables
