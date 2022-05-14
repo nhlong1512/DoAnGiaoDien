@@ -54,7 +54,6 @@ public class SQLConnection {
             
 //            Tạo url để kết nối tới Database
             String url = "jdbc:oracle:thin:" + this.Host + ":1521:" + this.Sid;
-            // lay time zone neu ko the ket noi MySQL bang cách binh thuong
             try{
 //                tạo connet thông qua url
                 this.connect = DriverManager.getConnection(url, this.Username, this.Password);

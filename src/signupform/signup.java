@@ -5,6 +5,9 @@
 package signupform;
 
 import Customer.Homepage;
+import UITParking.BUS.NguoiDungBUS;
+import UITParking.DAO.NguoiDungDAO;
+import UITParking.DTO.NguoiDungDTO;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -13,6 +16,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import java.awt.Color;
+import java.util.ArrayList;
 import loginform.login;
 
 /**
@@ -31,6 +35,14 @@ public class signup extends javax.swing.JFrame {
     public signup() {
         initComponents();
     }
+    
+    private NguoiDungBUS list_ND;
+    /**
+     * Xử lý các lệnh trong SQL
+     */
+    private NguoiDungDAO ndDAO;
+    
+  
 
     public static String getID(String id) {
         id = id.replaceAll("\\D+", "");
@@ -328,10 +340,10 @@ public class signup extends javax.swing.JFrame {
         try {
             String a = "";
             conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "hr", "hr");
-            String sql = "INSERT INTO NGUOIDUNG (MaND, Email, MatKhau, HoTen, VaiTro) VALUES (?, ?, ?, ?, ?)";
+//            String sql = "INSERT INTO NGUOIDUNG (MaND, Email, MatKhau, HoTen, VaiTro) VALUES (?, ?, ?, ?, ?)";
             String maxMaND = "Select Max(MaND) as MaxND from NguoiDung";
             String checkEmailExist = "Select count(MaND) as countEmail from NguoiDung where Email = ?";
-            ps = conn.prepareStatement(sql);
+//            ps = conn.prepareStatement(sql);
             ps1 = conn.prepareStatement(maxMaND);
             rs1 = ps1.executeQuery();
             ps2 = conn.prepareStatement(checkEmailExist);
@@ -383,17 +395,24 @@ public class signup extends javax.swing.JFrame {
                 String maxnd = rs1.getString("MaxND");
                 id = getID(maxnd);
             }
-            ps.setString(1, "ND" + id + "");
+//            ps.setString(1, "ND" + id + "");
+//
+//            ps.setString(2, txtEmailSignUp.getText());
+//
+//            ps.setString(3, new String(txtConfirmPasswordSignUp.getPassword()));
+//
+//            ps.setString(4, (txtLastNameSignUp.getText() + " " + txtFirstNameSignUp.getText()));
+//
+//            ps.setString(5, "Khach hang");
+//
+//            rs = ps.executeQuery();
+              NguoiDungDTO nd = new NguoiDungDTO("ND018", txtEmailSignUp.getText(), 
+              new String(txtConfirmPasswordSignUp.getPassword()), txtLastNameSignUp.getText() + " " + txtFirstNameSignUp.getText(),
+              "", "", "", "", "", "Khach hang");
+              
+              list_ND.them(nd);
 
-            ps.setString(2, txtEmailSignUp.getText());
-
-            ps.setString(3, new String(txtConfirmPasswordSignUp.getPassword()));
-
-            ps.setString(4, (txtLastNameSignUp.getText() + " " + txtFirstNameSignUp.getText()));
-
-            ps.setString(5, "Khach hang");
-
-            rs = ps.executeQuery();
+            
             JOptionPane.showMessageDialog(this, "Sign Up Successfully");
 //            Homepage _homepageCustomer = new Homepage();
 //            _homepageCustomer.show();
