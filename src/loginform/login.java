@@ -23,6 +23,7 @@ import javax.swing.JOptionPane;
 import signupform.signup;
 import OTP.SentEmail;
 import javax.swing.JPasswordField;
+import javax.swing.UIManager;
 
 /**
  *
@@ -188,6 +189,19 @@ public class login extends javax.swing.JFrame {
         btnLogin.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         btnLogin.setBorderPainted(false);
         btnLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLogin.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnLoginMouseMoved(evt);
+            }
+        });
+        btnLogin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnLoginMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnLoginMouseExited(evt);
+            }
+        });
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoginActionPerformed(evt);
@@ -385,6 +399,25 @@ public class login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_lblForgetPasswordMouseClicked
+
+    private void btnLoginMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseMoved
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnLoginMouseMoved
+
+    //Xử lý hover cho btnLogin
+    //Khi hover, btnLogin chuyển màu nhẹ
+    private void btnLoginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseEntered
+        // TODO add your handling code here:
+        btnLogin.setBackground(new Color(0,51,204));
+        
+    }//GEN-LAST:event_btnLoginMouseEntered
+    //Khi hết hover, btnLogin trở về màu gốc
+    private void btnLoginMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseExited
+        // TODO add your handling code here:
+        btnLogin.setBackground(new Color(12,33,250));
+    }//GEN-LAST:event_btnLoginMouseExited
+    
     /**
      * @param args the command line arguments
      */
