@@ -26,12 +26,12 @@ public class SQLConnectUnit {
 
     // hàm khởi tạo kết nối mặc định
     public SQLConnectUnit() {
-        connect = new SQLConnection("@localhost", "hr", "hr", "orcl");
+        connect = new SQLConnection("hr", "hr", "orcl");
     }
     
     // hàm khởi tạo cơ bản
-    public SQLConnectUnit(String Host, String Username, String Password, String Sid) {
-        connect = new SQLConnection(Host, Username, Password, Sid);
+    public SQLConnectUnit(String Username, String Password, String Sid) {
+        connect = new SQLConnection(Username, Password, Sid);
     }
     
     // Hàm hỗ trợ Select CSDL

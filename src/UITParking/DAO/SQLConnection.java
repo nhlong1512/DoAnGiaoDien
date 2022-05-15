@@ -19,7 +19,6 @@ import java.sql.Connection;
  * @author ADMIN
  */
 public class SQLConnection {
-    String Host = "";
     String Username = "";
     String Password = "";
     String Sid = "";
@@ -28,32 +27,29 @@ public class SQLConnection {
     Statement statement = null;
     ResultSet resultSet = null;
 
-    public SQLConnection(String Host, String Username, String Password, String Sid) {
-        this.Host = Host;
+    public SQLConnection(String Username, String Password, String Sid) {
         this.Username = Username;
         this.Password = Password;
         this.Sid = Sid;
     }
     
     
-    //Comment
-//    protected void driveTest () throws Exception {
-//        try {
-//            Class.forName("com.mysql.cj.jdbc.Driver");
-//        }
-//        catch (ClassNotFoundException e) {
-//            throw new Exception("My SQl not found driveTest");
-//        }
-//    }
+    protected void driveTest () throws Exception {
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+        }
+        catch (ClassNotFoundException e) {
+            throw new Exception("SQl Developer not found driveTest");
+        }
+    }
     
     protected Connection getConnect() throws Exception {
 //        nếu connection null thì khởi tạo mới
         if (this.connect == null) {
-//            Comment
-//            driveTest();
+            driveTest();
             
 //            Tạo url để kết nối tới Database
-            String url = "jdbc:oracle:thin:" + this.Host + ":1521:" + this.Sid;
+            String url = "jdbc:oracle:thin:@localhost:1521:" + this.Sid;
             try{
 //                tạo connet thông qua url
                 this.connect = DriverManager.getConnection(url, this.Username, this.Password);
