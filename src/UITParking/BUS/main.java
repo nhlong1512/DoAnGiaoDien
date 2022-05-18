@@ -24,32 +24,38 @@ public class main {
      */
     public static void main(String[] args) throws Exception {
         // TODO code application logic here
-        NguoiDungDTO nd022 = new NguoiDungDTO("ND022", "huulong22@gmail.com", "longlong", "Nguyen Huu Long", "Nam", "19-MAR-02", "28 Nguyen Thi Ly phuong 2", "TP. Quang Tri", "0775504619", "Khach hang");
-        NguoiDungBUS nguoidungtbl = new NguoiDungBUS();
-        System.out.println(nguoidungtbl.getNumbND());
+//        NguoiDungDTO nd022 = new NguoiDungDTO("ND022", "huulong22@gmail.com", "longlong", "Nguyen Huu Long", "Nam", "19-MAR-02", "28 Nguyen Thi Ly phuong 2", "TP. Quang Tri", "0775504619", "Khach hang");
+//        NguoiDungBUS nguoidungtbl = new NguoiDungBUS();
+//        System.out.println(nguoidungtbl.getNumbND());
 //        nguoidungtbl.them(nd022);
 //        System.out.println(nguoidungtbl.getInfor("ND015"));
 //        NguoiDungDTO nd015 = new NguoiDungDTO("ND015", "20521083@gmail.uit.edu.vn", "ttna0000", "Tran Thi Ngoc Anh", "Nu", "19-MAR-02", "28 Nguyen Thi Ly, phuong 2", "TP. Quang Tri", "0985766322", "Khach hang");
 //        nguoidungtbl.xoa(nd015);
 //        System.out.println(nguoidungtbl.getNumbND());
-        ArrayList<NguoiDungDTO> list_ND = nguoidungtbl.getList_ND();
-        for (NguoiDungDTO nd : list_ND) {
-            System.out.println(nd);
-        }
+//        ArrayList<NguoiDungDTO> list_ND = nguoidungtbl.getList_ND();
+//        for (NguoiDungDTO nd : list_ND) {
+//            System.out.println(nd);
+//        }
 //        list_ND.add(nd019);
-        for (NguoiDungDTO nd : list_ND) {
-            System.out.println("New----" + nd);
-        }
+//        for (NguoiDungDTO nd : list_ND) {
+//            System.out.println("New----" + nd);
+//        }
         
 //        nguoidungtbl.xoa(nd022);
-        for (NguoiDungDTO nd : list_ND) {
-            System.out.println("New----" + nd);
-        }
+//        for (NguoiDungDTO nd : list_ND) {
+//            System.out.println("New----" + nd);
+//        }
+//        
+//        nd022 = new NguoiDungDTO("ND022", "huulong232@gmail.com", "longrong", "Nguyen Huu Lodfsdfsdfdsg", "Nam", "19-MAR-02", "28 Nguyen Thi Ly phuong 2", "TP. Quang Tri", "0775504619", "Khach hang");
+//        nguoidungtbl.sua(nd022);
+//        for (NguoiDungDTO nd : list_ND) {
+//            System.out.println("New----" + nd);
+//        } 
+//          NguoiDungDTO nd = nguoidungtbl.getInfor("ND015"); 
+//          System.out.println(nd.getStrHoTen());
+          
+          KhachHangBUS khachhangtbl = new KhachHangBUS();
+          System.out.println(khachhangtbl.getNumbKH());
         
-        nd022 = new NguoiDungDTO("ND022", "huulong232@gmail.com", "longrong", "Nguyen Huu Lodfsdfsdfdsg", "Nam", "19-MAR-02", "28 Nguyen Thi Ly phuong 2", "TP. Quang Tri", "0775504619", "Khach hang");
-        nguoidungtbl.sua(nd022);
-        for (NguoiDungDTO nd : list_ND) {
-            System.out.println("New----" + nd);
-        }
     }
 }

@@ -36,14 +36,7 @@ public class signup extends javax.swing.JFrame {
         initComponents();
     }
     
-    private NguoiDungBUS list_ND;
-    /**
-     * Xử lý các lệnh trong SQL
-     */
-    private NguoiDungDAO ndDAO;
-    
   
-
     public static String getID(String id) {
         id = id.replaceAll("\\D+", "");
         int id_num = Integer.parseInt(id);
@@ -340,15 +333,19 @@ public class signup extends javax.swing.JFrame {
         try {
             String a = "";
             conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "hr", "hr");
+            
+            //Thực thi insert dữ liệu người dùng từ form đăng ký
             String sql = "INSERT INTO NGUOIDUNG (MaND, Email, MatKhau, HoTen, VaiTro) VALUES (?, ?, ?, ?, ?)";
-            String maxMaND = "Select Max(MaND) as MaxND from NguoiDung";
-            String checkEmailExist = "Select count(MaND) as countEmail from NguoiDung where Email = ?";
             ps = conn.prepareStatement(sql);
+            
+            //Lấy ra người dùng có mã max để từ đó chèn người tiếp theo vào
+            String maxMaND = "Select Max(MaND) as MaxND from NguoiDung";
             ps1 = conn.prepareStatement(maxMaND);
             rs1 = ps1.executeQuery();
-            ps2 = conn.prepareStatement(checkEmailExist);
 
             //Thực thi checkEmailExist - Kiểm tra email đã tồn tại trong database hay chưa.
+            String checkEmailExist = "Select count(MaND) as countEmail from NguoiDung where Email = ?";
+            ps2 = conn.prepareStatement(checkEmailExist);
             ps2.setString(1, txtEmailSignUp.getText());
             rs2 = ps2.executeQuery();
 
@@ -405,6 +402,14 @@ public class signup extends javax.swing.JFrame {
 
             ps.setString(5, "Khach hang");
 
+            //Thực thi thêm người dùng vào bảng người dùng
+            rs = ps.executeQuery();
+            
+            //Thực thi thêm người dùng vai trò khách hàng vào bảng khách hàng
+            sql = "INSERT INTO KHACHHANG (MaKH, SoDu) VALUES (?, ?)";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, "ND" + id + "");
+            ps.setInt(2, 0);
             rs = ps.executeQuery();
             JOptionPane.showMessageDialog(this, "Sign Up Successfully");
 //            Homepage _homepageCustomer = new Homepage();

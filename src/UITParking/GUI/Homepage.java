@@ -3,6 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package UITParking.GUI;
+
+import UITParking.BUS.KhachHangBUS;
+import UITParking.BUS.NguoiDungBUS;
+import UITParking.DAO.SQLConnection;
+import UITParking.DTO.KhachHangDTO;
+import UITParking.DTO.NguoiDungDTO;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.net.URL;
@@ -10,6 +16,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import UITParking.GUI.login;
 import static UITParking.GUI.login.pHoTen;
+import static UITParking.GUI.login.pMaND;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Administrator
@@ -19,10 +29,19 @@ public class Homepage extends javax.swing.JFrame {
     /**
      * Creates new form Homepage
      */
-    public Homepage() {
+//    KhachHangBUS khachhangtbl = new KhachHangBUS();
+//    KhachHangDTO kh = khachhangtbl.getInfor(pMaND); 
+    public Homepage() throws Exception {
+        NguoiDungBUS nguoidungtbl = new NguoiDungBUS();
+        NguoiDungDTO nd = nguoidungtbl.getInfor(pMaND);
+        KhachHangBUS khachhangtbl = new KhachHangBUS();
+        KhachHangDTO kh = khachhangtbl.getInfor(pMaND);
         initComponents();
         setIconImage();
-        lblHoVaTen.setText(pHoTen);
+        lblHoVaTen.setText(nd.getStrHoTen());
+        lblTienSoDu.setText(String.valueOf(kh.getLongSoDu()) + " đ");
+
+//        lblTienSoDu.setText();
     }
 
     /**
@@ -53,15 +72,15 @@ public class Homepage extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
+        btnNapTien = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
-        viewbalance = new javax.swing.JPasswordField();
         jLabel8 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
+        lblTienSoDu = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("UIT Parking");
@@ -225,12 +244,17 @@ public class Homepage extends javax.swing.JFrame {
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/imgonline-com-ua-resize-YhctWcGd8xzLf3.png"))); // NOI18N
 
-        jButton5.setFont(new java.awt.Font("Cooper", 1, 14)); // NOI18N
-        jButton5.setText("Nạp tiền");
-        jButton5.setPreferredSize(new java.awt.Dimension(113, 26));
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btnNapTien.setFont(new java.awt.Font("Cooper", 1, 14)); // NOI18N
+        btnNapTien.setText("Nạp tiền");
+        btnNapTien.setPreferredSize(new java.awt.Dimension(113, 26));
+        btnNapTien.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnNapTienMouseClicked(evt);
+            }
+        });
+        btnNapTien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btnNapTienActionPerformed(evt);
             }
         });
 
@@ -241,16 +265,16 @@ public class Homepage extends javax.swing.JFrame {
             .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(43, 43, 43)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnNapTien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(9, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnNapTien, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12))
         );
 
@@ -293,15 +317,7 @@ public class Homepage extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Cooper", 1, 14)); // NOI18N
         jLabel9.setText("SỐ DƯ");
-        dashboardview.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 60, 30));
-
-        viewbalance.setText("jPasswordField1");
-        viewbalance.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewbalanceActionPerformed(evt);
-            }
-        });
-        dashboardview.add(viewbalance, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 140, 20));
+        dashboardview.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 60, 30));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/parking (1).png"))); // NOI18N
         dashboardview.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 10, 170, 170));
@@ -312,18 +328,18 @@ public class Homepage extends javax.swing.JFrame {
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/SCĐ (200 × 300 px).png"))); // NOI18N
         dashboardview.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 440, -1, 220));
 
+        lblTienSoDu.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblTienSoDu.setText("Tien");
+        dashboardview.add(lblTienSoDu, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 140, 30));
+
         getContentPane().add(dashboardview, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 740, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void setIconImage() {
-       setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/parking.png")));
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/parking.png")));
     }
-    
-    private void viewbalanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewbalanceActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_viewbalanceActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -333,10 +349,9 @@ public class Homepage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void btnNapTienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNapTienActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
-
+    }//GEN-LAST:event_btnNapTienActionPerformed
 
     //Event onClick btnLogout
     //Khi click btnLogout, Link đến giao diện login
@@ -346,6 +361,13 @@ public class Homepage extends javax.swing.JFrame {
         _login.show();
         dispose();
     }//GEN-LAST:event_btnLogoutMouseClicked
+
+    //Event click vào button nạp tiền
+    private void btnNapTienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNapTienMouseClicked
+        // TODO add your handling code here:
+        NapTien _napTien = new NapTien();
+        _napTien.show();
+    }//GEN-LAST:event_btnNapTienMouseClicked
 
     /**
      * @param args the command line arguments
@@ -377,18 +399,22 @@ public class Homepage extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Homepage().setVisible(true);
+                try {
+                    new Homepage().setVisible(true);
+                } catch (Exception ex) {
+                    Logger.getLogger(Homepage.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogout;
+    private javax.swing.JButton btnNapTien;
     private javax.swing.JPanel dashboardview;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -409,7 +435,7 @@ public class Homepage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JLabel lblHoVaTen;
+    private javax.swing.JLabel lblTienSoDu;
     private javax.swing.JPanel menubar;
-    private javax.swing.JPasswordField viewbalance;
     // End of variables declaration//GEN-END:variables
 }

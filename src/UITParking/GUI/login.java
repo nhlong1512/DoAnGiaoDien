@@ -8,6 +8,8 @@ package UITParking.GUI;
 /*package singupform;*/
 
 
+import UITParking.BUS.NguoiDungBUS;
+import UITParking.DTO.NguoiDungDTO;
 import UITParking.GUI.HomepageAdmin;
 import UITParking.GUI.Homepage;
 import java.awt.Color;
@@ -36,6 +38,7 @@ public class login extends javax.swing.JFrame {
     ResultSet rs = null;
     public static String pEmail;
     public static String pHoTen;
+    public static String pMaND;
 
     /**
      * Creates new form login
@@ -321,6 +324,8 @@ public class login extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Login Successfully");
                     //Lưu Họ tên đăng nhập với biến pHoTen
                     pHoTen = rs.getString("HoTen");
+                    pMaND = rs.getString("MaND");
+                    
                     Homepage _homePageCustomer = new Homepage();
                     _homePageCustomer.show();
                     dispose();
@@ -473,4 +478,3 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JTextField txtusername;
     // End of variables declaration//GEN-END:variables
 }
-//Long
