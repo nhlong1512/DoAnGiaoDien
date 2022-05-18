@@ -6,10 +6,6 @@
 package UITParking.GUI;
 
 /*package singupform;*/
-
-
-import UITParking.BUS.NguoiDungBUS;
-import UITParking.DTO.NguoiDungDTO;
 import UITParking.GUI.HomepageAdmin;
 import UITParking.GUI.Homepage;
 import java.awt.Color;
@@ -24,12 +20,12 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import UITParking.GUI.signup;
 import UITParking.GUI.SentEmail;
+import java.awt.Toolkit;
 import javax.swing.JPasswordField;
-import javax.swing.UIManager;
 
 /**
  *
- * @author ME1
+ * @author Tran Trong Tin
  */
 public class login extends javax.swing.JFrame {
 
@@ -47,6 +43,7 @@ public class login extends javax.swing.JFrame {
         initComponents();
         txtusername.setBackground(new java.awt.Color(0, 0, 0, 1));
         txtpassword.setBackground(new java.awt.Color(0, 0, 0, 1));
+        setIconImage();
     }
 
     /**
@@ -60,25 +57,25 @@ public class login extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        panelRound2 = new Admin.PanelRound();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        btnLogin = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         txtusername = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         txtpassword = new javax.swing.JPasswordField();
+        jLabel7 = new javax.swing.JLabel();
         disable = new javax.swing.JLabel();
         show = new javax.swing.JLabel();
         chkboxRememberPassword = new javax.swing.JCheckBox();
         lblForgetPassword = new javax.swing.JLabel();
-        btnLogin = new javax.swing.JButton();
-        jLabel13 = new javax.swing.JLabel();
-        lblSignUp = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblSignUp = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("UIT Parking");
         setBackground(new java.awt.Color(255, 255, 255));
         setUndecorated(true);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -93,15 +90,46 @@ public class login extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, -1));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.setDoubleBuffered(false);
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelRound2.setBackground(new java.awt.Color(255, 255, 255));
+        panelRound2.setRoundBottomLeft(50);
+        panelRound2.setRoundBottomRight(50);
+        panelRound2.setRoundTopLeft(50);
+        panelRound2.setRoundTopRight(50);
+        panelRound2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI Historic", 1, 36)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 51, 204));
+        jLabel3.setText("Login");
+        panelRound2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 20, -1, -1));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/secure-file-sharing-abstract-con (1).png"))); // NOI18N
+        panelRound2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 320, 290));
+
+        btnLogin.setBackground(new java.awt.Color(12, 33, 250));
+        btnLogin.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
+        btnLogin.setForeground(new java.awt.Color(255, 255, 255));
+        btnLogin.setText("LOGIN");
+        btnLogin.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        btnLogin.setBorderPainted(false);
+        btnLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLogin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnLoginMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnLoginMouseExited(evt);
+            }
+        });
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
+        panelRound2.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 320, 260, 40));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("Username");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, 341, -1));
+        panelRound2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, 110, 30));
 
         txtusername.setFont(txtusername.getFont().deriveFont(txtusername.getFont().getSize()+2f));
         txtusername.setForeground(new java.awt.Color(153, 153, 153));
@@ -128,16 +156,11 @@ public class login extends javax.swing.JFrame {
                 txtusernameKeyTyped(evt);
             }
         });
-        jPanel2.add(txtusername, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 130, 240, 30));
-
-        jLabel7.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_user_20px_8.png"))); // NOI18N
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 129, 40, 40));
+        panelRound2.add(txtusername, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 100, 210, 30));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel8.setText("Password");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 170, 341, -1));
+        panelRound2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 170, 110, 30));
 
         txtpassword.setFont(txtpassword.getFont().deriveFont(txtpassword.getFont().getSize()+2f));
         txtpassword.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -148,7 +171,12 @@ public class login extends javax.swing.JFrame {
                 txtpasswordActionPerformed(evt);
             }
         });
-        jPanel2.add(txtpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 200, 240, 30));
+        panelRound2.add(txtpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 170, 210, 30));
+
+        jLabel7.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_user_20px_8.png"))); // NOI18N
+        panelRound2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 90, 40, 40));
 
         disable.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         disable.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_invisible_20px_5.png"))); // NOI18N
@@ -158,7 +186,7 @@ public class login extends javax.swing.JFrame {
                 disableMouseClicked(evt);
             }
         });
-        jPanel2.add(disable, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 200, 40, 40));
+        panelRound2.add(disable, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 170, 40, 30));
 
         show.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         show.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_eye_20px_6.png"))); // NOI18N
@@ -168,11 +196,11 @@ public class login extends javax.swing.JFrame {
                 showMouseClicked(evt);
             }
         });
-        jPanel2.add(show, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 200, 40, 40));
+        panelRound2.add(show, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 170, 40, 30));
 
         chkboxRememberPassword.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         chkboxRememberPassword.setText("Remember Password");
-        jPanel2.add(chkboxRememberPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 250, -1, -1));
+        panelRound2.add(chkboxRememberPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 220, -1, -1));
 
         lblForgetPassword.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblForgetPassword.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -183,51 +211,7 @@ public class login extends javax.swing.JFrame {
                 lblForgetPasswordMouseClicked(evt);
             }
         });
-        jPanel2.add(lblForgetPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 250, 121, 27));
-
-        btnLogin.setBackground(new java.awt.Color(12, 33, 250));
-        btnLogin.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
-        btnLogin.setForeground(new java.awt.Color(255, 255, 255));
-        btnLogin.setText("LOGIN");
-        btnLogin.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        btnLogin.setBorderPainted(false);
-        btnLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnLogin.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                btnLoginMouseMoved(evt);
-            }
-        });
-        btnLogin.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnLoginMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnLoginMouseExited(evt);
-            }
-        });
-        btnLogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLoginActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 340, 310, 40));
-
-        jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setText("Sign Up");
-        jLabel13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(253, 357, 122, -1));
-
-        lblSignUp.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
-        lblSignUp.setForeground(new java.awt.Color(51, 0, 255));
-        lblSignUp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblSignUp.setText("Sign Up.");
-        lblSignUp.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblSignUpMouseClicked(evt);
-            }
-        });
-        jPanel2.add(lblSignUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 300, 60, -1));
+        panelRound2.add(lblForgetPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 220, 121, 27));
 
         jLabel15.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -237,17 +221,21 @@ public class login extends javax.swing.JFrame {
                 jLabel15MouseClicked(evt);
             }
         });
-        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 300, 160, -1));
+        panelRound2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 270, 160, -1));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI Historic", 1, 36)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 51, 204));
-        jLabel3.setText("Login");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 20, -1, -1));
+        lblSignUp.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
+        lblSignUp.setForeground(new java.awt.Color(51, 0, 255));
+        lblSignUp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblSignUp.setText("Sign Up.");
+        lblSignUp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblSignUp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblSignUpMouseClicked(evt);
+            }
+        });
+        panelRound2.add(lblSignUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 270, 60, -1));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/secure-file-sharing-abstract-con (1).png"))); // NOI18N
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 56, 320, 290));
-
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 770, 400));
+        jPanel1.add(panelRound2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 830, 400));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_Close_20px.png"))); // NOI18N
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -256,11 +244,11 @@ public class login extends javax.swing.JFrame {
                 jLabel2MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 10, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 10, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 490));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, 490));
 
-        setSize(new java.awt.Dimension(891, 485));
+        setSize(new java.awt.Dimension(930, 485));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -314,6 +302,7 @@ public class login extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Login Successfully");
                     //Lưu Họ tên đăng nhập với biến pHoTen
                     pHoTen = rs.getString("HoTen");
+                    pMaND = rs.getString("MaND");
                     HomepageAdmin _homepageAdmin = new HomepageAdmin();
                     _homepageAdmin.show();
                     dispose();
@@ -325,7 +314,7 @@ public class login extends javax.swing.JFrame {
                     //Lưu Họ tên đăng nhập với biến pHoTen
                     pHoTen = rs.getString("HoTen");
                     pMaND = rs.getString("MaND");
-                    
+
                     Homepage _homePageCustomer = new Homepage();
                     _homePageCustomer.show();
                     dispose();
@@ -338,9 +327,10 @@ public class login extends javax.swing.JFrame {
 
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex);
-        }  // TODO add your handling code here:
-    }//GEN-LAST:event_btnLoginActionPerformed
+        }  // TODO add your handling code here
+    }                                        
 
+//GEN-LAST:event_btnLoginActionPerformed
     private void txtpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpasswordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtpasswordActionPerformed
@@ -405,24 +395,13 @@ public class login extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_lblForgetPasswordMouseClicked
 
-    private void btnLoginMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseMoved
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_btnLoginMouseMoved
-
-    //Xử lý hover cho btnLogin
-    //Khi hover, btnLogin chuyển màu nhẹ
     private void btnLoginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseEntered
-        // TODO add your handling code here:
-        btnLogin.setBackground(new Color(80,60,244));
-        
+        btnLogin.setBackground(new Color(80, 60, 244));
     }//GEN-LAST:event_btnLoginMouseEntered
-    //Khi hết hover, btnLogin trở về màu gốc
+
     private void btnLoginMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseExited
-        // TODO add your handling code here:
-        btnLogin.setBackground(new Color(12,33,250));
+        btnLogin.setBackground(new Color(12, 33, 250));
     }//GEN-LAST:event_btnLoginMouseExited
-    
     /**
      * @param args the command line arguments
      */
@@ -461,7 +440,6 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JCheckBox chkboxRememberPassword;
     private javax.swing.JLabel disable;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -470,11 +448,15 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblForgetPassword;
     private javax.swing.JLabel lblSignUp;
+    private Admin.PanelRound panelRound2;
     private javax.swing.JLabel show;
     private javax.swing.JPasswordField txtpassword;
     private javax.swing.JTextField txtusername;
     // End of variables declaration//GEN-END:variables
+
+    private void setIconImage() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/parking.png")));
+    }
 }

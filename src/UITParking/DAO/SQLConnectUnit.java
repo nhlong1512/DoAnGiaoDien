@@ -18,7 +18,7 @@ import java.sql.Connection;
 
 /**
  *
- * @author ADMIN
+ * @author Nguyen Huu Long
  */
 public class SQLConnectUnit {
 

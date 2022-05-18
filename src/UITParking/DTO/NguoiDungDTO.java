@@ -6,7 +6,7 @@ package UITParking.DTO;
 
 /**
  *
- * @author ADMIN
+ * @author Tran Thi Ngoc Anh
  */
 public class NguoiDungDTO {
     private String strMaND, strEmail, strMatKhau, strHoTen, strGioiTinh, strNgSinh,

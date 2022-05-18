@@ -6,7 +6,7 @@ package UITParking.DTO;
 
 /**
  *
- * @author ADMIN
+ * @author Tran Thi Ngoc Anh
  */
 public class KhachHangDTO {
     private String strMaKH, strMaXe;

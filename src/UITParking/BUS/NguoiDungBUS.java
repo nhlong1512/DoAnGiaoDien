@@ -7,7 +7,10 @@ package UITParking.BUS;
 import UITParking.DAO.NguoiDungDAO;
 import UITParking.DTO.NguoiDungDTO;
 import java.util.ArrayList;
-
+/**
+ *
+ * @author Tran Thi Ngoc Anh
+ */
 public class NguoiDungBUS {
 
     private ArrayList<NguoiDungDTO> list_ND;

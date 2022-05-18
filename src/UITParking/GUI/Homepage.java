@@ -22,22 +22,21 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Administrator
+ * @author Pham Hoang Ngoc Anh
  */
 public class Homepage extends javax.swing.JFrame {
 
     /**
      * Creates new form Homepage
      */
-//    KhachHangBUS khachhangtbl = new KhachHangBUS();
-//    KhachHangDTO kh = khachhangtbl.getInfor(pMaND); 
     public Homepage() throws Exception {
+
+        initComponents();
+        setIconImage();
         NguoiDungBUS nguoidungtbl = new NguoiDungBUS();
         NguoiDungDTO nd = nguoidungtbl.getInfor(pMaND);
         KhachHangBUS khachhangtbl = new KhachHangBUS();
         KhachHangDTO kh = khachhangtbl.getInfor(pMaND);
-        initComponents();
-        setIconImage();
         lblHoVaTen.setText(nd.getStrHoTen());
         lblTienSoDu.setText(String.valueOf(kh.getLongSoDu()) + " đ");
 
@@ -73,14 +72,15 @@ public class Homepage extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         btnNapTien = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
+        panelRound1 = new Admin.PanelRound();
         lblTienSoDu = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("UIT Parking");
@@ -280,6 +280,10 @@ public class Homepage extends javax.swing.JFrame {
 
         dashboardview.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 160, 200, 300));
 
+        jLabel9.setFont(new java.awt.Font("Cooper", 1, 14)); // NOI18N
+        jLabel9.setText("SỐ DƯ");
+        dashboardview.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 60, 40));
+
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel5.setPreferredSize(new java.awt.Dimension(200, 300));
@@ -315,26 +319,47 @@ public class Homepage extends javax.swing.JFrame {
 
         dashboardview.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 200, 300));
 
-        jLabel9.setFont(new java.awt.Font("Cooper", 1, 14)); // NOI18N
-        jLabel9.setText("SỐ DƯ");
-        dashboardview.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 60, 30));
-
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/parking (1).png"))); // NOI18N
         dashboardview.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 10, 170, 170));
-
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/123.png"))); // NOI18N
-        dashboardview.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, -100, -1, 220));
 
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/SCĐ (200 × 300 px).png"))); // NOI18N
         dashboardview.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 440, -1, 220));
 
-        lblTienSoDu.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lblTienSoDu.setText("Tien");
-        dashboardview.add(lblTienSoDu, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 140, 30));
+        panelRound1.setBackground(new java.awt.Color(80, 60, 244));
+        panelRound1.setRoundBottomLeft(25);
+        panelRound1.setRoundBottomRight(25);
+        panelRound1.setRoundTopLeft(25);
+        panelRound1.setRoundTopRight(25);
+
+        lblTienSoDu.setForeground(new java.awt.Color(255, 255, 255));
+        lblTienSoDu.setText("0đ");
+
+        javax.swing.GroupLayout panelRound1Layout = new javax.swing.GroupLayout(panelRound1);
+        panelRound1.setLayout(panelRound1Layout);
+        panelRound1Layout.setHorizontalGroup(
+            panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRound1Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(lblTienSoDu, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        panelRound1Layout.setVerticalGroup(
+            panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblTienSoDu)
+                .addContainerGap())
+        );
+
+        dashboardview.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 180, 30));
+
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/123.png"))); // NOI18N
+        dashboardview.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, -80, -1, 200));
 
         getContentPane().add(dashboardview, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 740, -1));
 
-        pack();
+        setSize(new java.awt.Dimension(992, 557));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void setIconImage() {
@@ -362,7 +387,6 @@ public class Homepage extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnLogoutMouseClicked
 
-    //Event click vào button nạp tiền
     private void btnNapTienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNapTienMouseClicked
         // TODO add your handling code here:
         NapTien _napTien = null;
@@ -384,6 +408,25 @@ public class Homepage extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Homepage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Homepage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Homepage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Homepage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -443,5 +486,6 @@ public class Homepage extends javax.swing.JFrame {
     private javax.swing.JLabel lblHoVaTen;
     private javax.swing.JLabel lblTienSoDu;
     private javax.swing.JPanel menubar;
+    private Admin.PanelRound panelRound1;
     // End of variables declaration//GEN-END:variables
 }

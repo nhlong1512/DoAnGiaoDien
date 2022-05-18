@@ -12,7 +12,7 @@ import static UITParking.GUI.SentEmail.pEmailSentEmail;
 import UITParking.GUI.login;
 /**
  *
- * @author Administrator
+ * @author @author Pham Hoang Ngoc Anh
  */
 public class modifypassword extends javax.swing.JFrame {
  Connection conn = null;

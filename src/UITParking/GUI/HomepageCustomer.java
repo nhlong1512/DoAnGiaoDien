@@ -11,7 +11,7 @@ import javax.swing.SwingUtilities;
 
 /**
  *
- * @author Administrator
+ * @author Pham Hoang Ngoc Anh
  */
 public class HomepageCustomer extends javax.swing.JFrame {
 

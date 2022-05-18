@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author ADMIN
+ * @author Pham Hoang Ngoc Anh
  */
 public class NapTien extends javax.swing.JFrame {
 

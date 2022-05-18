@@ -15,7 +15,7 @@ import java.util.HashMap;
 
 /**
  *
- * @author ADMIN
+ * @author Nguyen Huu Long
  */
 public class NguoiDungDAO {
 

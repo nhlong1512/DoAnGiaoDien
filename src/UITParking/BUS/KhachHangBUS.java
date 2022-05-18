@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author ADMIN
+ * @author Tran Thi Ngoc Anh
  */
 public class KhachHangBUS {
     private ArrayList<KhachHangDTO> list_KH;

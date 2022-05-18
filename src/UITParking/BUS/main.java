@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author ADMIN
+ * @author Nguyen Huu Long
  */
 public class main {
 
