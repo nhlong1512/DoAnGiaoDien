@@ -7,6 +7,8 @@ package UITParking.GUI;
 import UITParking.BUS.KhachHangBUS;
 import UITParking.DTO.KhachHangDTO;
 import static UITParking.GUI.login.pMaND;
+import java.awt.Color;
+import java.awt.Toolkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -25,6 +27,7 @@ public class NapTien extends javax.swing.JFrame {
 
     public NapTien() throws Exception {
         initComponents();
+        setIconImage();
     }
 
     /**
@@ -36,62 +39,135 @@ public class NapTien extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtfldNapTien = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        btnExecuteNapTien = new javax.swing.JButton();
+        txtfldNapTien = new javax.swing.JTextField();
+        btnNapTien = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jToggleButton3 = new javax.swing.JToggleButton();
+        jLabel3 = new javax.swing.JLabel();
+        jToggleButton4 = new javax.swing.JToggleButton();
+        jToggleButton5 = new javax.swing.JToggleButton();
+        jToggleButton6 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("UIT Parking");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtfldNapTien.setText("0đ");
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Nhập số tiền bạn muốn nạp");
+        jLabel1.setText("Số tiền cần nạp");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 310, 30));
 
-        btnExecuteNapTien.setText("Nạp");
-        btnExecuteNapTien.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnExecuteNapTienMouseClicked(evt);
+        txtfldNapTien.setText("0đ");
+        txtfldNapTien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtfldNapTienActionPerformed(evt);
             }
         });
+        jPanel1.add(txtfldNapTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 310, 34));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(90, 90, 90)
-                        .addComponent(txtfldNapTien, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(158, 158, 158)
-                        .addComponent(btnExecuteNapTien, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(82, Short.MAX_VALUE))
+        btnNapTien.setBackground(new java.awt.Color(255, 204, 51));
+        btnNapTien.setFont(new java.awt.Font("Cooper", 0, 18)); // NOI18N
+        btnNapTien.setText("Nạp tiền");
+        btnNapTien.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnNapTien.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnNapTienMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnNapTienMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnNapTienMouseExited(evt);
+            }
+        });
+        btnNapTien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNapTienActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnNapTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 332, 41));
+
+        jPanel2.setBackground(new java.awt.Color(51, 51, 255));
+
+        jLabel2.setFont(new java.awt.Font("Cooper", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Nạp tiền vào ví");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(txtfldNapTien, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
-                .addComponent(btnExecuteNapTien, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(56, Short.MAX_VALUE))
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(16, Short.MAX_VALUE))
         );
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jToggleButton3.setText("100.000đ");
+        jToggleButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton3ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jToggleButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, 100, -1));
+
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/wallet.png"))); // NOI18N
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 330, -1));
+
+        jToggleButton4.setText("10.000đ");
+        jToggleButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jToggleButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton4ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jToggleButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 100, -1));
+
+        jToggleButton5.setText("20.000đ");
+        jToggleButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jToggleButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton5ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jToggleButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 100, -1));
+
+        jToggleButton6.setText("50.000đ");
+        jToggleButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jToggleButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton6ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jToggleButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 100, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 332, 430));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     //Event click chuột vào button thực thi nạp tiền
-    private void btnExecuteNapTienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExecuteNapTienMouseClicked
+    private void btnNapTienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNapTienMouseClicked
         // TODO add your handling code here:
         tempTien = kh.getLongSoDu();
-        System.out.println("Truoc khi nap" + tempTien);
+        System.out.println("Truoc khi nap " + tempTien);
         tempTien += Integer.parseInt(txtfldNapTien.getText());
-        System.out.println("Sau khi nap" + tempTien);
+        System.out.println("Sau khi nap " + tempTien);
         kh.setLongSoDu(tempTien);
         try {
             khachhangtbl.sua(kh);
@@ -102,7 +178,39 @@ public class NapTien extends javax.swing.JFrame {
             Logger.getLogger(NapTien.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-    }//GEN-LAST:event_btnExecuteNapTienMouseClicked
+    }//GEN-LAST:event_btnNapTienMouseClicked
+
+    private void txtfldNapTienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfldNapTienActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfldNapTienActionPerformed
+
+    private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton3ActionPerformed
+
+    private void btnNapTienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNapTienActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnNapTienActionPerformed
+
+    private void jToggleButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton4ActionPerformed
+
+    private void jToggleButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton5ActionPerformed
+
+    private void jToggleButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton6ActionPerformed
+
+    private void btnNapTienMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNapTienMouseEntered
+        btnNapTien.setBackground(new Color(240, 204, 51));
+    }//GEN-LAST:event_btnNapTienMouseEntered
+
+    private void btnNapTienMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNapTienMouseExited
+        btnNapTien.setBackground(new Color(255, 204, 51));
+    }//GEN-LAST:event_btnNapTienMouseExited
 
     /**
      * @param args the command line arguments
@@ -144,8 +252,20 @@ public class NapTien extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnExecuteNapTien;
+    private javax.swing.JButton btnNapTien;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JToggleButton jToggleButton3;
+    private javax.swing.JToggleButton jToggleButton4;
+    private javax.swing.JToggleButton jToggleButton5;
+    private javax.swing.JToggleButton jToggleButton6;
     private javax.swing.JTextField txtfldNapTien;
     // End of variables declaration//GEN-END:variables
+
+    private void setIconImage() {
+                setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/parking.png")));
+    }
 }
