@@ -20,11 +20,11 @@ public class NapTien extends javax.swing.JFrame {
      * Creates new form NapTien
      */
     public static long tempTien;
+    KhachHangBUS khachhangtbl = new KhachHangBUS();
+    KhachHangDTO kh = khachhangtbl.getInfor(pMaND);
+
     public NapTien() throws Exception {
         initComponents();
-        KhachHangBUS khachhangtbl = new KhachHangBUS();
-        KhachHangDTO kh = khachhangtbl.getInfor(pMaND);
-        tempTien = kh.getLongSoDu();
     }
 
     /**
@@ -85,11 +85,23 @@ public class NapTien extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
     //Event click chuột vào button thực thi nạp tiền
     private void btnExecuteNapTienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExecuteNapTienMouseClicked
         // TODO add your handling code here:
+        tempTien = kh.getLongSoDu();
+        System.out.println("Truoc khi nap" + tempTien);
         tempTien += Integer.parseInt(txtfldNapTien.getText());
+        System.out.println("Sau khi nap" + tempTien);
+        kh.setLongSoDu(tempTien);
+        try {
+            khachhangtbl.sua(kh);
+            Homepage _homepage = new Homepage();
+            dispose();
+            _homepage.show();
+        } catch (Exception ex) {
+            Logger.getLogger(NapTien.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_btnExecuteNapTienMouseClicked
 
     /**

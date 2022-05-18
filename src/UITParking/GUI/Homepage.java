@@ -365,8 +365,14 @@ public class Homepage extends javax.swing.JFrame {
     //Event click vào button nạp tiền
     private void btnNapTienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNapTienMouseClicked
         // TODO add your handling code here:
-        NapTien _napTien = new NapTien();
+        NapTien _napTien = null;
+        try {
+            _napTien = new NapTien();
+        } catch (Exception ex) {
+            Logger.getLogger(Homepage.class.getName()).log(Level.SEVERE, null, ex);
+        }
         _napTien.show();
+        dispose();
     }//GEN-LAST:event_btnNapTienMouseClicked
 
     /**
