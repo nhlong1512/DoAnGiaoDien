@@ -45,11 +45,11 @@ public class NapTien extends javax.swing.JFrame {
         btnNapTien = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jToggleButton3 = new javax.swing.JToggleButton();
+        btn100000Dong = new javax.swing.JToggleButton();
         jLabel3 = new javax.swing.JLabel();
-        jToggleButton4 = new javax.swing.JToggleButton();
-        jToggleButton5 = new javax.swing.JToggleButton();
-        jToggleButton6 = new javax.swing.JToggleButton();
+        btn10000Dong = new javax.swing.JToggleButton();
+        btn20000Dong = new javax.swing.JToggleButton();
+        btn50000Dong = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("UIT Parking");
@@ -62,7 +62,6 @@ public class NapTien extends javax.swing.JFrame {
         jLabel1.setText("Số tiền cần nạp");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 310, 30));
 
-        txtfldNapTien.setText("0đ");
         txtfldNapTien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtfldNapTienActionPerformed(evt);
@@ -115,45 +114,65 @@ public class NapTien extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jToggleButton3.setText("100.000đ");
-        jToggleButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton3ActionPerformed(evt);
+        btn100000Dong.setText("100.000đ");
+        btn100000Dong.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn100000Dong.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn100000DongMouseClicked(evt);
             }
         });
-        jPanel1.add(jToggleButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, 100, -1));
+        btn100000Dong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn100000DongActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn100000Dong, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, 100, -1));
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/wallet.png"))); // NOI18N
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 330, -1));
 
-        jToggleButton4.setText("10.000đ");
-        jToggleButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jToggleButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton4ActionPerformed(evt);
+        btn10000Dong.setText("10.000đ");
+        btn10000Dong.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn10000Dong.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn10000DongMouseClicked(evt);
             }
         });
-        jPanel1.add(jToggleButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 100, -1));
+        btn10000Dong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn10000DongActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn10000Dong, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 100, -1));
 
-        jToggleButton5.setText("20.000đ");
-        jToggleButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jToggleButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton5ActionPerformed(evt);
+        btn20000Dong.setText("20.000đ");
+        btn20000Dong.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn20000Dong.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn20000DongMouseClicked(evt);
             }
         });
-        jPanel1.add(jToggleButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 100, -1));
+        btn20000Dong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn20000DongActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn20000Dong, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 100, -1));
 
-        jToggleButton6.setText("50.000đ");
-        jToggleButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jToggleButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton6ActionPerformed(evt);
+        btn50000Dong.setText("50.000đ");
+        btn50000Dong.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn50000Dong.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn50000DongMouseClicked(evt);
             }
         });
-        jPanel1.add(jToggleButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 100, -1));
+        btn50000Dong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn50000DongActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn50000Dong, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 100, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 332, 430));
 
@@ -177,32 +196,32 @@ public class NapTien extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(NapTien.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_btnNapTienMouseClicked
 
     private void txtfldNapTienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfldNapTienActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtfldNapTienActionPerformed
 
-    private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
+    private void btn100000DongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn100000DongActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton3ActionPerformed
+    }//GEN-LAST:event_btn100000DongActionPerformed
 
     private void btnNapTienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNapTienActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnNapTienActionPerformed
 
-    private void jToggleButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton4ActionPerformed
+    private void btn10000DongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn10000DongActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton4ActionPerformed
+    }//GEN-LAST:event_btn10000DongActionPerformed
 
-    private void jToggleButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton5ActionPerformed
+    private void btn20000DongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn20000DongActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton5ActionPerformed
+    }//GEN-LAST:event_btn20000DongActionPerformed
 
-    private void jToggleButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton6ActionPerformed
+    private void btn50000DongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn50000DongActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton6ActionPerformed
+    }//GEN-LAST:event_btn50000DongActionPerformed
 
     private void btnNapTienMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNapTienMouseEntered
         btnNapTien.setBackground(new Color(240, 204, 51));
@@ -211,6 +230,28 @@ public class NapTien extends javax.swing.JFrame {
     private void btnNapTienMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNapTienMouseExited
         btnNapTien.setBackground(new Color(255, 204, 51));
     }//GEN-LAST:event_btnNapTienMouseExited
+
+    //Event khi click chuột vào button 10.000 đồng.
+    private void btn10000DongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn10000DongMouseClicked
+        // TODO add your handling code here:
+        txtfldNapTien.setText("10000");
+    }//GEN-LAST:event_btn10000DongMouseClicked
+
+    //Event khi click chuột vào button 20.000 đồng.
+    private void btn20000DongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn20000DongMouseClicked
+        // TODO add your handling code here:
+        txtfldNapTien.setText("20000");
+    }//GEN-LAST:event_btn20000DongMouseClicked
+    //Event khi click chuột vào button 50.000 đồng.
+    private void btn50000DongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn50000DongMouseClicked
+        // TODO add your handling code here:
+        txtfldNapTien.setText("50000");
+    }//GEN-LAST:event_btn50000DongMouseClicked
+    //Event khi click chuột vào button 100.000 đồng.
+    private void btn100000DongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn100000DongMouseClicked
+        // TODO add your handling code here:
+        txtfldNapTien.setText("100000");
+    }//GEN-LAST:event_btn100000DongMouseClicked
 
     /**
      * @param args the command line arguments
@@ -252,20 +293,20 @@ public class NapTien extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton btn100000Dong;
+    private javax.swing.JToggleButton btn10000Dong;
+    private javax.swing.JToggleButton btn20000Dong;
+    private javax.swing.JToggleButton btn50000Dong;
     private javax.swing.JButton btnNapTien;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JToggleButton jToggleButton3;
-    private javax.swing.JToggleButton jToggleButton4;
-    private javax.swing.JToggleButton jToggleButton5;
-    private javax.swing.JToggleButton jToggleButton6;
     private javax.swing.JTextField txtfldNapTien;
     // End of variables declaration//GEN-END:variables
 
     private void setIconImage() {
-                setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/parking.png")));
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/parking.png")));
     }
 }

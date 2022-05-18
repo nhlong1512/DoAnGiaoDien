@@ -341,8 +341,6 @@ public class login extends javax.swing.JFrame {
 
     private void txtusernameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtusernameKeyTyped
         // TODO add your handling code here:
-
-
     }//GEN-LAST:event_txtusernameKeyTyped
 
     private void txtusernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtusernameActionPerformed
