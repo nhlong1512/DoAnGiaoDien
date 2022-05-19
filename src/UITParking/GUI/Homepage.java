@@ -75,7 +75,7 @@ public class Homepage extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        btnMuaVe = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         panelRound1 = new Admin.PanelRound();
@@ -290,11 +290,16 @@ public class Homepage extends javax.swing.JFrame {
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/imgonline-com-ua-resize-Cn699lQCuK0zb.png"))); // NOI18N
 
-        jButton3.setFont(new java.awt.Font("Cooper", 1, 14)); // NOI18N
-        jButton3.setText("Mua vé");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnMuaVe.setFont(new java.awt.Font("Cooper", 1, 14)); // NOI18N
+        btnMuaVe.setText("Mua vé");
+        btnMuaVe.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMuaVeMouseClicked(evt);
+            }
+        });
+        btnMuaVe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnMuaVeActionPerformed(evt);
             }
         });
 
@@ -305,7 +310,7 @@ public class Homepage extends javax.swing.JFrame {
             .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap(58, Short.MAX_VALUE)
-                .addComponent(jButton3)
+                .addComponent(btnMuaVe)
                 .addGap(52, 52, 52))
         );
         jPanel5Layout.setVerticalGroup(
@@ -313,7 +318,7 @@ public class Homepage extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnMuaVe, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
@@ -366,9 +371,9 @@ public class Homepage extends javax.swing.JFrame {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/parking.png")));
     }
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnMuaVeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMuaVeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnMuaVeActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
@@ -398,6 +403,12 @@ public class Homepage extends javax.swing.JFrame {
         _napTien.show();
         dispose();
     }//GEN-LAST:event_btnNapTienMouseClicked
+
+    
+    //Event click vào button mua vé.
+    private void btnMuaVeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMuaVeMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMuaVeMouseClicked
 
     /**
      * @param args the command line arguments
@@ -459,10 +470,10 @@ public class Homepage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogout;
+    private javax.swing.JButton btnMuaVe;
     private javax.swing.JButton btnNapTien;
     private javax.swing.JPanel dashboardview;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
