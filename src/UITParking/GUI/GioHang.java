@@ -14,6 +14,7 @@ import static UITParking.GUI.NapTien.tempTien;
 import static UITParking.GUI.login.pMaND;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -40,7 +41,7 @@ public class GioHang extends javax.swing.JFrame {
         //Render giao diện giỏ hàng 
         renderGiaoDienGioHang();
         //Set số lượng ban đầu khi chọn mua vé
-        setSLVe();
+        setSLVeText();
         //Set tổng tiền dựa vào số lượng vé và đơn giá vé
         setTongTienThanhToan();
 
@@ -72,11 +73,27 @@ public class GioHang extends javax.swing.JFrame {
     }
 
     //Hàm set số lượng ban đầu khi chọn mua vé
-    public void setSLVe() {
+    public void setSLVeText() {
         txtSLVe2000Dong.setText(String.valueOf(slVe2000Dong));
         txtSLVe3000Dong.setText(String.valueOf(slVe3000Dong));
         txtSLVe25000Dong.setText(String.valueOf(slVe25000Dong));
         txtSLVe95000Dong.setText(String.valueOf(slVe95000Dong));
+    }
+
+    //Hàm set số lượng vé về 0.
+    public void setSLVe0() {
+        slVe2000Dong = 0;
+        slVe25000Dong = 0;
+        slVe3000Dong = 0;
+        slVe95000Dong = 0;
+    }
+
+    //Hàm xóa các loại vé có trong giao diện
+    public void xoaSLVe() {
+        panelChiTietVe2000Dong.setVisible(false);
+        panelChiTietVe25000Dong.setVisible(false);
+        panelChiTietVe3000Dong.setVisible(false);
+        panelChiTietVe95000Dong.setVisible(false);
     }
 
     //Hàm tính tổng tiền thanh toán
@@ -87,7 +104,6 @@ public class GioHang extends javax.swing.JFrame {
                 + slVe95000Dong * 95000;
         txtTongTienThanhToan.setText(String.valueOf(pTongTienThanhToan) + "đ");
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -645,21 +661,35 @@ public class GioHang extends javax.swing.JFrame {
     //Event click button thanh toán giỏ hàng
     private void btnThanhToanGioHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThanhToanGioHangMouseClicked
         // TODO add your handling code here:
-        System.out.println("Tong tien thanh toan: " + pTongTienThanhToan);        
+        System.out.println("Tong tien thanh toan: " + pTongTienThanhToan);
         System.out.println("Tong tien trong vi nguoi dung: " + tempTienGioHang);
-        if(pTongTienThanhToan <= tempTienGioHang){
-            
+        //Nếu tiền thanh toán bé hơn hoặc bằng số tiền mà người dùng có thì cho phép thanh toán
+        if (pTongTienThanhToan <= tempTienGioHang) {
+
             tempTienGioHang = tempTienGioHang - pTongTienThanhToan;
             pTongTienThanhToan = 0;
-            System.out.println("Tong tien thanh toan con lai: "+ pTongTienThanhToan);
+            System.out.println("Tong tien thanh toan con lai: " + pTongTienThanhToan);
             System.out.println("Temp Tien Gio Hang con lai: " + tempTienGioHang);
             System.out.println("Thanh toan thanh cong");
             kh.setLongSoDu(tempTienGioHang);
             try {
+                //Cập nhật dữ liệu
                 khachhangtbl.sua(kh);
+                //Hiện ra thông báo thanh toán thành công.
+                JOptionPane.showMessageDialog(null, "Thanh toán thành công, "
+                        + "số dư còn lại của bạn là: " + kh.getLongSoDu() + "đ");
+                //Cập nhật lại tổng tiền thanh toán về 0.
+                txtTongTienThanhToan.setText(String.valueOf(pTongTienThanhToan) + "đ");
+                //Xóa các loại vé trong giỏ hàng.
+                xoaSLVe();
+                //Set số lượng các loại vé về 0
+                setSLVe0();
             } catch (Exception ex) {
                 Logger.getLogger(GioHang.class.getName()).log(Level.SEVERE, null, ex);
             }
+        } else {//Ngược lại thì thông báo cho người dùng việc thanh toán thất bại.
+            JOptionPane.showMessageDialog(null, "Số dư của khách hàng là: " + kh.getLongSoDu()
+                    + "đ, không đủ để thanh toán. Vui lòng nạp tiền thêm!!!");
         }
 
     }//GEN-LAST:event_btnThanhToanGioHangMouseClicked
