@@ -94,7 +94,7 @@ public class GioHang extends javax.swing.JFrame {
         panelThanhToan = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         txtTongTienThanhToan = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
+        btnThanhToanGioHang = new javax.swing.JButton();
         panelChiTietVe2000Dong = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -200,7 +200,12 @@ public class GioHang extends javax.swing.JFrame {
 
         txtTongTienThanhToan.setText("0 đ");
 
-        jButton5.setText("Thanh Toán");
+        btnThanhToanGioHang.setText("Thanh Toán");
+        btnThanhToanGioHang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnThanhToanGioHangMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelThanhToanLayout = new javax.swing.GroupLayout(panelThanhToan);
         panelThanhToan.setLayout(panelThanhToanLayout);
@@ -214,7 +219,7 @@ public class GioHang extends javax.swing.JFrame {
                 .addGap(20, 20, 20))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelThanhToanLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnThanhToanGioHang, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(72, 72, 72))
         );
         panelThanhToanLayout.setVerticalGroup(
@@ -225,7 +230,7 @@ public class GioHang extends javax.swing.JFrame {
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtTongTienThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnThanhToanGioHang, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -622,6 +627,11 @@ public class GioHang extends javax.swing.JFrame {
         setTongTienThanhToan();
     }//GEN-LAST:event_btnXoaVe95000DongMouseClicked
 
+    //Event click button thanh toán giỏ hàng
+    private void btnThanhToanGioHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThanhToanGioHangMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnThanhToanGioHangMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -663,6 +673,7 @@ public class GioHang extends javax.swing.JFrame {
     private javax.swing.JButton btnCongSLVe25000Dong;
     private javax.swing.JButton btnCongSLVe3000Dong;
     private javax.swing.JButton btnCongSLVe95000Dong;
+    private javax.swing.JButton btnThanhToanGioHang;
     private javax.swing.JButton btnTruSLVe2000Dong;
     private javax.swing.JButton btnTruSLVe25000Dong;
     private javax.swing.JButton btnTruSLVe3000Dong;
@@ -671,7 +682,6 @@ public class GioHang extends javax.swing.JFrame {
     private javax.swing.JButton btnXoaVe25000Dong;
     private javax.swing.JButton btnXoaVe3000Dong;
     private javax.swing.JButton btnXoaVe95000Dong;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

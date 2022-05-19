@@ -4,6 +4,9 @@
  */
 package UITParking.GUI;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author ADMIN
@@ -223,6 +226,11 @@ public class MuaVe extends javax.swing.JFrame {
         );
 
         btnBackMuaVe.setText("Back");
+        btnBackMuaVe.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBackMuaVeMouseClicked(evt);
+            }
+        });
 
         btnXemGioHang.setText("Xem giỏ hàng >>");
         btnXemGioHang.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -320,6 +328,19 @@ public class MuaVe extends javax.swing.JFrame {
         _gioHang.show();
         dispose();
     }//GEN-LAST:event_btnXemGioHangMouseClicked
+
+    //Event click button Back trong giao diện mua vé
+    private void btnBackMuaVeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBackMuaVeMouseClicked
+        // TODO add your handling code here:
+        Homepage _homepage = null;
+        try {
+            _homepage = new Homepage();
+        } catch (Exception ex) {
+            Logger.getLogger(MuaVe.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        _homepage.show();
+        dispose();
+    }//GEN-LAST:event_btnBackMuaVeMouseClicked
 
     /**
      * @param args the command line arguments

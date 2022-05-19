@@ -198,7 +198,7 @@
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="jButton5" min="-2" pref="152" max="-2" attributes="0"/>
+                  <Component id="btnThanhToanGioHang" min="-2" pref="152" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -212,7 +212,7 @@
                       <Component id="txtTongTienThanhToan" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="14" max="32767" attributes="0"/>
-                  <Component id="jButton5" min="-2" pref="32" max="-2" attributes="0"/>
+                  <Component id="btnThanhToanGioHang" min="-2" pref="32" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -229,10 +229,13 @@
             <Property name="text" type="java.lang.String" value="0 &#x111;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton5">
+        <Component class="javax.swing.JButton" name="btnThanhToanGioHang">
           <Properties>
             <Property name="text" type="java.lang.String" value="Thanh To&#xe1;n"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnThanhToanGioHangMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

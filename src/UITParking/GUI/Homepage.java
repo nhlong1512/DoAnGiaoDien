@@ -408,6 +408,9 @@ public class Homepage extends javax.swing.JFrame {
     //Event click vào button mua vé.
     private void btnMuaVeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMuaVeMouseClicked
         // TODO add your handling code here:
+        MuaVe _muaVe = new MuaVe();
+        _muaVe.show();
+        dispose();
     }//GEN-LAST:event_btnMuaVeMouseClicked
 
     /**
