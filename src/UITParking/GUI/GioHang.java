@@ -4,10 +4,16 @@
  */
 package UITParking.GUI;
 
+import UITParking.BUS.KhachHangBUS;
+import UITParking.DTO.KhachHangDTO;
 import static UITParking.GUI.MuaVe.slVe3000Dong;
 import static UITParking.GUI.MuaVe.slVe2000Dong;
 import static UITParking.GUI.MuaVe.slVe25000Dong;
 import static UITParking.GUI.MuaVe.slVe95000Dong;
+import static UITParking.GUI.NapTien.tempTien;
+import static UITParking.GUI.login.pMaND;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -19,10 +25,18 @@ public class GioHang extends javax.swing.JFrame {
      * Creates new form GioHang
      */
     public static int pTongTienThanhToan = 0;
+    public static long tempTienGioHang = 0;
+    KhachHangBUS khachhangtbl = new KhachHangBUS();
+    KhachHangDTO kh = khachhangtbl.getInfor(pMaND);
 
-    public GioHang() {
+    public GioHang() throws Exception {
         initComponents();
-        
+
+        KhachHangBUS khachhangtbl = new KhachHangBUS();
+        KhachHangDTO kh = khachhangtbl.getInfor(pMaND);
+        tempTienGioHang = kh.getLongSoDu();
+        System.out.println("So tien" + tempTienGioHang);
+
         //Render giao diện giỏ hàng 
         renderGiaoDienGioHang();
         //Set số lượng ban đầu khi chọn mua vé
@@ -31,9 +45,9 @@ public class GioHang extends javax.swing.JFrame {
         setTongTienThanhToan();
 
     }
-    
+
     //Hàm render giao diện giỏ hàng dựa vào số lượng vé của từng loại
-    public void renderGiaoDienGioHang(){
+    public void renderGiaoDienGioHang() {
         if (slVe2000Dong <= 0 && slVe3000Dong <= 0
                 && slVe25000Dong <= 0 && slVe95000Dong <= 0) {
 //            empty.setVisible(true);
@@ -56,9 +70,9 @@ public class GioHang extends javax.swing.JFrame {
             panelChiTietVe95000Dong.setVisible(false);
         }
     }
-    
+
     //Hàm set số lượng ban đầu khi chọn mua vé
-    public void setSLVe(){
+    public void setSLVe() {
         txtSLVe2000Dong.setText(String.valueOf(slVe2000Dong));
         txtSLVe3000Dong.setText(String.valueOf(slVe3000Dong));
         txtSLVe25000Dong.setText(String.valueOf(slVe25000Dong));
@@ -73,6 +87,7 @@ public class GioHang extends javax.swing.JFrame {
                 + slVe95000Dong * 95000;
         txtTongTienThanhToan.setText(String.valueOf(pTongTienThanhToan) + "đ");
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -630,6 +645,23 @@ public class GioHang extends javax.swing.JFrame {
     //Event click button thanh toán giỏ hàng
     private void btnThanhToanGioHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThanhToanGioHangMouseClicked
         // TODO add your handling code here:
+        System.out.println("Tong tien thanh toan: " + pTongTienThanhToan);        
+        System.out.println("Tong tien trong vi nguoi dung: " + tempTienGioHang);
+        if(pTongTienThanhToan <= tempTienGioHang){
+            
+            tempTienGioHang = tempTienGioHang - pTongTienThanhToan;
+            pTongTienThanhToan = 0;
+            System.out.println("Tong tien thanh toan con lai: "+ pTongTienThanhToan);
+            System.out.println("Temp Tien Gio Hang con lai: " + tempTienGioHang);
+            System.out.println("Thanh toan thanh cong");
+            kh.setLongSoDu(tempTienGioHang);
+            try {
+                khachhangtbl.sua(kh);
+            } catch (Exception ex) {
+                Logger.getLogger(GioHang.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
     }//GEN-LAST:event_btnThanhToanGioHangMouseClicked
 
     /**
@@ -662,7 +694,11 @@ public class GioHang extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GioHang().setVisible(true);
+                try {
+                    new GioHang().setVisible(true);
+                } catch (Exception ex) {
+                    Logger.getLogger(GioHang.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

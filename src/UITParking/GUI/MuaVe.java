@@ -324,7 +324,12 @@ public class MuaVe extends javax.swing.JFrame {
     //Event click button Xem giỏ hàng
     private void btnXemGioHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXemGioHangMouseClicked
         // TODO add your handling code here:
-        GioHang _gioHang = new GioHang();
+        GioHang _gioHang = null;
+        try {
+            _gioHang = new GioHang();
+        } catch (Exception ex) {
+            Logger.getLogger(MuaVe.class.getName()).log(Level.SEVERE, null, ex);
+        }
         _gioHang.show();
         dispose();
     }//GEN-LAST:event_btnXemGioHangMouseClicked
