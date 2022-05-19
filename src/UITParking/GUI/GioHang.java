@@ -18,14 +18,30 @@ public class GioHang extends javax.swing.JFrame {
     /**
      * Creates new form GioHang
      */
+    public static int pTongTienThanhToan = 0;
+
     public GioHang() {
         initComponents();
-//        panelTitle.setVisible(false);
+        
+        //Render giao diện giỏ hàng 
+        renderGiaoDienGioHang();
+        //Set số lượng ban đầu khi chọn mua vé
+        setSLVe();
+        //Set tổng tiền dựa vào số lượng vé và đơn giá vé
+        setTongTienThanhToan();
+
+    }
+    
+    //Hàm render giao diện giỏ hàng dựa vào số lượng vé của từng loại
+    public void renderGiaoDienGioHang(){
         if (slVe2000Dong <= 0 && slVe3000Dong <= 0
                 && slVe25000Dong <= 0 && slVe95000Dong <= 0) {
-//            panelChiTietVe3000Dong.setVisible(false);
+//            empty.setVisible(true);
+//            panelTitle.setVisible(false);
 //            panelThanhToan.setVisible(false);
-              
+
+        } else {
+//            empty.setVisible(false);
         }
         if (slVe2000Dong <= 0) {
             panelChiTietVe2000Dong.setVisible(false);
@@ -39,11 +55,23 @@ public class GioHang extends javax.swing.JFrame {
         if (slVe95000Dong <= 0) {
             panelChiTietVe95000Dong.setVisible(false);
         }
+    }
+    
+    //Hàm set số lượng ban đầu khi chọn mua vé
+    public void setSLVe(){
         txtSLVe2000Dong.setText(String.valueOf(slVe2000Dong));
         txtSLVe3000Dong.setText(String.valueOf(slVe3000Dong));
         txtSLVe25000Dong.setText(String.valueOf(slVe25000Dong));
         txtSLVe95000Dong.setText(String.valueOf(slVe95000Dong));
+    }
 
+    //Hàm tính tổng tiền thanh toán
+    public void setTongTienThanhToan() {
+        pTongTienThanhToan = slVe2000Dong * 2000
+                + slVe3000Dong * 3000
+                + slVe25000Dong * 25000
+                + slVe95000Dong * 95000;
+        txtTongTienThanhToan.setText(String.valueOf(pTongTienThanhToan) + "đ");
     }
 
     /**
@@ -60,34 +88,34 @@ public class GioHang extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtSLVe3000Dong = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnTruSLVe3000Dong = new javax.swing.JButton();
+        btnCongSLVe3000Dong = new javax.swing.JButton();
+        btnXoaVe3000Dong = new javax.swing.JButton();
         panelThanhToan = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        txtTongTienThanhToan = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         panelChiTietVe2000Dong = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         txtSLVe2000Dong = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+        btnTruSLVe2000Dong = new javax.swing.JButton();
+        btnCongSLVe2000Dong = new javax.swing.JButton();
+        btnXoaVe2000Dong = new javax.swing.JButton();
         panelChiTietVe25000Dong = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         txtSLVe25000Dong = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
+        btnTruSLVe25000Dong = new javax.swing.JButton();
+        btnCongSLVe25000Dong = new javax.swing.JButton();
+        btnXoaVe25000Dong = new javax.swing.JButton();
         panelChiTietVe95000Dong = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         txtSLVe95000Dong = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
-        jButton16 = new javax.swing.JButton();
-        jButton17 = new javax.swing.JButton();
+        btnTruSLVe95000Dong = new javax.swing.JButton();
+        btnCongSLVe95000Dong = new javax.swing.JButton();
+        btnXoaVe95000Dong = new javax.swing.JButton();
         panelTitle = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -108,11 +136,26 @@ public class GioHang extends javax.swing.JFrame {
 
         txtSLVe3000Dong.setText("SL Vé");
 
-        jButton2.setText("-");
+        btnTruSLVe3000Dong.setText("-");
+        btnTruSLVe3000Dong.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnTruSLVe3000DongMouseClicked(evt);
+            }
+        });
 
-        jButton3.setText("+");
+        btnCongSLVe3000Dong.setText("+");
+        btnCongSLVe3000Dong.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCongSLVe3000DongMouseClicked(evt);
+            }
+        });
 
-        jButton4.setText("Xóa");
+        btnXoaVe3000Dong.setText("Xóa");
+        btnXoaVe3000Dong.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnXoaVe3000DongMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelChiTietVe3000DongLayout = new javax.swing.GroupLayout(panelChiTietVe3000Dong);
         panelChiTietVe3000Dong.setLayout(panelChiTietVe3000DongLayout);
@@ -126,13 +169,13 @@ public class GioHang extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelChiTietVe3000DongLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(btnTruSLVe3000Dong)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtSLVe3000Dong)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
+                .addComponent(btnCongSLVe3000Dong)
                 .addGap(15, 15, 15)
-                .addComponent(jButton4)
+                .addComponent(btnXoaVe3000Dong)
                 .addContainerGap())
         );
         panelChiTietVe3000DongLayout.setVerticalGroup(
@@ -143,9 +186,9 @@ public class GioHang extends javax.swing.JFrame {
                 .addGap(13, 13, 13)
                 .addGroup(panelChiTietVe3000DongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtSLVe3000Dong)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(btnTruSLVe3000Dong)
+                    .addComponent(btnCongSLVe3000Dong)
+                    .addComponent(btnXoaVe3000Dong))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -155,7 +198,7 @@ public class GioHang extends javax.swing.JFrame {
 
         jLabel4.setText("Thành Tiền");
 
-        jLabel5.setText("0 đ");
+        txtTongTienThanhToan.setText("0 đ");
 
         jButton5.setText("Thanh Toán");
 
@@ -167,7 +210,7 @@ public class GioHang extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTongTienThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelThanhToanLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -180,7 +223,7 @@ public class GioHang extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(panelThanhToanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTongTienThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -194,11 +237,26 @@ public class GioHang extends javax.swing.JFrame {
 
         txtSLVe2000Dong.setText("SL Vé");
 
-        jButton7.setText("-");
+        btnTruSLVe2000Dong.setText("-");
+        btnTruSLVe2000Dong.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnTruSLVe2000DongMouseClicked(evt);
+            }
+        });
 
-        jButton8.setText("+");
+        btnCongSLVe2000Dong.setText("+");
+        btnCongSLVe2000Dong.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCongSLVe2000DongMouseClicked(evt);
+            }
+        });
 
-        jButton9.setText("Xóa");
+        btnXoaVe2000Dong.setText("Xóa");
+        btnXoaVe2000Dong.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnXoaVe2000DongMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelChiTietVe2000DongLayout = new javax.swing.GroupLayout(panelChiTietVe2000Dong);
         panelChiTietVe2000Dong.setLayout(panelChiTietVe2000DongLayout);
@@ -212,13 +270,13 @@ public class GioHang extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelChiTietVe2000DongLayout.createSequentialGroup()
                 .addContainerGap(257, Short.MAX_VALUE)
-                .addComponent(jButton7)
+                .addComponent(btnTruSLVe2000Dong)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtSLVe2000Dong)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton8)
+                .addComponent(btnCongSLVe2000Dong)
                 .addGap(15, 15, 15)
-                .addComponent(jButton9)
+                .addComponent(btnXoaVe2000Dong)
                 .addContainerGap())
         );
         panelChiTietVe2000DongLayout.setVerticalGroup(
@@ -229,9 +287,9 @@ public class GioHang extends javax.swing.JFrame {
                 .addGap(13, 13, 13)
                 .addGroup(panelChiTietVe2000DongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtSLVe2000Dong)
-                    .addComponent(jButton7)
-                    .addComponent(jButton8)
-                    .addComponent(jButton9))
+                    .addComponent(btnTruSLVe2000Dong)
+                    .addComponent(btnCongSLVe2000Dong)
+                    .addComponent(btnXoaVe2000Dong))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -245,11 +303,26 @@ public class GioHang extends javax.swing.JFrame {
 
         txtSLVe25000Dong.setText("SL Vé");
 
-        jButton11.setText("-");
+        btnTruSLVe25000Dong.setText("-");
+        btnTruSLVe25000Dong.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnTruSLVe25000DongMouseClicked(evt);
+            }
+        });
 
-        jButton12.setText("+");
+        btnCongSLVe25000Dong.setText("+");
+        btnCongSLVe25000Dong.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCongSLVe25000DongMouseClicked(evt);
+            }
+        });
 
-        jButton13.setText("Xóa");
+        btnXoaVe25000Dong.setText("Xóa");
+        btnXoaVe25000Dong.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnXoaVe25000DongMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelChiTietVe25000DongLayout = new javax.swing.GroupLayout(panelChiTietVe25000Dong);
         panelChiTietVe25000Dong.setLayout(panelChiTietVe25000DongLayout);
@@ -263,13 +336,13 @@ public class GioHang extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelChiTietVe25000DongLayout.createSequentialGroup()
                 .addContainerGap(257, Short.MAX_VALUE)
-                .addComponent(jButton11)
+                .addComponent(btnTruSLVe25000Dong)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtSLVe25000Dong)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton12)
+                .addComponent(btnCongSLVe25000Dong)
                 .addGap(15, 15, 15)
-                .addComponent(jButton13)
+                .addComponent(btnXoaVe25000Dong)
                 .addContainerGap())
         );
         panelChiTietVe25000DongLayout.setVerticalGroup(
@@ -280,9 +353,9 @@ public class GioHang extends javax.swing.JFrame {
                 .addGap(13, 13, 13)
                 .addGroup(panelChiTietVe25000DongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtSLVe25000Dong)
-                    .addComponent(jButton11)
-                    .addComponent(jButton12)
-                    .addComponent(jButton13))
+                    .addComponent(btnTruSLVe25000Dong)
+                    .addComponent(btnCongSLVe25000Dong)
+                    .addComponent(btnXoaVe25000Dong))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -296,11 +369,26 @@ public class GioHang extends javax.swing.JFrame {
 
         txtSLVe95000Dong.setText("SL Vé");
 
-        jButton15.setText("-");
+        btnTruSLVe95000Dong.setText("-");
+        btnTruSLVe95000Dong.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnTruSLVe95000DongMouseClicked(evt);
+            }
+        });
 
-        jButton16.setText("+");
+        btnCongSLVe95000Dong.setText("+");
+        btnCongSLVe95000Dong.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCongSLVe95000DongMouseClicked(evt);
+            }
+        });
 
-        jButton17.setText("Xóa");
+        btnXoaVe95000Dong.setText("Xóa");
+        btnXoaVe95000Dong.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnXoaVe95000DongMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelChiTietVe95000DongLayout = new javax.swing.GroupLayout(panelChiTietVe95000Dong);
         panelChiTietVe95000Dong.setLayout(panelChiTietVe95000DongLayout);
@@ -314,13 +402,13 @@ public class GioHang extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelChiTietVe95000DongLayout.createSequentialGroup()
                 .addContainerGap(257, Short.MAX_VALUE)
-                .addComponent(jButton15)
+                .addComponent(btnTruSLVe95000Dong)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtSLVe95000Dong)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton16)
+                .addComponent(btnCongSLVe95000Dong)
                 .addGap(15, 15, 15)
-                .addComponent(jButton17)
+                .addComponent(btnXoaVe95000Dong)
                 .addContainerGap())
         );
         panelChiTietVe95000DongLayout.setVerticalGroup(
@@ -331,9 +419,9 @@ public class GioHang extends javax.swing.JFrame {
                 .addGap(13, 13, 13)
                 .addGroup(panelChiTietVe95000DongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtSLVe95000Dong)
-                    .addComponent(jButton15)
-                    .addComponent(jButton16)
-                    .addComponent(jButton17))
+                    .addComponent(btnTruSLVe95000Dong)
+                    .addComponent(btnCongSLVe95000Dong)
+                    .addComponent(btnXoaVe95000Dong))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -427,6 +515,113 @@ public class GioHang extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnBackGioHangMouseClicked
 
+    //Evenet click button cộng số lượng vé cho vé 3000 đồng
+    private void btnCongSLVe3000DongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCongSLVe3000DongMouseClicked
+        // TODO add your handling code here:
+        slVe3000Dong = slVe3000Dong + 1;
+        txtSLVe3000Dong.setText(String.valueOf(slVe3000Dong));
+        setTongTienThanhToan();
+    }//GEN-LAST:event_btnCongSLVe3000DongMouseClicked
+
+    //Evenet click button trừ số lượng vé cho vé 3000 đồng
+    //Nếu số lượng vé là 1 thì phương thức này sẽ không được thực hiện
+    private void btnTruSLVe3000DongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTruSLVe3000DongMouseClicked
+        // TODO add your handling code here:
+        if (slVe3000Dong > 1) {
+            slVe3000Dong = slVe3000Dong - 1;
+            txtSLVe3000Dong.setText(String.valueOf(slVe3000Dong));
+            setTongTienThanhToan();
+        }
+    }//GEN-LAST:event_btnTruSLVe3000DongMouseClicked
+
+    //Event click button xóa loại vé 3000 đồng ra khỏi giỏ hàng
+    private void btnXoaVe3000DongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXoaVe3000DongMouseClicked
+        // TODO add your handling code here:
+        panelChiTietVe3000Dong.setVisible(false);
+        slVe3000Dong = 0;
+        setTongTienThanhToan();
+    }//GEN-LAST:event_btnXoaVe3000DongMouseClicked
+
+    //Evenet click button cộng số lượng vé cho vé 2000 đồng
+    private void btnCongSLVe2000DongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCongSLVe2000DongMouseClicked
+        // TODO add your handling code here:
+        slVe2000Dong = slVe2000Dong + 1;
+        txtSLVe2000Dong.setText(String.valueOf(slVe2000Dong));
+        setTongTienThanhToan();
+    }//GEN-LAST:event_btnCongSLVe2000DongMouseClicked
+
+    //Evenet click button trừ số lượng vé cho vé 2000 đồng
+    //Nếu số lượng vé là 1 thì phương thức này sẽ không được thực hiện
+    private void btnTruSLVe2000DongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTruSLVe2000DongMouseClicked
+        if (slVe2000Dong > 1) {
+            slVe2000Dong = slVe2000Dong - 1;
+            txtSLVe2000Dong.setText(String.valueOf(slVe2000Dong));
+            setTongTienThanhToan();
+        }
+    }//GEN-LAST:event_btnTruSLVe2000DongMouseClicked
+
+    //Event click button xóa loại vé 2000 đồng ra khỏi giỏ hàng
+    private void btnXoaVe2000DongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXoaVe2000DongMouseClicked
+        // TODO add your handling code here:
+        panelChiTietVe2000Dong.setVisible(false);
+        slVe2000Dong = 0;
+        setTongTienThanhToan();
+    }//GEN-LAST:event_btnXoaVe2000DongMouseClicked
+
+    //Evenet click button cộng số lượng vé cho vé 25000 đồng
+    private void btnCongSLVe25000DongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCongSLVe25000DongMouseClicked
+        // TODO add your handling code here:
+        slVe25000Dong = slVe25000Dong + 1;
+        txtSLVe25000Dong.setText(String.valueOf(slVe25000Dong));
+        setTongTienThanhToan();
+    }//GEN-LAST:event_btnCongSLVe25000DongMouseClicked
+
+    //Evenet click button trừ số lượng vé cho vé 25000 đồng
+    //Nếu số lượng vé là 1 thì phương thức này sẽ không được thực hiện
+    private void btnTruSLVe25000DongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTruSLVe25000DongMouseClicked
+        // TODO add your handling code here:
+        if (slVe25000Dong > 1) {
+            slVe25000Dong = slVe25000Dong - 1;
+            txtSLVe25000Dong.setText(String.valueOf(slVe25000Dong));
+            setTongTienThanhToan();
+        }
+    }//GEN-LAST:event_btnTruSLVe25000DongMouseClicked
+
+    //Event click button xóa loại vé 25000 đồng ra khỏi giỏ hàng
+    private void btnXoaVe25000DongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXoaVe25000DongMouseClicked
+        // TODO add your handling code here:
+        panelChiTietVe25000Dong.setVisible(false);
+        slVe25000Dong = 0;
+        setTongTienThanhToan();
+    }//GEN-LAST:event_btnXoaVe25000DongMouseClicked
+
+    //Evenet click button cộng số lượng vé cho vé 95000 đồng
+    private void btnCongSLVe95000DongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCongSLVe95000DongMouseClicked
+        // TODO add your handling code here:
+        slVe95000Dong = slVe95000Dong + 1;
+        txtSLVe95000Dong.setText(String.valueOf(slVe95000Dong));
+        setTongTienThanhToan();
+    }//GEN-LAST:event_btnCongSLVe95000DongMouseClicked
+
+    //Evenet click button trừ số lượng vé cho vé 95000 đồng
+    //Nếu số lượng vé là 1 thì phương thức này sẽ không được thực hiện
+    private void btnTruSLVe95000DongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTruSLVe95000DongMouseClicked
+        // TODO add your handling code here:
+        if (slVe95000Dong > 1) {
+            slVe95000Dong = slVe95000Dong - 1;
+            txtSLVe95000Dong.setText(String.valueOf(slVe95000Dong));
+            setTongTienThanhToan();
+        }
+    }//GEN-LAST:event_btnTruSLVe95000DongMouseClicked
+
+    //Event click button xóa loại vé 95000 đồng ra khỏi giỏ hàng
+    private void btnXoaVe95000DongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXoaVe95000DongMouseClicked
+        // TODO add your handling code here:
+        panelChiTietVe95000Dong.setVisible(false);
+        slVe95000Dong = 0;
+        setTongTienThanhToan();
+    }//GEN-LAST:event_btnXoaVe95000DongMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -464,19 +659,19 @@ public class GioHang extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBackGioHang;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton16;
-    private javax.swing.JButton jButton17;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btnCongSLVe2000Dong;
+    private javax.swing.JButton btnCongSLVe25000Dong;
+    private javax.swing.JButton btnCongSLVe3000Dong;
+    private javax.swing.JButton btnCongSLVe95000Dong;
+    private javax.swing.JButton btnTruSLVe2000Dong;
+    private javax.swing.JButton btnTruSLVe25000Dong;
+    private javax.swing.JButton btnTruSLVe3000Dong;
+    private javax.swing.JButton btnTruSLVe95000Dong;
+    private javax.swing.JButton btnXoaVe2000Dong;
+    private javax.swing.JButton btnXoaVe25000Dong;
+    private javax.swing.JButton btnXoaVe3000Dong;
+    private javax.swing.JButton btnXoaVe95000Dong;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -485,7 +680,6 @@ public class GioHang extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -500,5 +694,6 @@ public class GioHang extends javax.swing.JFrame {
     private javax.swing.JButton txtSLVe25000Dong;
     private javax.swing.JButton txtSLVe3000Dong;
     private javax.swing.JButton txtSLVe95000Dong;
+    private javax.swing.JLabel txtTongTienThanhToan;
     // End of variables declaration//GEN-END:variables
 }

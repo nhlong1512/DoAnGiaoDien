@@ -105,13 +105,13 @@
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnTruSLVe3000Dong" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="txtSLVe3000Dong" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnCongSLVe3000Dong" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                  <Component id="jButton4" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnXoaVe3000Dong" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -124,9 +124,9 @@
                   <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="txtSLVe3000Dong" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnTruSLVe3000Dong" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnCongSLVe3000Dong" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnXoaVe3000Dong" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="16" max="32767" attributes="0"/>
                   <Component id="jLabel3" min="-2" pref="21" max="-2" attributes="0"/>
@@ -151,20 +151,29 @@
             <Property name="text" type="java.lang.String" value="SL V&#xe9;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
+        <Component class="javax.swing.JButton" name="btnTruSLVe3000Dong">
           <Properties>
             <Property name="text" type="java.lang.String" value="-"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnTruSLVe3000DongMouseClicked"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton3">
+        <Component class="javax.swing.JButton" name="btnCongSLVe3000Dong">
           <Properties>
             <Property name="text" type="java.lang.String" value="+"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnCongSLVe3000DongMouseClicked"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton4">
+        <Component class="javax.swing.JButton" name="btnXoaVe3000Dong">
           <Properties>
             <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnXoaVe3000DongMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -184,7 +193,7 @@
                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                   <Component id="jLabel4" min="-2" pref="99" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="jLabel5" min="-2" pref="52" max="-2" attributes="0"/>
+                  <Component id="txtTongTienThanhToan" min="-2" pref="52" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
@@ -200,7 +209,7 @@
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel4" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                      <Component id="jLabel5" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                      <Component id="txtTongTienThanhToan" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="14" max="32767" attributes="0"/>
                   <Component id="jButton5" min="-2" pref="32" max="-2" attributes="0"/>
@@ -215,7 +224,7 @@
             <Property name="text" type="java.lang.String" value="Th&#xe0;nh Ti&#x1ec1;n"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel5">
+        <Component class="javax.swing.JLabel" name="txtTongTienThanhToan">
           <Properties>
             <Property name="text" type="java.lang.String" value="0 &#x111;"/>
           </Properties>
@@ -249,13 +258,13 @@
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace pref="257" max="32767" attributes="0"/>
-                  <Component id="jButton7" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnTruSLVe2000Dong" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="txtSLVe2000Dong" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jButton8" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnCongSLVe2000Dong" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                  <Component id="jButton9" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnXoaVe2000Dong" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -268,9 +277,9 @@
                   <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="txtSLVe2000Dong" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton7" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton8" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton9" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnTruSLVe2000Dong" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnCongSLVe2000Dong" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnXoaVe2000Dong" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="16" max="32767" attributes="0"/>
                   <Component id="jLabel7" min="-2" pref="21" max="-2" attributes="0"/>
@@ -295,20 +304,29 @@
             <Property name="text" type="java.lang.String" value="SL V&#xe9;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton7">
+        <Component class="javax.swing.JButton" name="btnTruSLVe2000Dong">
           <Properties>
             <Property name="text" type="java.lang.String" value="-"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnTruSLVe2000DongMouseClicked"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton8">
+        <Component class="javax.swing.JButton" name="btnCongSLVe2000Dong">
           <Properties>
             <Property name="text" type="java.lang.String" value="+"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnCongSLVe2000DongMouseClicked"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton9">
+        <Component class="javax.swing.JButton" name="btnXoaVe2000Dong">
           <Properties>
             <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnXoaVe2000DongMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -334,13 +352,13 @@
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace pref="257" max="32767" attributes="0"/>
-                  <Component id="jButton11" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnTruSLVe25000Dong" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="txtSLVe25000Dong" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jButton12" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnCongSLVe25000Dong" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                  <Component id="jButton13" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnXoaVe25000Dong" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -353,9 +371,9 @@
                   <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="txtSLVe25000Dong" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton11" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton12" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton13" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnTruSLVe25000Dong" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnCongSLVe25000Dong" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnXoaVe25000Dong" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="16" max="32767" attributes="0"/>
                   <Component id="jLabel9" min="-2" pref="21" max="-2" attributes="0"/>
@@ -380,20 +398,29 @@
             <Property name="text" type="java.lang.String" value="SL V&#xe9;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton11">
+        <Component class="javax.swing.JButton" name="btnTruSLVe25000Dong">
           <Properties>
             <Property name="text" type="java.lang.String" value="-"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnTruSLVe25000DongMouseClicked"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton12">
+        <Component class="javax.swing.JButton" name="btnCongSLVe25000Dong">
           <Properties>
             <Property name="text" type="java.lang.String" value="+"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnCongSLVe25000DongMouseClicked"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton13">
+        <Component class="javax.swing.JButton" name="btnXoaVe25000Dong">
           <Properties>
             <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnXoaVe25000DongMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -419,13 +446,13 @@
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace pref="257" max="32767" attributes="0"/>
-                  <Component id="jButton15" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnTruSLVe95000Dong" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="txtSLVe95000Dong" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jButton16" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnCongSLVe95000Dong" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                  <Component id="jButton17" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnXoaVe95000Dong" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -438,9 +465,9 @@
                   <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="txtSLVe95000Dong" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton15" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton16" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton17" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnTruSLVe95000Dong" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnCongSLVe95000Dong" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnXoaVe95000Dong" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="16" max="32767" attributes="0"/>
                   <Component id="jLabel11" min="-2" pref="21" max="-2" attributes="0"/>
@@ -465,20 +492,29 @@
             <Property name="text" type="java.lang.String" value="SL V&#xe9;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton15">
+        <Component class="javax.swing.JButton" name="btnTruSLVe95000Dong">
           <Properties>
             <Property name="text" type="java.lang.String" value="-"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnTruSLVe95000DongMouseClicked"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton16">
+        <Component class="javax.swing.JButton" name="btnCongSLVe95000Dong">
           <Properties>
             <Property name="text" type="java.lang.String" value="+"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnCongSLVe95000DongMouseClicked"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton17">
+        <Component class="javax.swing.JButton" name="btnXoaVe95000Dong">
           <Properties>
             <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnXoaVe95000DongMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
