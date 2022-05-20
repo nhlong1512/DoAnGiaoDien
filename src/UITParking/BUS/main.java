@@ -6,6 +6,7 @@ package UITParking.BUS;
 
 import UITParking.DTO.NguoiDungDTO;
 import UITParking.DAO.NguoiDungDAO;
+import UITParking.DTO.LoaiVeDTO;
 import UITParking.DTO.VeDTO;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -64,5 +65,14 @@ public class main {
         for (VeDTO ve : list_Ve) {
             System.out.println("New----" + ve);
         }
+        
+        LoaiVeBUS loaivetbl = new LoaiVeBUS();
+        System.out.println(loaivetbl.getNumbLV());
+        
+        ArrayList<LoaiVeDTO> list_LV = loaivetbl.getList_LV();
+        for (LoaiVeDTO ve : list_LV) {
+            System.out.println("New----" + ve);
+        }
+        
     }
 }
