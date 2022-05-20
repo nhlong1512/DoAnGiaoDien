@@ -9,6 +9,7 @@ import UITParking.DAO.NguoiDungDAO;
 import UITParking.DTO.CTHDMuaVeDTO;
 import UITParking.DTO.HDMuaVeDTO;
 import UITParking.DTO.LoaiVeDTO;
+import UITParking.DTO.NhanVienDTO;
 import UITParking.DTO.VeDTO;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -67,28 +68,35 @@ public class main {
         for (VeDTO ve : list_Ve) {
             System.out.println("New----" + ve);
         }
-        
+
         LoaiVeBUS loaivetbl = new LoaiVeBUS();
         System.out.println(loaivetbl.getNumbLV());
-        
+
         ArrayList<LoaiVeDTO> list_LV = loaivetbl.getList_LV();
-        for (LoaiVeDTO ve : list_LV) {  
+        for (LoaiVeDTO ve : list_LV) {
             System.out.println("New----" + ve);
         }
-        
+
         HDMuaVeBUS hdmuavetbl = new HDMuaVeBUS();
         System.out.println(hdmuavetbl.getNumbHD());
         ArrayList<HDMuaVeDTO> list_HD = hdmuavetbl.getList_HD();
         for (HDMuaVeDTO ve : list_HD) {
             System.out.println("New----" + ve);
         }
-        
+
         CTHDMuaVeBUS cthdmuavetbl = new CTHDMuaVeBUS();
         System.out.println(cthdmuavetbl.getNumbCTHD());
         ArrayList<CTHDMuaVeDTO> list_CTHD = cthdmuavetbl.getlist_CTHD();
-        for(CTHDMuaVeDTO ve : list_CTHD){
+        for (CTHDMuaVeDTO ve : list_CTHD) {
             System.out.println("New----" + ve);
         }
-        
+
+        NhanVienBUS nhanvientbl = new NhanVienBUS();
+        System.out.println(nhanvientbl.getNumbNV());
+        ArrayList<NhanVienDTO> list_NV = nhanvientbl.getlist_NV();
+        for (NhanVienDTO ve : list_NV) {
+            System.out.println("New----" + ve);
+        }
+
     }
 }
