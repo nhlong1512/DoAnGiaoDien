@@ -8,6 +8,7 @@ import UITParking.DTO.NguoiDungDTO;
 import UITParking.DAO.NguoiDungDAO;
 import UITParking.DTO.CTHDMuaVeDTO;
 import UITParking.DTO.HDMuaVeDTO;
+import UITParking.DTO.KhachVangLaiDTO;
 import UITParking.DTO.LoaiVeDTO;
 import UITParking.DTO.NhanVienDTO;
 import UITParking.DTO.VeDTO;
@@ -95,6 +96,13 @@ public class main {
         System.out.println(nhanvientbl.getNumbNV());
         ArrayList<NhanVienDTO> list_NV = nhanvientbl.getlist_NV();
         for (NhanVienDTO ve : list_NV) {
+            System.out.println("New----" + ve);
+        }
+        
+        KhachVangLaiBUS khachvanglaitbl = new KhachVangLaiBUS();
+        System.out.println(khachvanglaitbl.getNumbKVL());
+        ArrayList<KhachVangLaiDTO> list_KVL = khachvanglaitbl.getlist_KVL();
+        for (KhachVangLaiDTO ve : list_KVL) {
             System.out.println("New----" + ve);
         }
 
