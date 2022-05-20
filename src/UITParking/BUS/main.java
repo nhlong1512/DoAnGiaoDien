@@ -6,6 +6,7 @@ package UITParking.BUS;
 
 import UITParking.DTO.NguoiDungDTO;
 import UITParking.DAO.NguoiDungDAO;
+import UITParking.DTO.VeDTO;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -40,7 +41,7 @@ public class main {
 //        for (NguoiDungDTO nd : list_ND) {
 //            System.out.println("New----" + nd);
 //        }
-        
+
 //        nguoidungtbl.xoa(nd022);
 //        for (NguoiDungDTO nd : list_ND) {
 //            System.out.println("New----" + nd);
@@ -53,9 +54,15 @@ public class main {
 //        } 
 //          NguoiDungDTO nd = nguoidungtbl.getInfor("ND015"); 
 //          System.out.println(nd.getStrHoTen());
-          
-          KhachHangBUS khachhangtbl = new KhachHangBUS();
-          System.out.println(khachhangtbl.getNumbKH());
-        
+        KhachHangBUS khachhangtbl = new KhachHangBUS();
+        System.out.println(khachhangtbl.getNumbKH());
+
+        VeBUS vetbl = new VeBUS();
+        System.out.println(vetbl.getNumbVe());
+
+        ArrayList<VeDTO> list_Ve = vetbl.getList_Ve();
+        for (VeDTO ve : list_Ve) {
+            System.out.println("New----" + ve);
+        }
     }
 }
