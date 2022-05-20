@@ -6,6 +6,7 @@ package UITParking.BUS;
 
 import UITParking.DTO.NguoiDungDTO;
 import UITParking.DAO.NguoiDungDAO;
+import UITParking.DTO.CTHDMuaVeDTO;
 import UITParking.DTO.HDMuaVeDTO;
 import UITParking.DTO.LoaiVeDTO;
 import UITParking.DTO.VeDTO;
@@ -71,7 +72,7 @@ public class main {
         System.out.println(loaivetbl.getNumbLV());
         
         ArrayList<LoaiVeDTO> list_LV = loaivetbl.getList_LV();
-        for (LoaiVeDTO ve : list_LV) {
+        for (LoaiVeDTO ve : list_LV) {  
             System.out.println("New----" + ve);
         }
         
@@ -79,6 +80,13 @@ public class main {
         System.out.println(hdmuavetbl.getNumbHD());
         ArrayList<HDMuaVeDTO> list_HD = hdmuavetbl.getList_HD();
         for (HDMuaVeDTO ve : list_HD) {
+            System.out.println("New----" + ve);
+        }
+        
+        CTHDMuaVeBUS cthdmuavetbl = new CTHDMuaVeBUS();
+        System.out.println(cthdmuavetbl.getNumbCTHD());
+        ArrayList<CTHDMuaVeDTO> list_CTHD = cthdmuavetbl.getlist_CTHD();
+        for(CTHDMuaVeDTO ve : list_CTHD){
             System.out.println("New----" + ve);
         }
         
