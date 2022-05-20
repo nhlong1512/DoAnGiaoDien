@@ -6,6 +6,7 @@ package UITParking.BUS;
 
 import UITParking.DTO.NguoiDungDTO;
 import UITParking.DAO.NguoiDungDAO;
+import UITParking.DTO.HDMuaVeDTO;
 import UITParking.DTO.LoaiVeDTO;
 import UITParking.DTO.VeDTO;
 import java.sql.Connection;
@@ -71,6 +72,13 @@ public class main {
         
         ArrayList<LoaiVeDTO> list_LV = loaivetbl.getList_LV();
         for (LoaiVeDTO ve : list_LV) {
+            System.out.println("New----" + ve);
+        }
+        
+        HDMuaVeBUS hdmuavetbl = new HDMuaVeBUS();
+        System.out.println(hdmuavetbl.getNumbHD());
+        ArrayList<HDMuaVeDTO> list_HD = hdmuavetbl.getList_HD();
+        for (HDMuaVeDTO ve : list_HD) {
             System.out.println("New----" + ve);
         }
         
