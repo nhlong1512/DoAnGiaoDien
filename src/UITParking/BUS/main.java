@@ -12,6 +12,7 @@ import UITParking.DTO.KhachVangLaiDTO;
 import UITParking.DTO.LoaiVeDTO;
 import UITParking.DTO.NhanVienDTO;
 import UITParking.DTO.VeDTO;
+import UITParking.DTO.XeDTO;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -106,5 +107,11 @@ public class main {
             System.out.println("New----" + ve);
         }
 
+        XeBUS xetbl = new XeBUS();
+        System.out.println(xetbl.getNumbXE());
+        ArrayList<XeDTO> list_XE = xetbl.getlist_XE();
+        for (XeDTO ve : list_XE) {
+            System.out.println("New----" + ve);
+        }
     }
 }
