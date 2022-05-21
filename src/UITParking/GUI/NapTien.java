@@ -89,11 +89,11 @@ public class NapTien extends javax.swing.JFrame {
                 btnNapTienActionPerformed(evt);
             }
         });
-        jPanel1.add(btnNapTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 332, 41));
+        jPanel1.add(btnNapTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, 220, 41));
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 255));
 
-        jLabel2.setFont(new java.awt.Font("Cooper", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Cooper", 0, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Nạp tiền vào ví");
