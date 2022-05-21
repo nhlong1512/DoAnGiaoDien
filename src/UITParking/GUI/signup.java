@@ -8,6 +8,7 @@ import UITParking.GUI.Homepage;
 import UITParking.BUS.NguoiDungBUS;
 import UITParking.DAO.NguoiDungDAO;
 import UITParking.DTO.NguoiDungDTO;
+import static UITParking.GUI.InitPublic.getID;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -38,13 +39,7 @@ public class signup extends javax.swing.JFrame {
         setIconImage();
     }
 
-    public static String getID(String id) {
-        id = id.replaceAll("\\D+", "");
-        int id_num = Integer.parseInt(id);
-        id_num++;
-        String id_format = String.format("%03d", id_num);
-        return id_format;
-    }
+    
 
     public class EmailExample {
 

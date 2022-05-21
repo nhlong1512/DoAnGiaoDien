@@ -4,8 +4,12 @@
  */
 package UITParking.GUI;
 
+import UITParking.BUS.HDMuaVeBUS;
 import UITParking.BUS.KhachHangBUS;
+import UITParking.DTO.HDMuaVeDTO;
 import UITParking.DTO.KhachHangDTO;
+import static UITParking.GUI.InitPublic.getDateThoiGianThuc;
+import static UITParking.GUI.InitPublic.getThoiGianThuc;
 import static UITParking.GUI.MuaVe.slVe3000Dong;
 import static UITParking.GUI.MuaVe.slVe2000Dong;
 import static UITParking.GUI.MuaVe.slVe25000Dong;
@@ -29,6 +33,7 @@ public class GioHang extends javax.swing.JFrame {
     public static long tempTienGioHang = 0;
     KhachHangBUS khachhangtbl = new KhachHangBUS();
     KhachHangDTO kh = khachhangtbl.getInfor(pMaND);
+    HDMuaVeBUS hdmuavetbl = new HDMuaVeBUS();
 
     public GioHang() throws Exception {
         initComponents();
@@ -667,10 +672,10 @@ public class GioHang extends javax.swing.JFrame {
         if (pTongTienThanhToan <= tempTienGioHang) {
 
             tempTienGioHang = tempTienGioHang - pTongTienThanhToan;
-            pTongTienThanhToan = 0;
-            System.out.println("Tong tien thanh toan con lai: " + pTongTienThanhToan);
-            System.out.println("Temp Tien Gio Hang con lai: " + tempTienGioHang);
-            System.out.println("Thanh toan thanh cong");
+
+//            System.out.println("Tong tien thanh toan con lai: " + pTongTienThanhToan);
+//            System.out.println("Temp Tien Gio Hang con lai: " + tempTienGioHang);
+//            System.out.println("Thanh toan thanh cong");
             kh.setLongSoDu(tempTienGioHang);
             try {
                 //Cập nhật dữ liệu
@@ -678,12 +683,37 @@ public class GioHang extends javax.swing.JFrame {
                 //Hiện ra thông báo thanh toán thành công.
                 JOptionPane.showMessageDialog(null, "Thanh toán thành công, "
                         + "số dư còn lại của bạn là: " + kh.getLongSoDu() + "đ");
+
+                /*
+                 * Tạo hóa đơn mới cho dữ liệu vừa được thêm vào
+                 * Hóa đơn thêm vào gồm các trường Mã hóa đơn, tăng tự động, 
+                  Mã khách hàng, ngày hóa đơn(Ngày hiện tại, sysdate) tổng trị giá của hóa đơn
+                 * 
+                 */
+                System.out.println("Tổng số tiền cần thanh toán " + pTongTienThanhToan);
+                System.out.println("Số lượng vé của LVE01 - Vé lượt xe máy - 3000đ là: " + slVe3000Dong);
+                System.out.println("Số lượng vé của LVE02 - Vé lượt xe đạp - 2000đ là: " + slVe2000Dong);
+                System.out.println("Số lượng vé của LVE03 - Vé tuần - 25000đ là: " + slVe25000Dong);
+                System.out.println("Số lượng vé của LVE01 - Vé tháng - 95000đ là: " + slVe95000Dong);
+                System.out.println("Mã khách hàng hiện tại là: " + kh.getStrMaKH());
+                
+                //Tạo mã hóa đơn mới cho bảng HOADONMUAVE
+                //Lấy ra người dùng có mã max để từ đó chèn người tiếp theo vào
+                HDMuaVeDTO hd = new HDMuaVeDTO(hdmuavetbl.getMaxMaHD(), "ND014", getDateThoiGianThuc(), pTongTienThanhToan);
+                hdmuavetbl.them(hd);
+                
+                /**
+                 * Cập nhật tổng tiền về 0 Cập nhật số lượng vé, xóa các loại vé
+                 * còn trong giỏ hàng
+                 */
                 //Cập nhật lại tổng tiền thanh toán về 0.
+                pTongTienThanhToan = 0;
                 txtTongTienThanhToan.setText(String.valueOf(pTongTienThanhToan) + "đ");
                 //Xóa các loại vé trong giỏ hàng.
                 xoaSLVe();
                 //Set số lượng các loại vé về 0
                 setSLVe0();
+
             } catch (Exception ex) {
                 Logger.getLogger(GioHang.class.getName()).log(Level.SEVERE, null, ex);
             }
