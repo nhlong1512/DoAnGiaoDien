@@ -73,6 +73,7 @@ public class GioHang extends javax.swing.JFrame {
 //            empty.setVisible(false);
             PanelEmpty.setVisible(false);
             PanelEmpty.setVisible(true);
+            btnBackGioHangTrong.setVisible(false);
         }
         if (slVe2000Dong <= 0) {
             panelChiTietVe2000Dong.setVisible(false);
