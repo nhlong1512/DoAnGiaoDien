@@ -38,7 +38,7 @@ public class AccountCustomer extends javax.swing.JFrame {
         tfdDiachiAccount.setText(nd.getStrDiaChi());
         tfdQueQuanAccount.setText(nd.getStrQueQuan());
         tfdSDTAccount.setText(nd.getStrSDT());
-        cbbGioiTinh.setSelectedItem(nd.getStrGioiTinh());
+        cbbGioiTinh.setSelectedItem(nd.getStrGioiTinh().equals("Nu") ? "Nữ" : "Nam");
     }
 
     /**
@@ -374,6 +374,8 @@ public class AccountCustomer extends javax.swing.JFrame {
         nd.setStrSDT(tfdSDTAccount.getText());
         if (cbbGioiTinh.getSelectedItem().toString().equals("Nữ")) {
             nd.setStrGioiTinh("Nu");
+        }else{
+            nd.setStrGioiTinh("Nam");
         }
 
         System.out.println(nd);
