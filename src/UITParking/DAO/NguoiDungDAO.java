@@ -131,4 +131,27 @@ public class NguoiDungDAO {
             throw new ArithmeticException(ex.getMessage());
         }
     }
+    
+    public Boolean suaKhongCoNgaySinh(NguoiDungDTO nd) throws Exception {
+        String sql = "UPDATE NGUOIDUNG SET Email = ?, MatKhau = ?, HoTen = ?, "
+                + "GIOITINH = ?, DIACHI = ?, QUEQUAN = ?, SDT = ?, "
+                + "VAITRO = ? WHERE MAND = ?";
+        try {
+            pst = this.connection.getConnect().prepareStatement(sql);
+
+            pst.setString(9, nd.getStrMaND());
+            pst.setString(1, nd.getStrEmail());
+            pst.setString(2, nd.getStrMatKhau());
+            pst.setString(3, nd.getStrHoTen());
+            pst.setString(4, nd.getStrGioiTinh());
+            pst.setString(5, nd.getStrDiaChi());
+            pst.setString(6, nd.getStrQueQuan());
+            pst.setString(7, nd.getStrSDT());
+            pst.setString(8, nd.getStrVaiTro());
+
+            return pst.executeUpdate() > 0;
+        } catch (SQLException ex) {
+            throw new ArithmeticException(ex.getMessage());
+        }
+    }
 }

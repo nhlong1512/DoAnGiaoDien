@@ -32,13 +32,24 @@ public class AccountCustomer extends javax.swing.JFrame {
         setIconImage();
         NguoiDungBUS nguoidungtbl = new NguoiDungBUS();
         NguoiDungDTO nd = nguoidungtbl.getInfor(pMaND);
+        setAccount();
+    }
+
+    public void setAccount() {
         txtHoTenAccount.setText(nd.getStrHoTen());
         tfdHoTenAccount.setText(nd.getStrHoTen());
         tfdEmailAccount.setText(nd.getStrEmail());
         tfdDiachiAccount.setText(nd.getStrDiaChi());
         tfdQueQuanAccount.setText(nd.getStrQueQuan());
         tfdSDTAccount.setText(nd.getStrSDT());
-        cbbGioiTinh.setSelectedItem(nd.getStrGioiTinh().equals("Nu") ? "Nữ" : "Nam");
+        if (nd.getStrGioiTinh() != null) {
+            if (nd.getStrGioiTinh().equals("Nu")) {
+                cbbGioiTinh.setSelectedItem("Nữ");
+            }
+            if (nd.getStrGioiTinh().equals("Nam")) {
+                cbbGioiTinh.setSelectedItem("Nam");
+            }
+        }
     }
 
     /**
@@ -236,6 +247,9 @@ public class AccountCustomer extends javax.swing.JFrame {
         btnHuyAccount.setText("Hủy");
         btnHuyAccount.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnHuyAccount.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnHuyAccountMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnHuyAccountMouseEntered(evt);
             }
@@ -374,21 +388,48 @@ public class AccountCustomer extends javax.swing.JFrame {
         nd.setStrSDT(tfdSDTAccount.getText());
         if (cbbGioiTinh.getSelectedItem().toString().equals("Nữ")) {
             nd.setStrGioiTinh("Nu");
-        }else{
+        }
+        if (cbbGioiTinh.getSelectedItem().toString().equals("Nam")) {
             nd.setStrGioiTinh("Nam");
+        }
+        if (nd.getDateNgSinh() == null) {
+            System.out.println("Long bi dien");
+        } else {
+            System.out.println("Long k bi dien");
         }
 
         System.out.println(nd);
 
         try {
-            nguoidungtbl.sua(nd);
+            if (nd.getDateNgSinh() == null) {
+                System.out.println("Cap nhat k co ngay sinh");
+                nguoidungtbl.suaKhongCoNgaySinh(nd);
+            } else {
+                nguoidungtbl.sua(nd);
+            }
             JOptionPane.showMessageDialog(null, "Cập nhật thành công");
+            //Khi cập nhật thành công, giao diện sẽ trở về home
+//            Homepage _homepage = new Homepage();
+//            _homepage.show();
+//            dispose();
+
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Cập nhật thất bại");
         }
 
 
     }//GEN-LAST:event_btnCapNhatAccountMouseClicked
+
+    //event click button Huy Account
+    private void btnHuyAccountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHuyAccountMouseClicked
+        // TODO add your handling code here:
+        /**
+         * Khi click vào button hủy thì sẽ tự reset về các giá trị ban đầu trong
+         * dtb tức là, nó sẽ render ra giao diện ban đầu Và setAccount() sẽ là
+         * hàm đóng vai trò chức năng đó.
+         */
+//        setAccount();
+    }//GEN-LAST:event_btnHuyAccountMouseClicked
 
     /**
      * @param args the command line arguments
