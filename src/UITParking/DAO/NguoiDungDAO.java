@@ -40,7 +40,7 @@ public class NguoiDungDAO {
             nguoidung.setStrMatKhau(result.getString("MatKhau"));
             nguoidung.setStrHoTen(result.getString("HoTen"));
             nguoidung.setStrGioiTinh(result.getString("GioiTinh"));
-            nguoidung.setStrNgSinh(result.getString("NgSinh"));
+            nguoidung.setDateNgSinh(result.getDate("NgSinh"));
             nguoidung.setStrDiaChi(result.getString("DiaChi"));
             nguoidung.setStrQueQuan(result.getString("QueQuan"));
             nguoidung.setStrSDT(result.getString("SDT"));
@@ -74,7 +74,7 @@ public class NguoiDungDAO {
             pst.setString(3, nd.getStrMatKhau());
             pst.setString(4, nd.getStrHoTen());
             pst.setString(5, nd.getStrGioiTinh());
-            pst.setString(6, nd.getStrNgSinh());
+            pst.setDate(6, new java.sql.Date(nd.getDateNgSinh().getTime()));
             pst.setString(7, nd.getStrDiaChi());
             pst.setString(8, nd.getStrQueQuan());
             pst.setString(9, nd.getStrSDT());
@@ -120,7 +120,7 @@ public class NguoiDungDAO {
             pst.setString(2, nd.getStrMatKhau());
             pst.setString(3, nd.getStrHoTen());
             pst.setString(4, nd.getStrGioiTinh());
-            pst.setString(5, nd.getStrNgSinh());
+            pst.setDate(5, new java.sql.Date(nd.getDateNgSinh().getTime()));
             pst.setString(6, nd.getStrDiaChi());
             pst.setString(7, nd.getStrQueQuan());
             pst.setString(8, nd.getStrSDT());

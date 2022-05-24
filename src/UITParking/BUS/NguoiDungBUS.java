@@ -95,7 +95,7 @@ public class NguoiDungBUS {
                 taikhoan.setStrMatKhau(nd.getStrMatKhau());
                 taikhoan.setStrHoTen(nd.getStrHoTen());
                 taikhoan.setStrGioiTinh(nd.getStrGioiTinh());
-                taikhoan.setStrNgSinh(nd.getStrNgSinh());
+                taikhoan.setDateNgSinh(new java.sql.Date(nd.getDateNgSinh().getTime()));
                 taikhoan.setStrDiaChi(nd.getStrDiaChi());
                 taikhoan.setStrQueQuan(nd.getStrQueQuan());
                 taikhoan.setStrSDT(nd.getStrSDT());
