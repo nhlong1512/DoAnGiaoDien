@@ -10,6 +10,7 @@ import java.awt.Color;
 import java.awt.List;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -22,7 +23,7 @@ public class ChuyenManHinhController {
     private JPanel root;
     private String kindSelected = "";
 
-    private List<DanhMucBean> listItem = null;
+    private ArrayList<DanhMucBean> listItem = null;
 
     public ChuyenManHinhController(JPanel jpnRoot) {
         this.root = jpnRoot;
@@ -40,7 +41,7 @@ public class ChuyenManHinhController {
         root.repaint();
     }
 
-    public void setEvent(List<DanhMucBean> listItem) {
+    public void setEvent(ArrayList<DanhMucBean> listItem) {
         this.listItem = listItem;
         for (DanhMucBean item : listItem) {
             item.getJlb().addMouseListener(new LabelEvent(item.getKind(), item.getJpn(), item.getJlb()));
@@ -67,8 +68,20 @@ public class ChuyenManHinhController {
                 case "QLKH":
                     node = new QLKHJPanel();
                     break;
-                case "QLNV":
-                    node = new QLNVJPanel();
+                case "QLX":
+                    node = new QLXJPanel();
+                    break;
+                case "QLV":
+                    node = new QLVJPanel();
+                    break;
+                case "QLHD": 
+                    node = new QLHDJPanel();
+                    break;
+                case "QLDT": 
+                    node = new QLDTJPanel();
+                    break;
+                case "BCTK":
+                    node = new BCTKJPanel();
                     break;
                 default:
                     break;

@@ -5,6 +5,7 @@
 package UITParking.GUI;
 
 import UITParking.DTO.DanhMucBean;
+import UITParking.DTO.NguoiDungDTO;
 import java.awt.List;
 import java.util.ArrayList;
 
@@ -24,9 +25,13 @@ public class AdminMainFrame extends javax.swing.JFrame {
         ChuyenManHinhController controller = new ChuyenManHinhController(jpnView);
         controller.setView(jpnQLKH, jlbQLKH);
         
-        List<DanhMucBean> listItem = new ArrayList<>();
+        ArrayList<DanhMucBean> listItem = new ArrayList<>();
         listItem.add (new DanhMucBean("QLKH", jpnQLKH, jlbQLKH));
-        listItem.add (new DanhMucBean("QLNV", jpnQLNV, jlbQLNV));
+        listItem.add (new DanhMucBean("QLX", jpnQLX, jlbQLX));
+        listItem.add (new DanhMucBean("QLV", jpnQLV, jlbQLV));
+        listItem.add (new DanhMucBean("QLHD", jpnQLHD, jlbQLHD));
+        listItem.add (new DanhMucBean("QLDT", jpnQLDT, jlbQLDT));
+        listItem.add (new DanhMucBean("BCTK", jpnBCTK, jlbBCTK));
         
         controller.setEvent(listItem);
     }
@@ -44,8 +49,8 @@ public class AdminMainFrame extends javax.swing.JFrame {
         jpnMenu = new javax.swing.JPanel();
         jpnQLKH = new javax.swing.JPanel();
         jlbQLKH = new javax.swing.JLabel();
-        jpnQLNV = new javax.swing.JPanel();
-        jlbQLNV = new javax.swing.JLabel();
+        jpnQLX = new javax.swing.JPanel();
+        jlbQLX = new javax.swing.JLabel();
         jpnQLV = new javax.swing.JPanel();
         jlbQLV = new javax.swing.JLabel();
         jpnQLHD = new javax.swing.JPanel();
@@ -84,23 +89,23 @@ public class AdminMainFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jpnQLNV.setBackground(new java.awt.Color(0, 153, 102));
+        jpnQLX.setBackground(new java.awt.Color(0, 153, 102));
 
-        jlbQLNV.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jlbQLNV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlbQLNV.setText("QLNV");
+        jlbQLX.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlbQLX.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbQLX.setText("QLX");
 
-        javax.swing.GroupLayout jpnQLNVLayout = new javax.swing.GroupLayout(jpnQLNV);
-        jpnQLNV.setLayout(jpnQLNVLayout);
-        jpnQLNVLayout.setHorizontalGroup(
-            jpnQLNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jlbQLNV, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+        javax.swing.GroupLayout jpnQLXLayout = new javax.swing.GroupLayout(jpnQLX);
+        jpnQLX.setLayout(jpnQLXLayout);
+        jpnQLXLayout.setHorizontalGroup(
+            jpnQLXLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlbQLX, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
         );
-        jpnQLNVLayout.setVerticalGroup(
-            jpnQLNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpnQLNVLayout.createSequentialGroup()
+        jpnQLXLayout.setVerticalGroup(
+            jpnQLXLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnQLXLayout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addComponent(jlbQLNV, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jlbQLX, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(46, Short.MAX_VALUE))
         );
 
@@ -194,7 +199,7 @@ public class AdminMainFrame extends javax.swing.JFrame {
             .addGroup(jpnMenuLayout.createSequentialGroup()
                 .addComponent(jpnQLKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jpnQLNV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jpnQLX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jpnQLV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -210,7 +215,7 @@ public class AdminMainFrame extends javax.swing.JFrame {
         jpnMenuLayout.setVerticalGroup(
             jpnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jpnQLKH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jpnQLNV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jpnQLX, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jpnQLV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jpnQLHD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jpnQLDT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -265,15 +270,15 @@ public class AdminMainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jlbQLDT;
     private javax.swing.JLabel jlbQLHD;
     private javax.swing.JLabel jlbQLKH;
-    private javax.swing.JLabel jlbQLNV;
     private javax.swing.JLabel jlbQLV;
+    private javax.swing.JLabel jlbQLX;
     private javax.swing.JPanel jpnBCTK;
     private javax.swing.JPanel jpnMenu;
     private javax.swing.JPanel jpnQLDT;
     private javax.swing.JPanel jpnQLHD;
     private javax.swing.JPanel jpnQLKH;
-    private javax.swing.JPanel jpnQLNV;
     private javax.swing.JPanel jpnQLV;
+    private javax.swing.JPanel jpnQLX;
     private javax.swing.JPanel jpnRoot;
     private javax.swing.JPanel jpnView;
     // End of variables declaration//GEN-END:variables
