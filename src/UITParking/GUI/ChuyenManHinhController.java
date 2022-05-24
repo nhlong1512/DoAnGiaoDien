@@ -11,6 +11,8 @@ import java.awt.List;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -29,7 +31,7 @@ public class ChuyenManHinhController {
         this.root = jpnRoot;
     }
 
-    public void setView(JPanel jpnItem, JLabel jlbItem) {
+    public void setView(JPanel jpnItem, JLabel jlbItem) throws Exception {
         kindSelected = "QLKH";
         jpnItem.setBackground(Color.red);
         jlbItem.setBackground(Color.red);
@@ -66,8 +68,15 @@ public class ChuyenManHinhController {
         public void mouseClicked(MouseEvent e) {
             switch (kind) {
                 case "QLKH":
-                    node = new QLKHJPanel();
+                {
+                    try {
+                        node = new QLKHJPanel();
+                    } catch (Exception ex) {
+                        Logger.getLogger(ChuyenManHinhController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
                     break;
+
                 case "QLX":
                     node = new QLXJPanel();
                     break;

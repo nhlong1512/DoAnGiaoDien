@@ -21,10 +21,13 @@ import static UITParking.GUI.MuaVe.slVe95000Dong;
 import static UITParking.GUI.MuaVe.slVeGioHang;
 import static UITParking.GUI.NapTien.tempTien;
 import static UITParking.GUI.login.pMaND;
+import java.awt.Color;
+import static java.awt.GridBagConstraints.BOTH;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import java.awt.Toolkit;
+import javax.swing.JFrame;
 
 /**
  *
@@ -42,13 +45,14 @@ public class GioHang extends javax.swing.JFrame {
     HDMuaVeBUS hdmuavetbl = new HDMuaVeBUS();
     CTHDMuaVeBUS cthdmuavetbl = new CTHDMuaVeBUS();
     VeBUS vetbl = new VeBUS();
-    
+
     public GioHang() throws Exception {
         initComponents();
         setIconImage();
         KhachHangBUS khachhangtbl = new KhachHangBUS();
         KhachHangDTO kh = khachhangtbl.getInfor(pMaND);
         tempTienGioHang = kh.getLongSoDu();
+
         System.out.println("So tien" + tempTienGioHang);
 
         //Render giao diện giỏ hàng 
@@ -57,7 +61,10 @@ public class GioHang extends javax.swing.JFrame {
         setSLVeText();
         //Set tổng tiền dựa vào số lượng vé và đơn giá vé
         setTongTienThanhToan();
-        
+        //Set tổng tiền từng loại vé
+        setTongTienText();
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
     }
 
     //Hàm render giao diện giỏ hàng dựa vào số lượng vé của từng loại
@@ -72,8 +79,8 @@ public class GioHang extends javax.swing.JFrame {
         } else {
 //            empty.setVisible(false);
             PanelEmpty.setVisible(false);
-            PanelEmpty.setVisible(true);
-            btnBackGioHangTrong.setVisible(false);
+
+//            PanelEmpty.setVisible(true);
         }
         if (slVe2000Dong <= 0) {
             panelChiTietVe2000Dong.setVisible(false);
@@ -87,6 +94,14 @@ public class GioHang extends javax.swing.JFrame {
         if (slVe95000Dong <= 0) {
             panelChiTietVe95000Dong.setVisible(false);
         }
+    }
+
+    public void setTongTienText() {
+        txtTongCongVe3000Dong.setText(String.valueOf(slVe3000Dong * 3000));
+        txtTongCongVe2000Dong.setText(String.valueOf(slVe2000Dong * 2000));
+        txtTongCongVe25000Dong.setText(String.valueOf(slVe25000Dong * 25000));
+        txtTongCongVe95000Dong.setText(String.valueOf(slVe95000Dong * 95000));
+
     }
 
     //Hàm set số lượng ban đầu khi chọn mua vé
@@ -103,7 +118,6 @@ public class GioHang extends javax.swing.JFrame {
         slVe25000Dong = 0;
         slVe3000Dong = 0;
         slVe95000Dong = 0;
-        slVeGioHang = 0;
     }
 
     //Hàm xóa các loại vé có trong giao diện
@@ -146,41 +160,43 @@ public class GioHang extends javax.swing.JFrame {
         txtSLVe3000Dong = new javax.swing.JButton();
         btnTruSLVe3000Dong = new javax.swing.JButton();
         btnCongSLVe3000Dong = new javax.swing.JButton();
-        jLabel16 = new javax.swing.JLabel();
+        txtTongCongVe3000Dong = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        btnXoaVe3000Dong = new javax.swing.JButton();
         panelChiTietVe2000Dong = new Admin.PanelRound();
         jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
+        txtTongCongVe2000Dong = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         btnTruSLVe2000Dong = new javax.swing.JButton();
         txtSLVe2000Dong = new javax.swing.JButton();
         btnCongSLVe2000Dong = new javax.swing.JButton();
+        btnXoaVe2000Dong = new javax.swing.JButton();
         panelChiTietVe25000Dong = new Admin.PanelRound();
         jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
+        txtTongCongVe25000Dong = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         btnTruSLVe25000Dong = new javax.swing.JButton();
         btnCongSLVe25000Dong = new javax.swing.JButton();
         txtSLVe25000Dong = new javax.swing.JButton();
-        panelChiTietVe95000Dong = new Admin.PanelRound();
-        jLabel26 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
-        btnTruSLVe95000Dong = new javax.swing.JButton();
-        txtSLVe95000Dong = new javax.swing.JButton();
-        btnCongSLVe95000Dong = new javax.swing.JButton();
+        btnXoaVe25000Dong = new javax.swing.JButton();
         panelThanhToan = new Admin.PanelRound();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         btnThanhToanGioHang = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
         txtTongTienThanhToan = new javax.swing.JLabel();
         panelTiTle = new Admin.PanelRound();
         Title = new javax.swing.JLabel();
+        panelChiTietVe95000Dong = new Admin.PanelRound();
+        jLabel30 = new javax.swing.JLabel();
+        txtTongCongVe95000Dong = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        btnTruSLVe95000Dong = new javax.swing.JButton();
+        btnCongSLVe95000Dong = new javax.swing.JButton();
+        txtSLVe95000Dong = new javax.swing.JButton();
+        btnXoaVe95000Dong = new javax.swing.JButton();
         PanelEmpty = new javax.swing.JPanel();
         empty = new javax.swing.JLabel();
         labelgiohangtrong = new javax.swing.JLabel();
@@ -219,13 +235,13 @@ public class GioHang extends javax.swing.JFrame {
             .addGroup(panelTitleLayout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 272, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 313, Short.MAX_VALUE)
                 .addComponent(jLabel13)
-                .addGap(93, 93, 93)
+                .addGap(81, 81, 81)
                 .addComponent(jLabel14)
-                .addGap(95, 95, 95)
+                .addGap(69, 69, 69)
                 .addComponent(jLabel15)
-                .addGap(21, 21, 21))
+                .addGap(98, 98, 98))
         );
         panelTitleLayout.setVerticalGroup(
             panelTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,18 +255,25 @@ public class GioHang extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        PanelGioHang.add(panelTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 870, -1));
+        PanelGioHang.add(panelTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 950, -1));
 
         btnBackGioHang.setBackground(new java.awt.Color(243, 148, 34));
         btnBackGioHang.setFont(new java.awt.Font("Cooper", 0, 18)); // NOI18N
         btnBackGioHang.setForeground(new java.awt.Color(255, 255, 255));
         btnBackGioHang.setText("Quay lại");
+        btnBackGioHang.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBackGioHang.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnBackGioHangMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnBackGioHangMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnBackGioHangMouseExited(evt);
+            }
         });
-        PanelGioHang.add(btnBackGioHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 620, 120, 40));
+        PanelGioHang.add(btnBackGioHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 600, 120, 40));
 
         panelChiTietVe3000Dong.setBackground(new java.awt.Color(255, 255, 255));
         panelChiTietVe3000Dong.setRoundBottomLeft(25);
@@ -268,6 +291,7 @@ public class GioHang extends javax.swing.JFrame {
 
         btnTruSLVe3000Dong.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnTruSLVe3000Dong.setText("-");
+        btnTruSLVe3000Dong.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnTruSLVe3000Dong.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnTruSLVe3000DongMouseClicked(evt);
@@ -276,20 +300,30 @@ public class GioHang extends javax.swing.JFrame {
 
         btnCongSLVe3000Dong.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnCongSLVe3000Dong.setText("+");
+        btnCongSLVe3000Dong.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCongSLVe3000Dong.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnCongSLVe3000DongMouseClicked(evt);
             }
         });
 
-        jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel16.setText("Tổng cộng");
+        txtTongCongVe3000Dong.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtTongCongVe3000Dong.setText("Tổng cộng");
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel17.setText("3.000đ");
 
         jLabel3.setFont(new java.awt.Font("Cooper", 0, 18)); // NOI18N
         jLabel3.setText("Vé lượt xe máy");
+
+        btnXoaVe3000Dong.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnXoaVe3000Dong.setText("Xóa");
+        btnXoaVe3000Dong.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnXoaVe3000Dong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaVe3000DongActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelChiTietVe3000DongLayout = new javax.swing.GroupLayout(panelChiTietVe3000Dong);
         panelChiTietVe3000Dong.setLayout(panelChiTietVe3000DongLayout);
@@ -300,35 +334,41 @@ public class GioHang extends javax.swing.JFrame {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addGap(76, 76, 76)
                 .addComponent(btnTruSLVe3000Dong)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtSLVe3000Dong)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCongSLVe3000Dong)
-                .addGap(80, 80, 80)
+                .addGap(75, 75, 75)
                 .addComponent(jLabel17)
-                .addGap(92, 92, 92)
-                .addComponent(jLabel16)
-                .addGap(42, 42, 42))
+                .addGap(70, 70, 70)
+                .addComponent(txtTongCongVe3000Dong)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addComponent(btnXoaVe3000Dong)
+                .addGap(17, 17, 17))
         );
         panelChiTietVe3000DongLayout.setVerticalGroup(
             panelChiTietVe3000DongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelChiTietVe3000DongLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelChiTietVe3000DongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelChiTietVe3000DongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtSLVe3000Dong)
-                        .addComponent(btnTruSLVe3000Dong)
-                        .addComponent(btnCongSLVe3000Dong)
-                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel3))
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelChiTietVe3000DongLayout.createSequentialGroup()
+                        .addGroup(panelChiTietVe3000DongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtSLVe3000Dong)
+                            .addComponent(btnTruSLVe3000Dong)
+                            .addComponent(btnCongSLVe3000Dong)
+                            .addComponent(txtTongCongVe3000Dong, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)
+                            .addComponent(btnXoaVe3000Dong))
+                        .addGap(50, 50, 50))
+                    .addGroup(panelChiTietVe3000DongLayout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6))))
         );
 
-        PanelGioHang.add(panelChiTietVe3000Dong, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 870, 120));
+        PanelGioHang.add(panelChiTietVe3000Dong, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 950, 120));
 
         panelChiTietVe2000Dong.setBackground(new java.awt.Color(255, 255, 255));
         panelChiTietVe2000Dong.setRoundBottomLeft(25);
@@ -341,8 +381,8 @@ public class GioHang extends javax.swing.JFrame {
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/vé xe đạp.png"))); // NOI18N
         jLabel18.setText("Vé Lượt Xe Máy");
 
-        jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel19.setText("Tổng cộng");
+        txtTongCongVe2000Dong.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtTongCongVe2000Dong.setText("Tổng cộng");
 
         jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel20.setText("2.000đ");
@@ -352,6 +392,7 @@ public class GioHang extends javax.swing.JFrame {
 
         btnTruSLVe2000Dong.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnTruSLVe2000Dong.setText("-");
+        btnTruSLVe2000Dong.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnTruSLVe2000Dong.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnTruSLVe2000DongMouseClicked(evt);
@@ -363,9 +404,24 @@ public class GioHang extends javax.swing.JFrame {
 
         btnCongSLVe2000Dong.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnCongSLVe2000Dong.setText("+");
+        btnCongSLVe2000Dong.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCongSLVe2000Dong.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnCongSLVe2000DongMouseClicked(evt);
+            }
+        });
+
+        btnXoaVe2000Dong.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnXoaVe2000Dong.setText("Xóa");
+        btnXoaVe2000Dong.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnXoaVe2000Dong.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnXoaVe2000DongMouseClicked(evt);
+            }
+        });
+        btnXoaVe2000Dong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaVe2000DongActionPerformed(evt);
             }
         });
 
@@ -378,17 +434,19 @@ public class GioHang extends javax.swing.JFrame {
                 .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel21)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addGap(81, 81, 81)
                 .addComponent(btnTruSLVe2000Dong)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtSLVe2000Dong)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCongSLVe2000Dong)
-                .addGap(80, 80, 80)
+                .addGap(77, 77, 77)
                 .addComponent(jLabel20)
-                .addGap(92, 92, 92)
-                .addComponent(jLabel19)
-                .addGap(42, 42, 42))
+                .addGap(69, 69, 69)
+                .addComponent(txtTongCongVe2000Dong)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(btnXoaVe2000Dong)
+                .addGap(17, 17, 17))
         );
         panelChiTietVe2000DongLayout.setVerticalGroup(
             panelChiTietVe2000DongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -396,16 +454,17 @@ public class GioHang extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(panelChiTietVe2000DongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 108, Short.MAX_VALUE)
-                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTongCongVe2000Dong, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel21)
                     .addComponent(btnTruSLVe2000Dong)
                     .addComponent(txtSLVe2000Dong)
-                    .addComponent(btnCongSLVe2000Dong))
+                    .addComponent(btnCongSLVe2000Dong)
+                    .addComponent(btnXoaVe2000Dong))
                 .addContainerGap())
         );
 
-        PanelGioHang.add(panelChiTietVe2000Dong, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 870, 120));
+        PanelGioHang.add(panelChiTietVe2000Dong, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 950, 120));
 
         panelChiTietVe25000Dong.setBackground(new java.awt.Color(255, 255, 255));
         panelChiTietVe25000Dong.setRoundBottomLeft(25);
@@ -418,8 +477,8 @@ public class GioHang extends javax.swing.JFrame {
         jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/vé tuần.png"))); // NOI18N
         jLabel22.setText("Vé Lượt Xe Máy");
 
-        jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel23.setText("Tổng cộng");
+        txtTongCongVe25000Dong.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtTongCongVe25000Dong.setText("Tổng cộng");
 
         jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel24.setText("25.000đ");
@@ -429,6 +488,7 @@ public class GioHang extends javax.swing.JFrame {
 
         btnTruSLVe25000Dong.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnTruSLVe25000Dong.setText("-");
+        btnTruSLVe25000Dong.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnTruSLVe25000Dong.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnTruSLVe25000DongMouseClicked(evt);
@@ -437,6 +497,7 @@ public class GioHang extends javax.swing.JFrame {
 
         btnCongSLVe25000Dong.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnCongSLVe25000Dong.setText("+");
+        btnCongSLVe25000Dong.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCongSLVe25000Dong.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnCongSLVe25000DongMouseClicked(evt);
@@ -446,6 +507,20 @@ public class GioHang extends javax.swing.JFrame {
         txtSLVe25000Dong.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txtSLVe25000Dong.setText("SL Vé");
 
+        btnXoaVe25000Dong.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnXoaVe25000Dong.setText("Xóa");
+        btnXoaVe25000Dong.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnXoaVe25000Dong.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnXoaVe25000DongMouseClicked(evt);
+            }
+        });
+        btnXoaVe25000Dong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaVe25000DongActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelChiTietVe25000DongLayout = new javax.swing.GroupLayout(panelChiTietVe25000Dong);
         panelChiTietVe25000Dong.setLayout(panelChiTietVe25000DongLayout);
         panelChiTietVe25000DongLayout.setHorizontalGroup(
@@ -454,18 +529,20 @@ public class GioHang extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(76, 76, 76)
                 .addComponent(btnTruSLVe25000Dong)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtSLVe25000Dong)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCongSLVe25000Dong)
-                .addGap(74, 74, 74)
+                .addGap(73, 73, 73)
                 .addComponent(jLabel24)
-                .addGap(92, 92, 92)
-                .addComponent(jLabel23)
-                .addGap(42, 42, 42))
+                .addGap(64, 64, 64)
+                .addComponent(txtTongCongVe25000Dong)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(btnXoaVe25000Dong)
+                .addGap(17, 17, 17))
         );
         panelChiTietVe25000DongLayout.setVerticalGroup(
             panelChiTietVe25000DongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -473,93 +550,17 @@ public class GioHang extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(panelChiTietVe25000DongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 108, Short.MAX_VALUE)
-                    .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTongCongVe25000Dong, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnTruSLVe25000Dong)
                     .addComponent(btnCongSLVe25000Dong)
-                    .addComponent(txtSLVe25000Dong))
+                    .addComponent(txtSLVe25000Dong)
+                    .addComponent(btnXoaVe25000Dong))
                 .addContainerGap())
         );
 
-        PanelGioHang.add(panelChiTietVe25000Dong, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 410, 870, 120));
-
-        panelChiTietVe95000Dong.setBackground(new java.awt.Color(255, 255, 255));
-        panelChiTietVe95000Dong.setRoundBottomLeft(25);
-        panelChiTietVe95000Dong.setRoundBottomRight(25);
-        panelChiTietVe95000Dong.setRoundTopLeft(25);
-        panelChiTietVe95000Dong.setRoundTopRight(25);
-
-        jLabel26.setFont(new java.awt.Font("Cooper", 0, 18)); // NOI18N
-        jLabel26.setForeground(new java.awt.Color(41, 58, 128));
-        jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/vé tháng.png"))); // NOI18N
-        jLabel26.setText("Vé Lượt Xe Máy");
-
-        jLabel27.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel27.setText("Tổng cộng");
-
-        jLabel28.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel28.setText("95.000đ");
-
-        jLabel29.setFont(new java.awt.Font("Cooper", 0, 18)); // NOI18N
-        jLabel29.setText("Vé tháng");
-
-        btnTruSLVe95000Dong.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnTruSLVe95000Dong.setText("-");
-        btnTruSLVe95000Dong.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnTruSLVe95000DongMouseClicked(evt);
-            }
-        });
-
-        txtSLVe95000Dong.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txtSLVe95000Dong.setText("SL Vé");
-
-        btnCongSLVe95000Dong.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnCongSLVe95000Dong.setText("+");
-        btnCongSLVe95000Dong.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCongSLVe95000DongMouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panelChiTietVe95000DongLayout = new javax.swing.GroupLayout(panelChiTietVe95000Dong);
-        panelChiTietVe95000Dong.setLayout(panelChiTietVe95000DongLayout);
-        panelChiTietVe95000DongLayout.setHorizontalGroup(
-            panelChiTietVe95000DongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelChiTietVe95000DongLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel29)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
-                .addComponent(btnTruSLVe95000Dong)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtSLVe95000Dong)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCongSLVe95000Dong)
-                .addGap(74, 74, 74)
-                .addComponent(jLabel28)
-                .addGap(92, 92, 92)
-                .addComponent(jLabel27)
-                .addGap(42, 42, 42))
-        );
-        panelChiTietVe95000DongLayout.setVerticalGroup(
-            panelChiTietVe95000DongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelChiTietVe95000DongLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelChiTietVe95000DongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 108, Short.MAX_VALUE)
-                    .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnTruSLVe95000Dong)
-                    .addComponent(txtSLVe95000Dong)
-                    .addComponent(btnCongSLVe95000Dong))
-                .addContainerGap())
-        );
-
-        PanelGioHang.add(panelChiTietVe95000Dong, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 540, 870, 120));
+        PanelGioHang.add(panelChiTietVe25000Dong, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 950, 120));
 
         panelThanhToan.setBackground(new java.awt.Color(255, 255, 255));
         panelThanhToan.setRoundBottomLeft(25);
@@ -571,23 +572,24 @@ public class GioHang extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(41, 58, 128));
         jLabel4.setText("Thành Tiền");
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel5.setText("Số SP");
-
         btnThanhToanGioHang.setBackground(new java.awt.Color(255, 204, 51));
         btnThanhToanGioHang.setFont(new java.awt.Font("Cooper", 0, 18)); // NOI18N
         btnThanhToanGioHang.setText("Thanh Toán");
+        btnThanhToanGioHang.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnThanhToanGioHang.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnThanhToanGioHangMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnThanhToanGioHangMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnThanhToanGioHangMouseExited(evt);
+            }
         });
 
-        jLabel6.setFont(new java.awt.Font("Cooper", 0, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(41, 58, 128));
-        jLabel6.setText("Sản phẩm");
-
         txtTongTienThanhToan.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtTongTienThanhToan.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         txtTongTienThanhToan.setText("0 đ");
 
         javax.swing.GroupLayout panelThanhToanLayout = new javax.swing.GroupLayout(panelThanhToan);
@@ -596,36 +598,28 @@ public class GioHang extends javax.swing.JFrame {
             panelThanhToanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelThanhToanLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addGroup(panelThanhToanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panelThanhToanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTongTienThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22))
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addComponent(txtTongTienThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelThanhToanLayout.createSequentialGroup()
-                .addContainerGap(78, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnThanhToanGioHang, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(70, 70, 70))
+                .addGap(51, 51, 51))
         );
         panelThanhToanLayout.setVerticalGroup(
             panelThanhToanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelThanhToanLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(41, 41, 41)
                 .addGroup(panelThanhToanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panelThanhToanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtTongTienThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addComponent(btnThanhToanGioHang, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addGap(24, 24, 24))
         );
 
-        PanelGioHang.add(panelThanhToan, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 100, 300, 170));
+        PanelGioHang.add(panelThanhToan, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 90, 270, 170));
 
         panelTiTle.setBackground(new java.awt.Color(1, 0, 56));
         panelTiTle.setRoundBottomLeft(25);
@@ -642,19 +636,117 @@ public class GioHang extends javax.swing.JFrame {
         panelTiTle.setLayout(panelTiTleLayout);
         panelTiTleLayout.setHorizontalGroup(
             panelTiTleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Title, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTiTleLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Title, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         panelTiTleLayout.setVerticalGroup(
             panelTiTleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTiTleLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Title, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14))
+                .addGap(0, 8, Short.MAX_VALUE)
+                .addComponent(Title, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        PanelGioHang.add(panelTiTle, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 310, 70));
+        PanelGioHang.add(panelTiTle, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 310, 70));
 
-        getContentPane().add(PanelGioHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1290, 730));
+        panelChiTietVe95000Dong.setBackground(new java.awt.Color(255, 255, 255));
+        panelChiTietVe95000Dong.setRoundBottomLeft(25);
+        panelChiTietVe95000Dong.setRoundBottomRight(25);
+        panelChiTietVe95000Dong.setRoundTopLeft(25);
+        panelChiTietVe95000Dong.setRoundTopRight(25);
+
+        jLabel30.setFont(new java.awt.Font("Cooper", 0, 18)); // NOI18N
+        jLabel30.setForeground(new java.awt.Color(41, 58, 128));
+        jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/vé tháng.png"))); // NOI18N
+        jLabel30.setText("Vé Lượt Xe Máy");
+
+        txtTongCongVe95000Dong.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtTongCongVe95000Dong.setText("Tổng cộng");
+
+        jLabel32.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel32.setText("95.000đ");
+
+        jLabel33.setFont(new java.awt.Font("Cooper", 0, 18)); // NOI18N
+        jLabel33.setText("Vé tháng");
+
+        btnTruSLVe95000Dong.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnTruSLVe95000Dong.setText("-");
+        btnTruSLVe95000Dong.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnTruSLVe95000Dong.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnTruSLVe95000DongMouseClicked(evt);
+            }
+        });
+
+        btnCongSLVe95000Dong.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnCongSLVe95000Dong.setText("+");
+        btnCongSLVe95000Dong.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCongSLVe95000Dong.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCongSLVe95000DongMouseClicked(evt);
+            }
+        });
+
+        txtSLVe95000Dong.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtSLVe95000Dong.setText("SL Vé");
+
+        btnXoaVe95000Dong.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnXoaVe95000Dong.setText("Xóa");
+        btnXoaVe95000Dong.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnXoaVe95000Dong.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnXoaVe95000DongMouseClicked(evt);
+            }
+        });
+        btnXoaVe95000Dong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaVe95000DongActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelChiTietVe95000DongLayout = new javax.swing.GroupLayout(panelChiTietVe95000Dong);
+        panelChiTietVe95000Dong.setLayout(panelChiTietVe95000DongLayout);
+        panelChiTietVe95000DongLayout.setHorizontalGroup(
+            panelChiTietVe95000DongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelChiTietVe95000DongLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(76, 76, 76)
+                .addComponent(btnTruSLVe95000Dong)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtSLVe95000Dong)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnCongSLVe95000Dong)
+                .addGap(73, 73, 73)
+                .addComponent(jLabel32)
+                .addGap(64, 64, 64)
+                .addComponent(txtTongCongVe95000Dong)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(btnXoaVe95000Dong)
+                .addGap(17, 17, 17))
+        );
+        panelChiTietVe95000DongLayout.setVerticalGroup(
+            panelChiTietVe95000DongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelChiTietVe95000DongLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelChiTietVe95000DongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 108, Short.MAX_VALUE)
+                    .addComponent(txtTongCongVe95000Dong, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTruSLVe95000Dong)
+                    .addComponent(btnCongSLVe95000Dong)
+                    .addComponent(txtSLVe95000Dong)
+                    .addComponent(btnXoaVe95000Dong))
+                .addContainerGap())
+        );
+
+        PanelGioHang.add(panelChiTietVe95000Dong, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 530, 950, -1));
+
+        getContentPane().add(PanelGioHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 690));
 
         PanelEmpty.setBackground(new java.awt.Color(41, 58, 128));
         PanelEmpty.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -705,6 +797,7 @@ public class GioHang extends javax.swing.JFrame {
         slVe3000Dong = slVe3000Dong + 1;
         txtSLVe3000Dong.setText(String.valueOf(slVe3000Dong));
         setTongTienThanhToan();
+        setTongTienText();
     }//GEN-LAST:event_btnCongSLVe3000DongMouseClicked
 
     //Evenet click button trừ số lượng vé cho vé 3000 đồng
@@ -715,6 +808,8 @@ public class GioHang extends javax.swing.JFrame {
             slVe3000Dong = slVe3000Dong - 1;
             txtSLVe3000Dong.setText(String.valueOf(slVe3000Dong));
             setTongTienThanhToan();
+            setTongTienText();
+
         }
     }//GEN-LAST:event_btnTruSLVe3000DongMouseClicked
 
@@ -723,6 +818,8 @@ public class GioHang extends javax.swing.JFrame {
         slVe2000Dong = slVe2000Dong + 1;
         txtSLVe2000Dong.setText(String.valueOf(slVe2000Dong));
         setTongTienThanhToan();
+        setTongTienText();
+
     }//GEN-LAST:event_btnCongSLVe2000DongMouseClicked
 
     private void btnTruSLVe2000DongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTruSLVe2000DongMouseClicked
@@ -731,6 +828,8 @@ public class GioHang extends javax.swing.JFrame {
             slVe2000Dong = slVe2000Dong - 1;
             txtSLVe2000Dong.setText(String.valueOf(slVe2000Dong));
             setTongTienThanhToan();
+            setTongTienText();
+
         }
     }//GEN-LAST:event_btnTruSLVe2000DongMouseClicked
 
@@ -739,6 +838,8 @@ public class GioHang extends javax.swing.JFrame {
         slVe25000Dong = slVe25000Dong + 1;
         txtSLVe25000Dong.setText(String.valueOf(slVe25000Dong));
         setTongTienThanhToan();
+        setTongTienText();
+
     }//GEN-LAST:event_btnCongSLVe25000DongMouseClicked
 
     private void btnTruSLVe25000DongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTruSLVe25000DongMouseClicked
@@ -747,24 +848,10 @@ public class GioHang extends javax.swing.JFrame {
             slVe25000Dong = slVe25000Dong - 1;
             txtSLVe25000Dong.setText(String.valueOf(slVe25000Dong));
             setTongTienThanhToan();
+            setTongTienText();
+
         }
     }//GEN-LAST:event_btnTruSLVe25000DongMouseClicked
-
-    private void btnCongSLVe95000DongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCongSLVe95000DongMouseClicked
-        // TODO add your handling code here:
-        slVe95000Dong = slVe95000Dong + 1;
-        txtSLVe95000Dong.setText(String.valueOf(slVe95000Dong));
-        setTongTienThanhToan();
-    }//GEN-LAST:event_btnCongSLVe95000DongMouseClicked
-
-    private void btnTruSLVe95000DongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTruSLVe95000DongMouseClicked
-        // TODO add your handling code here:
-        if (slVe95000Dong > 1) {
-            slVe95000Dong = slVe95000Dong - 1;
-            txtSLVe95000Dong.setText(String.valueOf(slVe95000Dong));
-            setTongTienThanhToan();
-        }
-    }//GEN-LAST:event_btnTruSLVe95000DongMouseClicked
 
     //Event click button thanh toán giỏ hàng
     private void btnThanhToanGioHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThanhToanGioHangMouseClicked
@@ -774,7 +861,7 @@ public class GioHang extends javax.swing.JFrame {
         System.out.println("Tong tien trong vi nguoi dung: " + tempTienGioHang);
         //Nếu tiền thanh toán bé hơn hoặc bằng số tiền mà người dùng có thì cho phép thanh toán
         if (pTongTienThanhToan <= tempTienGioHang) {
-            
+
             tempTienGioHang = tempTienGioHang - pTongTienThanhToan;
 
 //            System.out.println("Tong tien thanh toan con lai: " + pTongTienThanhToan);
@@ -858,8 +945,7 @@ public class GioHang extends javax.swing.JFrame {
                 xoaSLVe();
                 //Set số lượng các loại vé về 0
                 setSLVe0();
-                slVeGioHang = 0;
-                
+
             } catch (Exception ex) {
                 Logger.getLogger(GioHang.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -868,14 +954,6 @@ public class GioHang extends javax.swing.JFrame {
                     + "đ, không đủ để thanh toán. Vui lòng nạp tiền thêm!!!");
         }
     }//GEN-LAST:event_btnThanhToanGioHangMouseClicked
-    
-
-    private void btnXoaVe3000DongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXoaVe3000DongMouseClicked
-        // TODO add your handling code here:
-        panelChiTietVe3000Dong.setVisible(false);
-        slVe3000Dong = 0;
-        setTongTienThanhToan();
-    }//GEN-LAST:event_btnXoaVe3000DongMouseClicked
 
     //Evenet click button trừ số lượng vé cho vé 2000 đồng
     //Nếu số lượng vé là 1 thì phương thức này sẽ không được thực hiện
@@ -885,6 +963,9 @@ public class GioHang extends javax.swing.JFrame {
         panelChiTietVe2000Dong.setVisible(false);
         slVe2000Dong = 0;
         setTongTienThanhToan();
+        slVeGioHang--;
+        setTongTienText();
+
     }//GEN-LAST:event_btnXoaVe2000DongMouseClicked
 
     //Event click button xóa loại vé 25000 đồng ra khỏi giỏ hàng
@@ -893,6 +974,9 @@ public class GioHang extends javax.swing.JFrame {
         panelChiTietVe25000Dong.setVisible(false);
         slVe25000Dong = 0;
         setTongTienThanhToan();
+        slVeGioHang--;
+        setTongTienText();
+
     }//GEN-LAST:event_btnXoaVe25000DongMouseClicked
 
     //Event click button xóa loại vé 95000 đồng ra khỏi giỏ hàng
@@ -901,7 +985,76 @@ public class GioHang extends javax.swing.JFrame {
         panelChiTietVe95000Dong.setVisible(false);
         slVe95000Dong = 0;
         setTongTienThanhToan();
+        slVeGioHang--;
     }//GEN-LAST:event_btnXoaVe95000DongMouseClicked
+
+    private void btnXoaVe2000DongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaVe2000DongActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnXoaVe2000DongActionPerformed
+
+    private void btnXoaVe3000DongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaVe3000DongActionPerformed
+        // TODO add your handling code here:
+        panelChiTietVe3000Dong.setVisible(false);
+        slVe3000Dong = 0;
+        setTongTienThanhToan();
+        slVeGioHang--;
+        setTongTienText();
+
+    }//GEN-LAST:event_btnXoaVe3000DongActionPerformed
+
+    private void btnXoaVe25000DongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaVe25000DongActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnXoaVe25000DongActionPerformed
+
+    private void btnTruSLVe95000DongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTruSLVe95000DongMouseClicked
+        // TODO add your handling code here:
+        if (slVe95000Dong > 1) {
+            slVe95000Dong = slVe95000Dong - 1;
+            txtSLVe95000Dong.setText(String.valueOf(slVe95000Dong));
+            setTongTienThanhToan();
+            setTongTienText();
+
+        }
+    }//GEN-LAST:event_btnTruSLVe95000DongMouseClicked
+
+    private void btnCongSLVe95000DongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCongSLVe95000DongMouseClicked
+        // TODO add your handling code here:
+        slVe95000Dong = slVe95000Dong + 1;
+        txtSLVe95000Dong.setText(String.valueOf(slVe95000Dong));
+        setTongTienThanhToan();
+        setTongTienText();
+    }//GEN-LAST:event_btnCongSLVe95000DongMouseClicked
+
+    private void btnXoaVe95000DongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaVe95000DongActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnXoaVe95000DongActionPerformed
+
+    private void btnThanhToanGioHangMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThanhToanGioHangMouseEntered
+        btnThanhToanGioHang.setBackground(new Color(200, 148, 34));
+
+    }//GEN-LAST:event_btnThanhToanGioHangMouseEntered
+
+    private void btnThanhToanGioHangMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThanhToanGioHangMouseExited
+        btnThanhToanGioHang.setBackground(new Color(243, 148, 34));
+    }//GEN-LAST:event_btnThanhToanGioHangMouseExited
+
+    private void btnBackGioHangMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBackGioHangMouseEntered
+        btnBackGioHang.setBackground(new Color(200, 148, 34));
+
+    }//GEN-LAST:event_btnBackGioHangMouseEntered
+
+    private void btnBackGioHangMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBackGioHangMouseExited
+        btnBackGioHang.setBackground(new Color(243, 148, 34));
+
+    }//GEN-LAST:event_btnBackGioHangMouseExited
+
+    private void btnXoaVe3000DongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXoa3000DongMouseClicked
+        panelChiTietVe3000Dong.setVisible(false);
+        slVe3000Dong = 0;
+        setTongTienThanhToan();
+        setTongTienText();
+
+    }//GEN-LAST:event_btnXoa3000DongMouseClicked
 
     /**
      * @param args the command line arguments
@@ -976,30 +1129,28 @@ public class GioHang extends javax.swing.JFrame {
     private javax.swing.JButton btnTruSLVe25000Dong;
     private javax.swing.JButton btnTruSLVe3000Dong;
     private javax.swing.JButton btnTruSLVe95000Dong;
+    private javax.swing.JButton btnXoaVe2000Dong;
+    private javax.swing.JButton btnXoaVe25000Dong;
+    private javax.swing.JButton btnXoaVe3000Dong;
+    private javax.swing.JButton btnXoaVe95000Dong;
     private javax.swing.JLabel empty;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel labelgiohangtrong;
     private Admin.PanelRound panelChiTietVe2000Dong;
     private Admin.PanelRound panelChiTietVe25000Dong;
@@ -1012,6 +1163,10 @@ public class GioHang extends javax.swing.JFrame {
     private javax.swing.JButton txtSLVe25000Dong;
     private javax.swing.JButton txtSLVe3000Dong;
     private javax.swing.JButton txtSLVe95000Dong;
+    private javax.swing.JLabel txtTongCongVe2000Dong;
+    private javax.swing.JLabel txtTongCongVe25000Dong;
+    private javax.swing.JLabel txtTongCongVe3000Dong;
+    private javax.swing.JLabel txtTongCongVe95000Dong;
     private javax.swing.JLabel txtTongTienThanhToan;
     // End of variables declaration//GEN-END:variables
 

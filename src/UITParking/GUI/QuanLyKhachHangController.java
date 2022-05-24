@@ -6,6 +6,7 @@ package UITParking.GUI;
 
 import UITParking.BUS.KhachHangBUS;
 import UITParking.DTO.KhachHangDTO;
+import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -106,18 +107,22 @@ public class QuanLyKhachHangController {
         });
         
         // design
+        table.getColumnModel().getColumn(0).setMinWidth(0);
+        table.getColumnModel().getColumn(0).setMaxWidth(0);
+        table.getColumnModel().getColumn(0).setPreferredWidth(0);
+        
         table.getTableHeader().setFont(new Font("Arial", Font.BOLD, 14));
         table.getTableHeader().setPreferredSize(new Dimension(100, 50));
         table.setRowHeight(50);
         table.validate();
         table.repaint();
         
-        JScrollPane scroll = new JScrollPane();
-        scroll.getViewport().add(table);
-        scroll.setPreferredSize(new Dimension(1350, 400));
+        JScrollPane scrollPane = new JScrollPane();
+        scrollPane.getViewport().add(table);
+        scrollPane.setPreferredSize(new Dimension(1300, 400));
         jpnView.removeAll();
-        jpnView.setLayout(new CardLayout());
-        jpnView.add(scroll);
+        jpnView.setLayout(new BorderLayout());
+        jpnView.add(scrollPane);
         jpnView.validate();
         jpnView.repaint();
     }

@@ -151,10 +151,10 @@ public class MuaVe extends javax.swing.JFrame {
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnMuaVe3000Dong, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(7, Short.MAX_VALUE))
         );
 
-        jPanel5.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 200, 210));
+        jPanel5.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 200, 210));
 
         btnBackMuaVe.setBackground(new java.awt.Color(243, 148, 34));
         btnBackMuaVe.setFont(new java.awt.Font("Cooper", 0, 18)); // NOI18N
@@ -240,10 +240,10 @@ public class MuaVe extends javax.swing.JFrame {
                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnMuaVe2000Dong, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(7, Short.MAX_VALUE))
         );
 
-        jPanel5.add(panelRound2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 90, 200, 210));
+        jPanel5.add(panelRound2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, 200, 210));
 
         panelRound3.setBackground(new java.awt.Color(255, 255, 255));
         panelRound3.setRoundBottomLeft(50);
@@ -289,10 +289,10 @@ public class MuaVe extends javax.swing.JFrame {
                 .addContainerGap())
             .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(panelRound3Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnMuaVe95000Dong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(46, 46, 46))
         );
         panelRound3Layout.setVerticalGroup(
             panelRound3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -305,10 +305,10 @@ public class MuaVe extends javax.swing.JFrame {
                 .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnMuaVe95000Dong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(7, Short.MAX_VALUE))
         );
 
-        jPanel5.add(panelRound3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 320, -1, 210));
+        jPanel5.add(panelRound3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 320, -1, 210));
 
         panelRound4.setBackground(new java.awt.Color(255, 255, 255));
         panelRound4.setRoundBottomLeft(50);
@@ -354,10 +354,10 @@ public class MuaVe extends javax.swing.JFrame {
                 .addContainerGap())
             .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(panelRound4Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnMuaVe25000Dong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(45, 45, 45))
         );
         panelRound4Layout.setVerticalGroup(
             panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -368,16 +368,16 @@ public class MuaVe extends javax.swing.JFrame {
                 .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnMuaVe25000Dong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel5.add(panelRound4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, -1, 210));
+        jPanel5.add(panelRound4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, -1, 210));
 
         txtSoLuongVeGioHang.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         txtSoLuongVeGioHang.setText("1");
-        jPanel5.add(txtSoLuongVeGioHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 10, 20, 30));
+        jPanel5.add(txtSoLuongVeGioHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 10, 20, 30));
 
         btnXemGioHang.setBackground(new java.awt.Color(41, 58, 128));
         btnXemGioHang.setFont(new java.awt.Font("Cooper", 0, 18)); // NOI18N
@@ -391,7 +391,7 @@ public class MuaVe extends javax.swing.JFrame {
                 btnXemGioHangMouseClicked(evt);
             }
         });
-        jPanel5.add(btnXemGioHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 10, 90, 70));
+        jPanel5.add(btnXemGioHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 10, 90, 70));
 
         panelRound5.setBackground(new java.awt.Color(255, 255, 255));
         panelRound5.setRoundBottomLeft(50);
@@ -410,15 +410,15 @@ public class MuaVe extends javax.swing.JFrame {
             .addGap(0, 30, Short.MAX_VALUE)
         );
 
-        jPanel5.add(panelRound5, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 10, 30, 30));
+        jPanel5.add(panelRound5, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 10, 30, 30));
 
         jLabel1.setFont(new java.awt.Font("Cooper", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(243, 148, 34));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("TICKET SELECTION");
-        jPanel5.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 530, 50));
+        jPanel5.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 510, 50));
 
-        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 590));
+        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 570));
 
         pack();
         setLocationRelativeTo(null);

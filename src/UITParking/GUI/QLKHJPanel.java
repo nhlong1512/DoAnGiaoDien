@@ -13,7 +13,7 @@ public class QLKHJPanel extends javax.swing.JPanel {
     /**
      * Creates new form QLKHJPanel
      */
-    public QLKHJPanel() {
+    public QLKHJPanel() throws Exception {
         initComponents();
         
         QuanLyKhachHangController controller = new QuanLyKhachHangController(jpnView, btnAdd, jtfSearch);
