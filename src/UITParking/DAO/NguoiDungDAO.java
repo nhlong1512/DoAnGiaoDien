@@ -86,6 +86,26 @@ public class NguoiDungDAO {
         }
     }
     
+    public Boolean themManagement(NguoiDungDTO nd) throws Exception {
+        String sql = "INSERT INTO NGUOIDUNG (MaND, Email, HoTen, GIOITINH, DIACHI, QUEQUAN, SDT, VAITRO) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        try {
+            pst = this.connection.getConnect().prepareStatement(sql);
+
+            pst.setString(1, nd.getStrMaND());
+            pst.setString(2, nd.getStrEmail());
+            pst.setString(3, nd.getStrHoTen());
+            pst.setString(4, nd.getStrGioiTinh());
+            pst.setString(5, nd.getStrDiaChi());
+            pst.setString(6, nd.getStrQueQuan());
+            pst.setString(7, nd.getStrSDT());
+            pst.setString(8, nd.getStrVaiTro());
+
+            return pst.executeUpdate() > 0;
+        } catch (SQLException ex) {
+            throw new ArithmeticException(ex.getMessage());
+        }
+    }
+    
     /** 
      * @param nd chuyền vào dữ liệu người dùng để xóa
      * @return true nếu thành công

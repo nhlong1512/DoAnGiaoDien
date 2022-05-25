@@ -58,6 +58,13 @@ public class NguoiDungBUS {
         }
         return false;
     }
+    
+    public Boolean themManagement(NguoiDungDTO nd) throws Exception {
+        if (ndDAO.themManagement(nd)) {
+            list_ND.add(nd);
+        }
+        return false;
+    }
 
     /**
      * xóa 1 người dùng khỏi danh sách và database

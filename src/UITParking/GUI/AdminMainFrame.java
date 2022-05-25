@@ -19,7 +19,7 @@ public class AdminMainFrame extends javax.swing.JFrame {
     /**
      * Creates new form AdminMainFrame
      */
-    public AdminMainFrame() {
+    public AdminMainFrame() throws Exception {
         initComponents();
         setTitle("UIT Parking");
         
