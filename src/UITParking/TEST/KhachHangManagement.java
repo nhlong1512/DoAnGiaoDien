@@ -106,6 +106,11 @@ public class KhachHangManagement extends javax.swing.JFrame {
         btnXoa.setText("Xóa");
 
         btnTimKiem.setText("Tìm Kiếm");
+        btnTimKiem.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnTimKiemMouseClicked(evt);
+            }
+        });
 
         tblKhachHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -296,6 +301,36 @@ public class KhachHangManagement extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_btnLuuMouseClicked
+
+    private void btnTimKiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTimKiemMouseClicked
+        // TODO add your handling code here:
+        if(txtMaKH.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Mã khách hàng phải được nhập để tìm kiếm");
+            return;
+        }
+        
+        try{
+            NguoiDungBUS nguoidungtbl = new NguoiDungBUS();
+            NguoiDungDTO nd = nguoidungtbl.getInfor(txtMaKH.getText());
+            
+            if(nd != null){
+                txtMaKH.setText(nd.getStrMaND());
+                txtEmail.setText(nd.getStrEmail());
+                txtHoTen.setText(nd.getStrHoTen());
+                txtDiaChi.setText(nd.getStrDiaChi());
+                txtQueQuan.setText(nd.getStrQueQuan());
+                txtSDT.setText(nd.getStrSDT());
+                rdbNam.setSelected(nd.getStrGioiTinh() == "Nam");
+                rdbNu.setSelected(nd.getStrGioiTinh() == "Nu");
+            }else{
+                JOptionPane.showMessageDialog(this, "Khách hàng không tìm thấy");
+            }
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_btnTimKiemMouseClicked
 
     /**
      * @param args the command line arguments

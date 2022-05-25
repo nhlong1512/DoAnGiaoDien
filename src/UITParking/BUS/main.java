@@ -135,12 +135,18 @@ public class main {
 //        }
 //        
 //        System.out.println("Mã vé tiếp theo là " + vetbl.getMaxMaVe());
-        
-        KhachHangBUS list_KH = new KhachHangBUS();
-        ArrayList<KhachHangDTO> listItem = list_KH.getList_KH();
-        for(KhachHangDTO t : listItem){
-            System.out.println(t);
-        }
-        System.out.println(list_KH.getNumbKH());
+//        KhachHangBUS list_KH = new KhachHangBUS();
+//        ArrayList<KhachHangDTO> listItem = list_KH.getList_KH();
+//        for(KhachHangDTO t : listItem){
+//            System.out.println(t);
+//        }
+//        System.out.println(list_KH.getNumbKH());
+        NguoiDungBUS nguoidungtbl = new NguoiDungBUS();
+        NguoiDungDTO nd = nguoidungtbl.getInfor("ND003");
+//        System.out.println(nd != null);
+System.out.println(nd);
+        KhachHangBUS khachhangtbl = new KhachHangBUS();
+        KhachHangDTO kh = khachhangtbl.getInfor("KH003");
+        System.out.println(kh);
     }
 }
