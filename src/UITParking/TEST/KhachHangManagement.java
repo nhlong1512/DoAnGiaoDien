@@ -219,6 +219,11 @@ public class KhachHangManagement extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblKhachHang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tblKhachHangMousePressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblKhachHang);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -493,6 +498,23 @@ public class KhachHangManagement extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_btnXoaMouseClicked
+
+    //Event khi chọn một row trong table thì hiện ra dữ liệu
+    private void tblKhachHangMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKhachHangMousePressed
+        // TODO add your handling code here:
+        int selectedRow = tblKhachHang.getSelectedRow();
+        if (selectedRow >= 0) {
+            NguoiDungDTO nd = list_ND.get(selectedRow);
+            txtMaKH.setText(nd.getStrMaND());
+            txtEmail.setText(nd.getStrEmail());
+            txtHoTen.setText(nd.getStrHoTen());
+            txtDiaChi.setText(nd.getStrDiaChi());
+            txtQueQuan.setText(nd.getStrQueQuan());
+            txtSDT.setText(nd.getStrSDT());
+            rdbNam.setSelected(nd.getStrGioiTinh() == "Nam");
+            rdbNu.setSelected(nd.getStrGioiTinh() == "Nu");
+        }
+    }//GEN-LAST:event_tblKhachHangMousePressed
 
     /**
      * @param args the command line arguments

@@ -318,6 +318,9 @@
                   </Table>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblKhachHangMousePressed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
