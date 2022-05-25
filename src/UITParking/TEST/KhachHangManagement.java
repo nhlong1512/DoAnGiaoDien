@@ -8,7 +8,9 @@ import UITParking.BUS.NguoiDungBUS;
 import UITParking.DTO.KhachHangDTO;
 import UITParking.DTO.NguoiDungDTO;
 import java.awt.Color;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,8 +21,14 @@ public class KhachHangManagement extends javax.swing.JFrame {
     /**
      * Creates new form KhachHangManagement
      */
-    public KhachHangManagement() {
+    private DefaultTableModel model;
+    private String [] columnHeaders = new String[] {"Mã KH", "Họ Tên", "Email", "Ngày Sinh",
+        "Giới Tính", "Địa Chỉ", "Quê Quán", "Số Điện Thoại"};
+    
+    public KhachHangManagement() throws Exception {
         initComponents();
+        setLocationRelativeTo(null);
+        initTable();
     }
     
     public void resetRender(){
@@ -33,6 +41,17 @@ public class KhachHangManagement extends javax.swing.JFrame {
         txtNgaySinh.setText("");
     }
 
+    public void initTable() throws Exception{
+        model = new DefaultTableModel();
+        model.setColumnIdentifiers(columnHeaders);
+        NguoiDungBUS nguoidungtbl = new NguoiDungBUS();
+        ArrayList<NguoiDungDTO> list_ND = nguoidungtbl.getList_ND();
+        for(NguoiDungDTO nd : list_ND){
+            model.addRow(new Object[] {nd.getStrMaND(), nd.getStrHoTen(), nd.getStrEmail(), 
+            nd.getDateNgSinh(), nd.getStrGioiTinh(), nd.getStrDiaChi(), nd.getStrQueQuan(), nd.getStrSDT()});
+        }
+        tblKhachHang.setModel(model);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
