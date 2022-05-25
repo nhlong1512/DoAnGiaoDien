@@ -11,6 +11,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.event.DocumentEvent;
@@ -118,6 +119,7 @@ public class KhachHangManagement extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnGroupGioiTinh = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -163,8 +165,10 @@ public class KhachHangManagement extends javax.swing.JFrame {
 
         jLabel6.setText("Giới Tính");
 
+        btnGroupGioiTinh.add(rdbNam);
         rdbNam.setText("Nam");
 
+        btnGroupGioiTinh.add(rdbNu);
         rdbNu.setText("Nữ");
 
         jLabel7.setText("Họ Tên");
@@ -416,8 +420,8 @@ public class KhachHangManagement extends javax.swing.JFrame {
                 txtDiaChi.setText(nd.getStrDiaChi());
                 txtQueQuan.setText(nd.getStrQueQuan());
                 txtSDT.setText(nd.getStrSDT());
-                rdbNam.setSelected(nd.getStrGioiTinh() == "Nam");
-                rdbNu.setSelected(nd.getStrGioiTinh() == "Nu");
+                rdbNam.setSelected(nd.getStrGioiTinh().equals("Nam"));
+                rdbNu.setSelected(nd.getStrGioiTinh().equals("Nu"));
             } else {
                 JOptionPane.showMessageDialog(this, "Khách hàng không tìm thấy");
             }
@@ -511,8 +515,8 @@ public class KhachHangManagement extends javax.swing.JFrame {
             txtDiaChi.setText(nd.getStrDiaChi());
             txtQueQuan.setText(nd.getStrQueQuan());
             txtSDT.setText(nd.getStrSDT());
-            rdbNam.setSelected(nd.getStrGioiTinh() == "Nam");
-            rdbNu.setSelected(nd.getStrGioiTinh() == "Nu");
+            rdbNam.setSelected(nd.getStrGioiTinh().equals("Nam"));
+            rdbNu.setSelected(nd.getStrGioiTinh().equals("Nu"));
         }
     }//GEN-LAST:event_tblKhachHangMousePressed
 
@@ -557,6 +561,7 @@ public class KhachHangManagement extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCapNhat;
+    private javax.swing.ButtonGroup btnGroupGioiTinh;
     private javax.swing.JButton btnLuu;
     private javax.swing.JButton btnNhapMoi;
     private javax.swing.JButton btnTimKiem;
@@ -585,4 +590,8 @@ public class KhachHangManagement extends javax.swing.JFrame {
     private javax.swing.JTextField txtSDT;
     private javax.swing.JTextField txtTimKiem;
     // End of variables declaration//GEN-END:variables
+
+    private ButtonGroup ButtonGroup() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
