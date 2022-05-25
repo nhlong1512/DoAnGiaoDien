@@ -19,9 +19,9 @@ import java.util.HashMap;
  */
 public class NguoiDungDAO {
 
-    
     SQLConnectUnit connect;
-    public static SQLConnection connection = new SQLConnection("hr", "hr", "orcl");;
+    public static SQLConnection connection = new SQLConnection("hr", "hr", "orcl");
+    ;
     public static PreparedStatement pst = null;
 
     /**
@@ -59,6 +59,33 @@ public class NguoiDungDAO {
         return docDB(null);
     }
 
+    public NguoiDungDTO findById(String MaND) throws Exception {
+        String sql = "Select * from NGUOIDUNG where MaND = ?";
+        try {
+            pst = this.connection.getConnect().prepareStatement(sql);
+
+            pst.setString(1, MaND);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                NguoiDungDTO nd = new NguoiDungDTO();
+                nd.setStrMaND(rs.getString("MaND"));
+                nd.setStrHoTen(rs.getString("HoTen"));
+                nd.setStrEmail(rs.getString("Email"));
+                nd.setStrGioiTinh(rs.getString("GioiTinh"));
+                nd.setStrDiaChi(rs.getString("DiaChi"));
+                nd.setStrQueQuan(rs.getString("QueQuan"));
+                nd.setStrSDT(rs.getString("SDT"));
+                nd.setStrVaiTro(rs.getString("VaiTro"));
+                nd.setStrMatKhau(rs.getString("MatKhau"));
+                nd.setDateNgSinh(rs.getDate("NgSinh"));
+                return nd;
+            }
+            return null;
+        } catch (SQLException ex) {
+            throw new ArithmeticException(ex.getMessage());
+        }
+    }
+
     /**
      * Tạo thêm 1 người dùng dựa theo đã có thông tin trước
      *
@@ -85,7 +112,7 @@ public class NguoiDungDAO {
             throw new ArithmeticException(ex.getMessage());
         }
     }
-    
+
     public Boolean themManagement(NguoiDungDTO nd) throws Exception {
         String sql = "INSERT INTO NGUOIDUNG (MaND, Email, HoTen, GIOITINH, DIACHI, QUEQUAN, SDT, VAITRO) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try {
@@ -105,8 +132,8 @@ public class NguoiDungDAO {
             throw new ArithmeticException(ex.getMessage());
         }
     }
-    
-    /** 
+
+    /**
      * @param nd chuyền vào dữ liệu người dùng để xóa
      * @return true nếu thành công
      */
@@ -122,10 +149,10 @@ public class NguoiDungDAO {
             throw new ArithmeticException(ex.getMessage());
         }
     }
-    
+
     /**
-     * @param nd truyền vào dữ liệu người dùng mới
-     * Sửa thông tin đăng nhập hoặc là cấp bậc của 1 người dùng
+     * @param nd truyền vào dữ liệu người dùng mới Sửa thông tin đăng nhập hoặc
+     * là cấp bậc của 1 người dùng
      * @return true nếu thành công
      */
     public Boolean sua(NguoiDungDTO nd) throws Exception {
@@ -151,7 +178,30 @@ public class NguoiDungDAO {
             throw new ArithmeticException(ex.getMessage());
         }
     }
-    
+
+    public Boolean suaManagement(NguoiDungDTO nd) throws Exception {
+        String sql = "UPDATE NGUOIDUNG SET Email = ?, HoTen = ?, "
+                + "GIOITINH = ?, DIACHI = ?, QUEQUAN = ?, SDT = ?, "
+                + "VAITRO = ?, NGAYSINH = ? WHERE MAND = ?";
+        try {
+            pst = this.connection.getConnect().prepareStatement(sql);
+
+            pst.setString(9, nd.getStrMaND());
+            pst.setString(1, nd.getStrEmail());
+            pst.setString(2, nd.getStrHoTen());
+            pst.setString(3, nd.getStrGioiTinh());
+            pst.setString(4, nd.getStrDiaChi());
+            pst.setString(5, nd.getStrQueQuan());
+            pst.setString(6, nd.getStrSDT());
+            pst.setString(7, nd.getStrVaiTro());
+            pst.setDate(8, new java.sql.Date(nd.getDateNgSinh().getTime()));
+
+            return pst.executeUpdate() > 0;
+        } catch (SQLException ex) {
+            throw new ArithmeticException(ex.getMessage());
+        }
+    }
+
     public Boolean suaKhongCoNgaySinh(NguoiDungDTO nd) throws Exception {
         String sql = "UPDATE NGUOIDUNG SET Email = ?, MatKhau = ?, HoTen = ?, "
                 + "GIOITINH = ?, DIACHI = ?, QUEQUAN = ?, SDT = ?, "

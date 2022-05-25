@@ -115,6 +115,28 @@ public class NguoiDungBUS {
         return false;
     }
     
+    public Boolean suaManagement(NguoiDungDTO nd) throws Exception {
+        ndDAO.sua(nd);
+
+        // duyệt từng phẩn tử
+        for (NguoiDungDTO taikhoan : list_ND) {
+            if (taikhoan.getStrMaND().equals(nd.getStrMaND())) {
+                taikhoan.setStrEmail(nd.getStrEmail());
+                taikhoan.setStrHoTen(nd.getStrHoTen());
+                taikhoan.setStrGioiTinh(nd.getStrGioiTinh());
+                taikhoan.setStrDiaChi(nd.getStrDiaChi());
+                taikhoan.setStrQueQuan(nd.getStrQueQuan());
+                taikhoan.setStrSDT(nd.getStrSDT());
+                taikhoan.setStrVaiTro(nd.getStrVaiTro());
+                taikhoan.setDateNgSinh(taikhoan.getDateNgSinh());
+                return true;
+            }
+
+        }
+
+        return false;
+    }
+    
     public Boolean suaKhongCoNgaySinh(NguoiDungDTO nd) throws Exception {
         ndDAO.sua(nd);
 
@@ -135,5 +157,9 @@ public class NguoiDungBUS {
         }
 
         return false;
+    }
+    
+    public NguoiDungDTO findById(String MaND) throws Exception{
+        return ndDAO.findById(MaND);
     }
 }

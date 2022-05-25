@@ -22,6 +22,16 @@ public class KhachHangManagement extends javax.swing.JFrame {
     public KhachHangManagement() {
         initComponents();
     }
+    
+    public void resetRender(){
+        txtMaKH.setText("");
+        txtHoTen.setText("");
+        txtEmail.setText("");
+        txtDiaChi.setText("");
+        txtQueQuan.setText("");
+        txtSDT.setText("");
+        txtNgaySinh.setText("");
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -102,8 +112,18 @@ public class KhachHangManagement extends javax.swing.JFrame {
         });
 
         btnCapNhat.setText("Cập Nhật");
+        btnCapNhat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCapNhatMouseClicked(evt);
+            }
+        });
 
         btnXoa.setText("Xóa");
+        btnXoa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnXoaMouseClicked(evt);
+            }
+        });
 
         btnTimKiem.setText("Tìm Kiếm");
         btnTimKiem.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -259,13 +279,7 @@ public class KhachHangManagement extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNhapMoiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNhapMoiMouseClicked
-        txtMaKH.setText("");
-        txtHoTen.setText("");
-        txtEmail.setText("");
-        txtDiaChi.setText("");
-        txtQueQuan.setText("");
-        txtSDT.setText("");
-        txtNgaySinh.setText("");
+        resetRender();
     }//GEN-LAST:event_btnNhapMoiMouseClicked
 
     private void btnLuuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLuuMouseClicked
@@ -331,6 +345,77 @@ public class KhachHangManagement extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_btnTimKiemMouseClicked
+
+    private void btnCapNhatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCapNhatMouseClicked
+        // TODO add your handling code here:
+        StringBuilder sb = new StringBuilder();
+        if(txtMaKH.getText().equals("")){
+            sb.append("Mã khách hàng không được để trống.");
+                    txtMaKH.setBackground(Color.red);
+        }else{
+            txtMaKH.setBackground(Color.white);
+        }
+        if(sb.length() > 0){
+            JOptionPane.showMessageDialog(this, sb);
+            return;
+        }
+        try{
+            NguoiDungDTO nd = new NguoiDungDTO();
+            nd.setStrMaND(txtMaKH.getText());
+            nd.setStrEmail(txtEmail.getText());
+            nd.setStrHoTen(txtHoTen.getText());
+            nd.setStrDiaChi(txtDiaChi.getText());
+            nd.setStrQueQuan(txtQueQuan.getText());
+            nd.setStrSDT(txtSDT.getText());
+            nd.setStrGioiTinh(rdbNam.isSelected() ? "Nam" : "Nu");
+            nd.setStrVaiTro("Khach hang");
+            NguoiDungBUS nguoidungtbl = new NguoiDungBUS();
+            nguoidungtbl.sua(nd);
+            
+            
+            JOptionPane.showMessageDialog(this, "Khách hàng đã được cập nhật vào CSDL");
+            
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(this, "Error" + e.getMessage());
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_btnCapNhatMouseClicked
+
+    private void btnXoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXoaMouseClicked
+        // TODO add your handling code here:
+        StringBuilder sb = new StringBuilder();
+        if(txtMaKH.getText().equals("")){
+            sb.append("Mã khách hàng không được để trống.");
+                    txtMaKH.setBackground(Color.red);
+        }else{
+            txtMaKH.setBackground(Color.white);
+        }
+        if(sb.length() > 0){
+            JOptionPane.showMessageDialog(this, sb);
+            return;
+        }
+        
+        if(JOptionPane.showConfirmDialog(this, "Bạn có muốn xóa không?") == JOptionPane.NO_OPTION){
+            return;
+        }
+        try{
+            
+            NguoiDungBUS nguoidungtbl = new NguoiDungBUS();
+            NguoiDungDTO nd = nguoidungtbl.getInfor(txtMaKH.getText());
+            nguoidungtbl.xoa(nd);
+            
+            
+            JOptionPane.showMessageDialog(this, "Khách hàng đã xóa khỏi CSDL");
+            
+            //Reset lại render
+            resetRender();
+            
+            
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(this, "Error" + e.getMessage());
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_btnXoaMouseClicked
 
     /**
      * @param args the command line arguments

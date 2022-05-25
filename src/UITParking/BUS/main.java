@@ -103,12 +103,12 @@ public class main {
 //            System.out.println("New----" + ve);
 //        }
 //        
-//        KhachVangLaiBUS khachvanglaitbl = new KhachVangLaiBUS();
-//        System.out.println(khachvanglaitbl.getNumbKVL());
-//        ArrayList<KhachVangLaiDTO> list_KVL = khachvanglaitbl.getlist_KVL();
-//        for (KhachVangLaiDTO ve : list_KVL) {
-//            System.out.println("New----" + ve);
-//        }
+        KhachVangLaiBUS khachvanglaitbl = new KhachVangLaiBUS();
+        System.out.println(khachvanglaitbl.getNumbKVL());
+        ArrayList<KhachVangLaiDTO> list_KVL = khachvanglaitbl.getlist_KVL();
+        for (KhachVangLaiDTO ve : list_KVL) {
+            System.out.println("New----" + ve);
+        }
 //
 //        XeBUS xetbl = new XeBUS();
 //        System.out.println(xetbl.getNumbXE());
@@ -141,12 +141,26 @@ public class main {
 //            System.out.println(t);
 //        }
 //        System.out.println(list_KH.getNumbKH());
-        NguoiDungBUS nguoidungtbl = new NguoiDungBUS();
-        NguoiDungDTO nd = nguoidungtbl.getInfor("ND003");
-//        System.out.println(nd != null);
-System.out.println(nd);
-        KhachHangBUS khachhangtbl = new KhachHangBUS();
-        KhachHangDTO kh = khachhangtbl.getInfor("KH003");
-        System.out.println(kh);
+//        NguoiDungBUS nguoidungtbl = new NguoiDungBUS();
+//        NguoiDungDTO nd = nguoidungtbl.getInfor("ND003");
+////        System.out.println(nd != null);
+//System.out.println(nd);
+//        KhachHangBUS khachhangtbl = new KhachHangBUS();
+//        KhachHangDTO kh = khachhangtbl.getInfor("KH003");
+//        System.out.println(kh);
+//        
+//        System.out.println(nguoidungtbl.findById("ND003"));
+//        ArrayList<NguoiDungDTO> list_ND = nguoidungtbl.getList_ND();
+//        for (NguoiDungDTO nd : list_ND) {
+//            System.out.println("New----" + nd);
+//        }
+NguoiDungBUS nguoidungtbl = new NguoiDungBUS();
+        System.out.println(nguoidungtbl.getNumbND());
+        ArrayList<NguoiDungDTO> list_ND = nguoidungtbl.getList_ND();
+        for (NguoiDungDTO ve : list_ND) {
+            System.out.println("New----" + ve);
+        }
+        
+        System.out.println(nguoidungtbl.getInfor("ND003"));
     }
 }
