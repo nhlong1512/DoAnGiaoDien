@@ -28,6 +28,8 @@ public class KhachHangManagement extends javax.swing.JFrame {
     /**
      * Creates new form KhachHangManagement
      */
+    NguoiDungBUS nguoidungtbl = new NguoiDungBUS();
+    ArrayList<NguoiDungDTO> list_ND = nguoidungtbl.getList_ND();
     private DefaultTableModel model;
     private String[] columnHeaders = new String[]{"Mã KH", "Họ Tên", "Email", "Ngày Sinh",
         "Giới Tính", "Địa Chỉ", "Quê Quán", "Số Điện Thoại"};
@@ -54,11 +56,11 @@ public class KhachHangManagement extends javax.swing.JFrame {
     public void initTable() throws Exception {
         model = new DefaultTableModel();
         model.setColumnIdentifiers(columnHeaders);
-        NguoiDungBUS nguoidungtbl = new NguoiDungBUS();
-        ArrayList<NguoiDungDTO> list_ND = nguoidungtbl.getList_ND();
+
         for (NguoiDungDTO nd : list_ND) {
             model.addRow(new Object[]{nd.getStrMaND(), nd.getStrHoTen(), nd.getStrEmail(),
-                nd.getDateNgSinh(), nd.getStrGioiTinh(), nd.getStrDiaChi(), nd.getStrQueQuan(), nd.getStrSDT()});
+                nd.getDateNgSinh(), nd.getStrGioiTinh(), nd.getStrDiaChi(),
+                nd.getStrQueQuan(), nd.getStrSDT()});
         }
         tblKhachHang.setModel(model);
 
@@ -93,6 +95,18 @@ public class KhachHangManagement extends javax.swing.JFrame {
             public void changedUpdate(DocumentEvent e) {
             }
         });
+    }
+
+    //Hàm cập nhật lại bảng sau khi thêm xóa sửa
+    public void capNhatLaiTable() {
+        list_ND = nguoidungtbl.getList_ND();
+        model.setRowCount(0);
+        for (NguoiDungDTO ndd : list_ND) {
+            model.addRow(new Object[]{ndd.getStrMaND(), ndd.getStrHoTen(), ndd.getStrEmail(),
+                ndd.getDateNgSinh(), ndd.getStrGioiTinh(), ndd.getStrDiaChi(),
+                ndd.getStrQueQuan(), ndd.getStrSDT()});
+        }
+        model.fireTableDataChanged();
     }
 
     /**
@@ -366,8 +380,10 @@ public class KhachHangManagement extends javax.swing.JFrame {
             nd.setStrSDT(txtSDT.getText());
             nd.setStrGioiTinh(rdbNam.isSelected() ? "Nam" : "Nu");
             nd.setStrVaiTro("Khach hang");
-            NguoiDungBUS nguoidungtbl = new NguoiDungBUS();
             nguoidungtbl.themManagement(nd);
+
+            //Cập nhật lại Table
+            capNhatLaiTable();
 
             JOptionPane.showMessageDialog(this, "Khách hàng mới đã được thêm vào CSDL");
 
@@ -430,8 +446,10 @@ public class KhachHangManagement extends javax.swing.JFrame {
             nd.setStrSDT(txtSDT.getText());
             nd.setStrGioiTinh(rdbNam.isSelected() ? "Nam" : "Nu");
             nd.setStrVaiTro("Khach hang");
-            NguoiDungBUS nguoidungtbl = new NguoiDungBUS();
             nguoidungtbl.sua(nd);
+
+            //Cập nhật lại Table
+            capNhatLaiTable();
 
             JOptionPane.showMessageDialog(this, "Khách hàng đã được cập nhật vào CSDL");
 
@@ -459,8 +477,6 @@ public class KhachHangManagement extends javax.swing.JFrame {
             return;
         }
         try {
-
-            NguoiDungBUS nguoidungtbl = new NguoiDungBUS();
             NguoiDungDTO nd = nguoidungtbl.getInfor(txtMaKH.getText());
             nguoidungtbl.xoa(nd);
 
@@ -468,6 +484,9 @@ public class KhachHangManagement extends javax.swing.JFrame {
 
             //Reset lại render
             resetRender();
+
+            //Cập nhật lại bảng
+            capNhatLaiTable();
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error" + e.getMessage());
