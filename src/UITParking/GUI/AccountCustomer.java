@@ -28,6 +28,7 @@ public class AccountCustomer extends javax.swing.JFrame {
      */
     NguoiDungBUS nguoidungtbl = new NguoiDungBUS();
     NguoiDungDTO nd = nguoidungtbl.getInfor(pMaND);
+    
 
     public AccountCustomer() throws Exception {
         initComponents();
@@ -57,6 +58,9 @@ public class AccountCustomer extends javax.swing.JFrame {
         }
 
     }
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

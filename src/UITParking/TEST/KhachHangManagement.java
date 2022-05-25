@@ -9,8 +9,15 @@ import UITParking.DTO.KhachHangDTO;
 import UITParking.DTO.NguoiDungDTO;
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -22,16 +29,19 @@ public class KhachHangManagement extends javax.swing.JFrame {
      * Creates new form KhachHangManagement
      */
     private DefaultTableModel model;
-    private String [] columnHeaders = new String[] {"Mã KH", "Họ Tên", "Email", "Ngày Sinh",
+    private String[] columnHeaders = new String[]{"Mã KH", "Họ Tên", "Email", "Ngày Sinh",
         "Giới Tính", "Địa Chỉ", "Quê Quán", "Số Điện Thoại"};
-    
+
+    private TableRowSorter<TableModel> rowSorter = null;
+
     public KhachHangManagement() throws Exception {
         initComponents();
         setLocationRelativeTo(null);
         initTable();
+        hoTroTimKiem();
     }
-    
-    public void resetRender(){
+
+    public void resetRender() {
         txtMaKH.setText("");
         txtHoTen.setText("");
         txtEmail.setText("");
@@ -41,17 +51,50 @@ public class KhachHangManagement extends javax.swing.JFrame {
         txtNgaySinh.setText("");
     }
 
-    public void initTable() throws Exception{
+    public void initTable() throws Exception {
         model = new DefaultTableModel();
         model.setColumnIdentifiers(columnHeaders);
         NguoiDungBUS nguoidungtbl = new NguoiDungBUS();
         ArrayList<NguoiDungDTO> list_ND = nguoidungtbl.getList_ND();
-        for(NguoiDungDTO nd : list_ND){
-            model.addRow(new Object[] {nd.getStrMaND(), nd.getStrHoTen(), nd.getStrEmail(), 
-            nd.getDateNgSinh(), nd.getStrGioiTinh(), nd.getStrDiaChi(), nd.getStrQueQuan(), nd.getStrSDT()});
+        for (NguoiDungDTO nd : list_ND) {
+            model.addRow(new Object[]{nd.getStrMaND(), nd.getStrHoTen(), nd.getStrEmail(),
+                nd.getDateNgSinh(), nd.getStrGioiTinh(), nd.getStrDiaChi(), nd.getStrQueQuan(), nd.getStrSDT()});
         }
         tblKhachHang.setModel(model);
+
     }
+
+    public void hoTroTimKiem() {
+
+        rowSorter = new TableRowSorter<>(tblKhachHang.getModel());
+        tblKhachHang.setRowSorter(rowSorter);
+        txtTimKiem.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                String text = txtTimKiem.getText();
+                if (text.trim().length() == 0) {
+                    rowSorter.setRowFilter(null);
+                } else {
+                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+                }
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                String text = txtTimKiem.getText();
+                if (text.trim().length() == 0) {
+                    rowSorter.setRowFilter(null);
+                } else {
+                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+                }
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+            }
+        });
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -303,17 +346,17 @@ public class KhachHangManagement extends javax.swing.JFrame {
 
     private void btnLuuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLuuMouseClicked
         StringBuilder sb = new StringBuilder();
-        if(txtMaKH.getText().equals("")){
+        if (txtMaKH.getText().equals("")) {
             sb.append("Mã khách hàng không được để trống.");
-                    txtMaKH.setBackground(Color.red);
-        }else{
+            txtMaKH.setBackground(Color.red);
+        } else {
             txtMaKH.setBackground(Color.white);
         }
-        if(sb.length() > 0){
+        if (sb.length() > 0) {
             JOptionPane.showMessageDialog(this, sb);
             return;
         }
-        try{
+        try {
             NguoiDungDTO nd = new NguoiDungDTO();
             nd.setStrMaND(txtMaKH.getText());
             nd.setStrEmail(txtEmail.getText());
@@ -325,11 +368,10 @@ public class KhachHangManagement extends javax.swing.JFrame {
             nd.setStrVaiTro("Khach hang");
             NguoiDungBUS nguoidungtbl = new NguoiDungBUS();
             nguoidungtbl.themManagement(nd);
-            
-            
+
             JOptionPane.showMessageDialog(this, "Khách hàng mới đã được thêm vào CSDL");
-            
-        }catch (Exception e){
+
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error" + e.getMessage());
             e.printStackTrace();
         }
@@ -337,16 +379,16 @@ public class KhachHangManagement extends javax.swing.JFrame {
 
     private void btnTimKiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTimKiemMouseClicked
         // TODO add your handling code here:
-        if(txtMaKH.getText().equals("")){
+        if (txtMaKH.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Mã khách hàng phải được nhập để tìm kiếm");
             return;
         }
-        
-        try{
+
+        try {
             NguoiDungBUS nguoidungtbl = new NguoiDungBUS();
             NguoiDungDTO nd = nguoidungtbl.getInfor(txtMaKH.getText());
-            
-            if(nd != null){
+
+            if (nd != null) {
                 txtMaKH.setText(nd.getStrMaND());
                 txtEmail.setText(nd.getStrEmail());
                 txtHoTen.setText(nd.getStrHoTen());
@@ -355,11 +397,11 @@ public class KhachHangManagement extends javax.swing.JFrame {
                 txtSDT.setText(nd.getStrSDT());
                 rdbNam.setSelected(nd.getStrGioiTinh() == "Nam");
                 rdbNu.setSelected(nd.getStrGioiTinh() == "Nu");
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(this, "Khách hàng không tìm thấy");
             }
-            
-        }catch(Exception e){
+
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
             e.printStackTrace();
         }
@@ -368,17 +410,17 @@ public class KhachHangManagement extends javax.swing.JFrame {
     private void btnCapNhatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCapNhatMouseClicked
         // TODO add your handling code here:
         StringBuilder sb = new StringBuilder();
-        if(txtMaKH.getText().equals("")){
+        if (txtMaKH.getText().equals("")) {
             sb.append("Mã khách hàng không được để trống.");
-                    txtMaKH.setBackground(Color.red);
-        }else{
+            txtMaKH.setBackground(Color.red);
+        } else {
             txtMaKH.setBackground(Color.white);
         }
-        if(sb.length() > 0){
+        if (sb.length() > 0) {
             JOptionPane.showMessageDialog(this, sb);
             return;
         }
-        try{
+        try {
             NguoiDungDTO nd = new NguoiDungDTO();
             nd.setStrMaND(txtMaKH.getText());
             nd.setStrEmail(txtEmail.getText());
@@ -390,11 +432,10 @@ public class KhachHangManagement extends javax.swing.JFrame {
             nd.setStrVaiTro("Khach hang");
             NguoiDungBUS nguoidungtbl = new NguoiDungBUS();
             nguoidungtbl.sua(nd);
-            
-            
+
             JOptionPane.showMessageDialog(this, "Khách hàng đã được cập nhật vào CSDL");
-            
-        }catch (Exception e){
+
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error" + e.getMessage());
             e.printStackTrace();
         }
@@ -403,34 +444,32 @@ public class KhachHangManagement extends javax.swing.JFrame {
     private void btnXoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXoaMouseClicked
         // TODO add your handling code here:
         StringBuilder sb = new StringBuilder();
-        if(txtMaKH.getText().equals("")){
+        if (txtMaKH.getText().equals("")) {
             sb.append("Mã khách hàng không được để trống.");
-                    txtMaKH.setBackground(Color.red);
-        }else{
+            txtMaKH.setBackground(Color.red);
+        } else {
             txtMaKH.setBackground(Color.white);
         }
-        if(sb.length() > 0){
+        if (sb.length() > 0) {
             JOptionPane.showMessageDialog(this, sb);
             return;
         }
-        
-        if(JOptionPane.showConfirmDialog(this, "Bạn có muốn xóa không?") == JOptionPane.NO_OPTION){
+
+        if (JOptionPane.showConfirmDialog(this, "Bạn có muốn xóa không?") == JOptionPane.NO_OPTION) {
             return;
         }
-        try{
-            
+        try {
+
             NguoiDungBUS nguoidungtbl = new NguoiDungBUS();
             NguoiDungDTO nd = nguoidungtbl.getInfor(txtMaKH.getText());
             nguoidungtbl.xoa(nd);
-            
-            
+
             JOptionPane.showMessageDialog(this, "Khách hàng đã xóa khỏi CSDL");
-            
+
             //Reset lại render
             resetRender();
-            
-            
-        }catch (Exception e){
+
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error" + e.getMessage());
             e.printStackTrace();
         }
@@ -466,7 +505,11 @@ public class KhachHangManagement extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new KhachHangManagement().setVisible(true);
+                try {
+                    new KhachHangManagement().setVisible(true);
+                } catch (Exception ex) {
+                    Logger.getLogger(KhachHangManagement.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
