@@ -110,9 +110,9 @@ public class main {
             System.out.println("New----" + ve);
         }
 //
-//        XeBUS xetbl = new XeBUS();
+        XeBUS xetbl = new XeBUS();
 //        System.out.println(xetbl.getNumbXE());
-//        ArrayList<XeDTO> list_XE = xetbl.getlist_XE();
+        ArrayList<XeDTO> list_XE = xetbl.getlist_XE();
 //        for (XeDTO ve : list_XE) {
 //            System.out.println("New----" + ve);
 //        }
@@ -145,7 +145,7 @@ public class main {
 //        NguoiDungDTO nd = nguoidungtbl.getInfor("ND003");
 ////        System.out.println(nd != null);
 //System.out.println(nd);
-//        KhachHangBUS khachhangtbl = new KhachHangBUS();
+        KhachHangBUS khachhangtbl = new KhachHangBUS();
 //        KhachHangDTO kh = khachhangtbl.getInfor("KH003");
 //        System.out.println(kh);
 //        
@@ -162,5 +162,11 @@ NguoiDungBUS nguoidungtbl = new NguoiDungBUS();
         }
         
         System.out.println(nguoidungtbl.getInfor("ND009").getStrGioiTinh() == "Nu");
+        KhachHangDTO kh = khachhangtbl.getInfor("ND003");
+        System.out.println(kh);
+        XeDTO xe = xetbl.getInfor(kh.getStrMaXe());
+        System.out.println(xe);
+        System.out.println(xe.getStrTenLoaiXe());
+        System.out.println(xe.getStrBienSoXe());
     }
 }
