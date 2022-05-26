@@ -51,7 +51,10 @@ public class KhachHangManagement extends javax.swing.JFrame {
         txtDiaChi.setText("");
         txtQueQuan.setText("");
         txtSDT.setText("");
+        //cleat Selection Group
+        btnGroupGioiTinh.clearSelection();
         jdcNgaySinh.setDate(null);
+
     }
 
     public void initTable() throws Exception {
@@ -381,6 +384,9 @@ public class KhachHangManagement extends javax.swing.JFrame {
         } else {
             txtMaKH.setBackground(Color.white);
         }
+        if (nguoidungtbl.getInfor(txtMaKH.getText()) != null) {
+            sb.append("Mã khách hàng đã tồn tại.");
+        }
         if (sb.length() > 0) {
             JOptionPane.showMessageDialog(this, sb);
             return;
@@ -395,7 +401,8 @@ public class KhachHangManagement extends javax.swing.JFrame {
             nd.setStrSDT(txtSDT.getText());
             nd.setStrGioiTinh(rdbNam.isSelected() ? "Nam" : "Nu");
             if (jdcNgaySinh.getDate() != null) {
-                nd.setDateNgSinh(jdcNgaySinh.getDate());
+//                nd.setDateNgSinh(jdcNgaySinh.getDate());
+                nd.setDateNgSinh(new java.sql.Date(jdcNgaySinh.getDate().getTime()));
             }
             nd.setStrVaiTro("Khach hang");
             nguoidungtbl.them(nd);
@@ -449,6 +456,9 @@ public class KhachHangManagement extends javax.swing.JFrame {
             txtMaKH.setBackground(Color.red);
         } else {
             txtMaKH.setBackground(Color.white);
+        }
+        if (nguoidungtbl.getInfor(txtMaKH.getText()) == null) {
+            sb.append("Mã khách hàng không tồn tại.");
         }
         if (sb.length() > 0) {
             JOptionPane.showMessageDialog(this, sb);
