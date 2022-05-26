@@ -50,6 +50,9 @@ public class KhachHangManagement extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         initTable();
         hoTroTimKiem();
+        btnCapNhat.setEnabled(false);
+        btnXoa.setEnabled(false);
+        btnLuu.setEnabled(false);
     }
 
     public void resetRender() {
@@ -73,20 +76,6 @@ public class KhachHangManagement extends javax.swing.JFrame {
         model = new DefaultTableModel();
         model.setColumnIdentifiers(columnHeaders);
         int index = 1;
-//        for (NguoiDungDTO nd : list_ND) {
-//            //Lấy ra xe và biển số xe của khách hàng
-//
-//            KhachHangDTO kh = khachhangtbl.getInfor(nd.getStrMaND());
-//            if (kh != null) {
-//                XeDTO xe = xetbl.getInfor(kh.getStrMaXe());
-//                //Cập nhật bảng
-//                model.addRow(new Object[]{index, nd.getStrMaND(), nd.getStrHoTen(), nd.getStrEmail(),
-//                    nd.getDateNgSinh(), nd.getStrGioiTinh(), nd.getStrDiaChi(),
-//                    nd.getStrQueQuan(), nd.getStrSDT(), kh.getStrMaXe(), xe.getStrTenLoaiXe(), xe.getStrBienSoXe(), kh.getLongSoDu()});
-//                index++;
-//            }
-//
-//        }
         for (KhachHangDTO kh : list_KH) {
             //Lấy ra xe và biển số xe của khách hàng
 
@@ -663,11 +652,7 @@ public class KhachHangManagement extends javax.swing.JFrame {
         // TODO add your handling code here:
         int selectedRow = tblKhachHang.getSelectedRow();
         if (selectedRow >= 0) {
-            System.out.println(selectedRow);
-            System.out.println(list_KH);
 
-//            NguoiDungDTO nd = list_ND.get(selectedRow);
-//            KhachHangDTO kh = khachhangtbl.getInfor(nd.getStrMaND());
             KhachHangDTO kh = list_KH.get(selectedRow);
             NguoiDungDTO nd = nguoidungtbl.getInfor(kh.getStrMaKH());
 
