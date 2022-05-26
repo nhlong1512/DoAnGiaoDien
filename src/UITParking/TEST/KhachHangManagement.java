@@ -32,7 +32,7 @@ public class KhachHangManagement extends javax.swing.JFrame {
     NguoiDungBUS nguoidungtbl = new NguoiDungBUS();
     ArrayList<NguoiDungDTO> list_ND = nguoidungtbl.getList_ND();
     private DefaultTableModel model;
-    private String[] columnHeaders = new String[]{"Mã KH", "Họ Tên", "Email", "Ngày Sinh",
+    private String[] columnHeaders = new String[]{"STT", "Mã KH", "Họ Tên", "Email", "Ngày Sinh",
         "Giới Tính", "Địa Chỉ", "Quê Quán", "Số Điện Thoại"};
 
     private TableRowSorter<TableModel> rowSorter = null;
@@ -60,11 +60,12 @@ public class KhachHangManagement extends javax.swing.JFrame {
     public void initTable() throws Exception {
         model = new DefaultTableModel();
         model.setColumnIdentifiers(columnHeaders);
-
+        int index = 1;
         for (NguoiDungDTO nd : list_ND) {
-            model.addRow(new Object[]{nd.getStrMaND(), nd.getStrHoTen(), nd.getStrEmail(),
+            model.addRow(new Object[]{ index, nd.getStrMaND(), nd.getStrHoTen(), nd.getStrEmail(),
                 nd.getDateNgSinh(), nd.getStrGioiTinh(), nd.getStrDiaChi(),
                 nd.getStrQueQuan(), nd.getStrSDT()});
+            index++;
         }
         tblKhachHang.setModel(model);
 
@@ -105,10 +106,12 @@ public class KhachHangManagement extends javax.swing.JFrame {
     public void capNhatLaiTable() {
         list_ND = nguoidungtbl.getList_ND();
         model.setRowCount(0);
+        int index = 1;
         for (NguoiDungDTO ndd : list_ND) {
-            model.addRow(new Object[]{ndd.getStrMaND(), ndd.getStrHoTen(), ndd.getStrEmail(),
+            model.addRow(new Object[]{index, ndd.getStrMaND(), ndd.getStrHoTen(), ndd.getStrEmail(),
                 ndd.getDateNgSinh(), ndd.getStrGioiTinh(), ndd.getStrDiaChi(),
                 ndd.getStrQueQuan(), ndd.getStrSDT()});
+            index++;
         }
         model.fireTableDataChanged();
     }
