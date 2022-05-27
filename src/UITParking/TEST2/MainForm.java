@@ -37,7 +37,7 @@ public class MainForm extends javax.swing.JFrame {
         listItem.add(new DanhMucBean("QLDT", jpnDT, jlbDT));
         
         
-
+        
         controller.setEvent(listItem);
     }
 

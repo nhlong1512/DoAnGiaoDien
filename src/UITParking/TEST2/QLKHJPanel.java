@@ -4,7 +4,7 @@
  */
 package UITParking.TEST2;
 
-import UITParking.GUI.QuanLyKhachHangController;
+import UITParking.TEST2.QuanLyKhachHangController;
 
 /**
  *
