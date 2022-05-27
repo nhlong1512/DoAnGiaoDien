@@ -21,6 +21,7 @@ public class AdminMainFrame extends javax.swing.JFrame {
      */
     public AdminMainFrame() throws Exception {
         initComponents();
+        setLocationRelativeTo(null);
         setTitle("UIT Parking");
         
         ChuyenManHinhController controller = new ChuyenManHinhController(jpnView);
