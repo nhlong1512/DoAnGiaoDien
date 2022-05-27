@@ -161,7 +161,7 @@ NguoiDungBUS nguoidungtbl = new NguoiDungBUS();
             System.out.println("New----" + ve);
         }
         
-        System.out.println(nguoidungtbl.getInfor("ND009").getStrGioiTinh() == "Nu");
+        System.out.println(nguoidungtbl.getInfor("ND009").getStrMatKhau());
         KhachHangDTO kh = khachhangtbl.getInfor("ND003");
         System.out.println(kh);
         XeDTO xe = xetbl.getInfor(kh.getStrMaXe());
