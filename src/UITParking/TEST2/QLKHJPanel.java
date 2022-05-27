@@ -142,7 +142,6 @@ public class QLKHJPanel extends javax.swing.JPanel {
         model.fireTableDataChanged();
     }
 
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -500,7 +499,6 @@ public class QLKHJPanel extends javax.swing.JPanel {
 
             //Cập nhật lại Table
             capNhatLaiTable();
-
             JOptionPane.showMessageDialog(this, "Khách hàng mới đã được thêm vào CSDL");
 
         } catch (Exception e) {
