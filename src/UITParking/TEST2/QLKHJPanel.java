@@ -2,7 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package UITParking.GUI;
+package UITParking.TEST2;
+
+import UITParking.GUI.QuanLyKhachHangController;
 
 /**
  *
@@ -16,8 +18,8 @@ public class QLKHJPanel extends javax.swing.JPanel {
     public QLKHJPanel() throws Exception {
         initComponents();
         
-        QuanLyKhachHangController controller = new QuanLyKhachHangController(jpnView, btnAdd, jtfSearch);
-        controller.setDateToTable();
+//        QuanLyKhachHangController controller = new QuanLyKhachHangController(jpnView, btnAdd, jtfSearch);
+//        controller.setDateToTable();
     }
 
     /**
