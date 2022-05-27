@@ -38,6 +38,7 @@ public class QLKHJPanel extends javax.swing.JPanel {
     ArrayList<KhachHangDTO> list_KH = khachhangtbl.getList_KH();
     XeBUS xetbl = new XeBUS();
     ArrayList<XeDTO> list_XE = xetbl.getlist_XE();
+    public static String passwordTemp;
 
     private DefaultTableModel model;
     private String[] columnHeaders = new String[]{"STT", "Mã KH", "Họ Tên", "Email", "Ngày Sinh",
@@ -534,6 +535,7 @@ public class QLKHJPanel extends javax.swing.JPanel {
             NguoiDungDTO nd = new NguoiDungDTO();
             KhachHangDTO kh = new KhachHangDTO();
             XeDTO xe = new XeDTO();
+            System.out.println(passwordTemp);
             nd.setStrMaND(txtMaKH.getText());
             nd.setStrEmail(txtEmail.getText());
             nd.setStrHoTen(txtHoTen.getText());
@@ -551,8 +553,9 @@ public class QLKHJPanel extends javax.swing.JPanel {
                 //                nd.setDateNgSinh(jdcNgaySinh.getDate());
                 nd.setDateNgSinh(new java.sql.Date(jdcNgaySinh.getDate().getTime()));
             }
+            nd.setStrMatKhau(passwordTemp);
             nd.setStrVaiTro("Khach hang");
-            nd.setStrMatKhau(nd.getStrMatKhau());
+//            nd.setStrMatKhau();
             nguoidungtbl.sua(nd);
             khachhangtbl.sua(kh);
             xetbl.sua(xe);
@@ -657,6 +660,7 @@ public class QLKHJPanel extends javax.swing.JPanel {
             txtSoDu.setText(String.valueOf(kh.getLongSoDu()));
             txtLoaiXe.setText(xe.getStrTenLoaiXe());
             txtBienSoXe.setText(xe.getStrBienSoXe());
+            passwordTemp = nd.getStrMatKhau();
 
             if (nd.getDateNgSinh() != null) {
                 jdcNgaySinh.setDate(nd.getDateNgSinh());
