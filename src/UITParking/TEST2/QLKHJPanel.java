@@ -50,9 +50,9 @@ public class QLKHJPanel extends javax.swing.JPanel {
         initComponents();
         initTable();
         hoTroTimKiem();
-        btnCapNhat.setEnabled(false);
-        btnXoa.setEnabled(false);
-        btnLuu.setEnabled(false);
+//        btnCapNhat.setEnabled(false);
+//        btnXoa.setEnabled(false);
+//        btnLuu.setEnabled(false);
     }
 
     public void resetRender() {
@@ -203,8 +203,10 @@ public class QLKHJPanel extends javax.swing.JPanel {
 
         jLabel6.setText("Giới Tính");
 
+        btnGroupGioiTinh.add(rdbNam);
         rdbNam.setText("Nam");
 
+        btnGroupGioiTinh.add(rdbNu);
         rdbNu.setText("Nữ");
 
         jLabel7.setText("Họ Tên");
