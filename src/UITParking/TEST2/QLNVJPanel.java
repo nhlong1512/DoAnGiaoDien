@@ -450,10 +450,12 @@ public class QLNVJPanel extends javax.swing.JPanel {
             nd.setStrSDT(txtSDT.getText());
             nd.setStrGioiTinh(rdbNam.isSelected() ? "Nam" : "Nu");
             nv.setStrMaNV(txtMaNV.getText());
+            nd.setStrMatKhau(txtMatKhau.getText());
             if (jdcNgaySinh.getDate() != null) {
                 nd.setDateNgSinh(new java.sql.Date(jdcNgaySinh.getDate().getTime()));
             }
             nd.setStrVaiTro("Nhan vien");
+            nv.setStrViTriNhanVien("Quan ly");
             nguoidungtbl.them(nd);
             nhanvientbl.them(nv);
 
@@ -502,8 +504,8 @@ public class QLNVJPanel extends javax.swing.JPanel {
             if (jdcNgaySinh.getDate() != null) {
                 nd.setDateNgSinh(new java.sql.Date(jdcNgaySinh.getDate().getTime()));
             }
-            nd.setStrVaiTro("Khach hang");
-            //            nd.setStrMatKhau();
+            nd.setStrVaiTro("Nhan vien");
+            nv.setStrViTriNhanVien("Quan ly");
             nguoidungtbl.sua(nd);
             nhanvientbl.sua(nv);
             //Cập nhật lại Table
