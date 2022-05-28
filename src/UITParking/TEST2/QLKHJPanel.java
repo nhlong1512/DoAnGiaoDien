@@ -465,8 +465,15 @@ public class QLKHJPanel extends javax.swing.JPanel {
         if (khachhangtbl.getInfor(txtMaKH.getText()) != null) {
             sb.append("Mã khách hàng đã tồn tại.");
         }
+        if(nguoidungtbl.getInforEmail(txtEmail.getText()) != null){
+            sb.append("Email khách hàng đã tồn tại");
+        }
+        
         if (xetbl.getInfor(txtMaXe.getText()) != null) {
             sb.append("Mã xe đã tồn tại");
+        }
+        if(txtMaXe.getText().length() > 5){
+            sb.append("Mã xe tối đa chỉ có 5 kí tự");
         }
 
         if (sb.length() > 0) {
