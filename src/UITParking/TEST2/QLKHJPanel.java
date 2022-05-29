@@ -564,7 +564,6 @@ public class QLKHJPanel extends javax.swing.JPanel {
             xe.setStrBienSoXe(txtBienSoXe.getText());
             xe.setStrTenLoaiXe(txtLoaiXe.getText());
             if (jdcNgaySinh.getDate() != null) {
-                //                nd.setDateNgSinh(jdcNgaySinh.getDate());
                 nd.setDateNgSinh(new java.sql.Date(jdcNgaySinh.getDate().getTime()));
             }
             nd.setStrMatKhau(txtMatKhau.getText());

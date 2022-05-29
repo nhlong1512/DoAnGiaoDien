@@ -11,25 +11,26 @@ import java.util.Date;
  * @author ADMIN
  */
 public class VeDTO {
-    private String strMaVe, strMaLoaiVe, strMaKH, strTrangThai;
+    private String strMaVe, strMaLoaiVe, strMaKH;
     private Date dateNgayKichHoat;
     private Date dateNgayHetHan;
+    private String strTrangThai;
 
     public VeDTO() {
     }
 
-    public VeDTO(String strMaVe, String strMaLoaiVe, String strMaKH, String strTrangThai, Date dateNgayKichHoat, Date dateNgayHetHan) {
+    @Override
+    public String toString() {
+        return "VeDTO{" + "strMaVe=" + strMaVe + ", strMaLoaiVe=" + strMaLoaiVe + ", strMaKH=" + strMaKH + ", dateNgayKichHoat=" + dateNgayKichHoat + ", dateNgayHetHan=" + dateNgayHetHan + ", strTrangThai=" + strTrangThai + '}';
+    }
+
+    public VeDTO(String strMaVe, String strMaLoaiVe, String strMaKH, Date dateNgayKichHoat, Date dateNgayHetHan, String strTrangThai) {
         this.strMaVe = strMaVe;
         this.strMaLoaiVe = strMaLoaiVe;
         this.strMaKH = strMaKH;
-        this.strTrangThai = strTrangThai;
         this.dateNgayKichHoat = dateNgayKichHoat;
         this.dateNgayHetHan = dateNgayHetHan;
-    }
-
-    @Override
-    public String toString() {
-        return "VeDTO{" + "strMaVe=" + strMaVe + ", strMaLoaiVe=" + strMaLoaiVe + ", strMaKH=" + strMaKH + ", strTrangThai=" + strTrangThai + ", dateNgayKichHoat=" + dateNgayKichHoat + ", dateNgayHetHan=" + dateNgayHetHan + '}';
+        this.strTrangThai = strTrangThai;
     }
 
     public String getStrMaVe() {
@@ -56,14 +57,6 @@ public class VeDTO {
         this.strMaKH = strMaKH;
     }
 
-    public String getStrTrangThai() {
-        return strTrangThai;
-    }
-
-    public void setStrTrangThai(String strTrangThai) {
-        this.strTrangThai = strTrangThai;
-    }
-
     public Date getDateNgayKichHoat() {
         return dateNgayKichHoat;
     }
@@ -79,5 +72,15 @@ public class VeDTO {
     public void setDateNgayHetHan(Date dateNgayHetHan) {
         this.dateNgayHetHan = dateNgayHetHan;
     }
+
+    public String getStrTrangThai() {
+        return strTrangThai;
+    }
+
+    public void setStrTrangThai(String strTrangThai) {
+        this.strTrangThai = strTrangThai;
+    }
+
+    
 
 }
