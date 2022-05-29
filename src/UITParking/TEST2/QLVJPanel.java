@@ -59,7 +59,6 @@ public class QLVJPanel extends javax.swing.JPanel {
 //        btnXoa.setEnabled(false);
 //        btnLuu.setEnabled(false);
         txtMaLoaiVe.setEditable(false);
-        updateRender();
     }
 
     public void resetRender() {
@@ -72,25 +71,28 @@ public class QLVJPanel extends javax.swing.JPanel {
         jdcNgayHetHan.setDate(null);
 
     }
-    
-    public void updateRender(){
+
+    public void updateRender() {
         //Reset txtMaLoaiVe theo tên loại vé
-            if(cbbTenLoaiVe.getSelectedItem().toString().equals("Vé lượt xe máy")){
-                txtMaLoaiVe.setText("LVE01");
-                jdcNgayHetHan.setDate(null);
-                jdcNgayKichHoat.setDate(null);
-            }
-            if(cbbTenLoaiVe.getSelectedItem().toString().equals("Vé lượt xe đạp")){
-                txtMaLoaiVe.setText("LVE02");
-                jdcNgayHetHan.setDate(null);
-                jdcNgayKichHoat.setDate(null);
-            }
-            if(cbbTenLoaiVe.getSelectedItem().toString().equals("Vé tuần")){
-                txtMaLoaiVe.setText("LVE03");
-            }
-            if(cbbTenLoaiVe.getSelectedItem().toString().equals("Vé tháng")){
-                txtMaLoaiVe.setText("LVE04");
-            }
+        if (cbbTenLoaiVe.getSelectedItem().toString().equals("Vé lượt xe máy")) {
+            txtMaLoaiVe.setText("LVE01");
+            jdcNgayHetHan.setDate(null);
+            jdcNgayKichHoat.setDate(null);
+            txtTrangThai.setText("Chưa kích hoạt");
+
+        }
+        if (cbbTenLoaiVe.getSelectedItem().toString().equals("Vé lượt xe đạp")) {
+            txtMaLoaiVe.setText("LVE02");
+            jdcNgayHetHan.setDate(null);
+            jdcNgayKichHoat.setDate(null);
+            txtTrangThai.setText("Chưa kích hoạt");
+        }
+        if (cbbTenLoaiVe.getSelectedItem().toString().equals("Vé tuần")) {
+            txtMaLoaiVe.setText("LVE03");
+        }
+        if (cbbTenLoaiVe.getSelectedItem().toString().equals("Vé tháng")) {
+            txtMaLoaiVe.setText("LVE04");
+        }
     }
 
     public void initTable() throws Exception {
@@ -268,6 +270,11 @@ public class QLVJPanel extends javax.swing.JPanel {
         jLabel13.setText("Mã Loại Vé");
 
         cbbTenLoaiVe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Vé lượt xe máy", "Vé lượt xe đạp", "Vé tuần", "Vé tháng" }));
+        cbbTenLoaiVe.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbbTenLoaiVeItemStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -502,15 +509,17 @@ public class QLVJPanel extends javax.swing.JPanel {
             LoaiVeDTO lv = new LoaiVeDTO();
             ve.setStrMaVe(txtMaVe.getText());
             ve.setStrMaKH(txtMaKH.getText());
-            
+
             ve.setStrTrangThai(txtTrangThai.getText());
             lv.setStrTenLoaiVe(cbbTenLoaiVe.getSelectedItem().toString());
-            
+
             updateRender();
 
+            System.out.println(jdcNgayKichHoat.getDate());
+            System.out.println(jdcNgayHetHan.getDate());
             ve.setStrMaLoaiVe(txtMaLoaiVe.getText());
             lv.setStrMaLoaiVe(txtMaLoaiVe.getText());
-            
+
             if (jdcNgayKichHoat.getDate() != null) {
                 ve.setDateNgayKichHoat(new java.sql.Date(jdcNgayKichHoat.getDate().getTime()));
             } else {
@@ -591,6 +600,11 @@ public class QLVJPanel extends javax.swing.JPanel {
     private void txtTrangThaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTrangThaiActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTrangThaiActionPerformed
+
+    private void cbbTenLoaiVeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbTenLoaiVeItemStateChanged
+        // TODO add your handling code here:
+        updateRender();
+    }//GEN-LAST:event_cbbTenLoaiVeItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
