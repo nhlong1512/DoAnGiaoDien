@@ -376,7 +376,7 @@ public class QLVJPanel extends javax.swing.JPanel {
             txtMaKH.setText(ve.getStrMaKH());
             txtMaLoaiVe.setText(ve.getStrMaLoaiVe());
             txtTrangThai.setText(ve.getStrTrangThai());
-            txtMaLoaiVe.setText(lv.getStrTenLoaiVe());
+//            txtMaLoaiVe.setText(lv.getStrTenLoaiVe());
 
             if (ve.getDateNgayKichHoat() != null) {
                 jdcNgayKichHoat.setDate(ve.getDateNgayKichHoat());

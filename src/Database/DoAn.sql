@@ -23,10 +23,10 @@ create table NguoiDung (
     SDT varchar2(10),
     VaiTro varchar2(10),
 
-    CONSTRAINT PK_MaND PRIMARY KEY (MaND),   
-   
-    CONSTRAINT check_GioiTinh CHECK (GioiTinh = 'Nam' or GioiTinh = 'Nu'),
-    CONSTRAINT check_VaiTro CHECK (VaiTro ='Khach hang' or VaiTro = 'Nhan vien')
+    CONSTRAINT PK_MaND PRIMARY KEY (MaND)
+--   
+--    CONSTRAINT check_GioiTinh CHECK (GioiTinh = 'Nam' or GioiTinh = 'Nu'),
+--    CONSTRAINT check_VaiTro CHECK (VaiTro ='Khach hang' or VaiTro = 'Nhan vien')
 );
 
 
@@ -44,8 +44,8 @@ create table NhanVien  (
     MaNV varchar2(5),
     ViTriNhanVien varchar2(30),
     
-    CONSTRAINT PK_MaNV PRIMARY KEY (MaNV),
-    CONSTRAINT check_ViTriNhanVien CHECK (ViTriNhanVien in ('Quan ly', 'Bao ve'))
+    CONSTRAINT PK_MaNV PRIMARY KEY (MaNV)
+--    CONSTRAINT check_ViTriNhanVien CHECK (ViTriNhanVien in ('Quan ly', 'Bao ve'))
 );
 
 
@@ -509,4 +509,3 @@ drop function SoLuongXeRa_TheoNgay;
 
 
 select * from c_Ve;
-
