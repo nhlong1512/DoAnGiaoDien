@@ -328,10 +328,10 @@ insert into KhachHang values ('ND015','XE015',99000);
 
 -- Insert LoaiVe Table
 
-INSERT INTO LoaiVe VALUES ('LVE01', 'Ve luot xe may', 3000);
-INSERT INTO LoaiVe VALUES ('LVE02', 'Ve luot xe dap', 2000);
-INSERT INTO LoaiVe VALUES ('LVE03', 'Ve tuan', 25000);
-INSERT INTO LoaiVe VALUES ('LVE04', 'Ve thang', 95000);
+INSERT INTO LoaiVe VALUES ('LVE01', 'Vé l??t xe máy', 3000);
+INSERT INTO LoaiVe VALUES ('LVE02', 'Ve l??t xe ??p', 2000);
+INSERT INTO LoaiVe VALUES ('LVE03', 'Vé tu?n', 25000);
+INSERT INTO LoaiVe VALUES ('LVE04', 'Ve tháng', 95000);
 
 
 --INSERT Ve TABLE
