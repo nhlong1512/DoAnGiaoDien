@@ -26,6 +26,7 @@ import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+
 /**
  *
  * @author ADMIN
@@ -45,7 +46,7 @@ public class QLVJPanel extends javax.swing.JPanel {
     ArrayList<VeDTO> list_Ve = vetbl.getList_Ve();
 
     private DefaultTableModel model;
-    private String[] columnHeaders = new String[]{"STT", "Mã Vé", "Mã Loại Vé", 
+    private String[] columnHeaders = new String[]{"STT", "Mã Vé", "Mã Loại Vé",
         "Tên Loại Vé", "Mã khách hàng", "Ngày Kích Hoạt", "Ngày Hết Hạn", "Trạng Thái"};
 
     private TableRowSorter<TableModel> rowSorter = null;
@@ -57,6 +58,8 @@ public class QLVJPanel extends javax.swing.JPanel {
 //        btnCapNhat.setEnabled(false);
 //        btnXoa.setEnabled(false);
 //        btnLuu.setEnabled(false);
+        txtMaLoaiVe.setEditable(false);
+        updateRender();
     }
 
     public void resetRender() {
@@ -69,6 +72,26 @@ public class QLVJPanel extends javax.swing.JPanel {
         jdcNgayHetHan.setDate(null);
 
     }
+    
+    public void updateRender(){
+        //Reset txtMaLoaiVe theo tên loại vé
+            if(cbbTenLoaiVe.getSelectedItem().toString().equals("Vé lượt xe máy")){
+                txtMaLoaiVe.setText("LVE01");
+                jdcNgayHetHan.setDate(null);
+                jdcNgayKichHoat.setDate(null);
+            }
+            if(cbbTenLoaiVe.getSelectedItem().toString().equals("Vé lượt xe đạp")){
+                txtMaLoaiVe.setText("LVE02");
+                jdcNgayHetHan.setDate(null);
+                jdcNgayKichHoat.setDate(null);
+            }
+            if(cbbTenLoaiVe.getSelectedItem().toString().equals("Vé tuần")){
+                txtMaLoaiVe.setText("LVE03");
+            }
+            if(cbbTenLoaiVe.getSelectedItem().toString().equals("Vé tháng")){
+                txtMaLoaiVe.setText("LVE04");
+            }
+    }
 
     public void initTable() throws Exception {
         model = new DefaultTableModel();
@@ -77,9 +100,9 @@ public class QLVJPanel extends javax.swing.JPanel {
         for (VeDTO ve : list_Ve) {
             //Lấy ra xe và biển số xe của khách hàng
 
-             LoaiVeDTO lv = loaivetbl.getInfor(ve.getStrMaLoaiVe());
+            LoaiVeDTO lv = loaivetbl.getInfor(ve.getStrMaLoaiVe());
             //Cập nhật bảng
-            model.addRow(new Object[]{index, ve.getStrMaVe(), ve.getStrMaLoaiVe(), 
+            model.addRow(new Object[]{index, ve.getStrMaVe(), ve.getStrMaLoaiVe(),
                 lv.getStrTenLoaiVe(), ve.getStrMaKH(), ve.getDateNgayKichHoat(),
                 ve.getDateNgayHetHan(), ve.getStrTrangThai()});
             index++;
@@ -128,9 +151,9 @@ public class QLVJPanel extends javax.swing.JPanel {
         for (VeDTO ve : list_Ve) {
             //Lấy ra xe và biển số xe của khách hàng
 
-             LoaiVeDTO lv = loaivetbl.getInfor(ve.getStrMaLoaiVe());
+            LoaiVeDTO lv = loaivetbl.getInfor(ve.getStrMaLoaiVe());
             //Cập nhật bảng
-            model.addRow(new Object[]{index, ve.getStrMaVe(), ve.getStrMaLoaiVe(), 
+            model.addRow(new Object[]{index, ve.getStrMaVe(), ve.getStrMaLoaiVe(),
                 lv.getStrTenLoaiVe(), ve.getStrMaKH(), ve.getDateNgayKichHoat(),
                 ve.getDateNgayHetHan(), ve.getStrTrangThai()});
             index++;
@@ -376,7 +399,7 @@ public class QLVJPanel extends javax.swing.JPanel {
             txtMaKH.setText(ve.getStrMaKH());
             txtMaLoaiVe.setText(ve.getStrMaLoaiVe());
             txtTrangThai.setText(ve.getStrTrangThai());
-//            txtMaLoaiVe.setText(lv.getStrTenLoaiVe());
+            cbbTenLoaiVe.setSelectedItem(lv.getStrTenLoaiVe());
 
             if (ve.getDateNgayKichHoat() != null) {
                 jdcNgayKichHoat.setDate(ve.getDateNgayKichHoat());
@@ -479,14 +502,25 @@ public class QLVJPanel extends javax.swing.JPanel {
             LoaiVeDTO lv = new LoaiVeDTO();
             ve.setStrMaVe(txtMaVe.getText());
             ve.setStrMaKH(txtMaKH.getText());
-            ve.setStrMaLoaiVe(txtMaLoaiVe.getText());
+            
             ve.setStrTrangThai(txtTrangThai.getText());
+            lv.setStrTenLoaiVe(cbbTenLoaiVe.getSelectedItem().toString());
+            
+            updateRender();
+
+            ve.setStrMaLoaiVe(txtMaLoaiVe.getText());
+            lv.setStrMaLoaiVe(txtMaLoaiVe.getText());
             
             if (jdcNgayKichHoat.getDate() != null) {
                 ve.setDateNgayKichHoat(new java.sql.Date(jdcNgayKichHoat.getDate().getTime()));
+            } else {
+                ve.setDateNgayKichHoat(null);
             }
+
             if (jdcNgayHetHan.getDate() != null) {
-                ve.setDateNgayHetHan(new java.sql.Date(jdcNgayKichHoat.getDate().getTime()));
+                ve.setDateNgayHetHan(new java.sql.Date(jdcNgayHetHan.getDate().getTime()));
+            } else {
+                ve.setDateNgayHetHan(null);
             }
             vetbl.sua(ve);
 
@@ -522,21 +556,22 @@ public class QLVJPanel extends javax.swing.JPanel {
             LoaiVeDTO lv = new LoaiVeDTO();
             ve.setStrMaVe(txtMaVe.getText());
             ve.setStrMaKH(txtMaKH.getText());
+            updateRender();
             ve.setStrMaLoaiVe(txtMaLoaiVe.getText());
             ve.setStrTrangThai(txtTrangThai.getText());
-            
+
             if (jdcNgayKichHoat.getDate() != null) {
                 ve.setDateNgayKichHoat(new java.sql.Date(jdcNgayKichHoat.getDate().getTime()));
-            }else{
+            } else {
                 ve.setDateNgayKichHoat(null);
             }
-            
+
             if (jdcNgayHetHan.getDate() != null) {
-                ve.setDateNgayHetHan(new java.sql.Date(jdcNgayKichHoat.getDate().getTime()));
-            }else{
+                ve.setDateNgayHetHan(new java.sql.Date(jdcNgayHetHan.getDate().getTime()));
+            } else {
                 ve.setDateNgayHetHan(null);
             }
-            
+
             vetbl.them(ve);
 
             //Cập nhật lại Table

@@ -291,6 +291,7 @@
                 <StringItem index="3" value="V&#xe9; th&#xe1;ng"/>
               </StringArray>
             </Property>
+            <Property name="selectedItem" type="java.lang.Object" value="V&#xe9; l&#x1b0;&#x1ee3;t xe m&#xe1;y"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>

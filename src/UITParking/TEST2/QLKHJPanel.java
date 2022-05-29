@@ -506,6 +506,8 @@ public class QLKHJPanel extends javax.swing.JPanel {
             if (jdcNgaySinh.getDate() != null) {
                 //                nd.setDateNgSinh(jdcNgaySinh.getDate());
                 nd.setDateNgSinh(new java.sql.Date(jdcNgaySinh.getDate().getTime()));
+            }else{
+                nd.setDateNgSinh(null);
             }
             nd.setStrVaiTro("Khach hang");
             nd.setStrMatKhau(txtMatKhau.getText());
@@ -565,6 +567,8 @@ public class QLKHJPanel extends javax.swing.JPanel {
             xe.setStrTenLoaiXe(txtLoaiXe.getText());
             if (jdcNgaySinh.getDate() != null) {
                 nd.setDateNgSinh(new java.sql.Date(jdcNgaySinh.getDate().getTime()));
+            }else{
+                nd.setDateNgSinh(null);
             }
             nd.setStrMatKhau(txtMatKhau.getText());
             nd.setStrVaiTro("Khach hang");
