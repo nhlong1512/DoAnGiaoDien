@@ -57,8 +57,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel9" min="-2" pref="66" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="txtTrangThai" min="-2" pref="189" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="txtTrangThai" min="-2" pref="185" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -78,12 +77,12 @@
                   </Group>
                   <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <Component id="jLabel7" max="32767" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="txtMaLoaiVe" min="-2" pref="215" max="-2" attributes="0"/>
+                          <Component id="cbbTenLoaiVe" min="-2" pref="217" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <Component id="jLabel8" min="-2" pref="87" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jdcNgayKichHoat" min="-2" pref="218" max="-2" attributes="0"/>
@@ -96,7 +95,7 @@
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="txtTenLoaiVe" min="-2" pref="175" max="-2" attributes="0"/>
+                      <Component id="txtMaLoaiVe" min="-2" pref="175" max="-2" attributes="0"/>
                       <Component id="jdcNgayHetHan" min="-2" pref="179" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
@@ -110,14 +109,14 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel7" alignment="1" max="32767" attributes="0"/>
+                              <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel7" alignment="3" max="32767" attributes="0"/>
+                                  <Component id="cbbTenLoaiVe" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                          <Component id="jLabel2" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                                          <Component id="txtMaVe" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="txtMaLoaiVe" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="jLabel2" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <Component id="txtMaVe" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
@@ -135,7 +134,7 @@
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtTenLoaiVe" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtMaLoaiVe" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -182,10 +181,8 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
-            <Property name="text" type="java.lang.String" value="M&#xe3; Lo&#x1ea1;i V&#xe9;"/>
+            <Property name="text" type="java.lang.String" value="T&#xea;n Lo&#x1ea1;i V&#xe9;"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtMaLoaiVe">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">
           <Properties>
@@ -277,12 +274,27 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel13">
           <Properties>
-            <Property name="text" type="java.lang.String" value="T&#xea;n Lo&#x1ea1;i V&#xe9;"/>
+            <Property name="text" type="java.lang.String" value="M&#xe3; Lo&#x1ea1;i V&#xe9;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtTenLoaiVe">
+        <Component class="javax.swing.JTextField" name="txtMaLoaiVe">
         </Component>
         <Component class="com.toedter.calendar.JDateChooser" name="jdcNgayHetHan">
+        </Component>
+        <Component class="javax.swing.JComboBox" name="cbbTenLoaiVe">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="4">
+                <StringItem index="0" value="V&#xe9; l&#x1b0;&#x1ee3;t xe m&#xe1;y"/>
+                <StringItem index="1" value="V&#xe9; l&#x1b0;&#x1ee3;t xe &#x111;&#x1ea1;p"/>
+                <StringItem index="2" value="V&#xe9; tu&#x1ea7;n"/>
+                <StringItem index="3" value="V&#xe9; th&#xe1;ng"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
