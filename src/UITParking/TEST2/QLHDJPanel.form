@@ -110,19 +110,19 @@
                                   <Group type="102" attributes="0">
                                       <Component id="jLabel3" min="-2" pref="82" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="txtMaKH" min="-2" pref="187" max="-2" attributes="0"/>
+                                      <Component id="txtMaKHMuaVe" min="-2" pref="187" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                                       <Component id="txtMaHDMuaVe" min="-2" pref="187" max="-2" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel4" min="-2" pref="82" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="jdcNgayHD" max="32767" attributes="0"/>
+                                          <Component id="jdcNgayHDMuaVe" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel6" min="-2" pref="82" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="txtTongTriGia" min="-2" pref="187" max="-2" attributes="0"/>
+                                          <Component id="txtTongTriGiaMuaVe" min="-2" pref="187" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel2" max="32767" attributes="0"/>
@@ -141,13 +141,12 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" pref="47" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel3" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                                  <Component id="txtMaKH" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtMaKHMuaVe" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -158,27 +157,29 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="jLabel4" min="-2" pref="22" max="-2" attributes="0"/>
-                          <Component id="jdcNgayHD" min="-2" max="-2" attributes="0"/>
+                          <Component id="jdcNgayHDMuaVe" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel6" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                          <Component id="txtTongTriGia" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtTongTriGiaMuaVe" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnNhapMoiHoaDon" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnLuuHoaDon" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnCapNhatHoaDon" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnXoaHoaDon" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                               <Component id="btnTimKiemHoaDon" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtTimKiemHoaDon" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="btnNhapMoiHoaDon" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnLuuHoaDon" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnCapNhatHoaDon" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnXoaHoaDon" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" pref="201" max="-2" attributes="0"/>
-                      <EmptySpace pref="61" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="245" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -208,9 +209,9 @@
                 <Property name="text" type="java.lang.String" value="M&#xe3; Kh&#xe1;ch H&#xe0;ng"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtMaKH">
+            <Component class="javax.swing.JTextField" name="txtMaKHMuaVe">
               <Events>
-                <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="txtMaKHCaretUpdate"/>
+                <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="txtMaKHMuaVeCaretUpdate"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel4">
@@ -223,12 +224,12 @@
                 <Property name="text" type="java.lang.String" value="T&#x1ed5;ng Tr&#x1ecb; Gi&#xe1;"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtTongTriGia">
+            <Component class="javax.swing.JTextField" name="txtTongTriGiaMuaVe">
               <Events>
-                <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="txtTongTriGiaCaretUpdate"/>
+                <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="txtTongTriGiaMuaVeCaretUpdate"/>
               </Events>
             </Component>
-            <Component class="com.toedter.calendar.JDateChooser" name="jdcNgayHD">
+            <Component class="com.toedter.calendar.JDateChooser" name="jdcNgayHDMuaVe">
             </Component>
             <Component class="javax.swing.JButton" name="btnNhapMoiHoaDon">
               <Properties>
@@ -290,6 +291,9 @@
                       </Table>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblHoaDonMuaVeMousePressed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -388,19 +392,21 @@
                           <Component id="txtSLVeChiTiet" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnNhapMoiChiTiet" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnLuuChiTiet" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnCapNhatChiTiet" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnXoaChiTiet" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                               <Component id="btnTimKiemChiTiet" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtTimKiemChiTiet" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="btnNhapMoiChiTiet" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnLuuChiTiet" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnCapNhatChiTiet" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnXoaChiTiet" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                      <Component id="jScrollPane2" pref="0" max="32767" attributes="0"/>
-                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                      <Component id="jScrollPane2" min="-2" pref="278" max="-2" attributes="0"/>
+                      <EmptySpace pref="22" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

@@ -425,32 +425,7 @@ public class QLVJPanel extends javax.swing.JPanel {
 
     private void btnTimKiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTimKiemMouseClicked
         // TODO add your handling code here:
-//        if (txtMaVe.getText().equals("")) {
-//            JOptionPane.showMessageDialog(this, "Mã khách hàng phải được nhập để tìm kiếm");
-//            return;
-//        }
-//
-//        try {
-//            NguoiDungBUS nguoidungtbl = new NguoiDungBUS();
-//            NguoiDungDTO nd = nguoidungtbl.getInfor(txtMaVe.getText());
-//
-//            if (nd != null) {
-//                txtMaVe.setText(nd.getStrMaND());
-//                txtMaKH.setText(nd.getStrEmail());
-//                txtMaLoaiVe.setText(nd.getStrHoTen());
-//                txtDiaChi.setText(nd.getStrDiaChi());
-//                txtQueQuan.setText(nd.getStrQueQuan());
-//                txtTrangThai.setText(nd.getStrSDT());
-//                rdbNam.setSelected(nd.getStrGioiTinh().equals("Nam"));
-//                rdbNu.setSelected(nd.getStrGioiTinh().equals("Nu"));
-//            } else {
-//                JOptionPane.showMessageDialog(this, "Khách hàng không tìm thấy");
-//            }
-//
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
-//            e.printStackTrace();
-//        }
+
     }//GEN-LAST:event_btnTimKiemMouseClicked
 
     private void btnXoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXoaMouseClicked
