@@ -32,37 +32,37 @@ public class QLHDJPanel extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtMaVe = new javax.swing.JTextField();
+        txtMaHDMuaVe = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtMaVe1 = new javax.swing.JTextField();
+        txtMaKH = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        txtMaVe4 = new javax.swing.JTextField();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        btnNhapMoi = new javax.swing.JButton();
-        btnLuu = new javax.swing.JButton();
-        btnCapNhat = new javax.swing.JButton();
-        btnXoa = new javax.swing.JButton();
-        btnTimKiem = new javax.swing.JButton();
-        txtTimKiem = new javax.swing.JTextField();
+        txtTongTriGia = new javax.swing.JTextField();
+        jdcNgayHD = new com.toedter.calendar.JDateChooser();
+        btnNhapMoiHoaDon = new javax.swing.JButton();
+        btnLuuHoaDon = new javax.swing.JButton();
+        btnCapNhatHoaDon = new javax.swing.JButton();
+        btnXoaHoaDon = new javax.swing.JButton();
+        btnTimKiemHoaDon = new javax.swing.JButton();
+        txtTimKiemHoaDon = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblHoaDonMuaVe = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        txtMaVe2 = new javax.swing.JTextField();
+        txtMaHDChiTiet = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        txtMaVe5 = new javax.swing.JTextField();
+        txtMaLoaiVeChiTiet = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        txtMaVe6 = new javax.swing.JTextField();
-        btnNhapMoi1 = new javax.swing.JButton();
-        btnLuu1 = new javax.swing.JButton();
-        btnCapNhat1 = new javax.swing.JButton();
-        btnXoa1 = new javax.swing.JButton();
-        btnTimKiem1 = new javax.swing.JButton();
-        txtTimKiem1 = new javax.swing.JTextField();
+        txtSLVeChiTiet = new javax.swing.JTextField();
+        btnNhapMoiChiTiet = new javax.swing.JButton();
+        btnLuuChiTiet = new javax.swing.JButton();
+        btnCapNhatChiTiet = new javax.swing.JButton();
+        btnXoaChiTiet = new javax.swing.JButton();
+        btnTimKiemChiTiet = new javax.swing.JButton();
+        txtTimKiemChiTiet = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tblChiTietHoaDon = new javax.swing.JTable();
 
         jLabel5.setText("Mã Khách Hàng");
 
@@ -81,17 +81,17 @@ public class QLHDJPanel extends javax.swing.JPanel {
 
         jLabel2.setText("Mã Hóa Đơn");
 
-        txtMaVe.addCaretListener(new javax.swing.event.CaretListener() {
+        txtMaHDMuaVe.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                txtMaVeCaretUpdate(evt);
+                txtMaHDMuaVeCaretUpdate(evt);
             }
         });
 
         jLabel3.setText("Mã Khách Hàng");
 
-        txtMaVe1.addCaretListener(new javax.swing.event.CaretListener() {
+        txtMaKH.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                txtMaVe1CaretUpdate(evt);
+                txtMaKHCaretUpdate(evt);
             }
         });
 
@@ -99,48 +99,48 @@ public class QLHDJPanel extends javax.swing.JPanel {
 
         jLabel6.setText("Tổng Trị Giá");
 
-        txtMaVe4.addCaretListener(new javax.swing.event.CaretListener() {
+        txtTongTriGia.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                txtMaVe4CaretUpdate(evt);
+                txtTongTriGiaCaretUpdate(evt);
             }
         });
 
-        btnNhapMoi.setText("Nhập Mới");
-        btnNhapMoi.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnNhapMoiHoaDon.setText("Nhập Mới");
+        btnNhapMoiHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnNhapMoiMouseClicked(evt);
+                btnNhapMoiHoaDonMouseClicked(evt);
             }
         });
 
-        btnLuu.setText("Lưu");
-        btnLuu.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnLuuHoaDon.setText("Lưu");
+        btnLuuHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnLuuMouseClicked(evt);
+                btnLuuHoaDonMouseClicked(evt);
             }
         });
 
-        btnCapNhat.setText("Cập Nhật");
-        btnCapNhat.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnCapNhatHoaDon.setText("Cập Nhật");
+        btnCapNhatHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCapNhatMouseClicked(evt);
+                btnCapNhatHoaDonMouseClicked(evt);
             }
         });
 
-        btnXoa.setText("Xóa");
-        btnXoa.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnXoaHoaDon.setText("Xóa");
+        btnXoaHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnXoaMouseClicked(evt);
+                btnXoaHoaDonMouseClicked(evt);
             }
         });
 
-        btnTimKiem.setText("Tìm Kiếm");
-        btnTimKiem.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnTimKiemHoaDon.setText("Tìm Kiếm");
+        btnTimKiemHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnTimKiemMouseClicked(evt);
+                btnTimKiemHoaDonMouseClicked(evt);
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblHoaDonMuaVe.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -151,7 +151,7 @@ public class QLHDJPanel extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblHoaDonMuaVe);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -161,43 +161,42 @@ public class QLHDJPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(428, 428, 428))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane1)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(0, 23, Short.MAX_VALUE)
-                                .addComponent(btnNhapMoi)
+                                .addComponent(btnNhapMoiHoaDon)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnLuu, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnLuuHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnCapNhat)
+                                .addComponent(btnCapNhatHoaDon)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnXoa)
+                                .addComponent(btnXoaHoaDon)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnTimKiem)
+                                .addComponent(btnTimKiemHoaDon)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtTimKiemHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(23, 23, 23))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtMaVe1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(txtMaVe, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtMaVe4, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(txtMaKH, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txtMaHDMuaVe, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jdcNgayHD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(txtTongTriGia, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGap(197, 197, 197))))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel3Layout.setVerticalGroup(
@@ -211,27 +210,27 @@ public class QLHDJPanel extends javax.swing.JPanel {
                         .addGap(28, 28, 28)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtMaVe1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtMaKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtMaVe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtMaHDMuaVe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jdcNgayHD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMaVe4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTongTriGia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnNhapMoi)
-                    .addComponent(btnLuu)
-                    .addComponent(btnCapNhat)
-                    .addComponent(btnXoa)
+                    .addComponent(btnNhapMoiHoaDon)
+                    .addComponent(btnLuuHoaDon)
+                    .addComponent(btnCapNhatHoaDon)
+                    .addComponent(btnXoaHoaDon)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnTimKiem)
-                        .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnTimKiemHoaDon)
+                        .addComponent(txtTimKiemHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(41, 41, 41)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(61, Short.MAX_VALUE))
@@ -246,64 +245,64 @@ public class QLHDJPanel extends javax.swing.JPanel {
 
         jLabel8.setText("Mã Hóa Đơn");
 
-        txtMaVe2.addCaretListener(new javax.swing.event.CaretListener() {
+        txtMaHDChiTiet.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                txtMaVe2CaretUpdate(evt);
+                txtMaHDChiTietCaretUpdate(evt);
             }
         });
 
         jLabel9.setText("Mã Loại Vé");
 
-        txtMaVe5.addCaretListener(new javax.swing.event.CaretListener() {
+        txtMaLoaiVeChiTiet.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                txtMaVe5CaretUpdate(evt);
+                txtMaLoaiVeChiTietCaretUpdate(evt);
             }
         });
 
         jLabel11.setText("Số Lượng Vé");
 
-        txtMaVe6.addCaretListener(new javax.swing.event.CaretListener() {
+        txtSLVeChiTiet.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                txtMaVe6CaretUpdate(evt);
+                txtSLVeChiTietCaretUpdate(evt);
             }
         });
 
-        btnNhapMoi1.setText("Nhập Mới");
-        btnNhapMoi1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnNhapMoiChiTiet.setText("Nhập Mới");
+        btnNhapMoiChiTiet.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnNhapMoi1MouseClicked(evt);
+                btnNhapMoiChiTietMouseClicked(evt);
             }
         });
 
-        btnLuu1.setText("Lưu");
-        btnLuu1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnLuuChiTiet.setText("Lưu");
+        btnLuuChiTiet.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnLuu1MouseClicked(evt);
+                btnLuuChiTietMouseClicked(evt);
             }
         });
 
-        btnCapNhat1.setText("Cập Nhật");
-        btnCapNhat1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnCapNhatChiTiet.setText("Cập Nhật");
+        btnCapNhatChiTiet.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCapNhat1MouseClicked(evt);
+                btnCapNhatChiTietMouseClicked(evt);
             }
         });
 
-        btnXoa1.setText("Xóa");
-        btnXoa1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnXoaChiTiet.setText("Xóa");
+        btnXoaChiTiet.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnXoa1MouseClicked(evt);
+                btnXoaChiTietMouseClicked(evt);
             }
         });
 
-        btnTimKiem1.setText("Tìm Kiếm");
-        btnTimKiem1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnTimKiemChiTiet.setText("Tìm Kiếm");
+        btnTimKiemChiTiet.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnTimKiem1MouseClicked(evt);
+                btnTimKiemChiTietMouseClicked(evt);
             }
         });
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tblChiTietHoaDon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -314,7 +313,7 @@ public class QLHDJPanel extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tblChiTietHoaDon);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -323,40 +322,41 @@ public class QLHDJPanel extends javax.swing.JPanel {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
-                        .addGap(438, 438, 438))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(btnNhapMoi1)
+                        .addComponent(btnNhapMoiChiTiet)
                         .addGap(18, 18, 18)
-                        .addComponent(btnLuu1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnLuuChiTiet, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnCapNhat1)
+                        .addComponent(btnCapNhatChiTiet)
                         .addGap(18, 18, 18)
-                        .addComponent(btnXoa1)
+                        .addComponent(btnXoaChiTiet)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnTimKiem1)
+                        .addComponent(btnTimKiemChiTiet)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTimKiem1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtTimKiemChiTiet, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 572, Short.MAX_VALUE))
                         .addContainerGap())
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtMaVe5, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(92, 92, 92)
-                                .addComponent(txtMaVe2, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtMaVe6, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtSLVeChiTiet, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE))
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel5Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtMaLoaiVeChiTiet, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addComponent(txtMaHDChiTiet, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel5Layout.setVerticalGroup(
@@ -369,23 +369,23 @@ public class QLHDJPanel extends javax.swing.JPanel {
                         .addGap(28, 28, 28)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtMaVe5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtMaLoaiVeChiTiet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtMaVe2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtMaHDChiTiet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMaVe6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtSLVeChiTiet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnNhapMoi1)
-                    .addComponent(btnLuu1)
-                    .addComponent(btnCapNhat1)
-                    .addComponent(btnXoa1)
+                    .addComponent(btnNhapMoiChiTiet)
+                    .addComponent(btnLuuChiTiet)
+                    .addComponent(btnCapNhatChiTiet)
+                    .addComponent(btnXoaChiTiet)
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnTimKiem1)
-                        .addComponent(txtTimKiem1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnTimKiemChiTiet)
+                        .addComponent(txtTimKiemChiTiet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(41, 41, 41)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addGap(42, 42, 42))
@@ -428,217 +428,81 @@ public class QLHDJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMaVe3CaretUpdate
 
-    private void btnTimKiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTimKiemMouseClicked
+    private void btnTimKiemHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTimKiemHoaDonMouseClicked
      
-    }//GEN-LAST:event_btnTimKiemMouseClicked
+    }//GEN-LAST:event_btnTimKiemHoaDonMouseClicked
 
-    private void btnXoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXoaMouseClicked
+    private void btnXoaHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXoaHoaDonMouseClicked
+        
+    }//GEN-LAST:event_btnXoaHoaDonMouseClicked
+
+    private void btnCapNhatHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCapNhatHoaDonMouseClicked
+        
+    }//GEN-LAST:event_btnCapNhatHoaDonMouseClicked
+
+    private void btnLuuHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLuuHoaDonMouseClicked
+        
+    }//GEN-LAST:event_btnLuuHoaDonMouseClicked
+
+    private void btnNhapMoiHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNhapMoiHoaDonMouseClicked
+    }//GEN-LAST:event_btnNhapMoiHoaDonMouseClicked
+
+    private void txtTongTriGiaCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtTongTriGiaCaretUpdate
         // TODO add your handling code here:
-        StringBuilder sb = new StringBuilder();
-        if (txtMaVe.getText().equals("")) {
-            sb.append("Mã vé không được để trống.");
-            txtMaVe.setBackground(Color.red);
-        } else {
-            txtMaVe.setBackground(Color.white);
-        }
-        if (sb.length() > 0) {
-            JOptionPane.showMessageDialog(this, sb);
-            return;
-        }
+    }//GEN-LAST:event_txtTongTriGiaCaretUpdate
 
-        if (JOptionPane.showConfirmDialog(this, "Bạn có muốn xóa không?") == JOptionPane.NO_OPTION) {
-            return;
-        }
-        try {
-            VeDTO ve = vetbl.getInfor(txtMaVe.getText());
-            vetbl.xoa(ve);
-
-            JOptionPane.showMessageDialog(this, "Vé đã xóa khỏi CSDL");
-
-            //Reset lại render
-            resetRender();
-
-            //Cập nhật lại bảng
-            capNhatLaiTable();
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error" + e.getMessage());
-            e.printStackTrace();
-        }
-    }//GEN-LAST:event_btnXoaMouseClicked
-
-    private void btnCapNhatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCapNhatMouseClicked
+    private void txtMaKHCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtMaKHCaretUpdate
         // TODO add your handling code here:
-        StringBuilder sb = new StringBuilder();
-        if (txtMaVe.getText().equals("")) {
-            sb.append("Mã vé không được để trống.");
-            txtMaVe.setBackground(Color.red);
-        } else {
-            txtMaVe.setBackground(Color.white);
-        }
-        if (vetbl.getInfor(txtMaVe.getText()) == null) {
-            sb.append("Mã vé không tồn tại.");
-        }
-        if (khachhangtbl.getInfor(txtMaKH.getText()) == null) {
-            sb.append("Mã khách hàng không tồn tại.");
-        }
-        if (loaivetbl.getInfor(txtMaLoaiVe.getText()) == null) {
-            sb.append("Mã loại vé không tồn tại.");
-        }
-        if (sb.length() > 0) {
-            JOptionPane.showMessageDialog(this, sb);
-            return;
-        }
-        try {
-            VeDTO ve = new VeDTO();
-            LoaiVeDTO lv = new LoaiVeDTO();
-            ve.setStrMaVe(txtMaVe.getText());
-            ve.setStrMaKH(txtMaKH.getText());
+    }//GEN-LAST:event_txtMaKHCaretUpdate
 
-            ve.setStrTrangThai(txtTrangThai.getText());
-            lv.setStrTenLoaiVe(cbbTenLoaiVe.getSelectedItem().toString());
-
-            updateRender();
-
-            System.out.println(jdcNgayKichHoat.getDate());
-            System.out.println(jdcNgayHetHan.getDate());
-            ve.setStrMaLoaiVe(txtMaLoaiVe.getText());
-            lv.setStrMaLoaiVe(txtMaLoaiVe.getText());
-
-            if (jdcNgayKichHoat.getDate() != null) {
-                ve.setDateNgayKichHoat(new java.sql.Date(jdcNgayKichHoat.getDate().getTime()));
-            } else {
-                ve.setDateNgayKichHoat(null);
-            }
-
-            if (jdcNgayHetHan.getDate() != null) {
-                ve.setDateNgayHetHan(new java.sql.Date(jdcNgayHetHan.getDate().getTime()));
-            } else {
-                ve.setDateNgayHetHan(null);
-            }
-            vetbl.sua(ve);
-
-            //Cập nhật lại Table
-            capNhatLaiTable();
-
-            JOptionPane.showMessageDialog(this, "Vé đã được cập nhật vào CSDL");
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error" + e.getMessage());
-            e.printStackTrace();
-        }
-    }//GEN-LAST:event_btnCapNhatMouseClicked
-
-    private void btnLuuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLuuMouseClicked
-        StringBuilder sb = new StringBuilder();
-        if (txtMaVe.getText().equals("")) {
-            sb.append("Mã vé không được để trống.");
-            txtMaVe.setBackground(Color.red);
-        } else {
-            txtMaVe.setBackground(Color.white);
-        }
-        if (vetbl.getInfor(txtMaVe.getText()) != null) {
-            sb.append("Mã vé đã tồn tại.");
-        }
-
-        if (sb.length() > 0) {
-            JOptionPane.showMessageDialog(this, sb);
-            return;
-        }
-        try {
-            VeDTO ve = new VeDTO();
-            LoaiVeDTO lv = new LoaiVeDTO();
-            ve.setStrMaVe(txtMaVe.getText());
-            ve.setStrMaKH(txtMaKH.getText());
-            updateRender();
-            ve.setStrMaLoaiVe(txtMaLoaiVe.getText());
-            ve.setStrTrangThai(txtTrangThai.getText());
-
-            if (jdcNgayKichHoat.getDate() != null) {
-                ve.setDateNgayKichHoat(new java.sql.Date(jdcNgayKichHoat.getDate().getTime()));
-            } else {
-                ve.setDateNgayKichHoat(null);
-            }
-
-            if (jdcNgayHetHan.getDate() != null) {
-                ve.setDateNgayHetHan(new java.sql.Date(jdcNgayHetHan.getDate().getTime()));
-            } else {
-                ve.setDateNgayHetHan(null);
-            }
-
-            vetbl.them(ve);
-
-            //Cập nhật lại Table
-            capNhatLaiTable();
-            JOptionPane.showMessageDialog(this, "Khách hàng mới đã được thêm vào CSDL");
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error" + e.getMessage());
-            e.printStackTrace();
-        }
-    }//GEN-LAST:event_btnLuuMouseClicked
-
-    private void btnNhapMoiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNhapMoiMouseClicked
-        resetRender();
-    }//GEN-LAST:event_btnNhapMoiMouseClicked
-
-    private void txtMaVe4CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtMaVe4CaretUpdate
+    private void txtMaHDMuaVeCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtMaHDMuaVeCaretUpdate
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtMaVe4CaretUpdate
+    }//GEN-LAST:event_txtMaHDMuaVeCaretUpdate
 
-    private void txtMaVe1CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtMaVe1CaretUpdate
+    private void txtMaHDChiTietCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtMaHDChiTietCaretUpdate
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtMaVe1CaretUpdate
+    }//GEN-LAST:event_txtMaHDChiTietCaretUpdate
 
-    private void txtMaVeCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtMaVeCaretUpdate
+    private void txtMaLoaiVeChiTietCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtMaLoaiVeChiTietCaretUpdate
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtMaVeCaretUpdate
+    }//GEN-LAST:event_txtMaLoaiVeChiTietCaretUpdate
 
-    private void txtMaVe2CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtMaVe2CaretUpdate
+    private void txtSLVeChiTietCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtSLVeChiTietCaretUpdate
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtMaVe2CaretUpdate
+    }//GEN-LAST:event_txtSLVeChiTietCaretUpdate
 
-    private void txtMaVe5CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtMaVe5CaretUpdate
+    private void btnNhapMoiChiTietMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNhapMoiChiTietMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtMaVe5CaretUpdate
+    }//GEN-LAST:event_btnNhapMoiChiTietMouseClicked
 
-    private void txtMaVe6CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtMaVe6CaretUpdate
+    private void btnLuuChiTietMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLuuChiTietMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtMaVe6CaretUpdate
+    }//GEN-LAST:event_btnLuuChiTietMouseClicked
 
-    private void btnNhapMoi1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNhapMoi1MouseClicked
+    private void btnCapNhatChiTietMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCapNhatChiTietMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnNhapMoi1MouseClicked
+    }//GEN-LAST:event_btnCapNhatChiTietMouseClicked
 
-    private void btnLuu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLuu1MouseClicked
+    private void btnXoaChiTietMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXoaChiTietMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnLuu1MouseClicked
+    }//GEN-LAST:event_btnXoaChiTietMouseClicked
 
-    private void btnCapNhat1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCapNhat1MouseClicked
+    private void btnTimKiemChiTietMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTimKiemChiTietMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCapNhat1MouseClicked
-
-    private void btnXoa1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXoa1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnXoa1MouseClicked
-
-    private void btnTimKiem1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTimKiem1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnTimKiem1MouseClicked
+    }//GEN-LAST:event_btnTimKiemChiTietMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCapNhat;
-    private javax.swing.JButton btnCapNhat1;
-    private javax.swing.JButton btnLuu;
-    private javax.swing.JButton btnLuu1;
-    private javax.swing.JButton btnNhapMoi;
-    private javax.swing.JButton btnNhapMoi1;
-    private javax.swing.JButton btnTimKiem;
-    private javax.swing.JButton btnTimKiem1;
-    private javax.swing.JButton btnXoa;
-    private javax.swing.JButton btnXoa1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private javax.swing.JButton btnCapNhatChiTiet;
+    private javax.swing.JButton btnCapNhatHoaDon;
+    private javax.swing.JButton btnLuuChiTiet;
+    private javax.swing.JButton btnLuuHoaDon;
+    private javax.swing.JButton btnNhapMoiChiTiet;
+    private javax.swing.JButton btnNhapMoiHoaDon;
+    private javax.swing.JButton btnTimKiemChiTiet;
+    private javax.swing.JButton btnTimKiemHoaDon;
+    private javax.swing.JButton btnXoaChiTiet;
+    private javax.swing.JButton btnXoaHoaDon;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
@@ -654,16 +518,17 @@ public class QLHDJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTextField txtMaVe;
-    private javax.swing.JTextField txtMaVe1;
-    private javax.swing.JTextField txtMaVe2;
+    private com.toedter.calendar.JDateChooser jdcNgayHD;
+    private javax.swing.JTable tblChiTietHoaDon;
+    private javax.swing.JTable tblHoaDonMuaVe;
+    private javax.swing.JTextField txtMaHDChiTiet;
+    private javax.swing.JTextField txtMaHDMuaVe;
+    private javax.swing.JTextField txtMaKH;
+    private javax.swing.JTextField txtMaLoaiVeChiTiet;
     private javax.swing.JTextField txtMaVe3;
-    private javax.swing.JTextField txtMaVe4;
-    private javax.swing.JTextField txtMaVe5;
-    private javax.swing.JTextField txtMaVe6;
-    private javax.swing.JTextField txtTimKiem;
-    private javax.swing.JTextField txtTimKiem1;
+    private javax.swing.JTextField txtSLVeChiTiet;
+    private javax.swing.JTextField txtTimKiemChiTiet;
+    private javax.swing.JTextField txtTimKiemHoaDon;
+    private javax.swing.JTextField txtTongTriGia;
     // End of variables declaration//GEN-END:variables
 }
