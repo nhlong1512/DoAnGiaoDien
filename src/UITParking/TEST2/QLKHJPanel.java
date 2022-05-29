@@ -540,7 +540,7 @@ public class QLKHJPanel extends javax.swing.JPanel {
             sb.append("Mã khách hàng không tồn tại.");
         }
         if (xetbl.getInfor(txtMaXe.getText()) == null) {
-            sb.append("Mã xe đã tồn tại.");
+            sb.append("Mã xe không tồn tại.");
         }
         if (sb.length() > 0) {
             JOptionPane.showMessageDialog(this, sb);

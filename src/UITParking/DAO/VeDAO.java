@@ -5,6 +5,7 @@
 package UITParking.DAO;
 
 import static UITParking.DAO.HDMuaVeDAO.pst;
+import static UITParking.DAO.NguoiDungDAO.pst;
 import UITParking.DTO.VeDTO;
 import static UITParking.GUI.InitPublic.getID;
 import java.sql.PreparedStatement;
@@ -36,8 +37,8 @@ public class VeDAO {
             ve.setStrMaVe(result.getString("MaVe"));
             ve.setStrMaLoaiVe(result.getString("MaLoaiVe"));
             ve.setStrMaKH(result.getString("MaKH"));
-            ve.setStrNgayKichHoat(result.getString("NgayKichHoat"));
-            ve.setStrNgayHetHan(result.getString("NgayHetHan"));
+            ve.setDateNgayKichHoat(result.getDate("NgayKichHoat"));
+            ve.setDateNgayHetHan(result.getDate("NgayHetHan"));
             ve.setStrTrangThai(result.getString("TrangThai"));
             ves.add(ve);
         }
@@ -67,8 +68,8 @@ public class VeDAO {
             pst.setString(1, ve.getStrMaVe());
             pst.setString(2, ve.getStrMaLoaiVe());
             pst.setString(3, ve.getStrMaKH());
-            pst.setString(4, ve.getStrNgayKichHoat());
-            pst.setString(5, ve.getStrNgayHetHan());
+            pst.setDate(4, new java.sql.Date(ve.getDateNgayKichHoat().getTime()));
+            pst.setDate(5, new java.sql.Date(ve.getDateNgayHetHan().getTime()));
             pst.setString(6, ve.getStrTrangThai());
 
             return pst.executeUpdate() > 0;
@@ -107,8 +108,8 @@ public class VeDAO {
             pst.setString(6, ve.getStrMaVe());
             pst.setString(1, ve.getStrMaLoaiVe());
             pst.setString(2, ve.getStrMaKH());
-            pst.setString(3, ve.getStrNgayKichHoat());
-            pst.setString(4, ve.getStrNgayHetHan());
+            pst.setDate(3, new java.sql.Date(ve.getDateNgayKichHoat().getTime()));
+            pst.setDate(4, new java.sql.Date(ve.getDateNgayHetHan().getTime()));
             pst.setString(5, ve.getStrTrangThai());
             
 

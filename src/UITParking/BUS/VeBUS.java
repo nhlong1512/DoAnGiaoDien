@@ -99,8 +99,8 @@ public class VeBUS {
             if (taikhoan.getStrMaVe().equals(ve.getStrMaVe())) {
                 taikhoan.setStrMaLoaiVe(ve.getStrMaLoaiVe());
                 taikhoan.setStrMaKH(ve.getStrMaKH());
-                taikhoan.setStrNgayKichHoat(ve.getStrNgayKichHoat());
-                taikhoan.setStrNgayHetHan(ve.getStrNgayHetHan());
+                taikhoan.setDateNgayKichHoat(new java.sql.Date(ve.getDateNgayKichHoat().getTime()));
+                taikhoan.setDateNgayHetHan(new java.sql.Date(ve.getDateNgayHetHan().getTime()));
                 taikhoan.setStrTrangThai(ve.getStrTrangThai());
                 return true;
             }
