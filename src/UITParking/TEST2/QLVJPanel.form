@@ -171,6 +171,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtMaVe">
+          <Events>
+            <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="txtMaVeCaretUpdate"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>

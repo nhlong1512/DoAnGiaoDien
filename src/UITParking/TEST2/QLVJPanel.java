@@ -198,6 +198,12 @@ public class QLVJPanel extends javax.swing.JPanel {
 
         jLabel2.setText("Mã Vé");
 
+        txtMaVe.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtMaVeCaretUpdate(evt);
+            }
+        });
+
         jLabel3.setText("Mã KH");
 
         jLabel7.setText("Tên Loại Vé");
@@ -605,6 +611,11 @@ public class QLVJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         updateRender();
     }//GEN-LAST:event_cbbTenLoaiVeItemStateChanged
+
+    private void txtMaVeCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtMaVeCaretUpdate
+        // TODO add your handling code here:
+        System.out.println("Long");
+    }//GEN-LAST:event_txtMaVeCaretUpdate
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
