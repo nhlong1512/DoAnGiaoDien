@@ -614,7 +614,6 @@ public class QLVJPanel extends javax.swing.JPanel {
 
     private void txtMaVeCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtMaVeCaretUpdate
         // TODO add your handling code here:
-        System.out.println("Long");
     }//GEN-LAST:event_txtMaVeCaretUpdate
 
 
