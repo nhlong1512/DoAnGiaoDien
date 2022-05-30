@@ -4,12 +4,14 @@
  */
 package UITParking.TEST2;
 
+import UITParking.BUS.CTHDMuaVeBUS;
 import UITParking.BUS.HDMuaVeBUS;
 import UITParking.BUS.KhachHangBUS;
 import UITParking.BUS.LoaiVeBUS;
 import UITParking.BUS.NguoiDungBUS;
 import UITParking.BUS.VeBUS;
 import UITParking.BUS.XeBUS;
+import UITParking.DTO.CTHDMuaVeDTO;
 import UITParking.DTO.HDMuaVeDTO;
 import UITParking.DTO.KhachHangDTO;
 import UITParking.DTO.LoaiVeDTO;
@@ -47,51 +49,76 @@ public class QLHDJPanel extends javax.swing.JPanel {
     ArrayList<VeDTO> list_Ve = vetbl.getList_Ve();
     HDMuaVeBUS hoadontbl = new HDMuaVeBUS();
     ArrayList<HDMuaVeDTO> list_HD = hoadontbl.getList_HD();
+    CTHDMuaVeBUS cthdtbl = new CTHDMuaVeBUS();
+    ArrayList<CTHDMuaVeDTO> list_CTHD = cthdtbl.getlist_CTHD();
 
-    private DefaultTableModel model;
-    private String[] columnHeaders = new String[]{"STT", "Mã Hóa Đơn", "Mã Khách Hàng",
+    private DefaultTableModel model1;
+    private String[] columnHeaders1 = new String[]{"STT", "Mã Hóa Đơn", "Mã Khách Hàng",
         "Ngày Hóa Đơn", "Tổng Trị Giá"};
+    
+    private DefaultTableModel model2;
+    private String[] columnHeaders2 = new String[]{"STT", "Mã Hóa Đơn", "Mã Loại Vé",
+        "Số Lượng Vé"};
 
     private TableRowSorter<TableModel> rowSorter = null;
 
     public QLHDJPanel() throws Exception {
         initComponents();
-        initTable();
-        hoTroTimKiem();
+        initTable1();
+        hoTroTimKiem1();
+        initTable2();
+        hoTroTimKiem2();
 //        btnCapNhat.setEnabled(false);
 //        btnXoa.setEnabled(false);
 //        btnLuu.setEnabled(false);
     }
 
-    public void resetRender() {
+    public void resetRender1() {
         txtMaHDMuaVe.setText("");
         txtMaKHMuaVe.setText("");
         txtTongTriGiaMuaVe.setText("");
         jdcNgayHDMuaVe.setDate(null);
     }
-
-    public void updateRender() {
-        //Reset txtMaLoaiVe theo tên loại vé
-        
+    
+    public void resetRender2() {
+        txtMaHDChiTiet.setText("");
+        txtMaLoaiVeChiTiet.setText("");
+        txtSLVeChiTiet.setText("");
     }
 
-    public void initTable() throws Exception {
-        model = new DefaultTableModel();
-        model.setColumnIdentifiers(columnHeaders);
+    public void initTable1() throws Exception {
+        model1 = new DefaultTableModel();
+        model1.setColumnIdentifiers(columnHeaders1);
         int index = 1;
         for (HDMuaVeDTO hd : list_HD) {
 
             //Cập nhật bảng
-            model.addRow(new Object[]{index, hd.getStrMaHD(), hd.getStrMaKH(),
+            model1.addRow(new Object[]{index, hd.getStrMaHD(), hd.getStrMaKH(),
             hd.getDateNgayHD(), hd.getLongTongTriGia()});
             index++;
         }
 
-        tblHoaDonMuaVe.setModel(model);
+        tblHoaDonMuaVe.setModel(model1);
+
+    }
+    
+    public void initTable2() throws Exception {
+        model2 = new DefaultTableModel();
+        model2.setColumnIdentifiers(columnHeaders2);
+        int index = 1;
+        for (CTHDMuaVeDTO cthd : list_CTHD) {
+
+            //Cập nhật bảng
+            model2.addRow(new Object[]{index, cthd.getStrMaHD(), cthd.getStrMaLoaiVe(),
+            cthd.getLongSoLuongVe()});
+            index++;
+        }
+
+        tblChiTietHoaDon.setModel(model2);
 
     }
 
-    public void hoTroTimKiem() {
+    public void hoTroTimKiem1() {
 
         rowSorter = new TableRowSorter<>(tblHoaDonMuaVe.getModel());
         tblHoaDonMuaVe.setRowSorter(rowSorter);
@@ -121,19 +148,63 @@ public class QLHDJPanel extends javax.swing.JPanel {
             }
         });
     }
+    
+    public void hoTroTimKiem2() {
+
+        rowSorter = new TableRowSorter<>(tblChiTietHoaDon.getModel());
+        tblChiTietHoaDon.setRowSorter(rowSorter);
+        txtTimKiemChiTiet.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                String text = txtTimKiemChiTiet.getText();
+                if (text.trim().length() == 0) {
+                    rowSorter.setRowFilter(null);
+                } else {
+                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+                }
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                String text = txtTimKiemChiTiet.getText();
+                if (text.trim().length() == 0) {
+                    rowSorter.setRowFilter(null);
+                } else {
+                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+                }
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+            }
+        });
+    }
 
     //Hàm cập nhật lại bảng sau khi thêm xóa sửa
-    public void capNhatLaiTable() {
-        model.setRowCount(0);
+    public void capNhatLaiTable1() {
+        model1.setRowCount(0);
         int index = 1;
         for (HDMuaVeDTO hd : list_HD) {
 
             //Cập nhật bảng
-            model.addRow(new Object[]{index, hd.getStrMaHD(), hd.getStrMaKH(),
+            model1.addRow(new Object[]{index, hd.getStrMaHD(), hd.getStrMaKH(),
             hd.getDateNgayHD(), hd.getLongTongTriGia()});
             index++;
         }
-        model.fireTableDataChanged();
+        model1.fireTableDataChanged();
+    }
+    
+    public void capNhatLaiTable2() {
+        model2.setRowCount(0);
+        int index = 1;
+        for (CTHDMuaVeDTO cthd : list_CTHD) {
+
+            //Cập nhật bảng
+            model1.addRow(new Object[]{index, cthd.getStrMaHD(), cthd.getStrMaLoaiVe(),
+            cthd.getLongSoLuongVe()});
+            index++;
+        }
+        model2.fireTableDataChanged();
     }
 
     /**
@@ -356,7 +427,7 @@ public class QLHDJPanel extends javax.swing.JPanel {
                         .addComponent(btnCapNhatHoaDon)
                         .addComponent(btnXoaHoaDon)))
                 .addGap(41, 41, 41)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -437,6 +508,11 @@ public class QLHDJPanel extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblChiTietHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tblChiTietHoaDonMousePressed(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblChiTietHoaDon);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -512,8 +588,8 @@ public class QLHDJPanel extends javax.swing.JPanel {
                         .addComponent(btnCapNhatChiTiet)
                         .addComponent(btnXoaChiTiet)))
                 .addGap(41, 41, 41)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -633,6 +709,19 @@ public class QLHDJPanel extends javax.swing.JPanel {
             txtTongTriGiaMuaVe.setText(String.valueOf(hd.getLongTongTriGia()));
         }
     }//GEN-LAST:event_tblHoaDonMuaVeMousePressed
+
+    private void tblChiTietHoaDonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblChiTietHoaDonMousePressed
+        // TODO add your handling code here:
+        int selectedRow = tblChiTietHoaDon.getSelectedRow();
+        if (selectedRow >= 0) {
+
+            CTHDMuaVeDTO cthd = list_CTHD.get(selectedRow);
+
+            txtMaHDChiTiet.setText(cthd.getStrMaHD());
+            txtMaLoaiVeChiTiet.setText(cthd.getStrMaLoaiVe());
+            txtSLVeChiTiet.setText(String.valueOf(cthd.getLongSoLuongVe()));
+        }
+    }//GEN-LAST:event_tblChiTietHoaDonMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
