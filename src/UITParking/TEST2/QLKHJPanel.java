@@ -51,9 +51,9 @@ public class QLKHJPanel extends javax.swing.JPanel {
         initComponents();
         initTable();
         hoTroTimKiem();
-//        btnCapNhat.setEnabled(false);
-//        btnXoa.setEnabled(false);
-//        btnLuu.setEnabled(false);
+        //Disable chuc nang cua Xoa va Sua khach hang
+        btnCapNhat.setEnabled(false);
+        btnXoa.setEnabled(false);
     }
 
     public void resetRender() {
@@ -528,102 +528,102 @@ public class QLKHJPanel extends javax.swing.JPanel {
 
     private void btnCapNhatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCapNhatMouseClicked
         // TODO add your handling code here:
-        StringBuilder sb = new StringBuilder();
-        if (txtMaKH.getText().equals("")) {
-            sb.append("Mã khách hàng không được để trống.");
-            txtMaKH.setBackground(Color.red);
-        } else {
-            txtMaKH.setBackground(Color.white);
-        }
-        if (nguoidungtbl.getInfor(txtMaKH.getText()) == null) {
-            sb.append("Mã khách hàng không tồn tại.");
-        }
-        if (khachhangtbl.getInfor(txtMaKH.getText()) == null) {
-            sb.append("Mã khách hàng không tồn tại.");
-        }
-        if (xetbl.getInfor(txtMaXe.getText()) == null) {
-            sb.append("Mã xe không tồn tại.");
-        }
-        if (sb.length() > 0) {
-            JOptionPane.showMessageDialog(this, sb);
-            return;
-        }
-        try {
-            NguoiDungDTO nd = new NguoiDungDTO();
-            KhachHangDTO kh = new KhachHangDTO();
-            XeDTO xe = new XeDTO();
-            nd.setStrMaND(txtMaKH.getText());
-            nd.setStrEmail(txtEmail.getText());
-            nd.setStrHoTen(txtHoTen.getText());
-            nd.setStrDiaChi(txtDiaChi.getText());
-            nd.setStrQueQuan(txtQueQuan.getText());
-            nd.setStrSDT(txtSDT.getText());
-            nd.setStrGioiTinh(rdbNam.isSelected() ? "Nam" : "Nu");
-            kh.setStrMaKH(txtMaKH.getText());
-            kh.setStrMaXe(txtMaXe.getText());
-            kh.setLongSoDu(Integer.parseInt(txtSoDu.getText()));
-            xe.setStrMaXe(txtMaXe.getText());
-            xe.setStrBienSoXe(txtBienSoXe.getText());
-            xe.setStrTenLoaiXe(txtLoaiXe.getText());
-            if (jdcNgaySinh.getDate() != null) {
-                nd.setDateNgSinh(new java.sql.Date(jdcNgaySinh.getDate().getTime()));
-            }else{
-                nd.setDateNgSinh(null);
-            }
-            nd.setStrMatKhau(txtMatKhau.getText());
-            nd.setStrVaiTro("Khach hang");
-            nguoidungtbl.sua(nd);
-            xetbl.sua(xe);
-            khachhangtbl.sua(kh);
-            
-            //Cập nhật lại Table
-            capNhatLaiTable();
-
-            JOptionPane.showMessageDialog(this, "Khách hàng đã được cập nhật vào CSDL");
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error" + e.getMessage());
-            e.printStackTrace();
-        }
+//        StringBuilder sb = new StringBuilder();
+//        if (txtMaKH.getText().equals("")) {
+//            sb.append("Mã khách hàng không được để trống.");
+//            txtMaKH.setBackground(Color.red);
+//        } else {
+//            txtMaKH.setBackground(Color.white);
+//        }
+//        if (nguoidungtbl.getInfor(txtMaKH.getText()) == null) {
+//            sb.append("Mã khách hàng không tồn tại.");
+//        }
+//        if (khachhangtbl.getInfor(txtMaKH.getText()) == null) {
+//            sb.append("Mã khách hàng không tồn tại.");
+//        }
+//        if (xetbl.getInfor(txtMaXe.getText()) == null) {
+//            sb.append("Mã xe không tồn tại.");
+//        }
+//        if (sb.length() > 0) {
+//            JOptionPane.showMessageDialog(this, sb);
+//            return;
+//        }
+//        try {
+//            NguoiDungDTO nd = new NguoiDungDTO();
+//            KhachHangDTO kh = new KhachHangDTO();
+//            XeDTO xe = new XeDTO();
+//            nd.setStrMaND(txtMaKH.getText());
+//            nd.setStrEmail(txtEmail.getText());
+//            nd.setStrHoTen(txtHoTen.getText());
+//            nd.setStrDiaChi(txtDiaChi.getText());
+//            nd.setStrQueQuan(txtQueQuan.getText());
+//            nd.setStrSDT(txtSDT.getText());
+//            nd.setStrGioiTinh(rdbNam.isSelected() ? "Nam" : "Nu");
+//            kh.setStrMaKH(txtMaKH.getText());
+//            kh.setStrMaXe(txtMaXe.getText());
+//            kh.setLongSoDu(Integer.parseInt(txtSoDu.getText()));
+//            xe.setStrMaXe(txtMaXe.getText());
+//            xe.setStrBienSoXe(txtBienSoXe.getText());
+//            xe.setStrTenLoaiXe(txtLoaiXe.getText());
+//            if (jdcNgaySinh.getDate() != null) {
+//                nd.setDateNgSinh(new java.sql.Date(jdcNgaySinh.getDate().getTime()));
+//            }else{
+//                nd.setDateNgSinh(null);
+//            }
+//            nd.setStrMatKhau(txtMatKhau.getText());
+//            nd.setStrVaiTro("Khach hang");
+//            nguoidungtbl.sua(nd);
+//            xetbl.sua(xe);
+//            khachhangtbl.sua(kh);
+//            
+//            //Cập nhật lại Table
+//            capNhatLaiTable();
+//
+//            JOptionPane.showMessageDialog(this, "Khách hàng đã được cập nhật vào CSDL");
+//
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(this, "Error" + e.getMessage());
+//            e.printStackTrace();
+//        }
     }//GEN-LAST:event_btnCapNhatMouseClicked
 
     private void btnXoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXoaMouseClicked
         // TODO add your handling code here:
-        StringBuilder sb = new StringBuilder();
-        if (txtMaKH.getText().equals("")) {
-            sb.append("Mã khách hàng không được để trống.");
-            txtMaKH.setBackground(Color.red);
-        } else {
-            txtMaKH.setBackground(Color.white);
-        }
-        if (sb.length() > 0) {
-            JOptionPane.showMessageDialog(this, sb);
-            return;
-        }
-
-        if (JOptionPane.showConfirmDialog(this, "Bạn có muốn xóa không?") == JOptionPane.NO_OPTION) {
-            return;
-        }
-        try {
-            NguoiDungDTO nd = nguoidungtbl.getInfor(txtMaKH.getText());
-            KhachHangDTO kh = khachhangtbl.getInfor(txtMaKH.getText());
-            XeDTO xe = xetbl.getInfor(txtMaXe.getText());
-            nguoidungtbl.xoa(nd);
-            khachhangtbl.xoa(kh);
-            xetbl.xoa(xe);
-
-            JOptionPane.showMessageDialog(this, "Khách hàng đã xóa khỏi CSDL");
-
-            //Reset lại render
-            resetRender();
-
-            //Cập nhật lại bảng
-            capNhatLaiTable();
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error" + e.getMessage());
-            e.printStackTrace();
-        }
+//        StringBuilder sb = new StringBuilder();
+//        if (txtMaKH.getText().equals("")) {
+//            sb.append("Mã khách hàng không được để trống.");
+//            txtMaKH.setBackground(Color.red);
+//        } else {
+//            txtMaKH.setBackground(Color.white);
+//        }
+//        if (sb.length() > 0) {
+//            JOptionPane.showMessageDialog(this, sb);
+//            return;
+//        }
+//
+//        if (JOptionPane.showConfirmDialog(this, "Bạn có muốn xóa không?") == JOptionPane.NO_OPTION) {
+//            return;
+//        }
+//        try {
+//            NguoiDungDTO nd = nguoidungtbl.getInfor(txtMaKH.getText());
+//            KhachHangDTO kh = khachhangtbl.getInfor(txtMaKH.getText());
+//            XeDTO xe = xetbl.getInfor(txtMaXe.getText());
+//            nguoidungtbl.xoa(nd);
+//            khachhangtbl.xoa(kh);
+//            xetbl.xoa(xe);
+//
+//            JOptionPane.showMessageDialog(this, "Khách hàng đã xóa khỏi CSDL");
+//
+//            //Reset lại render
+//            resetRender();
+//
+//            //Cập nhật lại bảng
+//            capNhatLaiTable();
+//
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(this, "Error" + e.getMessage());
+//            e.printStackTrace();
+//        }
     }//GEN-LAST:event_btnXoaMouseClicked
 
     private void btnTimKiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTimKiemMouseClicked
