@@ -80,13 +80,21 @@ public class QLKHJPanel extends javax.swing.JPanel {
         int index = 1;
         for (KhachHangDTO kh : list_KH) {
             //Lấy ra xe và biển số xe của khách hàng
-
+            Boolean xeIsExists = false;
+            String tenLoaiXe = "", bienSoXe = "";
             NguoiDungDTO nd = nguoidungtbl.getInfor(kh.getStrMaKH());
-            XeDTO xe = xetbl.getInfor(kh.getStrMaXe());
+            if (kh.getStrMaXe() != null) {
+                XeDTO xe = xetbl.getInfor(kh.getStrMaXe());
+                xeIsExists = true;
+                tenLoaiXe = xe.getStrTenLoaiXe();
+                bienSoXe = xe.getStrBienSoXe();
+            } else {
+                xeIsExists = false;
+            }
             //Cập nhật bảng
             model.addRow(new Object[]{index, nd.getStrMaND(), nd.getStrHoTen(), nd.getStrEmail(),
                 nd.getDateNgSinh(), nd.getStrGioiTinh(), nd.getStrDiaChi(),
-                nd.getStrQueQuan(), nd.getStrSDT(), kh.getStrMaXe(), xe.getStrTenLoaiXe(), xe.getStrBienSoXe(), kh.getLongSoDu()});
+                nd.getStrQueQuan(), nd.getStrSDT(), kh.getStrMaXe(), tenLoaiXe, bienSoXe, kh.getLongSoDu()});
             index++;
         }
 
@@ -138,7 +146,7 @@ public class QLKHJPanel extends javax.swing.JPanel {
             //Cập nhật bảng
             model.addRow(new Object[]{index, nd.getStrMaND(), nd.getStrHoTen(), nd.getStrEmail(),
                 nd.getDateNgSinh(), nd.getStrGioiTinh(), nd.getStrDiaChi(),
-                nd.getStrQueQuan(), nd.getStrSDT(), kh.getStrMaXe(), xe.getStrTenLoaiXe(), 
+                nd.getStrQueQuan(), nd.getStrSDT(), kh.getStrMaXe(), xe.getStrTenLoaiXe(),
                 xe.getStrBienSoXe(), kh.getLongSoDu(), nd.getStrMatKhau()});
             index++;
         }
@@ -471,14 +479,14 @@ public class QLKHJPanel extends javax.swing.JPanel {
         if (khachhangtbl.getInfor(txtMaKH.getText()) != null) {
             sb.append("Mã khách hàng đã tồn tại.");
         }
-        if(nguoidungtbl.getInforEmail(txtEmail.getText()) != null){
+        if (nguoidungtbl.getInforEmail(txtEmail.getText()) != null) {
             sb.append("Email khách hàng đã tồn tại");
         }
-        
+
         if (xetbl.getInfor(txtMaXe.getText()) != null) {
             sb.append("Mã xe đã tồn tại");
         }
-        if(txtMaXe.getText().length() > 5){
+        if (txtMaXe.getText().length() > 5) {
             sb.append("Mã xe tối đa chỉ có 5 kí tự");
         }
 
@@ -504,9 +512,8 @@ public class QLKHJPanel extends javax.swing.JPanel {
             xe.setStrBienSoXe(txtBienSoXe.getText());
             xe.setStrTenLoaiXe(txtLoaiXe.getText());
             if (jdcNgaySinh.getDate() != null) {
-                //                nd.setDateNgSinh(jdcNgaySinh.getDate());
                 nd.setDateNgSinh(new java.sql.Date(jdcNgaySinh.getDate().getTime()));
-            }else{
+            } else {
                 nd.setDateNgSinh(null);
             }
             nd.setStrVaiTro("Khach hang");
@@ -514,7 +521,6 @@ public class QLKHJPanel extends javax.swing.JPanel {
             nguoidungtbl.them(nd);
             xetbl.them(xe);
             khachhangtbl.them(kh);
-            
 
             //Cập nhật lại Table
             capNhatLaiTable();
@@ -658,13 +664,13 @@ public class QLKHJPanel extends javax.swing.JPanel {
 
     private void tblKhachHangMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKhachHangMousePressed
         // TODO add your handling code here:
+        resetRender();
         int selectedRow = tblKhachHang.getSelectedRow();
         if (selectedRow >= 0) {
 
             KhachHangDTO kh = list_KH.get(selectedRow);
             NguoiDungDTO nd = nguoidungtbl.getInfor(kh.getStrMaKH());
 
-            XeDTO xe = xetbl.getInfor(kh.getStrMaXe());
             txtMaKH.setText(nd.getStrMaND());
             txtEmail.setText(nd.getStrEmail());
             txtHoTen.setText(nd.getStrHoTen());
@@ -675,8 +681,12 @@ public class QLKHJPanel extends javax.swing.JPanel {
             rdbNu.setSelected(nd.getStrGioiTinh().equals("Nu"));
             txtMaXe.setText(kh.getStrMaXe());
             txtSoDu.setText(String.valueOf(kh.getLongSoDu()));
-            txtLoaiXe.setText(xe.getStrTenLoaiXe());
-            txtBienSoXe.setText(xe.getStrBienSoXe());
+            if (kh.getStrMaXe() != null) {
+                XeDTO xe = xetbl.getInfor(kh.getStrMaXe());
+                txtLoaiXe.setText(xe.getStrTenLoaiXe());
+                txtBienSoXe.setText(xe.getStrBienSoXe());
+            }
+
             txtMatKhau.setText(nd.getStrMatKhau());
 
             if (nd.getDateNgSinh() != null) {
