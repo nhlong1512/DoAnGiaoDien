@@ -703,6 +703,7 @@ public class QLHDJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         //Khi đổi pressed thì sẽ reset các trường của chi tiết hóa đơn
         //Gọi hàm resetRender2()
+        resetRender1();
         resetRender2();
         
         //
@@ -726,6 +727,7 @@ public class QLHDJPanel extends javax.swing.JPanel {
 
     private void tblChiTietHoaDonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblChiTietHoaDonMousePressed
         // TODO add your handling code here:
+        resetRender2();
         int selectedRow = tblChiTietHoaDon.getSelectedRow();
         if (selectedRow >= 0) {
 
