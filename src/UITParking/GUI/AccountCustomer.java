@@ -69,10 +69,10 @@ public class AccountCustomer extends javax.swing.JFrame {
 
         if (nd.getStrGioiTinh() != null) {
             if (nd.getStrGioiTinh().equals("Nu")) {
-                cbbLoaiXe.setSelectedItem("Nữ");
+                cbbGioiTinh.setSelectedItem("Nữ");
             }
             if (nd.getStrGioiTinh().equals("Nam")) {
-                cbbLoaiXe.setSelectedItem("Nam");
+                cbbGioiTinh.setSelectedItem("Nam");
             }
         }
         if (nd.getDateNgSinh() != null) {
@@ -269,6 +269,11 @@ public class AccountCustomer extends javax.swing.JFrame {
 
         cbbLoaiXe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Xe máy", "Xe đạp" }));
         cbbLoaiXe.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        cbbLoaiXe.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbbLoaiXeItemStateChanged(evt);
+            }
+        });
         cbbLoaiXe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbbLoaiXeActionPerformed(evt);
@@ -453,30 +458,72 @@ public class AccountCustomer extends javax.swing.JFrame {
     //event click CapNhatAccount
     private void btnCapNhatAccountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCapNhatAccountMouseClicked
         // TODO add your handling code here:
-        System.out.println(txtHoTenAccount.getText());
-        System.out.println(tfdEmailAccount.getText());
-        System.out.println(tfdDiachiAccount.getText());
-        System.out.println(tfdQueQuanAccount.getText());
-        System.out.println(tfdSDTAccount.getText());
-        System.out.println(cbbLoaiXe.getSelectedItem().toString());
 
         nd.setStrHoTen(tfdHoTenAccount.getText());
         nd.setStrEmail(tfdEmailAccount.getText());
         nd.setStrDiaChi(tfdDiachiAccount.getText());
         nd.setStrQueQuan(tfdQueQuanAccount.getText());
         nd.setStrSDT(tfdSDTAccount.getText());
-        if (cbbLoaiXe.getSelectedItem().toString().equals("Nữ")) {
+        if (cbbGioiTinh.getSelectedItem().toString().equals("Nữ")) {
             nd.setStrGioiTinh("Nu");
         }
-        if (cbbLoaiXe.getSelectedItem().toString().equals("Nam")) {
+        if (cbbGioiTinh.getSelectedItem().toString().equals("Nam")) {
             nd.setStrGioiTinh("Nam");
+        }
+
+        //Nếu là xe đạp hoặc xe máy có biển số thì thêm trường xe vào bảng XE
+        if ((cbbLoaiXe.getSelectedItem().toString().equals("Xe đạp")
+            || !tfdBienSoXe.getText().equals("")) && kh.getStrMaXe().equals("")) {
+            XeDTO xe = new XeDTO();
+            if (cbbLoaiXe.getSelectedItem().toString().equals("Xe đạp")) {
+                xe.setStrTenLoaiXe("Xe dap");
+            }
+            if (cbbLoaiXe.getSelectedItem().toString().equals("Xe máy")) {
+                xe.setStrTenLoaiXe("Xe may");
+            }
+            xe.setStrBienSoXe(tfdBienSoXe.getText());
+            String maxMaXe = null;
+            try {
+                maxMaXe = xetbl.getMaxMaXe();
+            } catch (Exception ex) {
+                Logger.getLogger(AccountCustomer.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            xe.setStrMaXe(maxMaXe);
+            try {
+                xetbl.them(xe);
+            } catch (Exception ex) {
+                Logger.getLogger(AccountCustomer.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            //Cập nhật mã xe cho bảng khách hàng.
+            kh.setStrMaXe(maxMaXe);
+            try {
+                khachhangtbl.sua(kh);
+            } catch (Exception ex) {
+                Logger.getLogger(AccountCustomer.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
+        
+        //Nếu khách hàng đã có xe rồi
+        if(!kh.getStrMaXe().equals("")){
+            XeDTO xe = xetbl.getInfor(kh.getStrMaXe());
+            if (cbbLoaiXe.getSelectedItem().toString().equals("Xe đạp")) {
+                xe.setStrTenLoaiXe("Xe dap");
+            }
+            if (cbbLoaiXe.getSelectedItem().toString().equals("Xe máy")) {
+                xe.setStrTenLoaiXe("Xe may");
+            }
+            xe.setStrBienSoXe(tfdBienSoXe.getText());
+            try {
+                xetbl.sua(xe);
+            } catch (Exception ex) {
+                Logger.getLogger(AccountCustomer.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
 
         if (jdcNgaySinh.getDate() != null) {
             nd.setDateNgSinh(jdcNgaySinh.getDate());
         }
-
-        System.out.println(nd);
 
         try {
             if (nd.getDateNgSinh() == null) {
@@ -519,6 +566,18 @@ public class AccountCustomer extends javax.swing.JFrame {
     private void cbbGioiTinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbGioiTinhActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbbGioiTinhActionPerformed
+
+    //Nếu là xe đạp thì sẽ không cho nhập biển số
+    private void cbbLoaiXeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbLoaiXeItemStateChanged
+        // TODO add your handling code here:
+        if(cbbLoaiXe.getSelectedItem().toString().equals("Xe đạp")){
+            tfdBienSoXe.setText("");
+            tfdBienSoXe.setEnabled(false);
+            
+        }else{
+            tfdBienSoXe.setEnabled(true);
+        }
+    }//GEN-LAST:event_cbbLoaiXeItemStateChanged
 
     /**
      * @param args the command line arguments
