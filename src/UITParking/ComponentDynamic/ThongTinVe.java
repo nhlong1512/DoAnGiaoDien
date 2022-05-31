@@ -4,17 +4,42 @@
  */
 package UITParking.ComponentDynamic;
 
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.event.CaretEvent;
+import javax.swing.event.CaretListener;
+
 /**
  *
  * @author ADMIN
  */
-public class ThongTinVe extends javax.swing.JFrame {
+public class ThongTinVe extends javax.swing.JFrame implements CaretListener{
 
     /**
      * Creates new form ThongTinVe
      */
+    private JPanel ve;
     public ThongTinVe() {
         initComponents();
+        tfdNhap.addCaretListener(this);
+        compoPanel.setOpaque(true);
+    }
+    
+    public void caretUpdate(CaretEvent ce){
+        System.out.println("Thong tin ve duoc Render...");
+        String str = tfdNhap.getText();
+        
+        if(!str.equals("")){
+            int num = Integer.parseInt(str);
+            JLabel lblTest[] = new JLabel[num];
+            for(int i = 0; i < lblTest.length; i++){
+                lblTest[i] = new JLabel("Label" + i);
+                compoPanel.add(lblTest[i]);
+            }
+            
+        }
+        compoPanel.validate();
+        compoPanel.repaint();
     }
 
     /**
@@ -26,21 +51,171 @@ public class ThongTinVe extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        rootPanel = new javax.swing.JPanel();
+        panelVe = new Admin.PanelRound();
+        jLabel18 = new javax.swing.JLabel();
+        txtTongCongVe2000Dong = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        btnTruSLVe2000Dong = new javax.swing.JButton();
+        txtSLVe2000Dong = new javax.swing.JButton();
+        btnCongSLVe2000Dong = new javax.swing.JButton();
+        btnXoaVe2000Dong = new javax.swing.JButton();
+        tfdNhap = new javax.swing.JTextField();
+        compoPanel = new javax.swing.JPanel();
+        lblTest = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        rootPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        panelVe.setBackground(new java.awt.Color(255, 255, 255));
+        panelVe.setRoundBottomLeft(25);
+        panelVe.setRoundBottomRight(25);
+        panelVe.setRoundTopLeft(25);
+        panelVe.setRoundTopRight(25);
+
+        jLabel18.setFont(new java.awt.Font("Cooper", 0, 18)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(41, 58, 128));
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/vé xe đạp.png"))); // NOI18N
+        jLabel18.setText("Vé Lượt Xe Máy");
+
+        txtTongCongVe2000Dong.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtTongCongVe2000Dong.setText("Tổng cộng");
+
+        jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel20.setText("2.000đ");
+
+        jLabel21.setFont(new java.awt.Font("Cooper", 0, 18)); // NOI18N
+        jLabel21.setText("Vé lượt xe đạp");
+
+        btnTruSLVe2000Dong.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnTruSLVe2000Dong.setText("-");
+        btnTruSLVe2000Dong.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnTruSLVe2000Dong.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnTruSLVe2000DongMouseClicked(evt);
+            }
+        });
+
+        txtSLVe2000Dong.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtSLVe2000Dong.setText("SL Vé");
+
+        btnCongSLVe2000Dong.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnCongSLVe2000Dong.setText("+");
+        btnCongSLVe2000Dong.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCongSLVe2000Dong.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCongSLVe2000DongMouseClicked(evt);
+            }
+        });
+
+        btnXoaVe2000Dong.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnXoaVe2000Dong.setText("Xóa");
+        btnXoaVe2000Dong.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnXoaVe2000Dong.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnXoaVe2000DongMouseClicked(evt);
+            }
+        });
+        btnXoaVe2000Dong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaVe2000DongActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelVeLayout = new javax.swing.GroupLayout(panelVe);
+        panelVe.setLayout(panelVeLayout);
+        panelVeLayout.setHorizontalGroup(
+            panelVeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelVeLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel21)
+                .addGap(81, 81, 81)
+                .addComponent(btnTruSLVe2000Dong)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtSLVe2000Dong)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnCongSLVe2000Dong)
+                .addGap(77, 77, 77)
+                .addComponent(jLabel20)
+                .addGap(69, 69, 69)
+                .addComponent(txtTongCongVe2000Dong)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addComponent(btnXoaVe2000Dong)
+                .addGap(17, 17, 17))
+        );
+        panelVeLayout.setVerticalGroup(
+            panelVeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelVeLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelVeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(txtTongCongVe2000Dong, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel21)
+                    .addComponent(btnTruSLVe2000Dong)
+                    .addComponent(txtSLVe2000Dong)
+                    .addComponent(btnCongSLVe2000Dong)
+                    .addComponent(btnXoaVe2000Dong))
+                .addContainerGap())
+        );
+
+        rootPanel.add(panelVe, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 950, 120));
+        rootPanel.add(tfdNhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 290, 30));
+
+        compoPanel.setBackground(new java.awt.Color(204, 255, 204));
+
+        javax.swing.GroupLayout compoPanelLayout = new javax.swing.GroupLayout(compoPanel);
+        compoPanel.setLayout(compoPanelLayout);
+        compoPanelLayout.setHorizontalGroup(
+            compoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(compoPanelLayout.createSequentialGroup()
+                .addGap(71, 71, 71)
+                .addComponent(lblTest, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(342, Short.MAX_VALUE))
+        );
+        compoPanelLayout.setVerticalGroup(
+            compoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(compoPanelLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(lblTest, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(165, Short.MAX_VALUE))
+        );
+
+        rootPanel.add(compoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, 470, 210));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(rootPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(rootPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnTruSLVe2000DongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTruSLVe2000DongMouseClicked
+        
+    }//GEN-LAST:event_btnTruSLVe2000DongMouseClicked
+
+    private void btnCongSLVe2000DongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCongSLVe2000DongMouseClicked
+       
+    }//GEN-LAST:event_btnCongSLVe2000DongMouseClicked
+
+    private void btnXoaVe2000DongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXoaVe2000DongMouseClicked
+        
+    }//GEN-LAST:event_btnXoaVe2000DongMouseClicked
+
+    private void btnXoaVe2000DongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaVe2000DongActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnXoaVe2000DongActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +253,20 @@ public class ThongTinVe extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCongSLVe2000Dong;
+    private javax.swing.JButton btnTruSLVe2000Dong;
+    private javax.swing.JButton btnXoaVe2000Dong;
+    private javax.swing.JPanel compoPanel;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel lblTest;
+    private Admin.PanelRound panelVe;
+    private javax.swing.JPanel rootPanel;
+    private javax.swing.JTextField tfdNhap;
+    private javax.swing.JButton txtSLVe2000Dong;
+    private javax.swing.JLabel txtTongCongVe2000Dong;
     // End of variables declaration//GEN-END:variables
+
+    
 }
