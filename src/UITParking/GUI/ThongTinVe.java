@@ -44,8 +44,8 @@ public class ThongTinVe extends javax.swing.JFrame {
     ArrayList<VeDTO> list_Ve = vetbl.getList_Ve();
 
     private DefaultTableModel model;
-    private String[] columnHeaders = new String[]{"STT", "Mã Vé", "Mã Loại Vé",
-        "Tên Loại Vé", "Mã khách hàng", "Ngày Kích Hoạt", "Ngày Hết Hạn", "Trạng Thái"};
+    private String[] columnHeaders = new String[]{"STT", 
+        "Tên Loại Vé", "Ngày Kích Hoạt", "Ngày Hết Hạn", "Trạng Thái"};
 
     private TableRowSorter<TableModel> rowSorter = null;
 
@@ -61,13 +61,13 @@ public class ThongTinVe extends javax.swing.JFrame {
     }
 
     public void resetRender() {
-//        txtMaVe.setText("");
-//        txtMaLoaiVe.setText("");
-//        txtMaKH.setText("");
-//        txtTrangThai.setText("");
-//        txtMaLoaiVe.setText("");
-//        jdcNgayKichHoat.setDate(null);
-//        jdcNgayHetHan.setDate(null);
+        txtMaVe.setText("");
+        txtMaLoaiVe.setText("");
+        txtMaKH.setText("");
+        txtTrangThai.setText("");
+        txtMaLoaiVe.setText("");
+        jdcNgayKichHoat.setDate(null);
+        jdcNgayHetHan.setDate(null);
 
     }
 
@@ -102,8 +102,7 @@ public class ThongTinVe extends javax.swing.JFrame {
             //Lấy ra xe và biển số xe của khách hàng
             if (ve.getStrMaKH().equals(pMaND)) {
                 LoaiVeDTO lv = loaivetbl.getInfor(ve.getStrMaLoaiVe());
-                model.addRow(new Object[]{index, ve.getStrMaVe(), ve.getStrMaLoaiVe(),
-                    lv.getStrTenLoaiVe(), ve.getStrMaKH(), ve.getDateNgayKichHoat(),
+                model.addRow(new Object[]{index, lv.getStrTenLoaiVe(), ve.getDateNgayKichHoat(),
                     ve.getDateNgayHetHan(), ve.getStrTrangThai()});
                 index++;
             }
