@@ -14,6 +14,7 @@ import UITParking.DTO.LoaiVeDTO;
 import UITParking.DTO.NguoiDungDTO;
 import UITParking.DTO.VeDTO;
 import UITParking.DTO.XeDTO;
+import static UITParking.GUI.login.pMaND;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -26,6 +27,7 @@ import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+
 /**
  *
  * @author ADMIN
@@ -46,6 +48,7 @@ public class ThongTinVe extends javax.swing.JFrame {
         "Tên Loại Vé", "Mã khách hàng", "Ngày Kích Hoạt", "Ngày Hết Hạn", "Trạng Thái"};
 
     private TableRowSorter<TableModel> rowSorter = null;
+
     /**
      * Creates new form ThongTinVe
      */
@@ -53,44 +56,42 @@ public class ThongTinVe extends javax.swing.JFrame {
         initComponents();
         initTable();
         hoTroTimKiem();
-//        btnCapNhat.setEnabled(false);
-//        btnXoa.setEnabled(false);
-//        btnLuu.setEnabled(false);
+        setLocationRelativeTo(null);
         txtMaLoaiVe.setEditable(false);
     }
-    
+
     public void resetRender() {
-        txtMaVe.setText("");
-        txtMaLoaiVe.setText("");
-        txtMaKH.setText("");
-        txtTrangThai.setText("");
-        txtMaLoaiVe.setText("");
-        jdcNgayKichHoat.setDate(null);
-        jdcNgayHetHan.setDate(null);
+//        txtMaVe.setText("");
+//        txtMaLoaiVe.setText("");
+//        txtMaKH.setText("");
+//        txtTrangThai.setText("");
+//        txtMaLoaiVe.setText("");
+//        jdcNgayKichHoat.setDate(null);
+//        jdcNgayHetHan.setDate(null);
 
     }
 
     public void updateRender() {
-        //Reset txtMaLoaiVe theo tên loại vé
-        if (cbbTenLoaiVe.getSelectedItem().toString().equals("Vé lượt xe máy")) {
-            txtMaLoaiVe.setText("LVE01");
-            jdcNgayHetHan.setDate(null);
-            jdcNgayKichHoat.setDate(null);
-            txtTrangThai.setText("Chưa kích hoạt");
-
-        }
-        if (cbbTenLoaiVe.getSelectedItem().toString().equals("Vé lượt xe đạp")) {
-            txtMaLoaiVe.setText("LVE02");
-            jdcNgayHetHan.setDate(null);
-            jdcNgayKichHoat.setDate(null);
-            txtTrangThai.setText("Chưa kích hoạt");
-        }
-        if (cbbTenLoaiVe.getSelectedItem().toString().equals("Vé tuần")) {
-            txtMaLoaiVe.setText("LVE03");
-        }
-        if (cbbTenLoaiVe.getSelectedItem().toString().equals("Vé tháng")) {
-            txtMaLoaiVe.setText("LVE04");
-        }
+//        //Reset txtMaLoaiVe theo tên loại vé
+//        if (cbbTenLoaiVe.getSelectedItem().toString().equals("Vé lượt xe máy")) {
+//            txtMaLoaiVe.setText("LVE01");
+//            jdcNgayHetHan.setDate(null);
+//            jdcNgayKichHoat.setDate(null);
+//            txtTrangThai.setText("Chưa kích hoạt");
+//
+//        }
+//        if (cbbTenLoaiVe.getSelectedItem().toString().equals("Vé lượt xe đạp")) {
+//            txtMaLoaiVe.setText("LVE02");
+//            jdcNgayHetHan.setDate(null);
+//            jdcNgayKichHoat.setDate(null);
+//            txtTrangThai.setText("Chưa kích hoạt");
+//        }
+//        if (cbbTenLoaiVe.getSelectedItem().toString().equals("Vé tuần")) {
+//            txtMaLoaiVe.setText("LVE03");
+//        }
+//        if (cbbTenLoaiVe.getSelectedItem().toString().equals("Vé tháng")) {
+//            txtMaLoaiVe.setText("LVE04");
+//        }
     }
 
     public void initTable() throws Exception {
@@ -99,13 +100,15 @@ public class ThongTinVe extends javax.swing.JFrame {
         int index = 1;
         for (VeDTO ve : list_Ve) {
             //Lấy ra xe và biển số xe của khách hàng
+            if (ve.getStrMaKH().equals(pMaND)) {
+                LoaiVeDTO lv = loaivetbl.getInfor(ve.getStrMaLoaiVe());
+                model.addRow(new Object[]{index, ve.getStrMaVe(), ve.getStrMaLoaiVe(),
+                    lv.getStrTenLoaiVe(), ve.getStrMaKH(), ve.getDateNgayKichHoat(),
+                    ve.getDateNgayHetHan(), ve.getStrTrangThai()});
+                index++;
+            }
 
-            LoaiVeDTO lv = loaivetbl.getInfor(ve.getStrMaLoaiVe());
             //Cập nhật bảng
-            model.addRow(new Object[]{index, ve.getStrMaVe(), ve.getStrMaLoaiVe(),
-                lv.getStrTenLoaiVe(), ve.getStrMaKH(), ve.getDateNgayKichHoat(),
-                ve.getDateNgayHetHan(), ve.getStrTrangThai()});
-            index++;
         }
 
         tblVe.setModel(model);
@@ -145,20 +148,20 @@ public class ThongTinVe extends javax.swing.JFrame {
 
     //Hàm cập nhật lại bảng sau khi thêm xóa sửa
     public void capNhatLaiTable() {
-        list_ND = nguoidungtbl.getList_ND();
-        model.setRowCount(0);
-        int index = 1;
-        for (VeDTO ve : list_Ve) {
-            //Lấy ra xe và biển số xe của khách hàng
-
-            LoaiVeDTO lv = loaivetbl.getInfor(ve.getStrMaLoaiVe());
-            //Cập nhật bảng
-            model.addRow(new Object[]{index, ve.getStrMaVe(), ve.getStrMaLoaiVe(),
-                lv.getStrTenLoaiVe(), ve.getStrMaKH(), ve.getDateNgayKichHoat(),
-                ve.getDateNgayHetHan(), ve.getStrTrangThai()});
-            index++;
-        }
-        model.fireTableDataChanged();
+//        list_ND = nguoidungtbl.getList_ND();
+//        model.setRowCount(0);
+//        int index = 1;
+//        for (VeDTO ve : list_Ve) {
+//            //Lấy ra xe và biển số xe của khách hàng
+//
+//            LoaiVeDTO lv = loaivetbl.getInfor(ve.getStrMaLoaiVe());
+//            //Cập nhật bảng
+//            model.addRow(new Object[]{index, ve.getStrMaVe(), ve.getStrMaLoaiVe(),
+//                lv.getStrTenLoaiVe(), ve.getStrMaKH(), ve.getDateNgayKichHoat(),
+//                ve.getDateNgayHetHan(), ve.getStrTrangThai()});
+//            index++;
+//        }
+//        model.fireTableDataChanged();
     }
 
     /**
@@ -179,7 +182,7 @@ public class ThongTinVe extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         txtTrangThai = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        btnKichHoat = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
         btnTimKiem = new javax.swing.JButton();
         txtTimKiem = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -190,6 +193,7 @@ public class ThongTinVe extends javax.swing.JFrame {
         txtMaLoaiVe = new javax.swing.JTextField();
         jdcNgayHetHan = new com.toedter.calendar.JDateChooser();
         cbbTenLoaiVe = new javax.swing.JComboBox<>();
+        btnKichHoat = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -226,13 +230,13 @@ public class ThongTinVe extends javax.swing.JFrame {
         jLabel9.setText("Trạng thái");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 66, 21));
 
-        btnKichHoat.setText("Kích Hoạt");
-        btnKichHoat.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnBack.setText("Back");
+        btnBack.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnKichHoatMouseClicked(evt);
+                btnBackMouseClicked(evt);
             }
         });
-        jPanel1.add(btnKichHoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 170, -1, -1));
+        jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, -1, -1));
 
         btnTimKiem.setText("Tìm kiếm");
         btnTimKiem.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -280,6 +284,14 @@ public class ThongTinVe extends javax.swing.JFrame {
         });
         jPanel1.add(cbbTenLoaiVe, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, 200, -1));
 
+        btnKichHoat.setText("Kích Hoạt");
+        btnKichHoat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnKichHoatMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnKichHoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 170, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -302,9 +314,16 @@ public class ThongTinVe extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTrangThaiActionPerformed
 
-    private void btnKichHoatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKichHoatMouseClicked
-        resetRender();
-    }//GEN-LAST:event_btnKichHoatMouseClicked
+    private void btnBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBackMouseClicked
+        Homepage _homepage = null;
+        try {
+            _homepage = new Homepage();
+        } catch (Exception ex) {
+            Logger.getLogger(ThongTinVe.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        _homepage.show();
+        dispose();
+    }//GEN-LAST:event_btnBackMouseClicked
 
     private void btnTimKiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTimKiemMouseClicked
         // TODO add your handling code here:
@@ -312,32 +331,36 @@ public class ThongTinVe extends javax.swing.JFrame {
 
     private void tblVeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblVeMousePressed
         // TODO add your handling code here:
-        resetRender();
-        int selectedRow = tblVe.getSelectedRow();
-        if (selectedRow >= 0) {
-
-            VeDTO ve = list_Ve.get(selectedRow);
-            LoaiVeDTO lv = loaivetbl.getInfor(ve.getStrMaLoaiVe());
-
-            txtMaVe.setText(ve.getStrMaVe());
-            txtMaKH.setText(ve.getStrMaKH());
-            txtMaLoaiVe.setText(ve.getStrMaLoaiVe());
-            txtTrangThai.setText(ve.getStrTrangThai());
-            cbbTenLoaiVe.setSelectedItem(lv.getStrTenLoaiVe());
-
-            if (ve.getDateNgayKichHoat() != null) {
-                jdcNgayKichHoat.setDate(ve.getDateNgayKichHoat());
-            }
-            if (ve.getDateNgayHetHan() != null) {
-                jdcNgayHetHan.setDate(ve.getDateNgayHetHan());
-            }
-        }
+//        resetRender();
+//        int selectedRow = tblVe.getSelectedRow();
+//        if (selectedRow >= 0) {
+//
+//            VeDTO ve = list_Ve.get(selectedRow);
+//            LoaiVeDTO lv = loaivetbl.getInfor(ve.getStrMaLoaiVe());
+//
+//            txtMaVe.setText(ve.getStrMaVe());
+//            txtMaKH.setText(ve.getStrMaKH());
+//            txtMaLoaiVe.setText(ve.getStrMaLoaiVe());
+//            txtTrangThai.setText(ve.getStrTrangThai());
+//            cbbTenLoaiVe.setSelectedItem(lv.getStrTenLoaiVe());
+//
+//            if (ve.getDateNgayKichHoat() != null) {
+//                jdcNgayKichHoat.setDate(ve.getDateNgayKichHoat());
+//            }
+//            if (ve.getDateNgayHetHan() != null) {
+//                jdcNgayHetHan.setDate(ve.getDateNgayHetHan());
+//            }
+//        }
     }//GEN-LAST:event_tblVeMousePressed
 
     private void cbbTenLoaiVeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbTenLoaiVeItemStateChanged
         // TODO add your handling code here:
         updateRender();
     }//GEN-LAST:event_cbbTenLoaiVeItemStateChanged
+
+    private void btnKichHoatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKichHoatMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnKichHoatMouseClicked
 
     /**
      * @param args the command line arguments
@@ -379,6 +402,7 @@ public class ThongTinVe extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnKichHoat;
     private javax.swing.JButton btnTimKiem;
     private javax.swing.JComboBox<String> cbbTenLoaiVe;
