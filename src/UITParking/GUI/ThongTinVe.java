@@ -331,25 +331,19 @@ public class ThongTinVe extends javax.swing.JFrame {
     private void tblVeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblVeMousePressed
         // TODO add your handling code here:
 //        resetRender();
-//        int selectedRow = tblVe.getSelectedRow();
-//        if (selectedRow >= 0) {
-//
-//            VeDTO ve = list_Ve.get(selectedRow);
-//            LoaiVeDTO lv = loaivetbl.getInfor(ve.getStrMaLoaiVe());
-//
-//            txtMaVe.setText(ve.getStrMaVe());
-//            txtMaKH.setText(ve.getStrMaKH());
-//            txtMaLoaiVe.setText(ve.getStrMaLoaiVe());
-//            txtTrangThai.setText(ve.getStrTrangThai());
-//            cbbTenLoaiVe.setSelectedItem(lv.getStrTenLoaiVe());
-//
-//            if (ve.getDateNgayKichHoat() != null) {
-//                jdcNgayKichHoat.setDate(ve.getDateNgayKichHoat());
-//            }
-//            if (ve.getDateNgayHetHan() != null) {
-//                jdcNgayHetHan.setDate(ve.getDateNgayHetHan());
-//            }
-//        }
+        int selectedRow = tblVe.getSelectedRow();
+        if (selectedRow >= 0) {
+
+            VeDTO ve = list_Ve.get(selectedRow);
+            LoaiVeDTO lv = loaivetbl.getInfor(ve.getStrMaLoaiVe());
+
+            System.out.println(lv.getStrTenLoaiVe());
+            System.out.println(ve.getDateNgayHetHan());
+            System.out.println(ve.getDateNgayHetHan());
+            System.out.println(ve.getStrTrangThai());
+            
+        }
+            
     }//GEN-LAST:event_tblVeMousePressed
 
     private void cbbTenLoaiVeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbTenLoaiVeItemStateChanged
