@@ -14,13 +14,19 @@ import UITParking.DTO.LoaiVeDTO;
 import UITParking.DTO.NguoiDungDTO;
 import UITParking.DTO.VeDTO;
 import UITParking.DTO.XeDTO;
+import static UITParking.GUI.InitPublic.getConvertStringToLocalDate;
 import static UITParking.GUI.InitPublic.getDateThoiGianThuc;
 import static UITParking.GUI.InitPublic.getDateThoiGianVeThang;
 import static UITParking.GUI.InitPublic.getDateThoiGianVeTuan;
 import static UITParking.GUI.login.pMaND;
 import java.awt.Color;
 import java.text.ParseException;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
@@ -51,10 +57,11 @@ public class ThongTinVe extends javax.swing.JFrame {
     public static String loaiVeHienTai = "";
     //Set biến mã vé hiện tại lưu mã vé được pressed
     public static String maVeHienTai = "";
-    
     //Set biến lưu trạng thái vé hiện tại, nếu là vé đang sử dụng của vé tuần
     //Vé tháng thì sẽ không cho phép kích hoạt
+    public static String trangThaiVeHienTai = "";
 
+    public static LocalDate d1 = LocalDate.now();
     private DefaultTableModel model;
     private String[] columnHeaders = new String[]{"STT", "Mã Vé",
         "Tên Loại Vé", "Ngày Kích Hoạt", "Ngày Hết Hạn", "Trạng Thái"};
@@ -70,6 +77,7 @@ public class ThongTinVe extends javax.swing.JFrame {
         hoTroTimKiem();
         setLocationRelativeTo(null);
         txtMaLoaiVe.setEditable(false);
+        capNhatTrangThai();
     }
 
     public void resetRender() {
@@ -83,27 +91,42 @@ public class ThongTinVe extends javax.swing.JFrame {
 
     }
 
+    /**
+     * Sẽ cập nhật trạng thái vé nếu sysdate lớn hơn ngày hết hạn thì sẽ chuyển
+     * trạng thái sang đã hết hạn
+     */
+    public void capNhatTrangThai() throws Exception {
+
+        for (VeDTO ve : list_Ve) {
+            if (ve.getDateNgayHetHan() != null) {
+                System.out.println(ve.getStrMaVe());
+                
+                String stringDate = (new java.sql.Date(ve.getDateNgayHetHan().getTime())).toString();
+                Boolean isHetHan = d1.isAfter(getConvertStringToLocalDate(stringDate));
+                System.out.println((new java.sql.Date(ve.getDateNgayHetHan().getTime())).toString());
+                System.out.println(getConvertStringToLocalDate(stringDate));
+                System.out.println(isHetHan);
+                
+                /**
+                 * 
+                 * Nếu isHetHan true thì cập nhật trạng thái đã hết hạn
+                 * Sau đó sẽ cập nhật lại table
+                 */ 
+                if(isHetHan){
+                    ve.setStrTrangThai("Đã hết hạn");
+                    vetbl.sua(ve);
+                    capNhatLaiTable();
+                }
+                
+
+            }
+        }
+    }
+
+    /**
+     * Update render sẽ cập nhật lại trạng thái vé mỗi lần render ra màn hình
+     */
     public void updateRender() {
-//        //Reset txtMaLoaiVe theo tên loại vé
-//        if (cbbTenLoaiVe.getSelectedItem().toString().equals("Vé lượt xe máy")) {
-//            txtMaLoaiVe.setText("LVE01");
-//            jdcNgayHetHan.setDate(null);
-//            jdcNgayKichHoat.setDate(null);
-//            txtTrangThai.setText("Chưa kích hoạt");
-//
-//        }
-//        if (cbbTenLoaiVe.getSelectedItem().toString().equals("Vé lượt xe đạp")) {
-//            txtMaLoaiVe.setText("LVE02");
-//            jdcNgayHetHan.setDate(null);
-//            jdcNgayKichHoat.setDate(null);
-//            txtTrangThai.setText("Chưa kích hoạt");
-//        }
-//        if (cbbTenLoaiVe.getSelectedItem().toString().equals("Vé tuần")) {
-//            txtMaLoaiVe.setText("LVE03");
-//        }
-//        if (cbbTenLoaiVe.getSelectedItem().toString().equals("Vé tháng")) {
-//            txtMaLoaiVe.setText("LVE04");
-//        }
     }
 
     public void initTable() throws Exception {
@@ -381,7 +404,16 @@ public class ThongTinVe extends javax.swing.JFrame {
                 btnKichHoat.setEnabled(true);
                 loaiVeHienTai = (String) tblVe.getValueAt(selectedRow, 2);
                 maVeHienTai = (String) tblVe.getValueAt(selectedRow, 1);
+                trangThaiVeHienTai = (String) tblVe.getValueAt(selectedRow, 5);
+                /**
+                 * Nếu trạng thái đang sử dụng hoặc đã hết hạn thì disable
+                 * button kích hoạt
+                 */
+                if (!tblVe.getValueAt(selectedRow, 5).equals("Chưa kích hoạt")) {
+                    btnKichHoat.setEnabled(false);
+                }
             }
+
         }
 
     }//GEN-LAST:event_tblVeMousePressed
@@ -399,10 +431,12 @@ public class ThongTinVe extends javax.swing.JFrame {
      */
     private void btnKichHoatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKichHoatMouseClicked
         /**
-         * Nếu loại vé hiện tại là loại vé tuần hoặc vé tháng thì cho phép bắt
-         * sự kiện click button kích hoạt ngược lại thì không làm gì cả.
+         * Nếu loại vé hiện tại là loại vé tuần hoặc vé tháng và trạng thái của
+         * vé là chưa kích hoạt thì cho phép bắt sự kiện click button kích hoạt
+         * ngược lại thì không làm gì cả.
          */
-        if (loaiVeHienTai.equals("Ve tuan") || loaiVeHienTai.equals("Ve thang")) {
+        if ((loaiVeHienTai.equals("Ve tuan") || loaiVeHienTai.equals("Ve thang"))
+                && trangThaiVeHienTai.equals("Chưa kích hoạt")) {
             System.out.println("Long dep trai");
             try {
                 System.out.println(getDateThoiGianThuc());
@@ -438,7 +472,7 @@ public class ThongTinVe extends javax.swing.JFrame {
             } catch (ParseException ex) {
                 Logger.getLogger(ThongTinVe.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
             //Sau khi hoàn thành kích hoạt, thì update Table
             capNhatLaiTable();
 
@@ -508,4 +542,6 @@ public class ThongTinVe extends javax.swing.JFrame {
     private javax.swing.JTextField txtTimKiem;
     private javax.swing.JTextField txtTrangThai;
     // End of variables declaration//GEN-END:variables
+
+    
 }

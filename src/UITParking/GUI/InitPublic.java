@@ -6,7 +6,12 @@ package UITParking.GUI;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -64,5 +69,17 @@ public class InitPublic {
         SimpleDateFormat DateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date rs = DateFormat.parse(data);
         return rs.toString();
+    }
+    
+    public static LocalDate getConvertStringToLocalDate(String data){
+        LocalDate localDate = LocalDate.parse(data,DateTimeFormatter.ISO_LOCAL_DATE);
+        return localDate;
+    }
+    
+    
+    public LocalDate convertDatetoLocalDate(Date now){
+        Instant instant = Instant.ofEpochMilli(now.getTime());
+        LocalDate localDate = LocalDateTime.ofInstant(instant, ZoneId.systemDefault()).toLocalDate();
+        return localDate;
     }
 }
