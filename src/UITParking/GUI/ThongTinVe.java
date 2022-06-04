@@ -44,7 +44,7 @@ public class ThongTinVe extends javax.swing.JFrame {
     ArrayList<VeDTO> list_Ve = vetbl.getList_Ve();
 
     private DefaultTableModel model;
-    private String[] columnHeaders = new String[]{"STT", 
+    private String[] columnHeaders = new String[]{"STT", "Mã Vé", 
         "Tên Loại Vé", "Ngày Kích Hoạt", "Ngày Hết Hạn", "Trạng Thái"};
 
     private TableRowSorter<TableModel> rowSorter = null;
@@ -102,7 +102,7 @@ public class ThongTinVe extends javax.swing.JFrame {
             //Lấy ra xe và biển số xe của khách hàng
             if (ve.getStrMaKH().equals(pMaND)) {
                 LoaiVeDTO lv = loaivetbl.getInfor(ve.getStrMaLoaiVe());
-                model.addRow(new Object[]{index, lv.getStrTenLoaiVe(), ve.getDateNgayKichHoat(),
+                model.addRow(new Object[]{index, ve.getStrMaVe(), lv.getStrTenLoaiVe(), ve.getDateNgayKichHoat(),
                     ve.getDateNgayHetHan(), ve.getStrTrangThai()});
                 index++;
             }
@@ -342,6 +342,30 @@ public class ThongTinVe extends javax.swing.JFrame {
             System.out.println(ve.getDateNgayHetHan());
             System.out.println(ve.getStrTrangThai());
             
+            /**
+             * Lấy dữ liệu của mã vé
+             * getValueAt trong table sẽ có dạng
+             * tham số đầu là index dòng trong table muốn lấy
+             * tham số thứ 2 là index cột muốn lấy
+             * Cách lấy này như tọa độ, nó sẽ tham chiếu đến
+             * trục hoành và trục tung của bảng.
+             */
+            System.out.println("Dữ liệu table:" + tblVe.getValueAt(selectedRow, 1));
+            System.out.println("Dữ liệu table:" + tblVe.getValueAt(selectedRow, 2));
+            
+            /**
+             * 
+             * Nếu tên loại vé là vé lượt xe máy hoặc vé lượt xe đạp thì sẽ 
+             * disable button kích hoạt
+            */
+            if(tblVe.getValueAt(selectedRow, 2).equals("Ve luot xe may") || 
+                    tblVe.getValueAt(selectedRow, 2).equals("Ve luot xe dap")){
+                btnKichHoat.setEnabled(false);
+            }
+            if(tblVe.getValueAt(selectedRow, 2).equals("Ve tuan") || 
+                    tblVe.getValueAt(selectedRow, 2).equals("Ve thang")){
+                btnKichHoat.setEnabled(true);
+            }
         }
             
     }//GEN-LAST:event_tblVeMousePressed
