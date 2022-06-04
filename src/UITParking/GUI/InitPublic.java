@@ -37,6 +37,24 @@ public class InitPublic {
         return dateToday;
     }
     
+    public static Date getDateThoiGianVeTuan() throws ParseException{
+        SimpleDateFormat DateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        //Cộng 7 ngày
+        LocalDate today = LocalDate.now().plusDays(7);
+        String strToday = today.toString();
+        Date dateToday = DateFormat.parse(strToday);
+        return dateToday;
+    }
+    
+    public static Date getDateThoiGianVeThang() throws ParseException{
+        SimpleDateFormat DateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        //Cộng 7 ngày
+        LocalDate today = LocalDate.now().plusMonths(1);
+        String strToday = today.toString();
+        Date dateToday = DateFormat.parse(strToday);
+        return dateToday;
+    }
+    
     public static Date getConvertYYYYMMDD(String data) throws ParseException{
         SimpleDateFormat DateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date rs = DateFormat.parse(data);

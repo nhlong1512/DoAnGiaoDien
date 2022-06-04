@@ -14,8 +14,12 @@ import UITParking.DTO.LoaiVeDTO;
 import UITParking.DTO.NguoiDungDTO;
 import UITParking.DTO.VeDTO;
 import UITParking.DTO.XeDTO;
+import static UITParking.GUI.InitPublic.getDateThoiGianThuc;
+import static UITParking.GUI.InitPublic.getDateThoiGianVeThang;
+import static UITParking.GUI.InitPublic.getDateThoiGianVeTuan;
 import static UITParking.GUI.login.pMaND;
 import java.awt.Color;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -399,6 +403,40 @@ public class ThongTinVe extends javax.swing.JFrame {
          */
         if(loaiVeHienTai.equals("Ve tuan") || loaiVeHienTai.equals("Ve thang")){
             System.out.println("Long dep trai");
+            try {
+                System.out.println(getDateThoiGianThuc());
+                System.out.println(getDateThoiGianVeTuan());                
+                System.out.println(getDateThoiGianVeThang());
+
+            } catch (ParseException ex) {
+                Logger.getLogger(ThongTinVe.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            /**
+             * Cập nhật lại thời gian thực cho trường ngày kích hoạt 
+             * của bảng C_VE, ngày hết hạn sẽ được cộng dựa vào loại vé,
+             * Trạng thái sẽ được chuyển thành đang sử dụng
+             */
+            VeDTO ve = new VeDTO();
+            ve = vetbl.getInfor(maVeHienTai);
+            System.out.println(ve);
+            try {
+                ve.setDateNgayKichHoat(getDateThoiGianThuc());
+                ve.setStrTrangThai("Đang sử dụng");
+                if(ve.getStrMaLoaiVe().equals("LVE03")){
+                    ve.setDateNgayHetHan(getDateThoiGianVeTuan());
+                }
+                if(ve.getStrMaLoaiVe().equals("LVE04")){
+                    ve.setDateNgayHetHan(getDateThoiGianVeThang());
+                }
+                try {
+                    vetbl.sua(ve);
+                } catch (Exception ex) {
+                    Logger.getLogger(ThongTinVe.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } catch (ParseException ex) {
+                Logger.getLogger(ThongTinVe.class.getName()).log(Level.SEVERE, null, ex);
+            }
             
         }
         
