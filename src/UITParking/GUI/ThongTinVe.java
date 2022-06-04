@@ -42,6 +42,11 @@ public class ThongTinVe extends javax.swing.JFrame {
     ArrayList<LoaiVeDTO> list_LV = loaivetbl.getList_LV();
     VeBUS vetbl = new VeBUS();
     ArrayList<VeDTO> list_Ve = vetbl.getList_Ve();
+    
+    //Set biến loại vé hiện tại để lưu loại vé được pressed
+    public static String loaiVeHienTai = "";
+    //Set biến mã vé hiện tại lưu mã vé được pressed
+    public static String maVeHienTai = "";
 
     private DefaultTableModel model;
     private String[] columnHeaders = new String[]{"STT", "Mã Vé", 
@@ -361,10 +366,14 @@ public class ThongTinVe extends javax.swing.JFrame {
             if(tblVe.getValueAt(selectedRow, 2).equals("Ve luot xe may") || 
                     tblVe.getValueAt(selectedRow, 2).equals("Ve luot xe dap")){
                 btnKichHoat.setEnabled(false);
+                loaiVeHienTai = (String) tblVe.getValueAt(selectedRow, 2);
+                maVeHienTai = (String) tblVe.getValueAt(selectedRow, 1);
             }
             if(tblVe.getValueAt(selectedRow, 2).equals("Ve tuan") || 
                     tblVe.getValueAt(selectedRow, 2).equals("Ve thang")){
                 btnKichHoat.setEnabled(true);
+                loaiVeHienTai = (String) tblVe.getValueAt(selectedRow, 2);
+                maVeHienTai = (String) tblVe.getValueAt(selectedRow, 1);
             }
         }
             
@@ -375,8 +384,24 @@ public class ThongTinVe extends javax.swing.JFrame {
         updateRender();
     }//GEN-LAST:event_cbbTenLoaiVeItemStateChanged
 
+    
+    /**
+     * 
+     * Xử lý event click button kích hoạt, ngày kích hoạt sẽ được 
+     * cập nhật ngay tại thời gian hiện tại.
+     * 
+     */
     private void btnKichHoatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKichHoatMouseClicked
-        // TODO add your handling code here:
+        /**
+         * Nếu loại vé hiện tại là loại vé tuần hoặc vé tháng thì cho phép
+         * bắt sự kiện click button kích hoạt
+         * ngược lại thì không làm gì cả.
+         */
+        if(loaiVeHienTai.equals("Ve tuan") || loaiVeHienTai.equals("Ve thang")){
+            System.out.println("Long dep trai");
+            
+        }
+        
     }//GEN-LAST:event_btnKichHoatMouseClicked
 
     /**
