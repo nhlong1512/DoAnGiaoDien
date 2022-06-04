@@ -46,14 +46,17 @@ public class ThongTinVe extends javax.swing.JFrame {
     ArrayList<LoaiVeDTO> list_LV = loaivetbl.getList_LV();
     VeBUS vetbl = new VeBUS();
     ArrayList<VeDTO> list_Ve = vetbl.getList_Ve();
-    
+
     //Set biến loại vé hiện tại để lưu loại vé được pressed
     public static String loaiVeHienTai = "";
     //Set biến mã vé hiện tại lưu mã vé được pressed
     public static String maVeHienTai = "";
+    
+    //Set biến lưu trạng thái vé hiện tại, nếu là vé đang sử dụng của vé tuần
+    //Vé tháng thì sẽ không cho phép kích hoạt
 
     private DefaultTableModel model;
-    private String[] columnHeaders = new String[]{"STT", "Mã Vé", 
+    private String[] columnHeaders = new String[]{"STT", "Mã Vé",
         "Tên Loại Vé", "Ngày Kích Hoạt", "Ngày Hết Hạn", "Trạng Thái"};
 
     private TableRowSorter<TableModel> rowSorter = null;
@@ -157,19 +160,21 @@ public class ThongTinVe extends javax.swing.JFrame {
     //Hàm cập nhật lại bảng sau khi thêm xóa sửa
     public void capNhatLaiTable() {
 //        list_ND = nguoidungtbl.getList_ND();
-//        model.setRowCount(0);
-//        int index = 1;
-//        for (VeDTO ve : list_Ve) {
-//            //Lấy ra xe và biển số xe của khách hàng
-//
-//            LoaiVeDTO lv = loaivetbl.getInfor(ve.getStrMaLoaiVe());
-//            //Cập nhật bảng
-//            model.addRow(new Object[]{index, ve.getStrMaVe(), ve.getStrMaLoaiVe(),
-//                lv.getStrTenLoaiVe(), ve.getStrMaKH(), ve.getDateNgayKichHoat(),
-//                ve.getDateNgayHetHan(), ve.getStrTrangThai()});
-//            index++;
-//        }
-//        model.fireTableDataChanged();
+        model.setRowCount(0);
+        int index = 1;
+        for (VeDTO ve : list_Ve) {
+            //Lấy ra xe và biển số xe của khách hàng
+            if (ve.getStrMaKH().equals(pMaND)) {
+                LoaiVeDTO lv = loaivetbl.getInfor(ve.getStrMaLoaiVe());
+                model.addRow(new Object[]{index, ve.getStrMaVe(), lv.getStrTenLoaiVe(), ve.getDateNgayKichHoat(),
+                    ve.getDateNgayHetHan(), ve.getStrTrangThai()});
+                index++;
+            }
+
+            //Cập nhật bảng
+        }
+
+        model.fireTableDataChanged();
     }
 
     /**
@@ -350,37 +355,35 @@ public class ThongTinVe extends javax.swing.JFrame {
             System.out.println(ve.getDateNgayHetHan());
             System.out.println(ve.getDateNgayHetHan());
             System.out.println(ve.getStrTrangThai());
-            
+
             /**
-             * Lấy dữ liệu của mã vé
-             * getValueAt trong table sẽ có dạng
-             * tham số đầu là index dòng trong table muốn lấy
-             * tham số thứ 2 là index cột muốn lấy
-             * Cách lấy này như tọa độ, nó sẽ tham chiếu đến
-             * trục hoành và trục tung của bảng.
+             * Lấy dữ liệu của mã vé getValueAt trong table sẽ có dạng tham số
+             * đầu là index dòng trong table muốn lấy tham số thứ 2 là index cột
+             * muốn lấy Cách lấy này như tọa độ, nó sẽ tham chiếu đến trục hoành
+             * và trục tung của bảng.
              */
             System.out.println("Dữ liệu table:" + tblVe.getValueAt(selectedRow, 1));
             System.out.println("Dữ liệu table:" + tblVe.getValueAt(selectedRow, 2));
-            
+
             /**
-             * 
-             * Nếu tên loại vé là vé lượt xe máy hoặc vé lượt xe đạp thì sẽ 
+             *
+             * Nếu tên loại vé là vé lượt xe máy hoặc vé lượt xe đạp thì sẽ
              * disable button kích hoạt
-            */
-            if(tblVe.getValueAt(selectedRow, 2).equals("Ve luot xe may") || 
-                    tblVe.getValueAt(selectedRow, 2).equals("Ve luot xe dap")){
+             */
+            if (tblVe.getValueAt(selectedRow, 2).equals("Ve luot xe may")
+                    || tblVe.getValueAt(selectedRow, 2).equals("Ve luot xe dap")) {
                 btnKichHoat.setEnabled(false);
                 loaiVeHienTai = (String) tblVe.getValueAt(selectedRow, 2);
                 maVeHienTai = (String) tblVe.getValueAt(selectedRow, 1);
             }
-            if(tblVe.getValueAt(selectedRow, 2).equals("Ve tuan") || 
-                    tblVe.getValueAt(selectedRow, 2).equals("Ve thang")){
+            if (tblVe.getValueAt(selectedRow, 2).equals("Ve tuan")
+                    || tblVe.getValueAt(selectedRow, 2).equals("Ve thang")) {
                 btnKichHoat.setEnabled(true);
                 loaiVeHienTai = (String) tblVe.getValueAt(selectedRow, 2);
                 maVeHienTai = (String) tblVe.getValueAt(selectedRow, 1);
             }
         }
-            
+
     }//GEN-LAST:event_tblVeMousePressed
 
     private void cbbTenLoaiVeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbTenLoaiVeItemStateChanged
@@ -388,34 +391,32 @@ public class ThongTinVe extends javax.swing.JFrame {
         updateRender();
     }//GEN-LAST:event_cbbTenLoaiVeItemStateChanged
 
-    
     /**
-     * 
-     * Xử lý event click button kích hoạt, ngày kích hoạt sẽ được 
-     * cập nhật ngay tại thời gian hiện tại.
-     * 
+     *
+     * Xử lý event click button kích hoạt, ngày kích hoạt sẽ được cập nhật ngay
+     * tại thời gian hiện tại.
+     *
      */
     private void btnKichHoatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKichHoatMouseClicked
         /**
-         * Nếu loại vé hiện tại là loại vé tuần hoặc vé tháng thì cho phép
-         * bắt sự kiện click button kích hoạt
-         * ngược lại thì không làm gì cả.
+         * Nếu loại vé hiện tại là loại vé tuần hoặc vé tháng thì cho phép bắt
+         * sự kiện click button kích hoạt ngược lại thì không làm gì cả.
          */
-        if(loaiVeHienTai.equals("Ve tuan") || loaiVeHienTai.equals("Ve thang")){
+        if (loaiVeHienTai.equals("Ve tuan") || loaiVeHienTai.equals("Ve thang")) {
             System.out.println("Long dep trai");
             try {
                 System.out.println(getDateThoiGianThuc());
-                System.out.println(getDateThoiGianVeTuan());                
+                System.out.println(getDateThoiGianVeTuan());
                 System.out.println(getDateThoiGianVeThang());
 
             } catch (ParseException ex) {
                 Logger.getLogger(ThongTinVe.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
             /**
-             * Cập nhật lại thời gian thực cho trường ngày kích hoạt 
-             * của bảng C_VE, ngày hết hạn sẽ được cộng dựa vào loại vé,
-             * Trạng thái sẽ được chuyển thành đang sử dụng
+             * Cập nhật lại thời gian thực cho trường ngày kích hoạt của bảng
+             * C_VE, ngày hết hạn sẽ được cộng dựa vào loại vé, Trạng thái sẽ
+             * được chuyển thành đang sử dụng
              */
             VeDTO ve = new VeDTO();
             ve = vetbl.getInfor(maVeHienTai);
@@ -423,10 +424,10 @@ public class ThongTinVe extends javax.swing.JFrame {
             try {
                 ve.setDateNgayKichHoat(getDateThoiGianThuc());
                 ve.setStrTrangThai("Đang sử dụng");
-                if(ve.getStrMaLoaiVe().equals("LVE03")){
+                if (ve.getStrMaLoaiVe().equals("LVE03")) {
                     ve.setDateNgayHetHan(getDateThoiGianVeTuan());
                 }
-                if(ve.getStrMaLoaiVe().equals("LVE04")){
+                if (ve.getStrMaLoaiVe().equals("LVE04")) {
                     ve.setDateNgayHetHan(getDateThoiGianVeThang());
                 }
                 try {
@@ -438,8 +439,11 @@ public class ThongTinVe extends javax.swing.JFrame {
                 Logger.getLogger(ThongTinVe.class.getName()).log(Level.SEVERE, null, ex);
             }
             
+            //Sau khi hoàn thành kích hoạt, thì update Table
+            capNhatLaiTable();
+
         }
-        
+
     }//GEN-LAST:event_btnKichHoatMouseClicked
 
     /**
