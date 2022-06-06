@@ -57,6 +57,7 @@ public class QLXRVJPanel extends javax.swing.JPanel {
         initComponents();
         initTable();
         hoTroTimKiem();
+        txtBienSoXe.setEnabled(false);
     }
 
     public void resetRender() {
@@ -252,12 +253,22 @@ public class QLXRVJPanel extends javax.swing.JPanel {
         jPanel1.add(txtBienSoXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 20, 180, -1));
 
         cbbLoaiXe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Xe đạp", "Xe máy" }));
+        cbbLoaiXe.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbbLoaiXeItemStateChanged(evt);
+            }
+        });
         jPanel1.add(cbbLoaiXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, 180, -1));
 
         btnXeVLRa.setText("Xe VL Ra");
         jPanel1.add(btnXeVLRa, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, 190, -1));
 
         btnXeVLVao.setText("Xe VL Vào");
+        btnXeVLVao.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnXeVLVaoMouseClicked(evt);
+            }
+        });
         jPanel1.add(btnXeVLVao, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 190, -1));
 
         btnDemoKHTV.setText("Demo KHTV");
@@ -448,7 +459,6 @@ public class QLXRVJPanel extends javax.swing.JPanel {
         btnXeVLVao.setEnabled(true);
         btnXeVLRa.setEnabled(true);
         cbbLoaiXe.setEnabled(true);
-        txtBienSoXe.setEnabled(true);
         txtMaKhachHang.setEnabled(false);
         
     }//GEN-LAST:event_btnDemoKVLMouseClicked
@@ -466,9 +476,39 @@ public class QLXRVJPanel extends javax.swing.JPanel {
         btnXeTVVao.setEnabled(true);
         btnXeTVRa.setEnabled(true);
         cbbLoaiXe.setEnabled(false);
-        txtBienSoXe.setEnabled(false);
         txtMaKhachHang.setEnabled(true);
     }//GEN-LAST:event_btnDemoKHTVMouseClicked
+
+    /**
+     * 
+     * @param evt 
+     * Xử lý event Khi xe vãng lai vào
+     * Khi Xe vãng lai vào, xẽ được phát một thẻ khách vãng lai
+     * Khi quẹt thẻ, mã thẻ khách vãng lai được tạo mới, mã xe được tạo mới
+     * Đồng thời trong bảng Xe sẽ tạo mới Xe
+     * Bảng chi tiết ra vào sẽ được tạo, với giờ vào là giờ hiện tại
+     */
+    private void btnXeVLVaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXeVLVaoMouseClicked
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_btnXeVLVaoMouseClicked
+
+    /**
+     * 
+     * @param evt 
+     * Khi Loại xe thay đổi thì event đc gọi
+     * Khi loại xe là xe đạp, trường biển số xe bị disable
+     * Ngược lại thì trường biển số xe sẽ được enable
+     */
+    private void cbbLoaiXeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbLoaiXeItemStateChanged
+        // TODO add your handling code here:
+        if (cbbLoaiXe.getSelectedItem().toString().equals("Xe đạp")) {
+            txtBienSoXe.setEnabled(false);
+        }else{
+            txtBienSoXe.setEnabled(true);
+        }
+    }//GEN-LAST:event_cbbLoaiXeItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
