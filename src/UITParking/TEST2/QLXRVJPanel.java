@@ -3,6 +3,30 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package UITParking.TEST2;
+import UITParking.BUS.CTRaVaoBUS;
+import UITParking.BUS.KhachHangBUS;
+import UITParking.BUS.LoaiVeBUS;
+import UITParking.BUS.NguoiDungBUS;
+import UITParking.BUS.VeBUS;
+import UITParking.BUS.XeBUS;
+import UITParking.DTO.CTRaVaoDTO;
+import UITParking.DTO.KhachHangDTO;
+import UITParking.DTO.LoaiVeDTO;
+import UITParking.DTO.NguoiDungDTO;
+import UITParking.DTO.VeDTO;
+import UITParking.DTO.XeDTO;
+import java.awt.Color;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ButtonGroup;
+import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -10,11 +34,129 @@ package UITParking.TEST2;
  */
 public class QLXRVJPanel extends javax.swing.JPanel {
 
+    NguoiDungBUS nguoidungtbl = new NguoiDungBUS();
+    ArrayList<NguoiDungDTO> list_ND = nguoidungtbl.getList_ND();
+    KhachHangBUS khachhangtbl = new KhachHangBUS();
+    ArrayList<KhachHangDTO> list_KH = khachhangtbl.getList_KH();
+    LoaiVeBUS loaivetbl = new LoaiVeBUS();
+    ArrayList<LoaiVeDTO> list_LV = loaivetbl.getList_LV();
+    VeBUS vetbl = new VeBUS();
+    ArrayList<VeDTO> list_Ve = vetbl.getList_Ve();
+    CTRaVaoBUS ctrvtbl = new CTRaVaoBUS();
+    ArrayList<CTRaVaoDTO> list_CTRV = ctrvtbl.getList_CTRV();
+
+    private DefaultTableModel model;
+    private String[] columnHeaders = new String[]{"STT", "Mã CT Ra Vào", "Thời Gian Vào",
+        "Thời Gian Ra", "Mã Khách Hàng", "Mã Xe", "Mã Thẻ KVL"};
+
+    private TableRowSorter<TableModel> rowSorter = null;
     /**
      * Creates new form QLDTJPanel
      */
-    public QLXRVJPanel() {
+    public QLXRVJPanel() throws Exception {
         initComponents();
+        initTable();
+        hoTroTimKiem();
+    }
+
+    public void resetRender() {
+        txtMaCTRaVao.setText("");
+        txtMaKhachHang.setText("");
+        txtMaXe.setText("");
+        txtMaTheKVL.setText("");
+        jdcThoiGianRa.setDate(null);
+        jdcThoiGianVao.setDate(null);
+
+    }
+
+    public void updateRender() {
+        //Reset txtMaLoaiVe theo tên loại vé
+//        if (cbbTenLoaiVe.getSelectedItem().toString().equals("Vé lượt xe máy")) {
+//            txtMaLoaiVe.setText("LVE01");
+//            jdcNgayHetHan.setDate(null);
+//            jdcNgayKichHoat.setDate(null);
+//            txtTrangThai.setText("Chưa kích hoạt");
+//
+//        }
+//        if (cbbTenLoaiVe.getSelectedItem().toString().equals("Vé lượt xe đạp")) {
+//            txtMaLoaiVe.setText("LVE02");
+//            jdcNgayHetHan.setDate(null);
+//            jdcNgayKichHoat.setDate(null);
+//            txtTrangThai.setText("Chưa kích hoạt");
+//        }
+//        if (cbbTenLoaiVe.getSelectedItem().toString().equals("Vé tuần")) {
+//            txtMaLoaiVe.setText("LVE03");
+//        }
+//        if (cbbTenLoaiVe.getSelectedItem().toString().equals("Vé tháng")) {
+//            txtMaLoaiVe.setText("LVE04");
+//        }
+    }
+
+    public void initTable() throws Exception {
+        model = new DefaultTableModel();
+        model.setColumnIdentifiers(columnHeaders);
+        int index = 1;
+        for (CTRaVaoDTO ctrv : list_CTRV) {
+            //Lấy ra xe và biển số xe của khách hàng
+
+//            LoaiVeDTO lv = loaivetbl.getInfor(ve.getStrMaLoaiVe());
+            //Cập nhật bảng
+            model.addRow(new Object[]{index, ctrv.getStrMaCTRaVao(), ctrv.getDateThoiGianVao(),
+                ctrv.getDateThoiGianRa(), ctrv.getStrMaKH() == null ? "null" : ctrv.getStrMaKH(), ctrv.getStrMaXe(), 
+                ctrv.getStrMaTheKVL() == null ? "null" : ctrv.getStrMaTheKVL()});
+            index++;
+        }
+
+        tblChiTietRaVao.setModel(model);
+
+    }
+
+    public void hoTroTimKiem() {
+
+        rowSorter = new TableRowSorter<>(tblChiTietRaVao.getModel());
+        tblChiTietRaVao.setRowSorter(rowSorter);
+        txtTimKiem.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                String text = txtTimKiem.getText();
+                if (text.trim().length() == 0) {
+                    rowSorter.setRowFilter(null);
+                } else {
+                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+                }
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                String text = txtTimKiem.getText();
+                if (text.trim().length() == 0) {
+                    rowSorter.setRowFilter(null);
+                } else {
+                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+                }
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+            }
+        });
+    }
+
+    //Hàm cập nhật lại bảng sau khi thêm xóa sửa
+    public void capNhatLaiTable() {
+        model.setRowCount(0);
+        int index = 1;
+        for (CTRaVaoDTO ctrv : list_CTRV) {
+            //Lấy ra xe và biển số xe của khách hàng
+
+//            LoaiVeDTO lv = loaivetbl.getInfor(ve.getStrMaLoaiVe());
+            //Cập nhật bảng
+            model.addRow(new Object[]{index, ctrv.getStrMaCTRaVao(), ctrv.getDateThoiGianVao(),
+                ctrv.getDateThoiGianRa(), ctrv.getStrMaKH() == null ? "null" : ctrv.getStrMaKH(), ctrv.getStrMaXe(), 
+                ctrv.getStrMaTheKVL() == null ? "null" : ctrv.getStrMaTheKVL()});
+            index++;
+        }
+        model.fireTableDataChanged();
     }
 
     /**
@@ -151,7 +293,7 @@ public class QLXRVJPanel extends javax.swing.JPanel {
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 926, 247));
         jPanel1.add(jdcThoiGianVao, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 60, 200, -1));
 
-        jLabel11.setText("Thời Gain Ra");
+        jLabel11.setText("Thời Gian Ra");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 60, 70, 19));
 
         jLabel13.setText("Mã Khách Hàng");
