@@ -8,12 +8,12 @@ package UITParking.TEST2;
  *
  * @author ADMIN
  */
-public class QLDTJPanel extends javax.swing.JPanel {
+public class QLXRVJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form QLDTJPanel
      */
-    public QLDTJPanel() {
+    public QLXRVJPanel() {
         initComponents();
     }
 

@@ -115,13 +115,13 @@ public class ChuyenManHinhController {
                 root.repaint();
             }
             break;
-            case "QLDT": {
+            case "QLXRV": {
                 jpnItem.setBackground(new Color(220, 148, 34));
                 jlbItem.setBackground(new Color(220, 148, 34));
 
                 root.removeAll();
                 root.setLayout(new BorderLayout());
-                root.add(new QLDTJPanel());
+                root.add(new QLXRVJPanel());
                 root.validate();
                 root.repaint();
             }
@@ -229,8 +229,8 @@ public class ChuyenManHinhController {
                 case "BCTK":
                     node = new BCTKJPanel();
                     break;
-                case "QLDT":
-                    node = new QLDTJPanel();
+                case "QLXRV":
+                    node = new QLXRVJPanel();
                     break;
 
                 default:
