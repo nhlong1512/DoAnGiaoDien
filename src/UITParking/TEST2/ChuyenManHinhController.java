@@ -230,8 +230,15 @@ public class ChuyenManHinhController {
                     node = new BCTKJPanel();
                     break;
                 case "QLXRV":
-                    node = new QLXRVJPanel();
+                {
+                    try {
+                        node = new QLXRVJPanel();
+                    } catch (Exception ex) {
+                        Logger.getLogger(ChuyenManHinhController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
                     break;
+
 
                 default:
                     break;

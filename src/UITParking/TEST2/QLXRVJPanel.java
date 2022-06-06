@@ -178,9 +178,8 @@ public class QLXRVJPanel extends javax.swing.JPanel {
         txtMaTheKVL = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         btnNhapMoi = new javax.swing.JButton();
-        btnXeVao = new javax.swing.JButton();
-        btnXeRa = new javax.swing.JButton();
-        btnXoa = new javax.swing.JButton();
+        btnXeTVVao = new javax.swing.JButton();
+        btnXeTVRa = new javax.swing.JButton();
         btnTimKiem = new javax.swing.JButton();
         txtTimKiem = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -195,6 +194,8 @@ public class QLXRVJPanel extends javax.swing.JPanel {
         jLabel12 = new javax.swing.JLabel();
         txtBienSoXe = new javax.swing.JTextField();
         cbbLoaiXe = new javax.swing.JComboBox<>();
+        btnXeVLRa = new javax.swing.JButton();
+        btnXeVLVao = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -237,31 +238,23 @@ public class QLXRVJPanel extends javax.swing.JPanel {
                 btnNhapMoiMouseClicked(evt);
             }
         });
-        jPanel1.add(btnNhapMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, -1, -1));
+        jPanel1.add(btnNhapMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 170, -1, -1));
 
-        btnXeVao.setText("Xe Vào");
-        btnXeVao.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnXeTVVao.setText("Xe TV Vào");
+        btnXeTVVao.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnXeVaoMouseClicked(evt);
+                btnXeTVVaoMouseClicked(evt);
             }
         });
-        jPanel1.add(btnXeVao, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 80, -1));
+        jPanel1.add(btnXeTVVao, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 190, -1));
 
-        btnXeRa.setText("Xe Ra");
-        btnXeRa.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnXeTVRa.setText("Xe TV Ra");
+        btnXeTVRa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnXeRaMouseClicked(evt);
+                btnXeTVRaMouseClicked(evt);
             }
         });
-        jPanel1.add(btnXeRa, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 90, -1));
-
-        btnXoa.setText("Xóa");
-        btnXoa.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnXoaMouseClicked(evt);
-            }
-        });
-        jPanel1.add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 170, -1, -1));
+        jPanel1.add(btnXeTVRa, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, 190, -1));
 
         btnTimKiem.setText("Tìm kiếm");
         btnTimKiem.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -312,6 +305,12 @@ public class QLXRVJPanel extends javax.swing.JPanel {
         cbbLoaiXe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Xe máy", "Xe đạp" }));
         jPanel1.add(cbbLoaiXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 110, 180, -1));
 
+        btnXeVLRa.setText("Xe VL Ra");
+        jPanel1.add(btnXeVLRa, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, 190, -1));
+
+        btnXeVLVao.setText("Xe VL Vào");
+        jPanel1.add(btnXeVLVao, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 190, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -336,7 +335,7 @@ public class QLXRVJPanel extends javax.swing.JPanel {
 //        resetRender();
     }//GEN-LAST:event_btnNhapMoiMouseClicked
 
-    private void btnXeVaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXeVaoMouseClicked
+    private void btnXeTVVaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXeTVVaoMouseClicked
 //        StringBuilder sb = new StringBuilder();
 //        if (txtMaVe.getText().equals("")) {
 //            sb.append("Mã vé không được để trống.");
@@ -383,9 +382,9 @@ public class QLXRVJPanel extends javax.swing.JPanel {
 //            JOptionPane.showMessageDialog(this, "Error" + e.getMessage());
 //            e.printStackTrace();
 //        }
-    }//GEN-LAST:event_btnXeVaoMouseClicked
+    }//GEN-LAST:event_btnXeTVVaoMouseClicked
 
-    private void btnXeRaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXeRaMouseClicked
+    private void btnXeTVRaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXeTVRaMouseClicked
         // TODO add your handling code here:
 //        StringBuilder sb = new StringBuilder();
 //        if (txtMaVe.getText().equals("")) {
@@ -445,42 +444,7 @@ public class QLXRVJPanel extends javax.swing.JPanel {
 //            JOptionPane.showMessageDialog(this, "Error" + e.getMessage());
 //            e.printStackTrace();
 //        }
-    }//GEN-LAST:event_btnXeRaMouseClicked
-
-    private void btnXoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXoaMouseClicked
-        // TODO add your handling code here:
-//        StringBuilder sb = new StringBuilder();
-//        if (txtMaVe.getText().equals("")) {
-//            sb.append("Mã vé không được để trống.");
-//            txtMaVe.setBackground(Color.red);
-//        } else {
-//            txtMaVe.setBackground(Color.white);
-//        }
-//        if (sb.length() > 0) {
-//            JOptionPane.showMessageDialog(this, sb);
-//            return;
-//        }
-//
-//        if (JOptionPane.showConfirmDialog(this, "Bạn có muốn xóa không?") == JOptionPane.NO_OPTION) {
-//            return;
-//        }
-//        try {
-//            VeDTO ve = vetbl.getInfor(txtMaVe.getText());
-//            vetbl.xoa(ve);
-//
-//            JOptionPane.showMessageDialog(this, "Vé đã xóa khỏi CSDL");
-//
-//            //Reset lại render
-//            resetRender();
-//
-//            //Cập nhật lại bảng
-//            capNhatLaiTable();
-//
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(this, "Error" + e.getMessage());
-//            e.printStackTrace();
-//        }
-    }//GEN-LAST:event_btnXoaMouseClicked
+    }//GEN-LAST:event_btnXeTVRaMouseClicked
 
     private void btnTimKiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTimKiemMouseClicked
         // TODO add your handling code here:
@@ -514,9 +478,10 @@ public class QLXRVJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnNhapMoi;
     private javax.swing.JButton btnTimKiem;
-    private javax.swing.JButton btnXeRa;
-    private javax.swing.JButton btnXeVao;
-    private javax.swing.JButton btnXoa;
+    private javax.swing.JButton btnXeTVRa;
+    private javax.swing.JButton btnXeTVVao;
+    private javax.swing.JButton btnXeVLRa;
+    private javax.swing.JButton btnXeVLVao;
     private javax.swing.JComboBox<String> cbbLoaiXe;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
