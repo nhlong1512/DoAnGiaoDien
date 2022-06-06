@@ -5,12 +5,14 @@
 package UITParking.TEST2;
 import UITParking.BUS.CTRaVaoBUS;
 import UITParking.BUS.KhachHangBUS;
+import UITParking.BUS.KhachVangLaiBUS;
 import UITParking.BUS.LoaiVeBUS;
 import UITParking.BUS.NguoiDungBUS;
 import UITParking.BUS.VeBUS;
 import UITParking.BUS.XeBUS;
 import UITParking.DTO.CTRaVaoDTO;
 import UITParking.DTO.KhachHangDTO;
+import UITParking.DTO.KhachVangLaiDTO;
 import UITParking.DTO.LoaiVeDTO;
 import UITParking.DTO.NguoiDungDTO;
 import UITParking.DTO.VeDTO;
@@ -44,6 +46,11 @@ public class QLXRVJPanel extends javax.swing.JPanel {
     ArrayList<VeDTO> list_Ve = vetbl.getList_Ve();
     CTRaVaoBUS ctrvtbl = new CTRaVaoBUS();
     ArrayList<CTRaVaoDTO> list_CTRV = ctrvtbl.getList_CTRV();
+    XeBUS xetbl = new XeBUS();
+    ArrayList<XeDTO> listXe = xetbl.getlist_XE();
+    KhachVangLaiBUS kvltbl = new KhachVangLaiBUS();
+    ArrayList<KhachVangLaiDTO> listKVL = kvltbl.getlist_KVL();
+    
 
     private DefaultTableModel model;
     private String[] columnHeaders = new String[]{"STT", "Mã CT Ra Vào", "Thời Gian Vào",
@@ -487,9 +494,52 @@ public class QLXRVJPanel extends javax.swing.JPanel {
      * Khi quẹt thẻ, mã thẻ khách vãng lai được tạo mới, mã xe được tạo mới
      * Đồng thời trong bảng Xe sẽ tạo mới Xe
      * Bảng chi tiết ra vào sẽ được tạo, với giờ vào là giờ hiện tại
+     * Đầu tiên cần thêm xe, vào bảng xe, sau đó thêm khách vãng lai
+     * Cuối cùng là thêm chi tiết ra vào
      */
     private void btnXeVLVaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXeVLVaoMouseClicked
         // TODO add your handling code here:
+        
+        //Thêm xe mới vào database
+        XeDTO xe = new XeDTO();
+        try {
+            String maXeTemp = xetbl.getMaxMaXe();
+            xe.setStrMaXe(maXeTemp);
+            System.out.println(maXeTemp);
+            if(cbbLoaiXe.getSelectedItem().toString().equals("Xe đạp")){
+                xe.setStrTenLoaiXe("Xe dap");
+                xe.setStrBienSoXe(null);
+            }else{
+                xe.setStrTenLoaiXe("Xe may");
+                xe.setStrBienSoXe(txtBienSoXe.getText());
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(QLXRVJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            xetbl.them(xe);
+        } catch (Exception ex) {
+            Logger.getLogger(QLXRVJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        //Thêm khách vãng lai mới vào database
+        KhachVangLaiDTO kvl = new KhachVangLaiDTO();
+        try {
+            String maKVLTemp = kvltbl.getMaxMaKVL();
+            System.out.println(maKVLTemp);
+            kvl.setStrMaTheKVL(maKVLTemp);
+            kvl.setStrMaXe(xe.getStrMaXe());
+        } catch (Exception ex) {
+            Logger.getLogger(QLXRVJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            kvltbl.them(kvl);
+        } catch (Exception ex) {
+            Logger.getLogger(QLXRVJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        //Thêm chi tiết ra vào mới vào database
+        
         
         
     }//GEN-LAST:event_btnXeVLVaoMouseClicked
