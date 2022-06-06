@@ -109,6 +109,7 @@ public class HomepageAdmin extends javax.swing.JFrame {
         });
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/qlkh.png"))); // NOI18N
+        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         label_QLKH.setBackground(new java.awt.Color(51, 51, 51));
         label_QLKH.setFont(new java.awt.Font("Cooper", 0, 14)); // NOI18N
@@ -166,6 +167,7 @@ public class HomepageAdmin extends javax.swing.JFrame {
         });
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/vé.png"))); // NOI18N
+        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         label_QLVE.setFont(new java.awt.Font("Cooper", 0, 14)); // NOI18N
         label_QLVE.setForeground(new java.awt.Color(0, 0, 102));
@@ -173,6 +175,9 @@ public class HomepageAdmin extends javax.swing.JFrame {
         label_QLVE.setText("Quản lý vé");
         label_QLVE.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         label_QLVE.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                label_QLVEMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 label_QLVEMouseEntered(evt);
             }
@@ -218,6 +223,7 @@ public class HomepageAdmin extends javax.swing.JFrame {
         });
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/ttstaff.png"))); // NOI18N
+        jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         label_QLNV.setFont(new java.awt.Font("Cooper", 0, 14)); // NOI18N
         label_QLNV.setForeground(new java.awt.Color(0, 0, 102));
@@ -225,6 +231,9 @@ public class HomepageAdmin extends javax.swing.JFrame {
         label_QLNV.setText("Quản lý nhân viên");
         label_QLNV.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         label_QLNV.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                label_QLNVMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 label_QLNVMouseEntered(evt);
             }
@@ -270,6 +279,7 @@ public class HomepageAdmin extends javax.swing.JFrame {
         });
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/bill.png"))); // NOI18N
+        jLabel8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         label_QLHD.setFont(new java.awt.Font("Cooper", 0, 14)); // NOI18N
         label_QLHD.setForeground(new java.awt.Color(0, 0, 102));
@@ -277,6 +287,9 @@ public class HomepageAdmin extends javax.swing.JFrame {
         label_QLHD.setText("Quản lý hóa đơn");
         label_QLHD.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         label_QLHD.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                label_QLHDMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 label_QLHDMouseEntered(evt);
             }
@@ -323,6 +336,7 @@ public class HomepageAdmin extends javax.swing.JFrame {
         });
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/doanhthu.png"))); // NOI18N
+        jLabel10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         label_QLDT.setFont(new java.awt.Font("Cooper", 0, 14)); // NOI18N
         label_QLDT.setForeground(new java.awt.Color(0, 0, 102));
@@ -376,6 +390,7 @@ public class HomepageAdmin extends javax.swing.JFrame {
         });
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/báo cáo.png"))); // NOI18N
+        jLabel12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         label_BCTK.setFont(new java.awt.Font("Cooper", 0, 14)); // NOI18N
         label_BCTK.setForeground(new java.awt.Color(0, 0, 102));
@@ -533,6 +548,7 @@ public class HomepageAdmin extends javax.swing.JFrame {
         });
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/imgonline-com-ua-resize-CzYCHQERVknJOb.png"))); // NOI18N
+        jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         label_QLKVL.setFont(new java.awt.Font("Cooper", 0, 14)); // NOI18N
         label_QLKVL.setForeground(new java.awt.Color(0, 0, 102));
@@ -540,6 +556,9 @@ public class HomepageAdmin extends javax.swing.JFrame {
         label_QLKVL.setText("Quản lý khách vãng lai");
         label_QLKVL.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         label_QLKVL.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                label_QLKVLMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 label_QLKVLMouseEntered(evt);
             }
@@ -585,6 +604,7 @@ public class HomepageAdmin extends javax.swing.JFrame {
         });
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/xe.png"))); // NOI18N
+        jLabel11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         label_QLXE.setFont(new java.awt.Font("Cooper", 0, 14)); // NOI18N
         label_QLXE.setForeground(new java.awt.Color(0, 0, 102));
@@ -592,6 +612,9 @@ public class HomepageAdmin extends javax.swing.JFrame {
         label_QLXE.setText("Quản lý xe");
         label_QLXE.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         label_QLXE.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                label_QLXEMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 label_QLXEMouseEntered(evt);
             }
@@ -808,30 +831,30 @@ public class HomepageAdmin extends javax.swing.JFrame {
 
     private void panelAdminQLDTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelAdminQLDTMouseClicked
         // TODO add your handling code here:            
-        kindSelectedPublic = "QLDT";
-
-        MainForm _mainForm = null;
-        try {
-            _mainForm = new MainForm();
-        } catch (Exception ex) {
-            Logger.getLogger(HomepageAdmin.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        _mainForm.show();
-        dispose();
+//        kindSelectedPublic = "QLDT";
+//
+//        MainForm _mainForm = null;
+//        try {
+//            _mainForm = new MainForm();
+//        } catch (Exception ex) {
+//            Logger.getLogger(HomepageAdmin.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        _mainForm.show();
+//        dispose();
     }//GEN-LAST:event_panelAdminQLDTMouseClicked
 
     private void panelAdminBCTKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelAdminBCTKMouseClicked
         // TODO add your handling code here:
-        kindSelectedPublic = "BCTK";
-        MainForm _mainForm = null;
-        try {
-            _mainForm = new MainForm();
-
-        } catch (Exception ex) {
-            Logger.getLogger(HomepageAdmin.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        _mainForm.show();
-        dispose();
+//        kindSelectedPublic = "BCTK";
+//        MainForm _mainForm = null;
+//        try {
+//            _mainForm = new MainForm();
+//
+//        } catch (Exception ex) {
+//            Logger.getLogger(HomepageAdmin.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        _mainForm.show();
+//        dispose();
     }//GEN-LAST:event_panelAdminBCTKMouseClicked
 
     private void panelAdminQLXMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelAdminQLXMouseClicked
@@ -854,6 +877,76 @@ public class HomepageAdmin extends javax.swing.JFrame {
         _login.show();
         dispose();
     }//GEN-LAST:event_label_DangXuatMouseClicked
+
+    private void label_QLNVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label_QLNVMouseClicked
+        // TODO add your handling code here:
+        kindSelectedPublic = "QLNV";
+
+        MainForm _mainForm = null;
+        try {
+            _mainForm = new MainForm();
+        } catch (Exception ex) {
+            Logger.getLogger(HomepageAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        _mainForm.show();
+        dispose();
+    }//GEN-LAST:event_label_QLNVMouseClicked
+
+    private void label_QLVEMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label_QLVEMouseClicked
+        // TODO add your handling code here:
+        kindSelectedPublic = "QLV";
+
+        MainForm _mainForm = null;
+        try {
+            _mainForm = new MainForm();
+        } catch (Exception ex) {
+            Logger.getLogger(HomepageAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        _mainForm.show();
+        dispose();
+    }//GEN-LAST:event_label_QLVEMouseClicked
+
+    private void label_QLKVLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label_QLKVLMouseClicked
+        // TODO add your handling code here:
+        kindSelectedPublic = "QLKVL";
+
+        MainForm _mainForm = null;
+        try {
+            _mainForm = new MainForm();
+        } catch (Exception ex) {
+            Logger.getLogger(HomepageAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        _mainForm.show();
+        dispose();
+    }//GEN-LAST:event_label_QLKVLMouseClicked
+
+    private void label_QLHDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label_QLHDMouseClicked
+        // TODO add your handling code here:
+        kindSelectedPublic = "QLHD";
+
+        MainForm _mainForm = null;
+        try {
+            _mainForm = new MainForm();
+        } catch (Exception ex) {
+            Logger.getLogger(HomepageAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        _mainForm.show();
+        dispose();
+    }//GEN-LAST:event_label_QLHDMouseClicked
+
+    private void label_QLXEMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label_QLXEMouseClicked
+        // TODO add your handling code here:
+        kindSelectedPublic = "QLX";
+        MainForm _mainForm = null;
+        try {
+            _mainForm = new MainForm();
+
+        } catch (Exception ex) {
+            Logger.getLogger(HomepageAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        _mainForm.show();
+        dispose();
+    }//GEN-LAST:event_label_QLXEMouseClicked
 
     /**
      * @param args the command line arguments

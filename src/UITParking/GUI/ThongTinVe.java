@@ -213,12 +213,12 @@ public class ThongTinVe extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         txtTimKiem = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblVe = new javax.swing.JTable();
         btnTimKiem = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
         btnKichHoat = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblVe = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -234,28 +234,6 @@ public class ThongTinVe extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txtTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 210, 30));
-
-        tblVe.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        tblVe.setFillsViewportHeight(true);
-        tblVe.setSelectionBackground(new java.awt.Color(255, 255, 255));
-        tblVe.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                tblVeMousePressed(evt);
-            }
-        });
-        jScrollPane1.setViewportView(tblVe);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 790, 160));
 
         btnTimKiem.setBackground(new java.awt.Color(52, 79, 115));
         btnTimKiem.setFont(new java.awt.Font("Cooper", 0, 14)); // NOI18N
@@ -303,16 +281,37 @@ public class ThongTinVe extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(52, 79, 115));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("THÔNG TIN VÉ");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 900, 60));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 870, 60));
+
+        tblVe.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tblVe.setFillsViewportHeight(true);
+        tblVe.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tblVeMousePressed(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblVe);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 790, 180));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/wepik--202255-22401.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 350));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 420));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 874, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -404,7 +403,6 @@ public class ThongTinVe extends javax.swing.JFrame {
 
     private void tblVeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblVeMousePressed
         // TODO add your handling code here:
-        //        resetRender();
         int selectedRow = tblVe.getSelectedRow();
         if (selectedRow >= 0) {
 

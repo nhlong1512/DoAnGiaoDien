@@ -284,6 +284,7 @@ public class QLHDJPanel extends javax.swing.JPanel {
         jLabel2.setText("Mã hóa đơn");
         jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 61, 84, 22));
 
+        txtMaHDMuaVe.setEditable(false);
         txtMaHDMuaVe.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
                 txtMaHDMuaVeCaretUpdate(evt);
@@ -389,6 +390,7 @@ public class QLHDJPanel extends javax.swing.JPanel {
         jLabel8.setText("Mã hóa đơn");
         jPanel5.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 55, 82, 22));
 
+        txtMaHDChiTiet.setEditable(false);
         txtMaHDChiTiet.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
                 txtMaHDChiTietCaretUpdate(evt);
@@ -468,6 +470,7 @@ public class QLHDJPanel extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblChiTietHoaDon.setFillsViewportHeight(true);
         tblChiTietHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 tblChiTietHoaDonMousePressed(evt);
