@@ -90,8 +90,8 @@ public class MainForm extends javax.swing.JFrame {
         listItem.add(new DanhMucBean("BCTK", jpnBCTK, jlbBCTK));
         
         controller.setEvent(listItem);
-        jpnBCTK.setVisible(true);
-        jpnQLXRV.setVisible(true);
+//        jpnQLNV.setVisible(false);
+//        jpnQLX.setVisible(false);
     }
 
     /**
