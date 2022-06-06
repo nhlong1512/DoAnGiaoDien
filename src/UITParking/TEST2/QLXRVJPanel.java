@@ -28,27 +28,31 @@ public class QLXRVJPanel extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        txtMaVe = new javax.swing.JTextField();
+        txtMaCTRaVao = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtMaKH = new javax.swing.JTextField();
+        txtMaXe = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        txtTrangThai = new javax.swing.JTextField();
+        txtMaTheKVL = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         btnNhapMoi = new javax.swing.JButton();
-        btnLuu = new javax.swing.JButton();
-        btnCapNhat = new javax.swing.JButton();
+        btnXeVao = new javax.swing.JButton();
+        btnXeRa = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
         btnTimKiem = new javax.swing.JButton();
         txtTimKiem = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblVe = new javax.swing.JTable();
-        jdcNgayKichHoat = new com.toedter.calendar.JDateChooser();
+        tblChiTietRaVao = new javax.swing.JTable();
+        jdcThoiGianVao = new com.toedter.calendar.JDateChooser();
         jLabel11 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        txtMaLoaiVe = new javax.swing.JTextField();
-        jdcNgayHetHan = new com.toedter.calendar.JDateChooser();
-        txtMaLoaiVe1 = new javax.swing.JTextField();
+        txtMaNhanVien = new javax.swing.JTextField();
+        jdcThoiGianRa = new com.toedter.calendar.JDateChooser();
+        txtMaKhachHang = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        txtBienSoXe = new javax.swing.JTextField();
+        cbbLoaiXe = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -58,16 +62,16 @@ public class QLXRVJPanel extends javax.swing.JPanel {
         jLabel2.setText("Mã CT Ra Vào");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 90, 22));
 
-        txtMaVe.addCaretListener(new javax.swing.event.CaretListener() {
+        txtMaCTRaVao.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                txtMaVeCaretUpdate(evt);
+                txtMaCTRaVaoCaretUpdate(evt);
             }
         });
-        jPanel1.add(txtMaVe, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 190, -1));
+        jPanel1.add(txtMaCTRaVao, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 190, -1));
 
         jLabel3.setText("Mã Xe");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 90, 20));
-        jPanel1.add(txtMaKH, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 190, -1));
+        jPanel1.add(txtMaXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 190, -1));
 
         jLabel7.setText("Mã Nhân Viên");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 82, 20));
@@ -75,12 +79,12 @@ public class QLXRVJPanel extends javax.swing.JPanel {
         jLabel8.setText("Thời Gian Vào");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 60, 87, 19));
 
-        txtTrangThai.addActionListener(new java.awt.event.ActionListener() {
+        txtMaTheKVL.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTrangThaiActionPerformed(evt);
+                txtMaTheKVLActionPerformed(evt);
             }
         });
-        jPanel1.add(txtTrangThai, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 190, -1));
+        jPanel1.add(txtMaTheKVL, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 190, -1));
 
         jLabel9.setText("Mã Thẻ KVL");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 66, 21));
@@ -91,23 +95,23 @@ public class QLXRVJPanel extends javax.swing.JPanel {
                 btnNhapMoiMouseClicked(evt);
             }
         });
-        jPanel1.add(btnNhapMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
+        jPanel1.add(btnNhapMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, -1, -1));
 
-        btnLuu.setText("Xe Vào");
-        btnLuu.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnXeVao.setText("Xe Vào");
+        btnXeVao.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnLuuMouseClicked(evt);
+                btnXeVaoMouseClicked(evt);
             }
         });
-        jPanel1.add(btnLuu, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 170, 80, -1));
+        jPanel1.add(btnXeVao, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 80, -1));
 
-        btnCapNhat.setText("Xe Ra");
-        btnCapNhat.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnXeRa.setText("Xe Ra");
+        btnXeRa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCapNhatMouseClicked(evt);
+                btnXeRaMouseClicked(evt);
             }
         });
-        jPanel1.add(btnCapNhat, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 170, 90, -1));
+        jPanel1.add(btnXeRa, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 90, -1));
 
         btnXoa.setText("Xóa");
         btnXoa.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -115,7 +119,7 @@ public class QLXRVJPanel extends javax.swing.JPanel {
                 btnXoaMouseClicked(evt);
             }
         });
-        jPanel1.add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 170, -1, -1));
+        jPanel1.add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 170, -1, -1));
 
         btnTimKiem.setText("Tìm kiếm");
         btnTimKiem.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -126,7 +130,7 @@ public class QLXRVJPanel extends javax.swing.JPanel {
         jPanel1.add(btnTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 170, -1, -1));
         jPanel1.add(txtTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 170, 144, -1));
 
-        tblVe.setModel(new javax.swing.table.DefaultTableModel(
+        tblChiTietRaVao.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -137,24 +141,34 @@ public class QLXRVJPanel extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tblVe.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblChiTietRaVao.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                tblVeMousePressed(evt);
+                tblChiTietRaVaoMousePressed(evt);
             }
         });
-        jScrollPane1.setViewportView(tblVe);
+        jScrollPane1.setViewportView(tblChiTietRaVao);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 926, 247));
-        jPanel1.add(jdcNgayKichHoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 60, 200, -1));
+        jPanel1.add(jdcThoiGianVao, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 60, 200, -1));
 
         jLabel11.setText("Thời Gain Ra");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 60, 70, 19));
 
         jLabel13.setText("Mã Khách Hàng");
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(655, 19, 70, 20));
-        jPanel1.add(txtMaLoaiVe, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, 180, -1));
-        jPanel1.add(jdcNgayHetHan, new org.netbeans.lib.awtextra.AbsoluteConstraints(739, 60, 180, -1));
-        jPanel1.add(txtMaLoaiVe1, new org.netbeans.lib.awtextra.AbsoluteConstraints(737, 20, 180, -1));
+        jPanel1.add(txtMaNhanVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, 180, -1));
+        jPanel1.add(jdcThoiGianRa, new org.netbeans.lib.awtextra.AbsoluteConstraints(739, 60, 180, -1));
+        jPanel1.add(txtMaKhachHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(737, 20, 180, -1));
+
+        jLabel10.setText("Loại Xe");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, 82, 20));
+
+        jLabel12.setText("Biển Số Xe");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 110, 70, 20));
+        jPanel1.add(txtBienSoXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 110, 180, -1));
+
+        cbbLoaiXe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Xe máy", "Xe đạp" }));
+        jPanel1.add(cbbLoaiXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 110, 180, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -168,19 +182,19 @@ public class QLXRVJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtMaVeCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtMaVeCaretUpdate
+    private void txtMaCTRaVaoCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtMaCTRaVaoCaretUpdate
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtMaVeCaretUpdate
+    }//GEN-LAST:event_txtMaCTRaVaoCaretUpdate
 
-    private void txtTrangThaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTrangThaiActionPerformed
+    private void txtMaTheKVLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaTheKVLActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtTrangThaiActionPerformed
+    }//GEN-LAST:event_txtMaTheKVLActionPerformed
 
     private void btnNhapMoiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNhapMoiMouseClicked
 //        resetRender();
     }//GEN-LAST:event_btnNhapMoiMouseClicked
 
-    private void btnLuuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLuuMouseClicked
+    private void btnXeVaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXeVaoMouseClicked
 //        StringBuilder sb = new StringBuilder();
 //        if (txtMaVe.getText().equals("")) {
 //            sb.append("Mã vé không được để trống.");
@@ -227,9 +241,9 @@ public class QLXRVJPanel extends javax.swing.JPanel {
 //            JOptionPane.showMessageDialog(this, "Error" + e.getMessage());
 //            e.printStackTrace();
 //        }
-    }//GEN-LAST:event_btnLuuMouseClicked
+    }//GEN-LAST:event_btnXeVaoMouseClicked
 
-    private void btnCapNhatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCapNhatMouseClicked
+    private void btnXeRaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXeRaMouseClicked
         // TODO add your handling code here:
 //        StringBuilder sb = new StringBuilder();
 //        if (txtMaVe.getText().equals("")) {
@@ -289,7 +303,7 @@ public class QLXRVJPanel extends javax.swing.JPanel {
 //            JOptionPane.showMessageDialog(this, "Error" + e.getMessage());
 //            e.printStackTrace();
 //        }
-    }//GEN-LAST:event_btnCapNhatMouseClicked
+    }//GEN-LAST:event_btnXeRaMouseClicked
 
     private void btnXoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXoaMouseClicked
         // TODO add your handling code here:
@@ -330,7 +344,7 @@ public class QLXRVJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnTimKiemMouseClicked
 
-    private void tblVeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblVeMousePressed
+    private void tblChiTietRaVaoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblChiTietRaVaoMousePressed
         // TODO add your handling code here:
 //        resetRender();
 //        int selectedRow = tblVe.getSelectedRow();
@@ -352,16 +366,19 @@ public class QLXRVJPanel extends javax.swing.JPanel {
 //                jdcNgayHetHan.setDate(ve.getDateNgayHetHan());
 //            }
 //        }
-    }//GEN-LAST:event_tblVeMousePressed
+    }//GEN-LAST:event_tblChiTietRaVaoMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCapNhat;
-    private javax.swing.JButton btnLuu;
     private javax.swing.JButton btnNhapMoi;
     private javax.swing.JButton btnTimKiem;
+    private javax.swing.JButton btnXeRa;
+    private javax.swing.JButton btnXeVao;
     private javax.swing.JButton btnXoa;
+    private javax.swing.JComboBox<String> cbbLoaiXe;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -370,14 +387,15 @@ public class QLXRVJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private com.toedter.calendar.JDateChooser jdcNgayHetHan;
-    private com.toedter.calendar.JDateChooser jdcNgayKichHoat;
-    private javax.swing.JTable tblVe;
-    private javax.swing.JTextField txtMaKH;
-    private javax.swing.JTextField txtMaLoaiVe;
-    private javax.swing.JTextField txtMaLoaiVe1;
-    private javax.swing.JTextField txtMaVe;
+    private com.toedter.calendar.JDateChooser jdcThoiGianRa;
+    private com.toedter.calendar.JDateChooser jdcThoiGianVao;
+    private javax.swing.JTable tblChiTietRaVao;
+    private javax.swing.JTextField txtBienSoXe;
+    private javax.swing.JTextField txtMaCTRaVao;
+    private javax.swing.JTextField txtMaKhachHang;
+    private javax.swing.JTextField txtMaNhanVien;
+    private javax.swing.JTextField txtMaTheKVL;
+    private javax.swing.JTextField txtMaXe;
     private javax.swing.JTextField txtTimKiem;
-    private javax.swing.JTextField txtTrangThai;
     // End of variables declaration//GEN-END:variables
 }
