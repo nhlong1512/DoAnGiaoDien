@@ -415,53 +415,25 @@ public class QLXRVJPanel extends javax.swing.JPanel {
         //        }
     }//GEN-LAST:event_btnXeTVRaMouseClicked
 
+    /**
+     * 
+     * @param evt 
+     * Event xử lý khi xe thành viên vào bãi
+     * Xe thành viên vào bãi thì ở đây ta mô phỏng
+     * bằng cách nhập mã Khách hàng vào
+     * Ở đây khi kiểm tra mã khách hàng tồn tại,
+     * Ta cần xử lý kiểm tra xem khách hàng có vé chưa
+     * Với khách hàng có vé tuần, tháng đang sử dụng thì ưu tiên
+     * sử dụng nó. Nếu chưa có thì ưu tiên sử dụng vé lượt
+     * Hệ thống sẽ tự kích hoạt vé lượt, chuyển trạng thái sang 
+     * đang sử dụng. Đối với vé lượt thì trường thời gian kích hoạt
+     * và thời gian hết hạn không cần care.
+     * Trong trường hợp khách hàng thành viên không còn loại vé nào
+     * thì sẽ hiển thị thông báo và khách hàng thành viên phải trả 
+     * tiền như khách hàng vãng lai
+     */
     private void btnXeTVVaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXeTVVaoMouseClicked
-        //        StringBuilder sb = new StringBuilder();
-        //        if (txtMaVe.getText().equals("")) {
-        //            sb.append("Mã vé không được để trống.");
-        //            txtMaVe.setBackground(Color.red);
-        //        } else {
-        //            txtMaVe.setBackground(Color.white);
-        //        }
-        //        if (vetbl.getInfor(txtMaVe.getText()) != null) {
-        //            sb.append("Mã vé đã tồn tại.");
-        //        }
-        //
-        //        if (sb.length() > 0) {
-        //            JOptionPane.showMessageDialog(this, sb);
-        //            return;
-        //        }
-        //        try {
-        //            VeDTO ve = new VeDTO();
-        //            LoaiVeDTO lv = new LoaiVeDTO();
-        //            ve.setStrMaVe(txtMaVe.getText());
-        //            ve.setStrMaKH(txtMaKH.getText());
-        //            updateRender();
-        //            ve.setStrMaLoaiVe(txtMaLoaiVe.getText());
-        //            ve.setStrTrangThai(txtTrangThai.getText());
-        //
-        //            if (jdcNgayKichHoat.getDate() != null) {
-        //                ve.setDateNgayKichHoat(new java.sql.Date(jdcNgayKichHoat.getDate().getTime()));
-        //            } else {
-        //                ve.setDateNgayKichHoat(null);
-        //            }
-        //
-        //            if (jdcNgayHetHan.getDate() != null) {
-        //                ve.setDateNgayHetHan(new java.sql.Date(jdcNgayHetHan.getDate().getTime()));
-        //            } else {
-        //                ve.setDateNgayHetHan(null);
-        //            }
-        //
-        //            vetbl.them(ve);
-        //
-        //            //Cập nhật lại Table
-        //            capNhatLaiTable();
-        //            JOptionPane.showMessageDialog(this, "Khách hàng mới đã được thêm vào CSDL");
-        //
-        //        } catch (Exception e) {
-        //            JOptionPane.showMessageDialog(this, "Error" + e.getMessage());
-        //            e.printStackTrace();
-        //        }
+        
     }//GEN-LAST:event_btnXeTVVaoMouseClicked
 
     private void btnNhapMoiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNhapMoiMouseClicked

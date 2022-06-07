@@ -471,10 +471,11 @@ public class AccountCustomer extends javax.swing.JFrame {
         if (cbbGioiTinh.getSelectedItem().toString().equals("Nam")) {
             nd.setStrGioiTinh("Nam");
         }
+        txtHoTenAccount.setText(tfdHoTenAccount.getText());
 
         //Nếu là xe đạp hoặc xe máy có biển số thì thêm trường xe vào bảng XE
         if ((cbbLoaiXe.getSelectedItem().toString().equals("Xe đạp")
-            || !tfdBienSoXe.getText().equals("")) && kh.getStrMaXe().equals("")) {
+            || !tfdBienSoXe.getText().equals("")) && kh.getStrMaXe() == null) {
             XeDTO xe = new XeDTO();
             if (cbbLoaiXe.getSelectedItem().toString().equals("Xe đạp")) {
                 xe.setStrTenLoaiXe("Xe dap");
@@ -489,6 +490,7 @@ public class AccountCustomer extends javax.swing.JFrame {
             } catch (Exception ex) {
                 Logger.getLogger(AccountCustomer.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
             xe.setStrMaXe(maxMaXe);
             try {
                 xetbl.them(xe);
