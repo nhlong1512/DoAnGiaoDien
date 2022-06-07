@@ -544,6 +544,7 @@ public class QLXRVJPanel extends javax.swing.JPanel {
         CTRaVaoDTO ctrv = new CTRaVaoDTO();
         try {
             String maCTRaVaoTemp = ctrvtbl.getMaxMaCTRaVao();
+            System.out.println(maCTRaVaoTemp);
             ctrv.setStrMaCTRaVao(maCTRaVaoTemp);
             ctrv.setDateThoiGianVao(getDateThoiGianThuc());
             ctrv.setDateThoiGianRa(null);
@@ -559,6 +560,7 @@ public class QLXRVJPanel extends javax.swing.JPanel {
         } catch (Exception ex) {
             Logger.getLogger(QLXRVJPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
+        JOptionPane.showMessageDialog(this, "Xe vào bãi thành công");
         
         
     }//GEN-LAST:event_btnXeVLVaoMouseClicked
