@@ -318,15 +318,26 @@ public class QLXRVJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnTimKiemMouseClicked
 
     /**
-     * 
-     * @param evt 
-     * Khi khách thành viên ra khỏi bãi, điều duy nhất cần làm là
-     * Cập nhật giờ ra cho bảng chi tiết ra vào.
+     *
+     * @param evt Khi khách thành viên ra khỏi bãi, điều duy nhất cần làm là Cập
+     * nhật giờ ra cho bảng chi tiết ra vào.
      */
     private void btnXeTVRaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXeTVRaMouseClicked
+        ArrayList<VeDTO> list_VeTV = vetbl.getList_VeTV(txtMaKhachHang.getText());
+        for (VeDTO ve : list_VeTV) {
+            if ((ve.getStrMaLoaiVe().equals("LVE01") || ve.getStrMaLoaiVe().equals("LVE02"))
+                    && ve.getStrTrangThai().equals("Đang sử dụng")) {
+                ve.setStrTrangThai("Đã hết hạn");
+                try {
+                    vetbl.sua(ve);
+                } catch (Exception ex) {
+                    Logger.getLogger(QLXRVJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
         for (CTRaVaoDTO ctrv : list_CTRV) {
             //Nếu mã thẻ KVL trùng với barrier và thời gian ra đang là null thì cập nhật
-            if (ctrv.getStrMaKH()!= null) {
+            if (ctrv.getStrMaKH() != null) {
                 if (ctrv.getStrMaKH().equals(txtMaKhachHang.getText())
                         && ctrv.getDateThoiGianRa() == null) {
                     try {
@@ -339,11 +350,14 @@ public class QLXRVJPanel extends javax.swing.JPanel {
                     } catch (ParseException ex) {
                         Logger.getLogger(QLXRVJPanel.class.getName()).log(Level.SEVERE, null, ex);
                     }
+                    capNhatLaiTable();
                     JOptionPane.showMessageDialog(this, "Xe ra bãi thành công");
+                    return;
                 }
             }
 
         }
+        JOptionPane.showMessageDialog(this, "Xe ra bãi thất bại");
         capNhatLaiTable();
     }//GEN-LAST:event_btnXeTVRaMouseClicked
 

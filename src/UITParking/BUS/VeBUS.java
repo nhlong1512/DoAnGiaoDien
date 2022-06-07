@@ -131,4 +131,44 @@ public class VeBUS {
         
         return false;
     }
+    
+    public Boolean suaNgayKichHoatSysdate(VeDTO ve) throws Exception {
+        veDAO.suaNgayKichHoatSysdate(ve);
+
+        // duyệt từng phẩn tử
+        for (VeDTO taikhoan : list_Ve) {
+            if (taikhoan.getStrMaVe().equals(ve.getStrMaVe())) {
+                if (ve.getDateNgayKichHoat() != null) {
+                    taikhoan.setDateNgayKichHoat(new java.sql.Date(ve.getDateNgayKichHoat().getTime()));
+                    
+                } else {
+                    taikhoan.setDateNgayKichHoat(null);
+                }
+                return true;
+            }
+            
+        }
+        
+        return false;
+    }
+    
+    public Boolean suaNgayHetHanSysdate(VeDTO ve) throws Exception {
+        veDAO.suaNgayHetHanSysdate(ve);
+
+        // duyệt từng phẩn tử
+        for (VeDTO taikhoan : list_Ve) {
+            if (taikhoan.getStrMaVe().equals(ve.getStrMaVe())) {
+                if (ve.getDateNgayHetHan() != null) {
+                    taikhoan.setDateNgayHetHan(new java.sql.Date(ve.getDateNgayHetHan().getTime()));
+                    
+                } else {
+                    taikhoan.setDateNgayKichHoat(null);
+                }
+                return true;
+            }
+            
+        }
+        
+        return false;
+    }
 }

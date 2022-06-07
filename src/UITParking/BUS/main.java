@@ -23,6 +23,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  *
@@ -104,96 +105,106 @@ public class main {
 //            System.out.println("New----" + ve);
 //        }
 //        
-        KhachVangLaiBUS khachvanglaitbl = new KhachVangLaiBUS();
-        System.out.println(khachvanglaitbl.getNumbKVL());
-        ArrayList<KhachVangLaiDTO> list_KVL = khachvanglaitbl.getlist_KVL();
-        for (KhachVangLaiDTO ve : list_KVL) {
-            System.out.println("New----" + ve);
-        }
-//
-        XeBUS xetbl = new XeBUS();
-//        System.out.println(xetbl.getNumbXE());
-        ArrayList<XeDTO> list_XE = xetbl.getlist_XE();
-//        for (XeDTO ve : list_XE) {
+//        KhachVangLaiBUS khachvanglaitbl = new KhachVangLaiBUS();
+//        System.out.println(khachvanglaitbl.getNumbKVL());
+//        ArrayList<KhachVangLaiDTO> list_KVL = khachvanglaitbl.getlist_KVL();
+//        for (KhachVangLaiDTO ve : list_KVL) {
 //            System.out.println("New----" + ve);
 //        }
-//        
-//        
-//        System.out.println("Mã hóa đơn tiếp theo là " + hdmuavetbl.getMaxMaHD());
-//        
-//        
-////        HDMuaVeDTO hd = new HDMuaVeDTO(hdmuavetbl.getMaxMaHD(), "ND014", getDateThoiGianThuc(), 50000);
-////        hdmuavetbl.them(hd);
-//        System.out.println("Thoi gian thuc la: " + getThoiGianThuc());
-//        for (HDMuaVeDTO ve : list_HD) {
-//            System.out.println("Sau khi them----" + ve);
-//        }
-//        
-//        CTHDMuaVeDTO cthd = new CTHDMuaVeDTO("HD015", "LVE02", 5);
-//        cthdmuavetbl.them(cthd);
-//        for (CTHDMuaVeDTO ve : list_CTHD) {
-//            System.out.println("Sau khi them----" + ve);
-//        }
-//        
-//        System.out.println("Mã vé tiếp theo là " + vetbl.getMaxMaVe());
-//        KhachHangBUS list_KH = new KhachHangBUS();
-//        ArrayList<KhachHangDTO> listItem = list_KH.getList_KH();
-//        for(KhachHangDTO t : listItem){
-//            System.out.println(t);
-//        }
-//        System.out.println(list_KH.getNumbKH());
+////
+//        XeBUS xetbl = new XeBUS();
+////        System.out.println(xetbl.getNumbXE());
+//        ArrayList<XeDTO> list_XE = xetbl.getlist_XE();
+////        for (XeDTO ve : list_XE) {
+////            System.out.println("New----" + ve);
+////        }
+////        
+////        
+////        System.out.println("Mã hóa đơn tiếp theo là " + hdmuavetbl.getMaxMaHD());
+////        
+////        
+//////        HDMuaVeDTO hd = new HDMuaVeDTO(hdmuavetbl.getMaxMaHD(), "ND014", getDateThoiGianThuc(), 50000);
+//////        hdmuavetbl.them(hd);
+////        System.out.println("Thoi gian thuc la: " + getThoiGianThuc());
+////        for (HDMuaVeDTO ve : list_HD) {
+////            System.out.println("Sau khi them----" + ve);
+////        }
+////        
+////        CTHDMuaVeDTO cthd = new CTHDMuaVeDTO("HD015", "LVE02", 5);
+////        cthdmuavetbl.them(cthd);
+////        for (CTHDMuaVeDTO ve : list_CTHD) {
+////            System.out.println("Sau khi them----" + ve);
+////        }
+////        
+////        System.out.println("Mã vé tiếp theo là " + vetbl.getMaxMaVe());
+////        KhachHangBUS list_KH = new KhachHangBUS();
+////        ArrayList<KhachHangDTO> listItem = list_KH.getList_KH();
+////        for(KhachHangDTO t : listItem){
+////            System.out.println(t);
+////        }
+////        System.out.println(list_KH.getNumbKH());
+////        NguoiDungBUS nguoidungtbl = new NguoiDungBUS();
+////        NguoiDungDTO nd = nguoidungtbl.getInfor("ND003");
+//////        System.out.println(nd != null);
+////System.out.println(nd);
+//        KhachHangBUS khachhangtbl = new KhachHangBUS();
+////        KhachHangDTO kh = khachhangtbl.getInfor("KH003");
+////        System.out.println(kh);
+////        
+////        System.out.println(nguoidungtbl.findById("ND003"));
+////        ArrayList<NguoiDungDTO> list_ND = nguoidungtbl.getList_ND();
+////        for (NguoiDungDTO nd : list_ND) {
+////            System.out.println("New----" + nd);
+////        }
 //        NguoiDungBUS nguoidungtbl = new NguoiDungBUS();
-//        NguoiDungDTO nd = nguoidungtbl.getInfor("ND003");
-////        System.out.println(nd != null);
-//System.out.println(nd);
-        KhachHangBUS khachhangtbl = new KhachHangBUS();
-//        KhachHangDTO kh = khachhangtbl.getInfor("KH003");
-//        System.out.println(kh);
-//        
-//        System.out.println(nguoidungtbl.findById("ND003"));
+//        System.out.println(nguoidungtbl.getNumbND());
 //        ArrayList<NguoiDungDTO> list_ND = nguoidungtbl.getList_ND();
-//        for (NguoiDungDTO nd : list_ND) {
-//            System.out.println("New----" + nd);
+//        for (NguoiDungDTO ve : list_ND) {
+//            System.out.println("New----" + ve);
 //        }
-        NguoiDungBUS nguoidungtbl = new NguoiDungBUS();
-        System.out.println(nguoidungtbl.getNumbND());
-        ArrayList<NguoiDungDTO> list_ND = nguoidungtbl.getList_ND();
-        for (NguoiDungDTO ve : list_ND) {
-            System.out.println("New----" + ve);
-        }
-
-//        System.out.println(nguoidungtbl.getInfor("ND009").getStrMatKhau());
-//        KhachHangDTO kh = khachhangtbl.getInfor("ND003");
-//        System.out.println(kh);
-//        XeDTO xe = xetbl.getInfor(kh.getStrMaXe());
-//        System.out.println(xe);
-//        System.out.println(xe.getStrTenLoaiXe());
-//        System.out.println(xe.getStrBienSoXe());
-        System.out.println(nguoidungtbl.getInforEmail("20521569@gm.uit.edu.vn").getStrEmail());
-//        System.out.println(xetbl.getInfor("XE010").getStrBienSoXe());
-//        System.out.println(xetbl.getInforBienSoXe("49A-865.47"));
-        System.out.println(xetbl.getInfor(""));
-        
+//
+////        System.out.println(nguoidungtbl.getInfor("ND009").getStrMatKhau());
+////        KhachHangDTO kh = khachhangtbl.getInfor("ND003");
+////        System.out.println(kh);
+////        XeDTO xe = xetbl.getInfor(kh.getStrMaXe());
+////        System.out.println(xe);
+////        System.out.println(xe.getStrTenLoaiXe());
+////        System.out.println(xe.getStrBienSoXe());
+//        System.out.println(nguoidungtbl.getInforEmail("20521569@gm.uit.edu.vn").getStrEmail());
+////        System.out.println(xetbl.getInfor("XE010").getStrBienSoXe());
+////        System.out.println(xetbl.getInforBienSoXe("49A-865.47"));
+//        System.out.println(xetbl.getInfor(""));
+//
         VeBUS vetbl = new VeBUS();
-        ArrayList<VeDTO> list_VE = vetbl.getList_Ve();
-        for(VeDTO ve : list_VE){
-            System.out.println("New----" + ve);
-        }
-        System.out.println(xetbl.getMaxMaXe()); 
-        
-        
-        CTRaVaoBUS ctrvtbl = new CTRaVaoBUS();
-        ArrayList<CTRaVaoDTO> list_CTRV = ctrvtbl.getList_CTRV();
-        for(CTRaVaoDTO ctrv : list_CTRV){
-            System.out.println("New----" + ctrv);
-        }
-        System.out.println(ctrvtbl.getInfor("DT020"));
-        
-        System.out.println(getDateThoiGianThuc());
-        
-        ArrayList<VeDTO> list_VeTV = vetbl.getList_VeTV("ND016");
-        for(VeDTO ve : list_VeTV){
-            System.out.println(ve);
-        }
+//        ArrayList<VeDTO> list_VE = vetbl.getList_Ve();
+//        for (VeDTO ve : list_VE) {
+//            System.out.println("New----" + ve);
+//        }
+//        System.out.println(xetbl.getMaxMaXe());
+//
+//        CTRaVaoBUS ctrvtbl = new CTRaVaoBUS();
+//        ArrayList<CTRaVaoDTO> list_CTRV = ctrvtbl.getList_CTRV();
+//        for (CTRaVaoDTO ctrv : list_CTRV) {
+//            System.out.println("New----" + ctrv);
+//        }
+//        System.out.println(ctrvtbl.getInfor("DT020"));
+//
+//        System.out.println(getDateThoiGianThuc());
+//
+//        ArrayList<VeDTO> list_VeTV = vetbl.getList_VeTV("ND016");
+//        for (VeDTO ve : list_VeTV) {
+//            System.out.println(ve);
+//        }
+        System.out.println(vetbl.getInfor("VE015"));
+        java.util.Date date = new java.util.Date();
+        VeDTO ve = vetbl.getInfor("VE022");
+
+        System.out.println(ve.getDateNgayKichHoat());
+//        ve.setDateNgayKichHoat(date);
+//        vetbl.suaNgayKichHoatSysdate(ve);
+
+        ve.setDateNgayHetHan(date);
+        vetbl.suaNgayHetHanSysdate(ve);
+
     }
 }
