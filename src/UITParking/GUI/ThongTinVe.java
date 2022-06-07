@@ -14,6 +14,7 @@ import UITParking.DTO.LoaiVeDTO;
 import UITParking.DTO.NguoiDungDTO;
 import UITParking.DTO.VeDTO;
 import UITParking.DTO.XeDTO;
+import static UITParking.GUI.InitPublic.formatDate;
 import static UITParking.GUI.InitPublic.getConvertStringToLocalDate;
 import static UITParking.GUI.InitPublic.getDateThoiGianThuc;
 import static UITParking.GUI.InitPublic.getDateThoiGianVeThang;
@@ -140,8 +141,9 @@ public class ThongTinVe extends javax.swing.JFrame {
             //Lấy ra xe và biển số xe của khách hàng
             if (ve.getStrMaKH().equals(pMaND)) {
                 LoaiVeDTO lv = loaivetbl.getInfor(ve.getStrMaLoaiVe());
-                model.addRow(new Object[]{index, ve.getStrMaVe(), lv.getStrTenLoaiVe(), ve.getDateNgayKichHoat(),
-                    ve.getDateNgayHetHan(), ve.getStrTrangThai()});
+                model.addRow(new Object[]{index, ve.getStrMaVe(), lv.getStrTenLoaiVe(), 
+                    (ve.getDateNgayKichHoat() != null ? formatDate(ve.getDateNgayKichHoat()) : ve.getDateNgayKichHoat()),
+                (ve.getDateNgayHetHan() != null ? formatDate(ve.getDateNgayHetHan()) : ve.getDateNgayHetHan()), ve.getStrTrangThai()});
                 index++;
             }
 
@@ -192,8 +194,9 @@ public class ThongTinVe extends javax.swing.JFrame {
             //Lấy ra xe và biển số xe của khách hàng
             if (ve.getStrMaKH().equals(pMaND)) {
                 LoaiVeDTO lv = loaivetbl.getInfor(ve.getStrMaLoaiVe());
-                model.addRow(new Object[]{index, ve.getStrMaVe(), lv.getStrTenLoaiVe(), ve.getDateNgayKichHoat(),
-                    ve.getDateNgayHetHan(), ve.getStrTrangThai()});
+                model.addRow(new Object[]{index, ve.getStrMaVe(), lv.getStrTenLoaiVe(), 
+                    (ve.getDateNgayKichHoat() != null ? formatDate(ve.getDateNgayKichHoat()) : ve.getDateNgayKichHoat()),
+                (ve.getDateNgayHetHan() != null ? formatDate(ve.getDateNgayHetHan()) : ve.getDateNgayHetHan()), ve.getStrTrangThai()});
                 index++;
             }
 
