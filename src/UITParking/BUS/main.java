@@ -189,6 +189,6 @@ public class main {
         }
         System.out.println(ctrvtbl.getInfor("DT020"));
         
-        
+        System.out.println(getDateThoiGianThuc());
     }
 }

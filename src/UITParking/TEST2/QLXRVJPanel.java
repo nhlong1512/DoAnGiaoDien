@@ -17,6 +17,7 @@ import UITParking.DTO.LoaiVeDTO;
 import UITParking.DTO.NguoiDungDTO;
 import UITParking.DTO.VeDTO;
 import UITParking.DTO.XeDTO;
+import static UITParking.GUI.InitPublic.getDateThoiGianThuc;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -540,6 +541,24 @@ public class QLXRVJPanel extends javax.swing.JPanel {
         
         //Thêm chi tiết ra vào mới vào database
         
+        CTRaVaoDTO ctrv = new CTRaVaoDTO();
+        try {
+            String maCTRaVaoTemp = ctrvtbl.getMaxMaCTRaVao();
+            ctrv.setStrMaCTRaVao(maCTRaVaoTemp);
+            ctrv.setDateThoiGianVao(getDateThoiGianThuc());
+            ctrv.setDateThoiGianRa(null);
+            ctrv.setStrMaNV("ND011");
+            ctrv.setStrMaKH(null);
+            ctrv.setStrMaXe(xe.getStrMaXe());
+            ctrv.setStrMaTheKVL(kvl.getStrMaTheKVL());
+        } catch (Exception ex) {
+            Logger.getLogger(QLXRVJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            ctrvtbl.them(ctrv);
+        } catch (Exception ex) {
+            Logger.getLogger(QLXRVJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         
     }//GEN-LAST:event_btnXeVLVaoMouseClicked
