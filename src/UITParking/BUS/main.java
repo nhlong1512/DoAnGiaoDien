@@ -15,6 +15,8 @@ import UITParking.DTO.LoaiVeDTO;
 import UITParking.DTO.NhanVienDTO;
 import UITParking.DTO.VeDTO;
 import UITParking.DTO.XeDTO;
+import static UITParking.GUI.InitPublic.formatDate;
+import static UITParking.GUI.InitPublic.getConvertYYYYMMDD;
 import static UITParking.GUI.InitPublic.getDateThoiGianThuc;
 import static UITParking.GUI.InitPublic.getDateThoiGianVeTuan;
 import static UITParking.GUI.InitPublic.getThoiGianThuc;
@@ -23,8 +25,11 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  *
@@ -185,9 +190,12 @@ public class main {
 //
         CTRaVaoBUS ctrvtbl = new CTRaVaoBUS();
         ArrayList<CTRaVaoDTO> list_CTRV = ctrvtbl.getList_CTRV();
-//        for (CTRaVaoDTO ctrv : list_CTRV) {
-//            System.out.println("New----" + ctrv);
-//        }
+        for (CTRaVaoDTO ctrv : list_CTRV) {
+            System.out.println("New----" + ctrv);
+//            System.out.println(getConvertYYYYMMDD(ctrv.getDateThoiGianVao().toString()));
+            System.out.println(formatDate(ctrv.getDateThoiGianVao()));
+
+        }
 //        System.out.println(ctrvtbl.getInfor("DT020"));
 //
 //        System.out.println(getDateThoiGianThuc());
@@ -196,25 +204,26 @@ public class main {
 //        for (VeDTO ve : list_VeTV) {
 //            System.out.println(ve);
 //        }
-        System.out.println(vetbl.getInfor("VE015"));
         java.util.Date date = new java.util.Date();
-        VeDTO ve = vetbl.getInfor("VE022");
-
-        System.out.println(ve.getDateNgayKichHoat());
 //        ve.setDateNgayKichHoat(date);
 //        vetbl.suaNgayKichHoatSysdate(ve);
 
 //        ve.setDateNgayHetHan(date);
 //        vetbl.suaNgayHetHanSysdate(ve);
-        
-        System.out.println(ve);
-        
-        CTRaVaoDTO ctrv = ctrvtbl.getInfor("DT020");
-        ctrv.setDateThoiGianVao(date);
+//        System.out.println(ve);
+//
+//        CTRaVaoDTO ctrv = ctrvtbl.getInfor("DT021");
+//        System.out.println(ctrv);
+//        ctrv.setDateThoiGianVao(date);
 //        ctrvtbl.suaThoiGianVaoSysdate(ctrv);
+
+//        ctrv.setDateThoiGianRa(date);
+//        ctrvtbl.sua(ctrv);
+//        System.out.println(getDateThoiGianVeTuan());
+
+//        DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+//        String in = r.getTimestamp(ctrv.getDateThoiGianRa());
+//        Date d = sdf.parse(in);
         
-        ctrv.setDateThoiGianRa(date);
-        ctrvtbl.sua(ctrv);
-        System.out.println(getDateThoiGianVeTuan());
     }
 }

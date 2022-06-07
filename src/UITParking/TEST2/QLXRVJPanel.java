@@ -18,6 +18,7 @@ import UITParking.DTO.LoaiVeDTO;
 import UITParking.DTO.NguoiDungDTO;
 import UITParking.DTO.VeDTO;
 import UITParking.DTO.XeDTO;
+import static UITParking.GUI.InitPublic.formatDate;
 import static UITParking.GUI.InitPublic.getDateThoiGianThuc;
 import static UITParking.GUI.InitPublic.sysdate;
 import java.awt.Color;
@@ -91,8 +92,9 @@ public class QLXRVJPanel extends javax.swing.JPanel {
 
 //            LoaiVeDTO lv = loaivetbl.getInfor(ve.getStrMaLoaiVe());
             //Cập nhật bảng
-            model.addRow(new Object[]{index, ctrv.getStrMaCTRaVao(), ctrv.getDateThoiGianVao(),
-                ctrv.getDateThoiGianRa(), ctrv.getStrMaKH() == null ? "null" : ctrv.getStrMaKH(), ctrv.getStrMaXe(),
+            model.addRow(new Object[]{index, ctrv.getStrMaCTRaVao(), 
+                (ctrv.getDateThoiGianVao() != null ? formatDate(ctrv.getDateThoiGianVao()) : ctrv.getDateThoiGianVao()),
+                (ctrv.getDateThoiGianRa() != null ? formatDate(ctrv.getDateThoiGianRa()) : ctrv.getDateThoiGianRa()), ctrv.getStrMaKH() == null ? "null" : ctrv.getStrMaKH(), ctrv.getStrMaXe(),
                 ctrv.getStrMaTheKVL() == null ? "null" : ctrv.getStrMaTheKVL()});
             index++;
         }
@@ -141,8 +143,9 @@ public class QLXRVJPanel extends javax.swing.JPanel {
 
 //            LoaiVeDTO lv = loaivetbl.getInfor(ve.getStrMaLoaiVe());
             //Cập nhật bảng
-            model.addRow(new Object[]{index, ctrv.getStrMaCTRaVao(), ctrv.getDateThoiGianVao(),
-                ctrv.getDateThoiGianRa(), ctrv.getStrMaKH() == null ? "null" : ctrv.getStrMaKH(), ctrv.getStrMaXe(),
+            model.addRow(new Object[]{index, ctrv.getStrMaCTRaVao(), 
+                (ctrv.getDateThoiGianVao() != null ? formatDate(ctrv.getDateThoiGianVao()) : ctrv.getDateThoiGianVao()),
+                (ctrv.getDateThoiGianRa() != null ? formatDate(ctrv.getDateThoiGianRa()) : ctrv.getDateThoiGianRa()), ctrv.getStrMaKH() == null ? "null" : ctrv.getStrMaKH(), ctrv.getStrMaXe(),
                 ctrv.getStrMaTheKVL() == null ? "null" : ctrv.getStrMaTheKVL()});
             index++;
         }

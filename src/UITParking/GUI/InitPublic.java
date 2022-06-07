@@ -48,10 +48,6 @@ public class InitPublic {
     }
 
     public static Date getDateThoiGianVeTuan() throws ParseException {
-//        Date dt = new Date();
-//        System.out.println("Today:    " + dt);
-//        Date rs = new Date(dt.getTime() + 7 * (1000 * 60 * 60 * 24));
-//        return rs;
         Date dt = new Date();
         System.out.println("Today:    " + dt);
         Calendar c = Calendar.getInstance();
@@ -62,12 +58,7 @@ public class InitPublic {
     }
 
     public static Date getDateThoiGianVeThang() throws ParseException {
-//        Date dt = new Date();
-//        System.out.println("Today:    " + dt);
-//        Date rs = new Date(dt.getTime() + 30 * (1000 * 60 * 60 * 24));
-//        return rs;
         Date dt = new Date();
-        System.out.println("Today:    " + dt);
         Calendar c = Calendar.getInstance();
         c.setTime(dt);
         c.add(Calendar.DATE, 30);
@@ -85,6 +76,14 @@ public class InitPublic {
         SimpleDateFormat DateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date rs = DateFormat.parse(data);
         return rs.toString();
+
+    }
+
+    public static String formatDate(Date date) {
+        SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//dd/MM/yyyy
+
+        String strDate = sdfDate.format(date);
+        return strDate;
     }
 
 //    public static Date getDateTimeThoiGianThuc() {
