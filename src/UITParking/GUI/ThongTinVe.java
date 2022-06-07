@@ -18,6 +18,7 @@ import static UITParking.GUI.InitPublic.getConvertStringToLocalDate;
 import static UITParking.GUI.InitPublic.getDateThoiGianThuc;
 import static UITParking.GUI.InitPublic.getDateThoiGianVeThang;
 import static UITParking.GUI.InitPublic.getDateThoiGianVeTuan;
+import static UITParking.GUI.InitPublic.sysdate;
 import static UITParking.GUI.login.pMaND;
 import java.awt.Color;
 import java.awt.Toolkit;
@@ -361,7 +362,7 @@ public class ThongTinVe extends javax.swing.JFrame {
             && trangThaiVeHienTai.equals("Chưa kích hoạt")) {
             System.out.println("Long dep trai");
             try {
-                System.out.println(getDateThoiGianThuc());
+                System.out.println(sysdate());
                 System.out.println(getDateThoiGianVeTuan());
                 System.out.println(getDateThoiGianVeThang());
 
@@ -378,7 +379,7 @@ public class ThongTinVe extends javax.swing.JFrame {
             ve = vetbl.getInfor(maVeHienTai);
             System.out.println(ve);
             try {
-                ve.setDateNgayKichHoat(getDateThoiGianThuc());
+                ve.setDateNgayKichHoat(sysdate());
                 ve.setStrTrangThai("Đang sử dụng");
                 if (ve.getStrMaLoaiVe().equals("LVE03")) {
                     ve.setDateNgayHetHan(getDateThoiGianVeTuan());

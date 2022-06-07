@@ -137,41 +137,6 @@ public class VeDAO {
         }
     }
     
-    public Boolean suaNgayKichHoatSysdate(VeDTO ve) throws Exception {
-        String sql = "UPDATE c_Ve SET NgayKichHoat = ? WHERE MaVe = ?";
-        try {
-            pst = this.connection.getConnect().prepareStatement(sql);
-
-            pst.setString(2, ve.getStrMaVe());
-            
-            if (ve.getDateNgayKichHoat() != null) {
-                pst.setTimestamp(1, new java.sql.Timestamp(System.currentTimeMillis()));
-            }else{
-                pst.setDate(1, null);
-            }
-            return pst.executeUpdate() > 0;
-        } catch (SQLException ex) {
-            throw new ArithmeticException(ex.getMessage());
-        }
-    }
-    
-    public Boolean suaNgayHetHanSysdate(VeDTO ve) throws Exception {
-        String sql = "UPDATE c_Ve SET NgayHetHan = ? WHERE MaVe = ?";
-        try {
-            pst = this.connection.getConnect().prepareStatement(sql);
-
-            pst.setString(2, ve.getStrMaVe());
-            
-            if (ve.getDateNgayHetHan() != null) {
-                pst.setTimestamp(1, new java.sql.Timestamp(System.currentTimeMillis()));
-            }else{
-                pst.setDate(1, null);
-            }
-            return pst.executeUpdate() > 0;
-        } catch (SQLException ex) {
-            throw new ArithmeticException(ex.getMessage());
-        }
-    }
 
     public String getMaxMaVe() throws Exception {
         String sql = "Select Max(MaVe) as MaxVe from C_VE";

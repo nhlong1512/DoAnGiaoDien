@@ -16,6 +16,7 @@ import UITParking.DTO.NhanVienDTO;
 import UITParking.DTO.VeDTO;
 import UITParking.DTO.XeDTO;
 import static UITParking.GUI.InitPublic.getDateThoiGianThuc;
+import static UITParking.GUI.InitPublic.getDateThoiGianVeTuan;
 import static UITParking.GUI.InitPublic.getThoiGianThuc;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -182,8 +183,8 @@ public class main {
 //        }
 //        System.out.println(xetbl.getMaxMaXe());
 //
-//        CTRaVaoBUS ctrvtbl = new CTRaVaoBUS();
-//        ArrayList<CTRaVaoDTO> list_CTRV = ctrvtbl.getList_CTRV();
+        CTRaVaoBUS ctrvtbl = new CTRaVaoBUS();
+        ArrayList<CTRaVaoDTO> list_CTRV = ctrvtbl.getList_CTRV();
 //        for (CTRaVaoDTO ctrv : list_CTRV) {
 //            System.out.println("New----" + ctrv);
 //        }
@@ -203,8 +204,17 @@ public class main {
 //        ve.setDateNgayKichHoat(date);
 //        vetbl.suaNgayKichHoatSysdate(ve);
 
-        ve.setDateNgayHetHan(date);
-        vetbl.suaNgayHetHanSysdate(ve);
-
+//        ve.setDateNgayHetHan(date);
+//        vetbl.suaNgayHetHanSysdate(ve);
+        
+        System.out.println(ve);
+        
+        CTRaVaoDTO ctrv = ctrvtbl.getInfor("DT020");
+        ctrv.setDateThoiGianVao(date);
+//        ctrvtbl.suaThoiGianVaoSysdate(ctrv);
+        
+        ctrv.setDateThoiGianRa(date);
+        ctrvtbl.sua(ctrv);
+        System.out.println(getDateThoiGianVeTuan());
     }
 }

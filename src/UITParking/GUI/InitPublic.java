@@ -20,6 +20,10 @@ import java.util.Date;
  */
 public class InitPublic {
 
+    public static java.util.Date sysdate() {
+        return new java.util.Date();
+    }
+
     public static String getID(String id) {
         id = id.replaceAll("\\D+", "");
         int id_num = Integer.parseInt(id);
@@ -44,21 +48,31 @@ public class InitPublic {
     }
 
     public static Date getDateThoiGianVeTuan() throws ParseException {
-        SimpleDateFormat DateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        //Cộng 7 ngày
-        LocalDate today = LocalDate.now().plusDays(7);
-        String strToday = today.toString();
-        Date dateToday = DateFormat.parse(strToday);
-        return dateToday;
+//        Date dt = new Date();
+//        System.out.println("Today:    " + dt);
+//        Date rs = new Date(dt.getTime() + 7 * (1000 * 60 * 60 * 24));
+//        return rs;
+        Date dt = new Date();
+        System.out.println("Today:    " + dt);
+        Calendar c = Calendar.getInstance();
+        c.setTime(dt);
+        c.add(Calendar.DATE, 7);
+        dt = c.getTime();
+        return dt;
     }
 
     public static Date getDateThoiGianVeThang() throws ParseException {
-        SimpleDateFormat DateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        //Cộng 7 ngày
-        LocalDate today = LocalDate.now().plusMonths(1);
-        String strToday = today.toString();
-        Date dateToday = DateFormat.parse(strToday);
-        return dateToday;
+//        Date dt = new Date();
+//        System.out.println("Today:    " + dt);
+//        Date rs = new Date(dt.getTime() + 30 * (1000 * 60 * 60 * 24));
+//        return rs;
+        Date dt = new Date();
+        System.out.println("Today:    " + dt);
+        Calendar c = Calendar.getInstance();
+        c.setTime(dt);
+        c.add(Calendar.DATE, 30);
+        dt = c.getTime();
+        return dt;
     }
 
     public static Date getConvertYYYYMMDD(String data) throws ParseException {
@@ -86,7 +100,6 @@ public class InitPublic {
 //        }
 //        java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
 //    }
-
     public static LocalDate getConvertStringToLocalDate(String data) {
         LocalDate localDate = LocalDate.parse(data, DateTimeFormatter.ISO_LOCAL_DATE);
         return localDate;
