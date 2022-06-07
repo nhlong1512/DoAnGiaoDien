@@ -45,6 +45,7 @@ public class AccountCustomer extends javax.swing.JFrame {
         setAccount();
         //Không cho sửa Số dư
         tfdSoDu.setEnabled(false);
+        tfdEmailAccount.setEnabled(false);
     }
 
     public void setAccount() {
@@ -555,7 +556,7 @@ public class AccountCustomer extends javax.swing.JFrame {
          * dtb tức là, nó sẽ render ra giao diện ban đầu Và setAccount() sẽ là
          * hàm đóng vai trò chức năng đó.
          */
-//        setAccount();
+        setAccount();
     }//GEN-LAST:event_btnHuyAccountMouseClicked
 
     private void tfdSDTAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfdSDTAccountActionPerformed
