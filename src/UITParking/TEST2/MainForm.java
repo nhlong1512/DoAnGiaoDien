@@ -26,63 +26,64 @@ public class MainForm extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setIconimage();
-        controllerFirst();
         jpnMenuSau.setVisible(false);
-
+        jpnMenu.setVisible(false);
+        controllerFirst();
     }
 
     public void controllerFirst() throws Exception {
         ChuyenManHinhController controller = new ChuyenManHinhController(jpnView);
         switch (kindSelectedPublic) {
             case "QLNV": {
-                controller.setView(jpnQLNV, jlbQLNV);
                 menuTruocRender();
+                controller.setView(jpnQLNV, jlbQLNV);
             }
             break;
             case "QLV": {
-                controller.setView(jpnQLV, jlbQLV);
                 menuTruocRender();
+                controller.setView(jpnQLV, jlbQLV);
             }
             break;
             case "QLKH": {
-                controller.setView(jpnQLKH, jlbQLKH);
                 menuTruocRender();
-
+                controller.setView(jpnQLKH, jlbQLKH);
             }
             break;
 
             case "QLX": {
-                controller.setView(jpnQLX, jlbQLX);
                 menuTruocRender();
+                controller.setView(jpnQLX, jlbQLX);
             }
             break;
 
             case "QLKVL": {
-                controller.setView(jpnQLKVL, jlbQLKVL);
                 menuTruocRender();
+                controller.setView(jpnQLKVL, jlbQLKVL);
             }
             break;
 
             case "QLHD": {
-                controller.setView(jpnQLHD, jlbQLHD);
                 menuTruocRender();
+                controller.setView(jpnQLHD, jlbQLHD);
             }
             break;
 
             case "BCTK": {
-                controller.setView(jpnBCTK, jlbBCTK);
                 menuSauRender();
+                controller.setView(jpnBCTK, jlbBCTK);
             }
             break;
             case "QLXRV": {
-                controller.setView(jpnQLXRV, jlbQLXRV);
                 menuSauRender();
+                controller.setView(jpnQLXRV, jlbQLXRV);
             }
             break;
 
-            default:
+            default: {
+                menuTruocRender();
                 controller.setView(jpnQLKH, jlbQLKH);
-                break;
+            }
+            break;
         }
         ArrayList<DanhMucBean> listItem = new ArrayList<>();
         listItem.add(new DanhMucBean("QLKH", jpnQLKH, jlbQLKH));
@@ -93,18 +94,16 @@ public class MainForm extends javax.swing.JFrame {
         listItem.add(new DanhMucBean("QLV", jpnQLV, jlbQLV));
         listItem.add(new DanhMucBean("QLXRV", jpnQLXRV, jlbQLXRV));
         listItem.add(new DanhMucBean("BCTK", jpnBCTK, jlbBCTK));
-        
+
         controller.setEvent(listItem);
-//        jpnQLNV.setVisible(false);
-//        jpnQLX.setVisible(false);
     }
-    
-    public void menuTruocRender(){
+
+    public void menuTruocRender() {
         jpnMenuSau.setVisible(false);
         jpnMenu.setVisible(true);
     }
-    
-    public void menuSauRender(){
+
+    public void menuSauRender() {
         jpnMenuSau.setVisible(true);
         jpnMenu.setVisible(false);
     }
@@ -170,7 +169,7 @@ public class MainForm extends javax.swing.JFrame {
 
         jlbQLV.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jlbQLV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlbQLV.setText("Quản lý vé");
+        jlbQLV.setText("Tra cứu vé");
 
         javax.swing.GroupLayout jpnQLVLayout = new javax.swing.GroupLayout(jpnQLV);
         jpnQLV.setLayout(jpnQLVLayout);
@@ -202,7 +201,7 @@ public class MainForm extends javax.swing.JFrame {
 
         jlbQLHD.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jlbQLHD.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlbQLHD.setText("Quản lý hóa đơn");
+        jlbQLHD.setText("Tra cứu hóa đơn");
 
         javax.swing.GroupLayout jpnQLHDLayout = new javax.swing.GroupLayout(jpnQLHD);
         jpnQLHD.setLayout(jpnQLHDLayout);
@@ -603,9 +602,8 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBackSauActionPerformed
 
     /**
-     * 
-     * @param evt 
-     * Xử lý event khi bấm vào thì sẽ chuyển sang JPanelMenuSau
+     *
+     * @param evt Xử lý event khi bấm vào thì sẽ chuyển sang JPanelMenuSau
      * setVisable(false) cho JpanelMenu và true cho JpanelMenuSau
      */
     private void btnSauMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSauMouseClicked
@@ -614,9 +612,8 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSauMouseClicked
 
     /**
-     * 
-     * @param evt 
-     * Xử lý event khi bấm vào sẽ chuyển về JpanelMenu 
+     *
+     * @param evt Xử lý event khi bấm vào sẽ chuyển về JpanelMenu
      * setVisavle(true) cho JPanelMenu và false cho JPanelMenuSau
      */
     private void btnTruocMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTruocMouseClicked

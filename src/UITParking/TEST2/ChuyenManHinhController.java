@@ -218,7 +218,13 @@ public class ChuyenManHinhController {
                 break;
 
                 case "BCTK":
-                    node = new BCTKJPanel();
+                    {
+                    try {
+                        node = new BCTKJPanel();
+                    } catch (Exception ex) {
+                        Logger.getLogger(ChuyenManHinhController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
                     break;
                 case "QLXRV":
                 {
