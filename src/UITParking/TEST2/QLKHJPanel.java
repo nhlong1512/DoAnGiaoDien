@@ -237,7 +237,7 @@ public class QLKHJPanel extends javax.swing.JPanel {
         jPanel1.add(txtDiaChi, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 200, -1));
 
         jLabel5.setText("Quê quán");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 96, 58, 20));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 100, 58, 20));
         jPanel1.add(txtQueQuan, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 100, 220, -1));
 
         jLabel6.setText("Giới tính");
@@ -336,7 +336,7 @@ public class QLKHJPanel extends javax.swing.JPanel {
         jPanel1.add(txtLoaiXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 60, 185, -1));
 
         jLabel11.setText("Biển số xe");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 100, 60, 27));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 100, 60, 20));
         jPanel1.add(txtBienSoXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 100, 185, -1));
         jPanel1.add(txtSoDu, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 140, 185, -1));
 
