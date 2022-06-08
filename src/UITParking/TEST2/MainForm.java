@@ -27,7 +27,7 @@ public class MainForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setIconimage();
         controllerFirst();
-//        jpnMenuSau.setVisible(false);
+        jpnMenuSau.setVisible(false);
 
     }
 
@@ -610,14 +610,7 @@ public class MainForm extends javax.swing.JFrame {
      */
     private void btnSauMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSauMouseClicked
         // TODO add your handling code here:
-        kindSelectedPublic = "QLXRV";
         menuSauRender();
-        ChuyenManHinhController controller = new ChuyenManHinhController(jpnView);
-        try {
-            controller.setView(jpnQLXRV, jlbQLXRV);
-        } catch (Exception ex) {
-            Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }//GEN-LAST:event_btnSauMouseClicked
 
     /**
@@ -628,14 +621,7 @@ public class MainForm extends javax.swing.JFrame {
      */
     private void btnTruocMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTruocMouseClicked
         // TODO add your handling code here:
-        kindSelectedPublic = "QLKH";
         menuTruocRender();
-        ChuyenManHinhController controller = new ChuyenManHinhController(jpnView);
-        try {
-            controller.setView(jpnQLKH, jlbQLKH);
-        } catch (Exception ex) {
-            Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }//GEN-LAST:event_btnTruocMouseClicked
 
     /**

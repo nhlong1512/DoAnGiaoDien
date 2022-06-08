@@ -24,7 +24,7 @@ import javax.swing.JPanel;
 public class ChuyenManHinhController {
 
     private JPanel root;
-    private String kindSelected = "";
+    private String kindSelected = kindSelectedPublic;
 
     private ArrayList<DanhMucBean> listItem = null;
 
@@ -139,15 +139,6 @@ public class ChuyenManHinhController {
             }
             break;
         }
-//        kindSelected = "QLKH";
-//        jpnItem.setBackground(new Color(220, 148, 34));
-//        jlbItem.setBackground(new Color(220, 148, 34));
-//
-//        root.removeAll();
-//        root.setLayout(new BorderLayout());
-//        root.add(new QLKHJPanel());
-//        root.validate();
-//        root.repaint();
     }
 
     public void setEvent(ArrayList<DanhMucBean> listItem) {
@@ -248,14 +239,14 @@ public class ChuyenManHinhController {
             root.add(node);
             root.validate();
             root.repaint();
+            kindSelected = kind;
             setChangeBackground(kind);
         }
 
         @Override
         public void mousePressed(MouseEvent e) {
-            kindSelected = kind;
-            jpnItem.setBackground(new Color(255, 255, 255));
-            jlbItem.setBackground(new Color(255, 255, 255));
+            jpnItem.setBackground(new Color(220, 148, 34));
+            jlbItem.setBackground(new Color(220, 148, 34));
 
         }
 
