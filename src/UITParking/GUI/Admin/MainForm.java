@@ -2,12 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package UITParking.TEST2;
+package UITParking.GUI.Admin;
 
 import UITParking.GUI.HomepageAdmin;
 import static UITParking.GUI.HomepageAdmin.kindSelectedPublic;
-import UITParking.TEST2.DanhMucBean;
-import UITParking.TEST2.ChuyenManHinhController;
+import UITParking.GUI.Admin.DanhMucBean;
+import UITParking.GUI.Admin.ChuyenManHinhController;
 import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -32,21 +32,24 @@ public class MainForm extends javax.swing.JFrame {
     }
 
     public void controllerFirst() throws Exception {
+        System.out.println(kindSelectedPublic);
         ChuyenManHinhController controller = new ChuyenManHinhController(jpnView);
         switch (kindSelectedPublic) {
+            case "QLKH": {
+                menuTruocRender();
+                controller.setView(jpnQLKH, jlbQLKH);
+            }
+            break;
+            
             case "QLNV": {
                 menuTruocRender();
                 controller.setView(jpnQLNV, jlbQLNV);
             }
+            
             break;
             case "QLV": {
                 menuTruocRender();
                 controller.setView(jpnQLV, jlbQLV);
-            }
-            break;
-            case "QLKH": {
-                menuTruocRender();
-                controller.setView(jpnQLKH, jlbQLKH);
             }
             break;
 
@@ -405,11 +408,11 @@ public class MainForm extends javax.swing.JFrame {
                         .addComponent(btnBack)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnSau))
-                    .addComponent(jpnQLKVL, javax.swing.GroupLayout.PREFERRED_SIZE, 104, Short.MAX_VALUE)
+                    .addComponent(jpnQLKVL, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
                     .addComponent(jpnQLNV, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
                     .addComponent(jpnQLX, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
-                    .addComponent(jpnQLHD, javax.swing.GroupLayout.PREFERRED_SIZE, 104, Short.MAX_VALUE)
-                    .addComponent(jpnQLV, javax.swing.GroupLayout.PREFERRED_SIZE, 104, Short.MAX_VALUE))
+                    .addComponent(jpnQLHD, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
+                    .addComponent(jpnQLV, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE))
                 .addGap(10, 10, 10))
         );
 

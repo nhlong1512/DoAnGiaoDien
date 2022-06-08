@@ -2,13 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package UITParking.TEST2;
+package UITParking.GUI.Admin;
 
 import UITParking.BUS.KhachHangBUS;
+import UITParking.BUS.KhachVangLaiBUS;
 import UITParking.BUS.NguoiDungBUS;
 import UITParking.BUS.NhanVienBUS;
 import UITParking.BUS.XeBUS;
 import UITParking.DTO.KhachHangDTO;
+import UITParking.DTO.KhachVangLaiDTO;
 import UITParking.DTO.NguoiDungDTO;
 import UITParking.DTO.NhanVienDTO;
 import UITParking.DTO.XeDTO;
@@ -24,61 +26,65 @@ import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
-
 /**
  *
  * @author ADMIN
  */
-public class QLXJPanel extends javax.swing.JPanel {
+public class QLKVLJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form QLXJPanel
+     * Creates new form QLKVLJPanel
      */
+    
+    KhachVangLaiBUS kvltbl = new KhachVangLaiBUS();
+    ArrayList<KhachVangLaiDTO> list_KVL = kvltbl.getlist_KVL();
     XeBUS xetbl = new XeBUS();
     ArrayList<XeDTO> list_XE = xetbl.getlist_XE();
     
     private DefaultTableModel model;
-    private String[] columnHeaders = new String[]{"STT", "Mã Xe", "Tên Loại Xe", "Biển Số Xe"};
-    
+    private String[] columnHeaders = new String[]{"STT","Mã Khách Vãng Lai", "Mã Xe", "Tên Loại Xe", "Biển Số Xe"};
+
     private TableRowSorter<TableModel> rowSorter = null;
-    
-    public QLXJPanel() throws Exception {
+
+    public QLKVLJPanel() throws Exception {
         initComponents();
         initTable();
         hoTroTimKiem();
         btnCapNhat.setEnabled(false);
         btnXoa.setEnabled(false);
+        txtMaTheKVL.setEnabled(false);
         txtMaXe.setEnabled(false);
         txtBienSoXe.setEnabled(false);
     }
-    
+
     public void resetRender() {
         txtMaXe.setText("");
         txtBienSoXe.setText("");
+        txtMaTheKVL.setText("");
         cbbLoaiXe.setSelectedItem("Xe đạp");
         txtBienSoXe.setEnabled(false);
     }
-    
+
     public void initTable() throws Exception {
         model = new DefaultTableModel();
         model.setColumnIdentifiers(columnHeaders);
         int index = 1;
-        for (XeDTO xe : list_XE) {
-
+        for (KhachVangLaiDTO kvl : list_KVL) {
+            XeDTO xe = xetbl.getInfor(kvl.getStrMaXe());
             //Cập nhật bảng
-            model.addRow(new Object[]{index, xe.getStrMaXe(),
-                xe.getStrTenLoaiXe(), xe.getStrBienSoXe()});
+            model.addRow(new Object[]{index, kvl.getStrMaTheKVL(), xe.getStrMaXe(),
+                xe.getStrTenLoaiXe(),  xe.getStrBienSoXe()});
             index++;
         }
-        
-        tblXe.setModel(model);
-        
+
+        tblKhachVangLai.setModel(model);
+
     }
-    
+
     public void hoTroTimKiem() {
-        
-        rowSorter = new TableRowSorter<>(tblXe.getModel());
-        tblXe.setRowSorter(rowSorter);
+
+        rowSorter = new TableRowSorter<>(tblKhachVangLai.getModel());
+        tblKhachVangLai.setRowSorter(rowSorter);
         txtTimKiem.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
@@ -89,7 +95,7 @@ public class QLXJPanel extends javax.swing.JPanel {
                     rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
                 }
             }
-            
+
             @Override
             public void removeUpdate(DocumentEvent e) {
                 String text = txtTimKiem.getText();
@@ -99,7 +105,7 @@ public class QLXJPanel extends javax.swing.JPanel {
                     rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
                 }
             }
-            
+
             @Override
             public void changedUpdate(DocumentEvent e) {
             }
@@ -108,17 +114,18 @@ public class QLXJPanel extends javax.swing.JPanel {
 
     //Hàm cập nhật lại bảng sau khi thêm xóa sửa
     public void capNhatLaiTable() {
-        list_XE = xetbl.getlist_XE();
         model.setRowCount(0);
         int index = 1;
-        for (XeDTO xe : list_XE) {
+        for (KhachVangLaiDTO kvl : list_KVL) {
+            XeDTO xe = xetbl.getInfor(kvl.getStrMaXe());
             //Cập nhật bảng
-            model.addRow(new Object[]{index, xe.getStrMaXe(),
-                xe.getStrTenLoaiXe(), xe.getStrBienSoXe()});
+            model.addRow(new Object[]{index, kvl.getStrMaTheKVL(), xe.getStrMaXe(),
+                xe.getStrTenLoaiXe(),  xe.getStrBienSoXe()});
             index++;
         }
         model.fireTableDataChanged();
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -130,11 +137,12 @@ public class QLXJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         jLabel62 = new javax.swing.JLabel();
-        txtMaXe = new javax.swing.JTextField();
+        txtMaTheKVL = new javax.swing.JTextField();
         jLabel63 = new javax.swing.JLabel();
+        txtMaXe = new javax.swing.JTextField();
         jLabel64 = new javax.swing.JLabel();
-        txtBienSoXe = new javax.swing.JTextField();
         btnNhapMoi = new javax.swing.JButton();
         btnLuu = new javax.swing.JButton();
         btnCapNhat = new javax.swing.JButton();
@@ -142,23 +150,32 @@ public class QLXJPanel extends javax.swing.JPanel {
         btnTimKiem = new javax.swing.JButton();
         txtTimKiem = new javax.swing.JTextField();
         jScrollPane7 = new javax.swing.JScrollPane();
-        tblXe = new javax.swing.JTable();
+        tblKhachVangLai = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        txtBienSoXe = new javax.swing.JTextField();
         cbbLoaiXe = new javax.swing.JComboBox<>();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel62.setText("Mã xe");
-        jPanel1.add(jLabel62, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 64, 20));
-        jPanel1.add(txtMaXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, 232, -1));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel63.setText("Tên loại xe");
-        jPanel1.add(jLabel63, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 70, 20));
+        jLabel62.setText("Mã thẻ KVL");
+        jPanel2.add(jLabel62, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 74, 20));
 
-        jLabel64.setText("Biển số xe");
-        jLabel64.setToolTipText("");
-        jPanel1.add(jLabel64, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 55, 20));
-        jPanel1.add(txtBienSoXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 230, -1));
+        txtMaTheKVL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMaTheKVLActionPerformed(evt);
+            }
+        });
+        jPanel2.add(txtMaTheKVL, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, 250, -1));
+
+        jLabel63.setText("Mã xe");
+        jPanel2.add(jLabel63, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, 74, 20));
+        jPanel2.add(txtMaXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 50, 250, -1));
+
+        jLabel64.setText("Tên lại xe");
+        jPanel2.add(jLabel64, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 74, 20));
 
         btnNhapMoi.setText("Nhập mới");
         btnNhapMoi.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -166,7 +183,12 @@ public class QLXJPanel extends javax.swing.JPanel {
                 btnNhapMoibtnNhapMoiMouseClicked(evt);
             }
         });
-        jPanel1.add(btnNhapMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, -1, -1));
+        btnNhapMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNhapMoiActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnNhapMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, -1, -1));
 
         btnLuu.setText("Lưu");
         btnLuu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -174,7 +196,7 @@ public class QLXJPanel extends javax.swing.JPanel {
                 btnLuubtnLuuMouseClicked(evt);
             }
         });
-        jPanel1.add(btnLuu, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 57, -1));
+        jPanel2.add(btnLuu, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, 57, -1));
 
         btnCapNhat.setText("Cập nhật");
         btnCapNhat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -182,7 +204,7 @@ public class QLXJPanel extends javax.swing.JPanel {
                 btnCapNhatbtnCapNhatMouseClicked(evt);
             }
         });
-        jPanel1.add(btnCapNhat, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, -1, -1));
+        jPanel2.add(btnCapNhat, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, -1, -1));
 
         btnXoa.setText("Xóa");
         btnXoa.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -190,7 +212,7 @@ public class QLXJPanel extends javax.swing.JPanel {
                 btnXoabtnXoaMouseClicked(evt);
             }
         });
-        jPanel1.add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 160, -1, -1));
+        jPanel2.add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 160, -1, -1));
 
         btnTimKiem.setText("Tìm kiếm");
         btnTimKiem.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -198,10 +220,10 @@ public class QLXJPanel extends javax.swing.JPanel {
                 btnTimKiembtnTimKiemMouseClicked(evt);
             }
         });
-        jPanel1.add(btnTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 160, -1, -1));
-        jPanel1.add(txtTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 160, 160, -1));
+        jPanel2.add(btnTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 160, -1, -1));
+        jPanel2.add(txtTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 160, 144, -1));
 
-        tblXe.setModel(new javax.swing.table.DefaultTableModel(
+        tblKhachVangLai.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -212,14 +234,18 @@ public class QLXJPanel extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tblXe.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblKhachVangLai.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                tblXetblNhanVienMousePressed(evt);
+                tblKhachVangLaitblNhanVienMousePressed(evt);
             }
         });
-        jScrollPane7.setViewportView(tblXe);
+        jScrollPane7.setViewportView(tblKhachVangLai);
 
-        jPanel1.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 213, 1120, 302));
+        jPanel2.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 1120, 250));
+
+        jLabel1.setText("Biển số xe");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 74, 20));
+        jPanel2.add(txtBienSoXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 130, 250, -1));
 
         cbbLoaiXe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Xe đạp", "Xe máy" }));
         cbbLoaiXe.addItemListener(new java.awt.event.ItemListener() {
@@ -227,13 +253,24 @@ public class QLXJPanel extends javax.swing.JPanel {
                 cbbLoaiXeItemStateChanged(evt);
             }
         });
-        jPanel1.add(cbbLoaiXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 59, 230, 30));
+        jPanel2.add(cbbLoaiXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 90, 250, 30));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 1140, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1140, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -247,18 +284,25 @@ public class QLXJPanel extends javax.swing.JPanel {
 
     private void btnLuubtnLuuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLuubtnLuuMouseClicked
         StringBuilder sb = new StringBuilder();
-        if (xetbl.getInfor(txtMaXe.getText()) != null) {
+        if (xetbl.getInfor(txtMaTheKVL.getText()) != null) {
+            sb.append("Mã thẻ khách vãng lai đã tồn tại.");
+        }
+        if(xetbl.getInfor(txtMaXe.getText()) != null){
             sb.append("Mã xe đã tồn tại.");
         }
-        
+
         if (sb.length() > 0) {
             JOptionPane.showMessageDialog(this, sb);
             return;
         }
         try {
+            KhachVangLaiDTO kvl = new KhachVangLaiDTO();
             XeDTO xe = new XeDTO();
-            String tempMaXe = xetbl.getMaxMaXe();
-            xe.setStrMaXe(tempMaXe);
+            String maKVLTemp = kvltbl.getMaxMaKVL();
+            String maXeTemp = xetbl.getMaxMaXe();
+            kvl.setStrMaTheKVL(maKVLTemp);
+            kvl.setStrMaXe(maXeTemp);
+            xe.setStrMaXe(maXeTemp);
             if (cbbLoaiXe.getSelectedItem().toString().equals("Xe đạp")) {
                 xe.setStrTenLoaiXe("Xe dap");
                 xe.setStrBienSoXe(null);
@@ -267,58 +311,28 @@ public class QLXJPanel extends javax.swing.JPanel {
                 xe.setStrBienSoXe(txtBienSoXe.getText());
             }
             xetbl.them(xe);
+            kvltbl.them(kvl);
+            
+            
 
             //Cập nhật lại Table
             capNhatLaiTable();
-            JOptionPane.showMessageDialog(this, "Xe mới đã được thêm vào CSDL");
-            
+            JOptionPane.showMessageDialog(this, "Khách vãng lai mới đã được thêm vào CSDL");
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error" + e.getMessage());
             e.printStackTrace();
         }
     }//GEN-LAST:event_btnLuubtnLuuMouseClicked
 
-    private void btnCapNhatbtnCapNhatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCapNhatbtnCapNhatMouseClicked
-        // TODO add your handling code here:
-//        StringBuilder sb = new StringBuilder();
-//        if (txtMaXe.getText().equals("")) {
-//            sb.append("Mã xe không được để trống.");
-//            txtMaXe.setBackground(Color.red);
-//        } else {
-//            txtMaXe.setBackground(Color.white);
-//        }
-//        if (xetbl.getInfor(txtMaXe.getText()) == null) {
-//            sb.append("Mã xe không tồn tại.");
-//        }
-//        if (sb.length() > 0) {
-//            JOptionPane.showMessageDialog(this, sb);
-//            return;
-//        }
-//        try {
-//            XeDTO xe = new XeDTO();
-//            xe.setStrMaXe(txtMaXe.getText());
-//            xe.setStrTenLoaiXe(txtTenLoaiXe.getText());
-//            xe.setStrBienSoXe(txtBienSoXe.getText());
-//            xetbl.sua(xe);
-//            //Cập nhật lại Table
-//            capNhatLaiTable();
-//
-//            JOptionPane.showMessageDialog(this, "Xe đã được cập nhật vào CSDL");
-//
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(this, "Error" + e.getMessage());
-//            e.printStackTrace();
-//        }
-    }//GEN-LAST:event_btnCapNhatbtnCapNhatMouseClicked
-
     private void btnXoabtnXoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXoabtnXoaMouseClicked
         // TODO add your handling code here:
 //        StringBuilder sb = new StringBuilder();
-//        if (txtMaXe.getText().equals("")) {
-//            sb.append("Mã xe không được để trống.");
-//            txtMaXe.setBackground(Color.red);
+//        if (txtMaTheKVL.getText().equals("")) {
+//            sb.append("Mã khách vãng lai không được để trống.");
+//            txtMaTheKVL.setBackground(Color.red);
 //        } else {
-//            txtMaXe.setBackground(Color.white);
+//            txtMaTheKVL.setBackground(Color.white);
 //        }
 //        if (sb.length() > 0) {
 //            JOptionPane.showMessageDialog(this, sb);
@@ -329,10 +343,14 @@ public class QLXJPanel extends javax.swing.JPanel {
 //            return;
 //        }
 //        try {
+//            KhachVangLaiDTO kvl = kvltbl.getInfor(txtMaTheKVL.getText());
 //            XeDTO xe = xetbl.getInfor(txtMaXe.getText());
+//            
+//            kvltbl.xoa(kvl);
 //            xetbl.xoa(xe);
+//            
 //
-//            JOptionPane.showMessageDialog(this, "Xe đã xóa khỏi CSDL");
+//            JOptionPane.showMessageDialog(this, "Khách vãng lai đã xóa khỏi CSDL");
 //
 //            //Reset lại render
 //            resetRender();
@@ -347,38 +365,20 @@ public class QLXJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnXoabtnXoaMouseClicked
 
     private void btnTimKiembtnTimKiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTimKiembtnTimKiemMouseClicked
-        // TODO add your handling code here:
-//        if (txtMaXe.getText().equals("")) {
-//            JOptionPane.showMessageDialog(this, "Mã xe phải được nhập để tìm kiếm");
-//            return;
-//        }
-//
-//        try {
-//            XeDTO xe = xetbl.getInfor(txtMaXe.getText());
-//
-//            if (xe != null) {
-//                txtMaXe.setText(xe.getStrMaXe());
-//                txtBienSoXe.setText(xe.getStrBienSoXe());
-//            } else {
-//                JOptionPane.showMessageDialog(this, "Xe không tìm thấy");
-//            }
-//
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
-//            e.printStackTrace();
-//        }
+       
     }//GEN-LAST:event_btnTimKiembtnTimKiemMouseClicked
 
-    private void tblXetblNhanVienMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblXetblNhanVienMousePressed
+    private void tblKhachVangLaitblNhanVienMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKhachVangLaitblNhanVienMousePressed
         // TODO add your handling code here:
         resetRender();
-        int selectedRow = tblXe.getSelectedRow();
+        int selectedRow = tblKhachVangLai.getSelectedRow();
         if (selectedRow >= 0) {
-            
-            XeDTO xe = list_XE.get(selectedRow);
-            
-            txtMaXe.setText(xe.getStrMaXe());
-            
+
+            KhachVangLaiDTO kvl = list_KVL.get(selectedRow);
+            XeDTO xe = xetbl.getInfor(kvl.getStrMaXe());
+
+            txtMaTheKVL.setText(kvl.getStrMaTheKVL());
+            txtMaXe.setText(kvl.getStrMaXe());
             if (xe.getStrTenLoaiXe().equals("Xe dap")) {
                 cbbLoaiXe.setSelectedItem("Xe đạp");
             }
@@ -386,9 +386,51 @@ public class QLXJPanel extends javax.swing.JPanel {
                 cbbLoaiXe.setSelectedItem("Xe máy");
             }
             txtBienSoXe.setText(xe.getStrBienSoXe());
-            
+
         }
-    }//GEN-LAST:event_tblXetblNhanVienMousePressed
+    }//GEN-LAST:event_tblKhachVangLaitblNhanVienMousePressed
+
+    private void btnNhapMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhapMoiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnNhapMoiActionPerformed
+
+    private void txtMaTheKVLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaTheKVLActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMaTheKVLActionPerformed
+
+    private void btnCapNhatbtnCapNhatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCapNhatbtnCapNhatMouseClicked
+        // TODO add your handling code here:
+        //        StringBuilder sb = new StringBuilder();
+        //        if (txtMaTheKVL.getText().equals("")) {
+            //            sb.append("Mã thẻ khách vãng lai không được để trống.");
+            //            txtMaTheKVL.setBackground(Color.red);
+            //        } else {
+            //            txtMaTheKVL.setBackground(Color.white);
+            //        }
+        //        if (kvltbl.getInfor(txtMaTheKVL.getText()) == null) {
+            //            sb.append("Mã thẻ khách vãng lai không tồn tại.");
+            //        }
+        //        if (sb.length() > 0) {
+            //            JOptionPane.showMessageDialog(this, sb);
+            //            return;
+            //        }
+        //        try {
+            //            KhachHangDTO kvl = new KhachHangDTO();
+            //            XeDTO xe = xetbl.getInfor(txtMaTheKVL.getText());
+            //            xe.setStrMaXe(txtMaTheKVL.getText());
+            //            xe.setStrTenLoaiXe(txtMaXe.getText());
+            //            xe.setStrBienSoXe(txtTenLoaiXe.getText());
+            //            xetbl.sua(xe);
+            //            //Cập nhật lại Table
+            //            capNhatLaiTable();
+            //
+            //            JOptionPane.showMessageDialog(this, "Xe đã được cập nhật vào CSDL");
+            //
+            //        } catch (Exception e) {
+            //            JOptionPane.showMessageDialog(this, "Error" + e.getMessage());
+            //            e.printStackTrace();
+            //        }
+    }//GEN-LAST:event_btnCapNhatbtnCapNhatMouseClicked
 
     private void cbbLoaiXeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbLoaiXeItemStateChanged
         // TODO add your handling code here:
@@ -407,13 +449,16 @@ public class QLXJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnTimKiem;
     private javax.swing.JButton btnXoa;
     private javax.swing.JComboBox<String> cbbLoaiXe;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel62;
     private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel64;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JTable tblXe;
+    private javax.swing.JTable tblKhachVangLai;
     private javax.swing.JTextField txtBienSoXe;
+    private javax.swing.JTextField txtMaTheKVL;
     private javax.swing.JTextField txtMaXe;
     private javax.swing.JTextField txtTimKiem;
     // End of variables declaration//GEN-END:variables

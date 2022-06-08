@@ -7,7 +7,7 @@ package UITParking.GUI;
 import UITParking.BUS.NguoiDungBUS;
 import UITParking.DTO.NguoiDungDTO;
 import static UITParking.GUI.login.pMaND;
-import UITParking.TEST2.MainForm;
+import UITParking.GUI.Admin.MainForm;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GradientPaint;
@@ -747,10 +747,10 @@ public class HomepageAdmin extends javax.swing.JFrame {
 
     private void panelAdminQLKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelAdminQLKHMouseClicked
         // TODO add your handling code here:
+        kindSelectedPublic = "QLKH";
         MainForm _mainForm = null;
         try {
             _mainForm = new MainForm();
-            kindSelectedPublic = "QLKH";
         } catch (Exception ex) {
             Logger.getLogger(HomepageAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
