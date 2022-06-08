@@ -75,8 +75,17 @@ public class QLHDJPanel extends javax.swing.JPanel {
         btnXoaChiTiet.setEnabled(false);
         btnCapNhatHoaDon.setEnabled(false);
         btnCapNhatChiTiet.setEnabled(false);
+        btnNhapMoiChiTiet.setEnabled(false);
+        btnNhapMoiHoaDon.setEnabled(false);
         btnLuuHoaDon.setEnabled(false);
         btnLuuChiTiet.setEnabled(false);
+        txtMaHDMuaVe.setEnabled(false);
+        txtMaHDChiTiet.setEnabled(false);
+        txtMaKHMuaVe.setEnabled(false);
+        txtSLVeChiTiet.setEnabled(false);
+        txtTongTriGiaMuaVe.setEnabled(false);
+        txtMaLoaiVeChiTiet.setEnabled(false);
+        jdcNgayHDMuaVe.setEnabled(false);
     }
 
     public void resetRender1() {
