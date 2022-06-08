@@ -27,52 +27,56 @@ public class MainForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setIconimage();
         controllerFirst();
-        jpnMenuSau.setVisible(false);
+//        jpnMenuSau.setVisible(false);
 
     }
 
     public void controllerFirst() throws Exception {
         ChuyenManHinhController controller = new ChuyenManHinhController(jpnView);
-//        if(kindSelectedPublic.equals("QLKH")){
-//            
-//            controller.setView(jpnQLKH, jlbQLKH);
-//        }
         switch (kindSelectedPublic) {
             case "QLNV": {
                 controller.setView(jpnQLNV, jlbQLNV);
+                menuTruocRender();
             }
             break;
             case "QLV": {
                 controller.setView(jpnQLV, jlbQLV);
+                menuTruocRender();
             }
             break;
             case "QLKH": {
                 controller.setView(jpnQLKH, jlbQLKH);
+                menuTruocRender();
 
             }
             break;
 
             case "QLX": {
                 controller.setView(jpnQLX, jlbQLX);
+                menuTruocRender();
             }
             break;
 
             case "QLKVL": {
                 controller.setView(jpnQLKVL, jlbQLKVL);
+                menuTruocRender();
             }
             break;
 
             case "QLHD": {
                 controller.setView(jpnQLHD, jlbQLHD);
+                menuTruocRender();
             }
             break;
 
             case "BCTK": {
                 controller.setView(jpnBCTK, jlbBCTK);
+                menuSauRender();
             }
             break;
             case "QLXRV": {
                 controller.setView(jpnQLXRV, jlbQLXRV);
+                menuSauRender();
             }
             break;
 
@@ -93,6 +97,16 @@ public class MainForm extends javax.swing.JFrame {
         controller.setEvent(listItem);
 //        jpnQLNV.setVisible(false);
 //        jpnQLX.setVisible(false);
+    }
+    
+    public void menuTruocRender(){
+        jpnMenuSau.setVisible(false);
+        jpnMenu.setVisible(true);
+    }
+    
+    public void menuSauRender(){
+        jpnMenuSau.setVisible(true);
+        jpnMenu.setVisible(false);
     }
 
     /**
@@ -596,8 +610,14 @@ public class MainForm extends javax.swing.JFrame {
      */
     private void btnSauMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSauMouseClicked
         // TODO add your handling code here:
-        jpnMenu.setVisible(false);
-        jpnMenuSau.setVisible(true);
+        kindSelectedPublic = "QLXRV";
+        menuSauRender();
+        ChuyenManHinhController controller = new ChuyenManHinhController(jpnView);
+        try {
+            controller.setView(jpnQLXRV, jlbQLXRV);
+        } catch (Exception ex) {
+            Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnSauMouseClicked
 
     /**
@@ -608,8 +628,14 @@ public class MainForm extends javax.swing.JFrame {
      */
     private void btnTruocMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTruocMouseClicked
         // TODO add your handling code here:
-        jpnMenuSau.setVisible(false);
-        jpnMenu.setVisible(true);
+        kindSelectedPublic = "QLKH";
+        menuTruocRender();
+        ChuyenManHinhController controller = new ChuyenManHinhController(jpnView);
+        try {
+            controller.setView(jpnQLKH, jlbQLKH);
+        } catch (Exception ex) {
+            Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnTruocMouseClicked
 
     /**

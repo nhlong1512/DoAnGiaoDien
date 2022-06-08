@@ -447,7 +447,7 @@ public class QLNVJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         StringBuilder sb = new StringBuilder();
         if (txtMaNV.getText().equals("")) {
-            sb.append("Mã khách hàng không được để trống.");
+            sb.append("Mã nhân viên không được để trống.");
             txtMaNV.setBackground(Color.red);
         } else {
             txtMaNV.setBackground(Color.white);
@@ -522,7 +522,7 @@ public class QLNVJPanel extends javax.swing.JPanel {
             //Cập nhật lại Table
             capNhatLaiTable();
 
-            JOptionPane.showMessageDialog(this, "Khách hàng đã được cập nhật vào CSDL");
+            JOptionPane.showMessageDialog(this, "Nhân viên đã được cập nhật vào CSDL");
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error" + e.getMessage());
@@ -571,7 +571,7 @@ public class QLNVJPanel extends javax.swing.JPanel {
 
             //Cập nhật lại Table
             capNhatLaiTable();
-            JOptionPane.showMessageDialog(this, "Khách hàng mới đã được thêm vào CSDL");
+            JOptionPane.showMessageDialog(this, "Nhân viên mới đã được thêm vào CSDL");
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error" + e.getMessage());
