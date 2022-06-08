@@ -27,6 +27,7 @@ public class MainForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setIconimage();
         controllerFirst();
+        jpnMenuSau.setVisible(false);
 
     }
 
@@ -66,14 +67,14 @@ public class MainForm extends javax.swing.JFrame {
             }
             break;
 
-//            case "BCTK": {
-//                controller.setView(jpnBCTK, jlbBCTK);
-//            }
-//            break;
-//            case "QLXRV": {
-//                controller.setView(jpnQLXRV, jlbQLXRV);
-//            }
-//            break;
+            case "BCTK": {
+                controller.setView(jpnBCTK, jlbBCTK);
+            }
+            break;
+            case "QLXRV": {
+                controller.setView(jpnQLXRV, jlbQLXRV);
+            }
+            break;
 
             default:
                 controller.setView(jpnQLKH, jlbQLKH);
@@ -86,8 +87,8 @@ public class MainForm extends javax.swing.JFrame {
         listItem.add(new DanhMucBean("QLKVL", jpnQLKVL, jlbQLKVL));
         listItem.add(new DanhMucBean("QLHD", jpnQLHD, jlbQLHD));
         listItem.add(new DanhMucBean("QLV", jpnQLV, jlbQLV));
-//        listItem.add(new DanhMucBean("QLXRV", jpnQLXRV, jlbQLXRV));
-//        listItem.add(new DanhMucBean("BCTK", jpnBCTK, jlbBCTK));
+        listItem.add(new DanhMucBean("QLXRV", jpnQLXRV, jlbQLXRV));
+        listItem.add(new DanhMucBean("BCTK", jpnBCTK, jlbBCTK));
         
         controller.setEvent(listItem);
 //        jpnQLNV.setVisible(false);
@@ -124,8 +125,17 @@ public class MainForm extends javax.swing.JFrame {
         jpnQLNV = new Admin.PanelRound();
         jLabel9 = new javax.swing.JLabel();
         jlbQLNV = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        btnSau = new javax.swing.JButton();
         jpnView = new javax.swing.JPanel();
+        jpnMenuSau = new javax.swing.JPanel();
+        jpnQLXRV = new Admin.PanelRound();
+        jLabel13 = new javax.swing.JLabel();
+        jlbQLXRV = new javax.swing.JLabel();
+        jpnBCTK = new Admin.PanelRound();
+        jLabel14 = new javax.swing.JLabel();
+        jlbBCTK = new javax.swing.JLabel();
+        btnBackSau = new javax.swing.JButton();
+        btnTruoc = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("UIT Parking");
@@ -342,7 +352,12 @@ public class MainForm extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton2.setText("Next");
+        btnSau.setText("Next");
+        btnSau.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSauMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpnMenuLayout = new javax.swing.GroupLayout(jpnMenu);
         jpnMenu.setLayout(jpnMenuLayout);
@@ -364,7 +379,7 @@ public class MainForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jpnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnSau, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(335, 335, 335))
         );
         jpnMenuLayout.setVerticalGroup(
@@ -376,12 +391,12 @@ public class MainForm extends javax.swing.JFrame {
                     .addGroup(jpnMenuLayout.createSequentialGroup()
                         .addComponent(btnBack)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2))
-                    .addComponent(jpnQLKVL, javax.swing.GroupLayout.PREFERRED_SIZE, 104, Short.MAX_VALUE)
+                        .addComponent(btnSau))
+                    .addComponent(jpnQLKVL, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
                     .addComponent(jpnQLNV, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
                     .addComponent(jpnQLX, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
-                    .addComponent(jpnQLHD, javax.swing.GroupLayout.PREFERRED_SIZE, 104, Short.MAX_VALUE)
-                    .addComponent(jpnQLV, javax.swing.GroupLayout.PREFERRED_SIZE, 104, Short.MAX_VALUE))
+                    .addComponent(jpnQLHD, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
+                    .addComponent(jpnQLV, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE))
                 .addGap(10, 10, 10))
         );
 
@@ -403,6 +418,127 @@ public class MainForm extends javax.swing.JFrame {
         );
 
         jpnRoot.add(jpnView, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 1140, 530));
+
+        jpnMenuSau.setBackground(new java.awt.Color(159, 180, 255));
+        jpnMenuSau.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jpnQLXRV.setBackground(new java.awt.Color(255, 255, 255));
+        jpnQLXRV.setPreferredSize(new java.awt.Dimension(160, 100));
+        jpnQLXRV.setRoundBottomLeft(25);
+        jpnQLXRV.setRoundBottomRight(25);
+        jpnQLXRV.setRoundTopLeft(25);
+        jpnQLXRV.setRoundTopRight(25);
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/growth.png"))); // NOI18N
+
+        jlbQLXRV.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jlbQLXRV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbQLXRV.setText("Quản lý xe ra vào");
+
+        javax.swing.GroupLayout jpnQLXRVLayout = new javax.swing.GroupLayout(jpnQLXRV);
+        jpnQLXRV.setLayout(jpnQLXRVLayout);
+        jpnQLXRVLayout.setHorizontalGroup(
+            jpnQLXRVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlbQLXRV, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnQLXRVLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel13)
+                .addGap(52, 52, 52))
+        );
+        jpnQLXRVLayout.setVerticalGroup(
+            jpnQLXRVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnQLXRVLayout.createSequentialGroup()
+                .addComponent(jlbQLXRV, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel13)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jpnBCTK.setBackground(new java.awt.Color(255, 255, 255));
+        jpnBCTK.setPreferredSize(new java.awt.Dimension(160, 100));
+        jpnBCTK.setRoundBottomLeft(25);
+        jpnBCTK.setRoundBottomRight(25);
+        jpnBCTK.setRoundTopLeft(25);
+        jpnBCTK.setRoundTopRight(25);
+
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/analysis.png"))); // NOI18N
+
+        jlbBCTK.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jlbBCTK.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbBCTK.setText("Báo cáo thống kê");
+
+        javax.swing.GroupLayout jpnBCTKLayout = new javax.swing.GroupLayout(jpnBCTK);
+        jpnBCTK.setLayout(jpnBCTKLayout);
+        jpnBCTKLayout.setHorizontalGroup(
+            jpnBCTKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlbBCTK, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+            .addGroup(jpnBCTKLayout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addComponent(jLabel14)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jpnBCTKLayout.setVerticalGroup(
+            jpnBCTKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnBCTKLayout.createSequentialGroup()
+                .addComponent(jlbBCTK)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        btnBackSau.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnBackSau.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/log-out.png"))); // NOI18N
+        btnBackSau.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBackSauMouseClicked(evt);
+            }
+        });
+        btnBackSau.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackSauActionPerformed(evt);
+            }
+        });
+
+        btnTruoc.setText("Previous");
+        btnTruoc.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnTruocMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jpnMenuSauLayout = new javax.swing.GroupLayout(jpnMenuSau);
+        jpnMenuSau.setLayout(jpnMenuSauLayout);
+        jpnMenuSauLayout.setHorizontalGroup(
+            jpnMenuSauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnMenuSauLayout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addComponent(jpnQLXRV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jpnBCTK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jpnMenuSauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnBackSau, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTruoc, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+        jpnMenuSauLayout.setVerticalGroup(
+            jpnMenuSauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnMenuSauLayout.createSequentialGroup()
+                .addGroup(jpnMenuSauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jpnMenuSauLayout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addGroup(jpnMenuSauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jpnBCTK, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
+                            .addComponent(jpnQLXRV, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)))
+                    .addGroup(jpnMenuSauLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnBackSau)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnTruoc)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jpnRoot.add(jpnMenuSau, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1140, 130));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -435,6 +571,46 @@ public class MainForm extends javax.swing.JFrame {
         _homepageAdmin.show();
         dispose();
     }//GEN-LAST:event_btnBackMouseClicked
+
+    private void btnBackSauMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBackSauMouseClicked
+        // TODO add your handling code here:
+        HomepageAdmin _homepageAdmin = null;
+        try {
+            _homepageAdmin = new HomepageAdmin();
+        } catch (Exception ex) {
+            Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        _homepageAdmin.show();
+        dispose();
+    }//GEN-LAST:event_btnBackSauMouseClicked
+
+    private void btnBackSauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackSauActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBackSauActionPerformed
+
+    /**
+     * 
+     * @param evt 
+     * Xử lý event khi bấm vào thì sẽ chuyển sang JPanelMenuSau
+     * setVisable(false) cho JpanelMenu và true cho JpanelMenuSau
+     */
+    private void btnSauMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSauMouseClicked
+        // TODO add your handling code here:
+        jpnMenu.setVisible(false);
+        jpnMenuSau.setVisible(true);
+    }//GEN-LAST:event_btnSauMouseClicked
+
+    /**
+     * 
+     * @param evt 
+     * Xử lý event khi bấm vào sẽ chuyển về JpanelMenu 
+     * setVisavle(true) cho JPanelMenu và false cho JPanelMenuSau
+     */
+    private void btnTruocMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTruocMouseClicked
+        // TODO add your handling code here:
+        jpnMenuSau.setVisible(false);
+        jpnMenu.setVisible(true);
+    }//GEN-LAST:event_btnTruocMouseClicked
 
     /**
      * @param args the command line arguments
@@ -477,26 +653,35 @@ public class MainForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnBackSau;
+    private javax.swing.JButton btnSau;
+    private javax.swing.JButton btnTruoc;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jlbBCTK;
     private javax.swing.JLabel jlbQLHD;
     private javax.swing.JLabel jlbQLKH;
     private javax.swing.JLabel jlbQLKVL;
     private javax.swing.JLabel jlbQLNV;
     private javax.swing.JLabel jlbQLV;
     private javax.swing.JLabel jlbQLX;
+    private javax.swing.JLabel jlbQLXRV;
+    private Admin.PanelRound jpnBCTK;
     private javax.swing.JPanel jpnMenu;
+    private javax.swing.JPanel jpnMenuSau;
     private Admin.PanelRound jpnQLHD;
     private Admin.PanelRound jpnQLKH;
     private Admin.PanelRound jpnQLKVL;
     private Admin.PanelRound jpnQLNV;
     private Admin.PanelRound jpnQLV;
     private Admin.PanelRound jpnQLX;
+    private Admin.PanelRound jpnQLXRV;
     private javax.swing.JPanel jpnRoot;
     private javax.swing.JPanel jpnView;
     // End of variables declaration//GEN-END:variables
