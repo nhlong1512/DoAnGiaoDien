@@ -44,7 +44,7 @@ public class QLKHJPanel extends javax.swing.JPanel {
     private DefaultTableModel model;
     private String[] columnHeaders = new String[]{"STT", "Mã KH", "Họ Tên", "Email", "Ngày Sinh",
         "Giới Tính", "Địa Chỉ", "Quê Quán", "Số Điện Thoại", "Mã Xe", "Tên Loại Xe", "Biển Số Xe",
-        "Số Dư", "Mật Khẩu"};
+        "Số Dư"};
 
     private TableRowSorter<TableModel> rowSorter = null;
 
@@ -55,6 +55,21 @@ public class QLKHJPanel extends javax.swing.JPanel {
         //Disable chuc nang cua Xoa va Sua khach hang
         btnCapNhat.setEnabled(false);
         btnXoa.setEnabled(false);
+        txtMaKH.setEnabled(false);
+        txtMaXe.setEnabled(false);
+        txtEmail.setEnabled(false);
+        disablePassword();
+        
+    }
+    
+    public void disablePassword(){
+        txtMatKhau.setVisible(false);
+        lblMatKhau.setVisible(false);
+    }
+    
+    public void enablePassword(){
+        txtMatKhau.setVisible(true);
+        lblMatKhau.setVisible(true);
     }
 
     public void resetRender() {
@@ -68,11 +83,10 @@ public class QLKHJPanel extends javax.swing.JPanel {
         txtLoaiXe.setText("");
         txtBienSoXe.setText("");
         txtSoDu.setText("");
-        txtMatKhau.setText("");
         //cleat Selection Group
         btnGroupGioiTinh.clearSelection();
         jdcNgaySinh.setDate(null);
-
+        
     }
 
     public void initTable() throws Exception {
@@ -200,7 +214,7 @@ public class QLKHJPanel extends javax.swing.JPanel {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         txtMaXe = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
+        lblMatKhau = new javax.swing.JLabel();
         txtMatKhau = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -215,12 +229,12 @@ public class QLKHJPanel extends javax.swing.JPanel {
         jPanel1.add(txtMaKH, new org.netbeans.lib.awtextra.AbsoluteConstraints(97, 20, 200, -1));
 
         jLabel3.setText("Email");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 57, 55, -1));
-        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(97, 54, 200, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 55, 20));
+        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 200, -1));
 
         jLabel4.setText("Địa chỉ");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 51, -1));
-        jPanel1.add(txtDiaChi, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 90, 200, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 51, 20));
+        jPanel1.add(txtDiaChi, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 200, -1));
 
         jLabel5.setText("Quê quán");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 96, 58, 20));
@@ -322,7 +336,7 @@ public class QLKHJPanel extends javax.swing.JPanel {
         jPanel1.add(txtLoaiXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 60, 185, -1));
 
         jLabel11.setText("Biển số xe");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 90, 60, 27));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 100, 60, 27));
         jPanel1.add(txtBienSoXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 100, 185, -1));
         jPanel1.add(txtSoDu, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 140, 185, -1));
 
@@ -339,8 +353,8 @@ public class QLKHJPanel extends javax.swing.JPanel {
         });
         jPanel1.add(txtMaXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 20, 185, -1));
 
-        jLabel14.setText("Mật khẩu");
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 60, 20));
+        lblMatKhau.setText("Mật khẩu");
+        jPanel1.add(lblMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 60, 20));
         jPanel1.add(txtMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, 188, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -359,16 +373,12 @@ public class QLKHJPanel extends javax.swing.JPanel {
 
     private void btnNhapMoiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNhapMoiMouseClicked
         resetRender();
+        enablePassword();
+        txtEmail.setEnabled(true);
     }//GEN-LAST:event_btnNhapMoiMouseClicked
 
     private void btnLuuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLuuMouseClicked
         StringBuilder sb = new StringBuilder();
-        if (txtMaKH.getText().equals("")) {
-            sb.append("Mã khách hàng không được để trống.");
-            txtMaKH.setBackground(Color.red);
-        } else {
-            txtMaKH.setBackground(Color.white);
-        }
         if (nguoidungtbl.getInfor(txtMaKH.getText()) != null) {
             sb.append("Mã khách hàng đã tồn tại.");
         }
@@ -394,17 +404,22 @@ public class QLKHJPanel extends javax.swing.JPanel {
             NguoiDungDTO nd = new NguoiDungDTO();
             KhachHangDTO kh = new KhachHangDTO();
             XeDTO xe = new XeDTO();
-            nd.setStrMaND(txtMaKH.getText());
+//            nd.setStrMaND(txtMaKH.getText());
+            String tempMaKH = nguoidungtbl.getMaxMaND();
+            System.out.println(tempMaKH);
+            nd.setStrMaND(tempMaKH);
+            String tempMaXe = xetbl.getMaxMaXe();
+            System.out.println(tempMaXe);
             nd.setStrEmail(txtEmail.getText());
             nd.setStrHoTen(txtHoTen.getText());
             nd.setStrDiaChi(txtDiaChi.getText());
             nd.setStrQueQuan(txtQueQuan.getText());
             nd.setStrSDT(txtSDT.getText());
             nd.setStrGioiTinh(rdbNam.isSelected() ? "Nam" : "Nu");
-            kh.setStrMaKH(txtMaKH.getText());
-            kh.setStrMaXe(txtMaXe.getText());
+            kh.setStrMaKH(tempMaKH);
+            kh.setStrMaXe(tempMaXe);
             kh.setLongSoDu(Integer.parseInt(txtSoDu.getText()));
-            xe.setStrMaXe(txtMaXe.getText());
+            xe.setStrMaXe(tempMaXe);
             xe.setStrBienSoXe(txtBienSoXe.getText());
             xe.setStrTenLoaiXe(txtLoaiXe.getText());
             if (jdcNgaySinh.getDate() != null) {
@@ -426,6 +441,12 @@ public class QLKHJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Error" + e.getMessage());
             e.printStackTrace();
         }
+        /**
+         * Sau khi lưu thì disablePassword
+         * Sau khi lưu thì email set về dạng setEnable(false)
+         */
+        disablePassword();
+        txtEmail.setEnabled(false);
     }//GEN-LAST:event_btnLuuMouseClicked
 
     private void btnCapNhatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCapNhatMouseClicked
@@ -561,6 +582,7 @@ public class QLKHJPanel extends javax.swing.JPanel {
     private void tblKhachHangMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKhachHangMousePressed
         // TODO add your handling code here:
         resetRender();
+        disablePassword();
         int selectedRow = tblKhachHang.getSelectedRow();
         if (selectedRow >= 0) {
 
@@ -583,7 +605,6 @@ public class QLKHJPanel extends javax.swing.JPanel {
                 txtBienSoXe.setText(xe.getStrBienSoXe());
             }
 
-            txtMatKhau.setText(nd.getStrMatKhau());
 
             if (nd.getDateNgSinh() != null) {
                 jdcNgaySinh.setDate(nd.getDateNgSinh());
@@ -611,7 +632,6 @@ public class QLKHJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -623,6 +643,7 @@ public class QLKHJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private com.toedter.calendar.JDateChooser jdcNgaySinh;
+    private javax.swing.JLabel lblMatKhau;
     private javax.swing.JRadioButton rdbNam;
     private javax.swing.JRadioButton rdbNu;
     private javax.swing.JTable tblKhachHang;
