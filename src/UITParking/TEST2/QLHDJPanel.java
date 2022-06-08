@@ -82,8 +82,8 @@ public class QLHDJPanel extends javax.swing.JPanel {
         txtMaHDMuaVe.setEnabled(false);
         txtMaHDChiTiet.setEnabled(false);
         txtMaKHMuaVe.setEnabled(false);
-        txtSLVeChiTiet.setEnabled(false);
-        txtTongTriGiaMuaVe.setEnabled(false);
+        txtSLVeChiTiet.setEditable(false);
+        txtTongTriGiaMuaVe.setEditable(false);
         txtMaLoaiVeChiTiet.setEnabled(false);
         jdcNgayHDMuaVe.setEnabled(false);
     }

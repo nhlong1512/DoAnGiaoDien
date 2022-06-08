@@ -56,10 +56,18 @@ public class QLVJPanel extends javax.swing.JPanel {
         initComponents();
         initTable();
         hoTroTimKiem();
-//        btnCapNhat.setEnabled(false);
-//        btnXoa.setEnabled(false);
-//        btnLuu.setEnabled(false);
-        txtMaLoaiVe.setEditable(false);
+        btnCapNhat.setEnabled(false);
+        btnXoa.setEnabled(false);
+        btnLuu.setEnabled(false);
+        btnNhapMoi.setEnabled(false);
+        txtMaLoaiVe.setEnabled(false);
+        txtMaKH.setEnabled(false);
+        txtMaVe.setEnabled(false);
+        txtTrangThai.setEditable(false);
+        jdcNgayKichHoat.setEnabled(false);
+        jdcNgayHetHan.setEnabled(false);
+        
+        
     }
 
     public void resetRender() {

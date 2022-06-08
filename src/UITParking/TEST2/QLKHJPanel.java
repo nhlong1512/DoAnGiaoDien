@@ -59,15 +59,15 @@ public class QLKHJPanel extends javax.swing.JPanel {
         txtMaXe.setEnabled(false);
         txtEmail.setEnabled(false);
         disablePassword();
-        
+
     }
-    
-    public void disablePassword(){
+
+    public void disablePassword() {
         txtMatKhau.setVisible(false);
         lblMatKhau.setVisible(false);
     }
-    
-    public void enablePassword(){
+
+    public void enablePassword() {
         txtMatKhau.setVisible(true);
         lblMatKhau.setVisible(true);
     }
@@ -80,13 +80,12 @@ public class QLKHJPanel extends javax.swing.JPanel {
         txtQueQuan.setText("");
         txtSDT.setText("");
         txtMaXe.setText("");
-        txtLoaiXe.setText("");
         txtBienSoXe.setText("");
         txtSoDu.setText("");
         //cleat Selection Group
         btnGroupGioiTinh.clearSelection();
         jdcNgaySinh.setDate(null);
-        
+
     }
 
     public void initTable() throws Exception {
@@ -108,8 +107,8 @@ public class QLKHJPanel extends javax.swing.JPanel {
             }
             //Cập nhật bảng
             model.addRow(new Object[]{index, nd.getStrMaND(), nd.getStrHoTen(), nd.getStrEmail(),
-                (nd.getDateNgSinh() != null ? formatDate(nd.getDateNgSinh()) : nd.getDateNgSinh()), 
-                 nd.getStrGioiTinh(), nd.getStrDiaChi(),
+                (nd.getDateNgSinh() != null ? formatDate(nd.getDateNgSinh()) : nd.getDateNgSinh()),
+                nd.getStrGioiTinh(), nd.getStrDiaChi(),
                 nd.getStrQueQuan(), nd.getStrSDT(), kh.getStrMaXe(), tenLoaiXe, bienSoXe, kh.getLongSoDu()});
             index++;
         }
@@ -207,7 +206,6 @@ public class QLKHJPanel extends javax.swing.JPanel {
         tblKhachHang = new javax.swing.JTable();
         jdcNgaySinh = new com.toedter.calendar.JDateChooser();
         jLabel10 = new javax.swing.JLabel();
-        txtLoaiXe = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         txtBienSoXe = new javax.swing.JTextField();
         txtSoDu = new javax.swing.JTextField();
@@ -216,6 +214,7 @@ public class QLKHJPanel extends javax.swing.JPanel {
         txtMaXe = new javax.swing.JTextField();
         lblMatKhau = new javax.swing.JLabel();
         txtMatKhau = new javax.swing.JTextField();
+        cbbLoaiXe = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -328,17 +327,10 @@ public class QLKHJPanel extends javax.swing.JPanel {
         jLabel10.setToolTipText("");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 60, 50, 19));
 
-        txtLoaiXe.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtLoaiXeActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txtLoaiXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 60, 185, -1));
-
         jLabel11.setText("Biển số xe");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 100, 60, 20));
-        jPanel1.add(txtBienSoXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 100, 185, -1));
-        jPanel1.add(txtSoDu, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 140, 185, -1));
+        jPanel1.add(txtBienSoXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 100, 190, -1));
+        jPanel1.add(txtSoDu, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 140, 190, -1));
 
         jLabel12.setText("Số dư");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 140, 52, 20));
@@ -351,11 +343,19 @@ public class QLKHJPanel extends javax.swing.JPanel {
                 txtMaXeActionPerformed(evt);
             }
         });
-        jPanel1.add(txtMaXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 20, 185, -1));
+        jPanel1.add(txtMaXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 20, 190, -1));
 
         lblMatKhau.setText("Mật khẩu");
         jPanel1.add(lblMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 60, 20));
         jPanel1.add(txtMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, 188, -1));
+
+        cbbLoaiXe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Xe đạp", "Xe máy" }));
+        cbbLoaiXe.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbbLoaiXeItemStateChanged(evt);
+            }
+        });
+        jPanel1.add(cbbLoaiXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 50, 190, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -420,8 +420,13 @@ public class QLKHJPanel extends javax.swing.JPanel {
             kh.setStrMaXe(tempMaXe);
             kh.setLongSoDu(Integer.parseInt(txtSoDu.getText()));
             xe.setStrMaXe(tempMaXe);
-            xe.setStrBienSoXe(txtBienSoXe.getText());
-            xe.setStrTenLoaiXe(txtLoaiXe.getText());
+            if (cbbLoaiXe.getSelectedItem().toString().equals("Xe đạp")) {
+                xe.setStrTenLoaiXe("Xe dap");
+                xe.setStrBienSoXe(null);
+            } else {
+                xe.setStrTenLoaiXe("Xe may");
+                xe.setStrBienSoXe(txtBienSoXe.getText());
+            }
             if (jdcNgaySinh.getDate() != null) {
                 nd.setDateNgSinh(new java.sql.Date(jdcNgaySinh.getDate().getTime()));
             } else {
@@ -442,8 +447,8 @@ public class QLKHJPanel extends javax.swing.JPanel {
             e.printStackTrace();
         }
         /**
-         * Sau khi lưu thì disablePassword
-         * Sau khi lưu thì email set về dạng setEnable(false)
+         * Sau khi lưu thì disablePassword Sau khi lưu thì email set về dạng
+         * setEnable(false)
          */
         disablePassword();
         txtEmail.setEnabled(false);
@@ -601,10 +606,14 @@ public class QLKHJPanel extends javax.swing.JPanel {
             txtSoDu.setText(String.valueOf(kh.getLongSoDu()));
             if (kh.getStrMaXe() != null) {
                 XeDTO xe = xetbl.getInfor(kh.getStrMaXe());
-                txtLoaiXe.setText(xe.getStrTenLoaiXe());
+                if (xe.getStrTenLoaiXe().equals("Xe dap")) {
+                    cbbLoaiXe.setSelectedItem("Xe đạp");
+                }
+                if (xe.getStrTenLoaiXe().equals("Xe may")) {
+                    cbbLoaiXe.setSelectedItem("Xe máy");
+                }
                 txtBienSoXe.setText(xe.getStrBienSoXe());
             }
-
 
             if (nd.getDateNgSinh() != null) {
                 jdcNgaySinh.setDate(nd.getDateNgSinh());
@@ -612,13 +621,18 @@ public class QLKHJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_tblKhachHangMousePressed
 
-    private void txtLoaiXeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLoaiXeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtLoaiXeActionPerformed
-
     private void txtMaXeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaXeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMaXeActionPerformed
+
+    private void cbbLoaiXeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbLoaiXeItemStateChanged
+        // TODO add your handling code here:
+        if (cbbLoaiXe.getSelectedItem().toString().equals("Xe đạp")) {
+            txtBienSoXe.setEnabled(false);
+        } else {
+            txtBienSoXe.setEnabled(true);
+        }
+    }//GEN-LAST:event_cbbLoaiXeItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -628,6 +642,7 @@ public class QLKHJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnNhapMoi;
     private javax.swing.JButton btnTimKiem;
     private javax.swing.JButton btnXoa;
+    private javax.swing.JComboBox<String> cbbLoaiXe;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -651,7 +666,6 @@ public class QLKHJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtDiaChi;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtHoTen;
-    private javax.swing.JTextField txtLoaiXe;
     private javax.swing.JTextField txtMaKH;
     private javax.swing.JTextField txtMaXe;
     private javax.swing.JTextField txtMatKhau;
