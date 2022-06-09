@@ -17,12 +17,12 @@ import java.util.logging.Logger;
  *
  * @author ADMIN
  */
-public class MainForm extends javax.swing.JFrame {
+public class ManHinhMainAdmin extends javax.swing.JFrame {
 
     /**
      * Creates new form MainForm
      */
-    public MainForm() throws Exception {
+    public ManHinhMainAdmin() throws Exception {
         initComponents();
         setLocationRelativeTo(null);
         setIconimage();
@@ -589,7 +589,7 @@ public class MainForm extends javax.swing.JFrame {
         try {
             _homepageAdmin = new HomepageAdmin();
         } catch (Exception ex) {
-            Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManHinhMainAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
         _homepageAdmin.show();
         dispose();
@@ -601,7 +601,7 @@ public class MainForm extends javax.swing.JFrame {
         try {
             _homepageAdmin = new HomepageAdmin();
         } catch (Exception ex) {
-            Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManHinhMainAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
         _homepageAdmin.show();
         dispose();
@@ -648,23 +648,24 @@ public class MainForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManHinhMainAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManHinhMainAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManHinhMainAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManHinhMainAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new MainForm().setVisible(true);
+                    new ManHinhMainAdmin().setVisible(true);
                 } catch (Exception ex) {
-                    Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ManHinhMainAdmin.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });

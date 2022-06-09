@@ -20,7 +20,7 @@ import static UITParking.GUI.InitPublic.getDateThoiGianThuc;
 import static UITParking.GUI.InitPublic.getDateThoiGianVeThang;
 import static UITParking.GUI.InitPublic.getDateThoiGianVeTuan;
 import static UITParking.GUI.InitPublic.sysdate;
-import static UITParking.GUI.login.pMaND;
+import static UITParking.GUI.DangNhap.pMaND;
 import java.awt.Color;
 import java.awt.Toolkit;
 import java.text.ParseException;

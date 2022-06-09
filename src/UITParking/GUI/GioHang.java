@@ -20,7 +20,7 @@ import static UITParking.GUI.MuaVe.slVe25000Dong;
 import static UITParking.GUI.MuaVe.slVe95000Dong;
 import static UITParking.GUI.MuaVe.slVeGioHang;
 import static UITParking.GUI.NapTien.tempTien;
-import static UITParking.GUI.login.pMaND;
+import static UITParking.GUI.DangNhap.pMaND;
 import java.awt.Color;
 import static java.awt.GridBagConstraints.BOTH;
 import java.util.logging.Level;

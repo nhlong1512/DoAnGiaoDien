@@ -12,8 +12,8 @@ import UITParking.DTO.KhachHangDTO;
 import UITParking.DTO.NguoiDungDTO;
 import UITParking.DTO.XeDTO;
 import static UITParking.GUI.InitPublic.getConvertYYYYMMDD;
-import static UITParking.GUI.login.pHoTen;
-import static UITParking.GUI.login.pMaND;
+import static UITParking.GUI.DangNhap.pHoTen;
+import static UITParking.GUI.DangNhap.pMaND;
 import java.awt.Color;
 import java.awt.Toolkit;
 import java.text.ParseException;
@@ -26,10 +26,10 @@ import javax.swing.JOptionPane;
  *
  * @author Administrator
  */
-public class AccountCustomer extends javax.swing.JFrame {
+public class CapNhatThongTinKH extends javax.swing.JFrame {
 
     /**
-     * Creates new form AccountCustomer
+     * Creates new form CapNhatThongTinKH
      */
     NguoiDungBUS nguoidungtbl = new NguoiDungBUS();
     NguoiDungDTO nd = nguoidungtbl.getInfor(pMaND);
@@ -37,7 +37,7 @@ public class AccountCustomer extends javax.swing.JFrame {
     XeBUS xetbl = new XeBUS();
     KhachHangDTO kh = khachhangtbl.getInfor(nd.getStrMaND());
 
-    public AccountCustomer() throws Exception {
+    public CapNhatThongTinKH() throws Exception {
         initComponents();
         setIconImage();
         NguoiDungBUS nguoidungtbl = new NguoiDungBUS();
@@ -439,7 +439,7 @@ public class AccountCustomer extends javax.swing.JFrame {
 
     private void btnThoatAccountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThoatAccountMouseClicked
         // TODO add your handling code here:
-        login _login = new login();
+        DangNhap _login = new DangNhap();
         _login.show();
         dispose();
     }//GEN-LAST:event_btnThoatAccountMouseClicked
@@ -451,7 +451,7 @@ public class AccountCustomer extends javax.swing.JFrame {
         try {
             _homepage = new Homepage();
         } catch (Exception ex) {
-            Logger.getLogger(AccountCustomer.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CapNhatThongTinKH.class.getName()).log(Level.SEVERE, null, ex);
         }
         _homepage.show();
         dispose();
@@ -489,21 +489,21 @@ public class AccountCustomer extends javax.swing.JFrame {
             try {
                 maxMaXe = xetbl.getMaxMaXe();
             } catch (Exception ex) {
-                Logger.getLogger(AccountCustomer.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(CapNhatThongTinKH.class.getName()).log(Level.SEVERE, null, ex);
             }
             
             xe.setStrMaXe(maxMaXe);
             try {
                 xetbl.them(xe);
             } catch (Exception ex) {
-                Logger.getLogger(AccountCustomer.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(CapNhatThongTinKH.class.getName()).log(Level.SEVERE, null, ex);
             }
             //Cập nhật mã xe cho bảng khách hàng.
             kh.setStrMaXe(maxMaXe);
             try {
                 khachhangtbl.sua(kh);
             } catch (Exception ex) {
-                Logger.getLogger(AccountCustomer.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(CapNhatThongTinKH.class.getName()).log(Level.SEVERE, null, ex);
             }
             
         }
@@ -521,7 +521,7 @@ public class AccountCustomer extends javax.swing.JFrame {
             try {
                 xetbl.sua(xe);
             } catch (Exception ex) {
-                Logger.getLogger(AccountCustomer.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(CapNhatThongTinKH.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 
@@ -600,23 +600,24 @@ public class AccountCustomer extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AccountCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CapNhatThongTinKH.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AccountCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CapNhatThongTinKH.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AccountCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CapNhatThongTinKH.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AccountCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CapNhatThongTinKH.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new AccountCustomer().setVisible(true);
+                    new CapNhatThongTinKH().setVisible(true);
                 } catch (Exception ex) {
-                    Logger.getLogger(AccountCustomer.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(CapNhatThongTinKH.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });

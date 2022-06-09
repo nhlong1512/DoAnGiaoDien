@@ -18,14 +18,14 @@ import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import java.awt.Color;
 import java.util.ArrayList;
-import UITParking.GUI.login;
+import UITParking.GUI.DangNhap;
 import java.awt.Toolkit;
 
 /**
  *
  * @author @author Pham Hoang Ngoc Anh
  */
-public class signup extends javax.swing.JFrame {
+public class DangKy extends javax.swing.JFrame {
 
     Connection conn = null;
     PreparedStatement ps = null, ps1 = null, ps2 = null;
@@ -34,7 +34,7 @@ public class signup extends javax.swing.JFrame {
     /**
      * Creates new form signup
      */
-    public signup() {
+    public DangKy() {
         initComponents();
         setIconImage();
     }
@@ -284,7 +284,7 @@ public class signup extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             String a = "";
-            conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "hr", "hr");
+            conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "UITParking", "uitparking");
             
             //Thực thi insert dữ liệu người dùng từ form đăng ký
             String sql = "INSERT INTO NGUOIDUNG (MaND, Email, MatKhau, HoTen, VaiTro) VALUES (?, ?, ?, ?, ?)";
@@ -307,29 +307,29 @@ public class signup extends javax.swing.JFrame {
             boolean isvalid = emailExample.validate(txtEmailSignUp.getText());
             //Kiểm tra thông tin không được bỏ trống.
             if (txtEmailSignUp.getText().equals("")) {
-                sb.append("Please Enter Your User Name!");
+                sb.append("Vui lòng nhập tên đăng nhập!");
             } else if (txtFirstNameSignUp.getText().equals("")) {
-                sb.append("Please Enter Your FirstName!");
+                sb.append("Vui lòng nhập FirstName!");
             } else if (txtLastNameSignUp.getText().equals("")) {
-                sb.append("Please Enter Your LastName!");
+                sb.append("Vui lòng nhập LastName!");
             } else if (new String(txtConfirmPasswordSignUp.getPassword()).equals("")) {
-                sb.append("Please Enter Your Password!");
+                sb.append("Vui lòng nhập mật khẩu xác nhận!");
             } //Kiểm tra nếu mật khẩu bé hơn 6 kí tự thì thông báo 
             //Mật khẩu phải ít nhất 6 kí tự
             else if (new String(txtConfirmPasswordSignUp.getPassword()).length() < 6) {
-                sb.append("Password must be at least 6 characters.");
+                sb.append("Mật khẩu phải từ 6 kí tự trở lên!");
             } else if (new String(txtPasswordSignUp.getPassword()).equals("")) {
-                sb.append("Please Enter Your Confirm Password!");
+                sb.append("Vui lòng nhập mật khẩu!");
             } //Kiểm tra xem mật khẩu confirm có trùng khớp với mật khẩu ban đầu.
             //Nếu mật khẩu không trùng khớp, thông báo ra người dùng.
             else if (!new String(txtConfirmPasswordSignUp.getPassword()).equals(new String(txtPasswordSignUp.getPassword()))) {
-                sb.append("Invalid Confirm Password");
+                sb.append("Mật khẩu xác nhận không chính xác");
             } //Nếu email không hợp lệ thông báo ra người dùng.
             else if (!isvalid) {
-                sb.append("Invalid Email");
+                sb.append("Email không hợp lệ!");
             } else if (rs2.next()) {
                 if (rs2.getInt("countEmail") > 0) {
-                    sb.append("Email Already Exists");
+                    sb.append("Email đã tồn tại!");
                 }
             }
 
@@ -363,10 +363,10 @@ public class signup extends javax.swing.JFrame {
             ps.setString(1, "ND" + id + "");
             ps.setInt(2, 0);
             rs = ps.executeQuery();
-            JOptionPane.showMessageDialog(this, "Sign Up Successfully");
+            JOptionPane.showMessageDialog(this, "Đăng ký thành công!");
 //            Homepage _homepageCustomer = new Homepage();
 //            _homepageCustomer.show();
-            login _login = new login();
+            DangNhap _login = new DangNhap();
             _login.show();
             dispose();
 
@@ -376,7 +376,7 @@ public class signup extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSignUpActionPerformed
 
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
-        login _login = new login();
+        DangNhap _login = new DangNhap();
         _login.show();
         dispose();
     }//GEN-LAST:event_jLabel9MouseClicked
@@ -461,20 +461,21 @@ public class signup extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(signup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DangKy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(signup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DangKy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(signup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DangKy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(signup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DangKy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new signup().setVisible(true);
+                new DangKy().setVisible(true);
             }
         });
     }

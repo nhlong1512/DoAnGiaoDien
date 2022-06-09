@@ -8,15 +8,15 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
-import static UITParking.GUI.SentEmail.pEmailSentEmail;
-import UITParking.GUI.login;
+import static UITParking.GUI.EmailForm.pEmailSentEmail;
+import UITParking.GUI.DangNhap;
 import java.awt.Color;
 import java.awt.Toolkit;
 /**
  *
  * @author @author Pham Hoang Ngoc Anh
  */
-public class modifypassword extends javax.swing.JFrame {
+public class ThayDoiMatKhau extends javax.swing.JFrame {
  Connection conn = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
@@ -24,7 +24,7 @@ public class modifypassword extends javax.swing.JFrame {
     /**
      * Creates new form modifypassword
      */
-    public modifypassword() {
+    public ThayDoiMatKhau() {
         initComponents();
         setIconImage();
     }
@@ -127,12 +127,12 @@ public class modifypassword extends javax.swing.JFrame {
     private void btnSubmitModifiedPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubmitModifiedPasswordMouseClicked
         // TODO add your handling code here:
           try {
-            conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "hr", "hr");
+            conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "UITParking", "uitparking");
             String sql = "UPDATE NGUOIDUNG SET MatKhau =  ? WHERE Email = ?";
             ps = conn.prepareStatement(sql);
             StringBuilder sb = new StringBuilder();
             if (!new String(txtNewPasswordModified.getPassword()).equals(new String(txtConfirmPasswordModified.getPassword()))) {
-                sb.append("Invalid Confirm Password");
+                sb.append("Mật khẩu xác nhận không hợp lệ");
             }
             if (sb.length() > 0) {
                 JOptionPane.showMessageDialog(this, sb);
@@ -141,8 +141,8 @@ public class modifypassword extends javax.swing.JFrame {
             ps.setString(1, new String(txtNewPasswordModified.getPassword()));
             ps.setString(2, pEmailSentEmail);
             rs = ps.executeQuery();
-            JOptionPane.showMessageDialog(this, "Modify Password Successfully!");
-            login _login = new login();
+            JOptionPane.showMessageDialog(this, "Thay đổi mật khẩu thành công!");
+            DangNhap _login = new DangNhap();
             _login.show();
             dispose();
         } catch (Exception ex) {
@@ -176,20 +176,21 @@ public class modifypassword extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(modifypassword.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ThayDoiMatKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(modifypassword.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ThayDoiMatKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(modifypassword.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ThayDoiMatKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(modifypassword.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ThayDoiMatKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new modifypassword().setVisible(true);
+                new ThayDoiMatKhau().setVisible(true);
             }
         });
     }

@@ -5,7 +5,7 @@
 package UITParking.GUI;
 
 import java.awt.*;
-import UITParking.GUI.OTPform;
+import UITParking.GUI.OTPForm;
 import javax.swing.JOptionPane;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -21,7 +21,7 @@ import java.util.Properties;
  *
  * @author @author Pham Hoang Ngoc Anh
  */
-public class SentEmail extends javax.swing.JFrame {
+public class EmailForm extends javax.swing.JFrame {
 
     Connection conn = null;
     PreparedStatement ps = null;
@@ -30,7 +30,7 @@ public class SentEmail extends javax.swing.JFrame {
     /**
      * Creates new form SentEmail
      */
-    public SentEmail() {
+    public EmailForm() {
         initComponents();
         setIconImage();
 
@@ -206,7 +206,7 @@ public class SentEmail extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEmailModifiedActionPerformed
 
     private void btnBackFormEmailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBackFormEmailMouseClicked
-        login _login = new login();
+        DangNhap _login = new DangNhap();
         _login.show();
         dispose();
     }//GEN-LAST:event_btnBackFormEmailMouseClicked
@@ -218,13 +218,13 @@ public class SentEmail extends javax.swing.JFrame {
     private void btnGetOTPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGetOTPMouseClicked
         // TODO add your handling code here:
         try {
-            conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "hr", "hr");
+            conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "UITParking", "uitparking");
             String sql = "SELECT * FROM NGUOIDUNG WHERE Email = ?";
             ps = conn.prepareStatement(sql);
             ps.setString(1, txtEmailModified.getText());
             rs = ps.executeQuery();
             if (rs.next()) {
-                JOptionPane.showMessageDialog(null, "Email chinh xac, vui kiem tra gmail");
+                JOptionPane.showMessageDialog(null, "Email chính xác, vui lòng kiểm tra Email");
 
                 pRandomOTP = randomOTP();
                 pEmailSentEmail = txtEmailModified.getText();
@@ -259,18 +259,16 @@ public class SentEmail extends javax.swing.JFrame {
 
                     Transport.send(message);
 
-                    System.out.println("Done");
-
                 } catch (MessagingException e) {
                     e.printStackTrace();
                 }
 
-                OTPform _OTPform = new OTPform();
+                OTPForm _OTPform = new OTPForm();
                 _OTPform.show();
                 dispose();
 
             } else {
-                JOptionPane.showMessageDialog(null, "Email Address Does Not Exist!");
+                JOptionPane.showMessageDialog(null, "Email không tồn tại!");
                 txtEmailModified.setText("");
             }
 
@@ -304,14 +302,15 @@ public class SentEmail extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SentEmail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmailForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SentEmail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmailForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SentEmail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmailForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SentEmail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmailForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
@@ -323,21 +322,23 @@ public class SentEmail extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SentEmail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmailForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SentEmail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmailForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SentEmail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmailForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SentEmail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmailForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SentEmail().setVisible(true);
+                new EmailForm().setVisible(true);
             }
         });
     }

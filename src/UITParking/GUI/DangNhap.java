@@ -18,8 +18,8 @@ import java.sql.ResultSet;
 import java.sql.SQLDataException;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import UITParking.GUI.signup;
-import UITParking.GUI.SentEmail;
+import UITParking.GUI.DangKy;
+import UITParking.GUI.EmailForm;
 import java.awt.Toolkit;
 import javax.swing.JPasswordField;
 
@@ -27,7 +27,7 @@ import javax.swing.JPasswordField;
  *
  * @author Tran Trong Tin
  */
-public class login extends javax.swing.JFrame {
+public class DangNhap extends javax.swing.JFrame {
 
     Connection conn = null;
     PreparedStatement ps = null;
@@ -39,7 +39,7 @@ public class login extends javax.swing.JFrame {
     /**
      * Creates new form login
      */
-    public login() {
+    public DangNhap() {
         initComponents();
         txtusername.setBackground(new java.awt.Color(0, 0, 0, 1));
         txtpassword.setBackground(new java.awt.Color(0, 0, 0, 1));
@@ -285,7 +285,7 @@ public class login extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         try {
-            conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "hr", "hr");
+            conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "UITParking", "uitparking");
             String sql = "SELECT * FROM NGUOIDUNG WHERE Email = ? AND MatKhau = ?";
             ps = conn.prepareStatement(sql);
             ps.setString(1, txtusername.getText());
@@ -299,7 +299,7 @@ public class login extends javax.swing.JFrame {
             if (rs.next()) {
                 //Link đến giao diện nhân viên
                 if (rs.getString("VaiTro").equals("Nhan vien")) {
-                    JOptionPane.showMessageDialog(null, "Login Successfully");
+                    JOptionPane.showMessageDialog(null, "Đăng nhập thành công!");
                     //Lưu Họ tên đăng nhập với biến pHoTen
                     pHoTen = rs.getString("HoTen");
                     pMaND = rs.getString("MaND");
@@ -310,7 +310,7 @@ public class login extends javax.swing.JFrame {
 
                 //Link đến giao diện Khách hàng
                 if (rs.getString("VaiTro").equals("Khach hang")) {
-                    JOptionPane.showMessageDialog(null, "Login Successfully");
+                    JOptionPane.showMessageDialog(null, "Đăng nhập thành công!");
                     //Lưu Họ tên đăng nhập với biến pHoTen
                     pHoTen = rs.getString("HoTen");
                     pMaND = rs.getString("MaND");
@@ -320,7 +320,7 @@ public class login extends javax.swing.JFrame {
                     dispose();
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "Invalid Username Or Password");
+                JOptionPane.showMessageDialog(null, "Tài khoản hoặc mật khẩu không chính xác!");
                 txtusername.setText("");
                 txtpassword.setText("");
             }
@@ -369,7 +369,7 @@ public class login extends javax.swing.JFrame {
     private void lblSignUpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSignUpMouseClicked
         // TODO add your handling code here:
         try {
-            signup _signup = new signup();
+            DangKy _signup = new DangKy();
             _signup.show();
             dispose();
 
@@ -385,7 +385,7 @@ public class login extends javax.swing.JFrame {
 
     private void lblForgetPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblForgetPasswordMouseClicked
         try {
-            SentEmail _sentEmail = new SentEmail();
+            EmailForm _sentEmail = new EmailForm();
             _sentEmail.show();
             dispose();
         } catch (Exception e) {
@@ -417,19 +417,20 @@ public class login extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new login().setVisible(true);
+            new DangNhap().setVisible(true);
         });
     }
 

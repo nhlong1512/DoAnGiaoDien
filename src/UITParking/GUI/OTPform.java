@@ -10,20 +10,20 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 import javax.swing.JOptionPane;
-import static UITParking.GUI.SentEmail.randomOTP;
-import UITParking.GUI.modifypassword;
-import static UITParking.GUI.SentEmail.pRandomOTP;
+import static UITParking.GUI.EmailForm.randomOTP;
+import UITParking.GUI.ThayDoiMatKhau;
+import static UITParking.GUI.EmailForm.pRandomOTP;
 import java.awt.Toolkit;
 /**
  *
  * @author Pham Hoang Ngoc Anh
  */
-public class OTPform extends javax.swing.JFrame {
+public class OTPForm extends javax.swing.JFrame {
 
     /**
      * Creates new form OTPform
      */
-    public OTPform() {
+    public OTPForm() {
         initComponents();
         setIconImage();
 
@@ -194,7 +194,7 @@ public class OTPform extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void btnBackOTPFormMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBackOTPFormMouseClicked
-        SentEmail _sentEmail = new SentEmail();
+        EmailForm _sentEmail = new EmailForm();
         _sentEmail.show();
         dispose();
     }//GEN-LAST:event_btnBackOTPFormMouseClicked
@@ -207,7 +207,7 @@ public class OTPform extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (Integer.parseInt(txtOTPModified.getText()) == pRandomOTP) {
             JOptionPane.showMessageDialog(null, "OTP chinh xac!");
-            modifypassword _modifypassword = new modifypassword();
+            ThayDoiMatKhau _modifypassword = new ThayDoiMatKhau();
             _modifypassword.show();
             dispose();
         }else{
@@ -241,20 +241,21 @@ public class OTPform extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(OTPform.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(OTPForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(OTPform.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(OTPForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(OTPform.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(OTPForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(OTPform.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(OTPForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new OTPform().setVisible(true);
+                new OTPForm().setVisible(true);
             }
         });
     }
