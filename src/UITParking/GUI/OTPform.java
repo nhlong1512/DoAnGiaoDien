@@ -206,12 +206,12 @@ public class OTPForm extends javax.swing.JFrame {
     private void btnVerifyOTPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVerifyOTPMouseClicked
         // TODO add your handling code here:
         if (Integer.parseInt(txtOTPModified.getText()) == pRandomOTP) {
-            JOptionPane.showMessageDialog(null, "OTP chinh xac!");
+            JOptionPane.showMessageDialog(null, "OTP chính xác!");
             ThayDoiMatKhau _modifypassword = new ThayDoiMatKhau();
             _modifypassword.show();
             dispose();
         }else{
-            JOptionPane.showMessageDialog(null, "Ma OTP khong hop le!");
+            JOptionPane.showMessageDialog(null, "Mã OTP không hợp lệ!");
         }
 
     }//GEN-LAST:event_btnVerifyOTPMouseClicked

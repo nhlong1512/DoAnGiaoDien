@@ -229,8 +229,12 @@ public class EmailForm extends javax.swing.JFrame {
                 pRandomOTP = randomOTP();
                 pEmailSentEmail = txtEmailModified.getText();
                 final String username = "uitparking@gmail.com";
-                final String password = "UITParking2052~";
+//                final String password = "UITParking2052~";
+                final String password = "yrucdkjbgelmssic";
 
+                //Khi bị lỗi hãy dùng 1 trong 2 mật khẩu dưới đây
+                //yrucdkjbgelmssic
+                //czfcrmdzneubopye
                 Properties prop = new Properties();
                 prop.put("mail.smtp.host", "smtp.gmail.com");
                 prop.put("mail.smtp.port", "587");
