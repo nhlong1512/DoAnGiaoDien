@@ -410,8 +410,8 @@ public class QLXRVJPanel extends javax.swing.JPanel {
         ArrayList<VeDTO> list_VeTV = vetbl.getList_VeTV(txtMaKhachHang.getText());
         for (VeDTO ve : list_VeTV) {
             if ((ve.getStrMaLoaiVe().equals("LVE01") || ve.getStrMaLoaiVe().equals("LVE02"))
-                    && ve.getStrTrangThai().equals("Đang sử dụng")) {
-                ve.setStrTrangThai("Đã hết hạn");
+                    && ve.getStrTrangThai().equals("Dang su dung")) {
+                ve.setStrTrangThai("Da het han");
                 try {
                     vetbl.sua(ve);
                 } catch (Exception ex) {
@@ -472,7 +472,7 @@ public class QLXRVJPanel extends javax.swing.JPanel {
         //Kiểm tra nếu có vé tuần hoặc tháng đang sử dụng thì cho phép vào bãi
         for (VeDTO ve : list_VeTV) {
             if ((ve.getStrMaLoaiVe().equals("LVE03") || ve.getStrMaLoaiVe().equals("LVE04"))
-                    && ve.getStrTrangThai().equals("Đang sử dụng")) {
+                    && ve.getStrTrangThai().equals("Dang su dung")) {
                 capNhatLaiTable();
                 JOptionPane.showMessageDialog(this, "Xe vào bãi thành công");
                 /**
@@ -536,9 +536,9 @@ public class QLXRVJPanel extends javax.swing.JPanel {
                  * trạng thái sang đang sử dụng và return.
                  */
                 if (ve.getStrMaLoaiVe().equals("LVE02")
-                        && ve.getStrTrangThai().equals("Chưa kích hoạt")) {
+                        && ve.getStrTrangThai().equals("Chua kich hoat")) {
                     System.out.println(ve);
-                    ve.setStrTrangThai("Đang sử dụng");
+                    ve.setStrTrangThai("Dang su dung");
                     try {
                         vetbl.sua(ve);
                     } catch (Exception ex) {
@@ -600,9 +600,9 @@ public class QLXRVJPanel extends javax.swing.JPanel {
                  * trạng thái sang đang sử dụng và return.
                  */
                 if (ve.getStrMaLoaiVe().equals("LVE01")
-                        && ve.getStrTrangThai().equals("Chưa kích hoạt")) {
+                        && ve.getStrTrangThai().equals("Chua kich hoat")) {
                     System.out.println(ve);
-                    ve.setStrTrangThai("Đang sử dụng");
+                    ve.setStrTrangThai("Dang su dung");
                     try {
                         vetbl.sua(ve);
                     } catch (Exception ex) {
