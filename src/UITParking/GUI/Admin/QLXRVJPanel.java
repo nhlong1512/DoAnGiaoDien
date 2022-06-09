@@ -506,7 +506,6 @@ public class QLXRVJPanel extends javax.swing.JPanel {
                     ctrv.setStrMaCTRaVao(maCTRaVaoTemp);
                     ctrv.setDateThoiGianVao(sysdate());
                     ctrv.setDateThoiGianRa(null);
-                    ctrv.setStrMaNV("ND011");
                     ctrv.setStrMaKH(txtMaKhachHang.getText());
                     ctrv.setStrMaXe(xe.getStrMaXe());
                     ctrv.setStrMaTheKVL(null);
@@ -576,7 +575,6 @@ public class QLXRVJPanel extends javax.swing.JPanel {
                         ctrv.setStrMaCTRaVao(maCTRaVaoTemp);
                         ctrv.setDateThoiGianVao(sysdate());
                         ctrv.setDateThoiGianRa(null);
-                        ctrv.setStrMaNV("ND011");
                         ctrv.setStrMaKH(txtMaKhachHang.getText());
                         ctrv.setStrMaXe(xe.getStrMaXe());
                         ctrv.setStrMaTheKVL(null);
@@ -640,7 +638,6 @@ public class QLXRVJPanel extends javax.swing.JPanel {
                         ctrv.setStrMaCTRaVao(maCTRaVaoTemp);
                         ctrv.setDateThoiGianVao(sysdate());
                         ctrv.setDateThoiGianRa(null);
-                        ctrv.setStrMaNV("ND011");
                         ctrv.setStrMaKH(txtMaKhachHang.getText());
                         ctrv.setStrMaXe(xe.getStrMaXe());
                         ctrv.setStrMaTheKVL(null);
@@ -759,7 +756,6 @@ public class QLXRVJPanel extends javax.swing.JPanel {
             ctrv.setStrMaCTRaVao(maCTRaVaoTemp);
             ctrv.setDateThoiGianVao(sysdate());
             ctrv.setDateThoiGianRa(null);
-            ctrv.setStrMaNV("ND011");
             ctrv.setStrMaKH(null);
             ctrv.setStrMaXe(xe.getStrMaXe());
             ctrv.setStrMaTheKVL(kvl.getStrMaTheKVL());
@@ -809,7 +805,8 @@ public class QLXRVJPanel extends javax.swing.JPanel {
                     try {
                         ctrvtbl.sua(ctrv);
                     } catch (Exception ex) {
-                        Logger.getLogger(QLXRVJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                        JOptionPane.showMessageDialog(this, "Thời gian ra phải lớn hơn thời gian vào ít nhất 30s");
+                        return;
                     }
                     JOptionPane.showMessageDialog(this, "Xe ra bãi thành công");
                 }
