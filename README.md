@@ -1,4 +1,4 @@
-# Quản lý bãi giữ xe trường UIT - UITParking
+# Quản lý bãi giữ xe trường Đại học Công nghệ Thông Tin - UITParking
 ------------
 ![Image1 of UITParking](./src/icon/backgroundForReadme2.webp "Back ground for Readme")
 ## Lời cảm ơn
