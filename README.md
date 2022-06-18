@@ -5,7 +5,6 @@
 ------------
 Lời đầu tiên, SCD Team xin gửi lời cảm ơn đến Thầy **Nguyễn Minh Nhựt** – giảng viên môn Lập trình Java đã tận tình giúp đỡ, trực tiếp chỉ bảo, hướng dẫn và đóng góp những ý kiến quý báu giúp nhóm chúng em hoàn thành được đồ án môn học của mình.
 
-
 ## Giới thiệu đồ án
 ------------
 Sinh viên tại trường Đại học Công nghệ Thông tin (UIT) sau một khoảng thời gian dài học online vì đại dịch Covid-19 và bắt đầu quay lại trường để học trực tiếp nên lượng xe của sinh viên và giáo viên ngày càng nhiều. Vì vậy, bãi giữ xe của trường đóng vai trò quan trọng trong việc phục vụ nhu cầu gửi xe. Nhưng do còn nhiều khó khăn trong công tác quản lý doanh thu, số lượt xe ra vào mỗi ngày, mỗi tháng và các thao tác như chuẩn bị tiền lẻ và đợi thối tiền còn thủ công và khá thô sơ nên dễ dẫn đến tình trạng ùn tắc, kẹt xe. Để khắc phục những vấn đề trên, chúng ta cần có những giải pháp về công nghệ, thiết kế để tạo ra hệ thống giữ xe hiện đại hơn, tiện lợi hơn, an toàn và thông minh hơn.
@@ -22,15 +21,15 @@ Quản lý doanh thu gửi xe trong 1 ngày/tháng/năm.
 * Quản lý được số lượng vé lượt/tuần/tháng bán ra.
 * Quản lý thông tin hóa đơn ở mỗi lần gửi xe.
 * Thông tin lưu trữ sao cho việc kết xuất dữ liệu được nhanh chóng, hiệu quả. 
-Hệ thống hỗ trợ phân quyền người dùng, đảm bảo tính bảo mật, an toàn của hệ thống.
+* Hệ thống hỗ trợ phân quyền người dùng, đảm bảo tính bảo mật, an toàn của hệ thống.
 ## Nhóm SCDTeam
 ------------
-| MSSV | Họ tên | SĐT | Facebook| Ghi chú |
+| MSSV | Họ tên | SĐT | Facebook| Đánh giá %|
 |--------------|-------|------|-------|------|
-| 20520811 | Trần Trọng Tín | 0836346035 | [Trọng Tín](https://www.facebook.com/trongtin112)  | Nhóm trưởng|
-| 20521569 | Nguyễn Hữu Long | 0775504619 | [Long Nguyễn](https://www.facebook.com/nui.gaxuong)  | |
-| 20520881 | Phạm Hoàng Ngọc Anh | 0327486284 | [Phạm Hoàng Ngọc Nấm](https://www.facebook.com/phamhoangngocanh0406) | |
-| 20521083 | Trần Thị Ngọc Ánh | 0363961281 | [Ngọc Ánh](https://www.facebook.com/Yinggg.TTNA) | |
+| 20520811 | Trần Trọng Tín | 0836346035 | [Trọng Tín](https://www.facebook.com/trongtin112)  | 25 |
+| 20521569 | Nguyễn Hữu Long | 0775504619 | [Long Nguyễn](https://www.facebook.com/nui.gaxuong)  | 25 |
+| 20520881 | Phạm Hoàng Ngọc Anh | 0327486284 | [Phạm Hoàng Ngọc Nấm](https://www.facebook.com/phamhoangngocanh0406) | 25 |
+| 20521083 | Trần Thị Ngọc Ánh | 0363961281 | [Ngọc Ánh](https://www.facebook.com/Yinggg.TTNA) | 25 |
 
 ## Các chức năng chính trong ứng dụng
 ----------------
@@ -53,7 +52,6 @@ Hệ thống hỗ trợ phân quyền người dùng, đảm bảo tính bảo m
 > * Tra cứu hóa đơn
 > * Tra cứu vé
 > * Báo cáo thống kê
-
 
 ### Các chức năng, công nghệ mới (ngoài phạm vi môn học)
 > * Sử dụng Regex để kiểm tra các ràng buộc đối với các trường dữ liệu, tối ưu tìm kiếm.
