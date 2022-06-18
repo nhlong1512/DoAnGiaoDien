@@ -48,6 +48,7 @@ Nhận biết được sự cần thiết trong việc quản lý bãi giữ xe 
 > * Sử dụng Regex để kiểm tra các ràng buộc đối với các trường dữ liệu, tối ưu tìm kiếm.
 > * Sử dụng JavaMail để thực hiện việc gửi mail tự động khi người dùng có nhu cầu khôi phục lại mật khẩu.
 > * Đóng gói dự án thành file Jar với các thư viện đi cùng.
+> * Import dữ liệu từ file excel
 
 ## Các ngôn ngữ, công nghệ sử dụng
 > * Ngôn ngữ sử dụng: `Java`
