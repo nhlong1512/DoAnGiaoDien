@@ -58,7 +58,7 @@ Quản lý doanh thu gửi xe trong 1 ngày/tháng/năm.
 > * Sử dụng JavaMail để thực hiện việc gửi mail tự động khi người dùng có nhu cầu khôi phục lại mật khẩu.
 > * Đóng gói dự án thành file Jar với các thư viện đi cùng.
 > * Import dữ liệu từ file excel
-
+> * Sử dụng kỹ thuật băm MD5 để băm mật khẩu, nhằm tăng bảo mật cho người dùng.
 ## Các ngôn ngữ, công nghệ sử dụng
 > * Ngôn ngữ sử dụng: `Java`
 > * IDE sử dụng: `Netbeans`
