@@ -12,6 +12,17 @@ Sinh viên tại trường Đại học Công nghệ Thông tin (UIT) sau một 
 Do vậy việc phát triển phần mềm, đòi hỏi không chỉ giải quyết những vấn đề trên mà còn là sự chính xác, phải đáp ứng các yêu cầu khác như về tốc độ, giao diện thân thiện, mô hình hóa được thực tế vào máy tính, điện thoại để người sử dụng tiện lợi, quen thuộc, tính tương thích cao, bảo mật cao,… Phần mềm giúp tiết kiệm một lượng lớn thời gian, công sức của con người khi không phải bận tâm trả tiền mặt mỗi lần giữ xe, tất cả sẽ được tích hợp vào ứng dụng. Hơn nữa là tăng độ chính xác và hiệu quả trong việc quản lý doanh thu.
 Nhận biết được sự cần thiết trong việc quản lý bãi giữ xe tại trường Đại học Công nghệ Thông tin, nhóm chúng em đã vận dụng những kiến thức đã học cùng với sự hiểu biết của mình để cùng nhau xây dựng và phát triển phần mềm hệ thống “Quản lý bãi giữ xe của trường Đại học Công nghệ Thông Tin”, chủ yếu tập trung vào việc lưu trữ; quản lý xe ra, vào; quản lý doanh thu; thanh toán phí giữ xe và phát triển giao diện dễ tương tác với học sinh, giáo viên.
 
+## Mục tiêu
+Xây dựng được một hệ thống ứng dụng hoàn thiện để mọi người có nhu cầu gửi xe tại UIT có một hệ thống gửi xe một cách an toàn, thuận tiện, dễ quản lý. Người gửi xe có thể là sinh viên đang học tại trường UIT, cán bộ công nhân viên của trường, sinh viên các trường khác hay các phụ của sinh viên,...(gọi chung là khách vãng lai). Hệ thống sẽ cung cấp những chức năng dành riêng cho một bộ phận nào đó như: Sinh viên, cán bộ công nhân viên chức có nhu cầu gửi xe tại trường, quản lý số lần gửi xe, thời gian gửi xe tại trường; bộ phận bảo vệ có thể quản lý số lượng, thông tin xe được gửi; phòng kế hoạch tài chính dễ dàng nắm bắt được doanh thu theo ngày/tháng/năm,… Ngoài ra, hệ thống còn giúp cho sinh viên tiết kiệm thời gian thanh toán tiền (đối với sinh viên có thẻ thành viên), hạn chế được việc phải luôn có tiền lẻ để gửi xe hay hạn chế được tình trạng xếp hàng dài khi đợi thanh toán; tránh việc để xe không ngay ngắn, làm ảnh hưởng đến việc để xe của người khác,…  
+Trong đó hệ thống sẽ đáp ứng được các yêu cầu sau: 
+* Quản lý thông tin sinh viên, nhân viên, phương tiện (xe), thông tin hóa đơn, thông tin vé. Trong đó, thông tin sinh viên và nhân viên sẽ bao gồm thông tin tài khoản để đăng nhập vào app quản lý.
+* Quản lý hoạt động gửi xe của sinh viên: sinh viên có thể tra cứu được thông tin số lần gửi xe, thời gian xe ở trong nhà xe, số tiền phải trả cho 1 lần gửi xe hay 1 tuần/tháng (áp dụng với gói đăng ký tuần/tháng) và những thông tin liên quan khác.
+* Đảm bảo việc tra cứu thông tin xe: chủ sở hữu của xe, tình trạng xe (xe có còn trong nhà xe hay không), biển số xe,…
+Quản lý doanh thu gửi xe trong 1 ngày/tháng/năm.  
+* Quản lý được số lượng vé lượt/tuần/tháng bán ra.
+* Quản lý thông tin hóa đơn ở mỗi lần gửi xe.
+* Thông tin lưu trữ sao cho việc kết xuất dữ liệu được nhanh chóng, hiệu quả. 
+Hệ thống hỗ trợ phân quyền người dùng, đảm bảo tính bảo mật, an toàn của hệ thống.
 ## Nhóm SCDTeam
 ------------
 | MSSV | Họ tên | SĐT | Facebook| Ghi chú |
