@@ -216,14 +216,16 @@ public class main {
 //        System.out.println(ctrv);
 //        ctrv.setDateThoiGianVao(date);
 //        ctrvtbl.suaThoiGianVaoSysdate(ctrv);
-
 //        ctrv.setDateThoiGianRa(date);
 //        ctrvtbl.sua(ctrv);
 //        System.out.println(getDateThoiGianVeTuan());
-
 //        DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 //        String in = r.getTimestamp(ctrv.getDateThoiGianRa());
 //        Date d = sdf.parse(in);
-        
+        Calendar cal = Calendar.getInstance();
+        System.out.println(cal.get(Calendar.DAY_OF_MONTH));
+        System.out.println(cal.get(Calendar.MONTH)+1);
+        System.out.println(cal.get(Calendar.YEAR));
+
     }
 }

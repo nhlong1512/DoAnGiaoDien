@@ -14,12 +14,12 @@ Nhận biết được sự cần thiết trong việc quản lý bãi giữ xe 
 
 ## Nhóm SCDTeam
 ------------
-| MSSV | Họ tên | SĐT | Ghi chú |
-|--------------|-------|------|-------|
-| 20520811 | Trần Trọng Tín | 0836346035 | Nhóm trưởng | 
-| 20521569 | Nguyễn Hữu Long | 0775504619 |  | 
-| 20520881 | Phạm Hoàng Ngọc Anh | 0327486284 |  | 
-| 20521083 | Trần Thị Ngọc Ánh | 0363961281 | | 
+| MSSV | Họ tên | SĐT | Facebook| Ghi chú |
+|--------------|-------|------|-------|------|
+| 20520811 | Trần Trọng Tín | 0836346035 | [Trọng Tín](https://www.facebook.com/trongtin112)  | Nhóm trưởng|
+| 20521569 | Nguyễn Hữu Long | 0775504619 | [Long Nguyễn](https://www.facebook.com/nui.gaxuong)  | |
+| 20520881 | Phạm Hoàng Ngọc Anh | 0327486284 | [Phạm Hoàng Ngọc Nấm](https://www.facebook.com/phamhoangngocanh0406) | |
+| 20521083 | Trần Thị Ngọc Ánh | 0363961281 | [Ngọc Ánh](https://www.facebook.com/Yinggg.TTNA) | |
 
 ## Các chức năng chính trong ứng dụng
 ----------------
@@ -55,6 +55,9 @@ Nhận biết được sự cần thiết trong việc quản lý bãi giữ xe 
 > * Sử dụng Regex để kiểm tra các ràng buộc đối với các trường dữ liệu, tối ưu tìm kiếm.
 > * Sử dụng JavaMail để thực hiện việc gửi mail tự động khi người dùng có nhu cầu khôi phục lại mật khẩu.
 > * Đóng gói dự án thành file Jar với các thư viện đi cùng.
+## Yêu cầu hệ thống
+> * Sử dụng `JDK 17`
+> * Sử dụng `ojdbc8.jar`
 ## Hướng dẫn cài đặt chương trình
 > * **Bước 1:** Clone project [java_IS216.M21_10](https://github.com/nhlong1512/java_IS216.M21_10.git)
 > * **Bước 2:** Vào Netbeans chọn Open project và mở project vừa clone về.
