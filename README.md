@@ -44,6 +44,11 @@ Nhận biết được sự cần thiết trong việc quản lý bãi giữ xe 
 > * Báo cáo thống kê
 
 
+### Các chức năng, công nghệ mới (ngoài phạm vi môn học)
+> * Sử dụng Regex để kiểm tra các ràng buộc đối với các trường dữ liệu, tối ưu tìm kiếm.
+> * Sử dụng JavaMail để thực hiện việc gửi mail tự động khi người dùng có nhu cầu khôi phục lại mật khẩu.
+> * Đóng gói dự án thành file Jar với các thư viện đi cùng.
+
 ## Các ngôn ngữ, công nghệ sử dụng
 > * Ngôn ngữ sử dụng: `Java`
 > * IDE sử dụng: `Netbeans`
@@ -51,10 +56,6 @@ Nhận biết được sự cần thiết trong việc quản lý bãi giữ xe 
 > * Cơ sở dữ liệu: `Oracle`
 > * Phần mềm quản lý dự án: `Git`, `Github`
 > * Công cụ hỗ trợ report: `Ireport`
-## Các chức năng, công nghệ mới (ngoài phạm vi môn học)
-> * Sử dụng Regex để kiểm tra các ràng buộc đối với các trường dữ liệu, tối ưu tìm kiếm.
-> * Sử dụng JavaMail để thực hiện việc gửi mail tự động khi người dùng có nhu cầu khôi phục lại mật khẩu.
-> * Đóng gói dự án thành file Jar với các thư viện đi cùng.
 ## Yêu cầu hệ thống
 > * Sử dụng `JDK 17`
 > * Sử dụng `ojdbc8.jar`
